@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generator: reqtify -->
+
+<Types>
+<DocumentType name="VLS-P2_Input" image="doors" description="This type captures requirements from DOORS as follows :
+- An object is a requirement if it has an attribute 'ObjectType'=Requirement
+- The ObjectID is the value of an attribute 'ReqID'
+The intermediate file is in XML format" kind="xml" isFileBased="false" convertTool="DoorsXML" editTool="Doors">
+<Variable name="profile" type="dynenum" label="Profile" method="getProfileNames">
+</Variable>
+<Variable name="server" label="Server">
+</Variable>
+<Variable name="baseline" label="Baseline">
+</Variable>
+<Variable name="withDiagrams" type="boolean" label="Capture diagrams">
+</Variable>
+<Variable name="purgeAttributes" type="boolean" label="Extract only defined attributes">
+</Variable>
+<Variable name="regexpMatch" label="Extract objects from">
+</Variable>
+<Variable name="withExtLinks" type="boolean" label="With External links">
+</Variable>
+<ElementType name="Object" elementClass="Section" analysisTree="&lt;Object number='$i'&gt;&lt;Attribute value='$l' name='Object Heading'&gt;&lt;/Attribute&gt;&lt;Picture&gt;$g&lt;/Picture&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Requirement.ReqID" elementClass="Requirement" analysisTree="&lt;Object id='$i'&gt;&lt;Attribute value='^Req|ReqInput|ReqOutput|ReqParameter$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Text&gt;$t&lt;/Text&gt;&lt;Picture&gt;$g&lt;/Picture&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Refers" elementClass="CoverLink" analysisTree="&lt;Out-link linkModule='instance' target='$i'&gt;&lt;/Out-link&gt;">
+</ElementType>
+<ElementType name="IsCoveredBy" elementClass="CoverLink" isInverse="true" analysisTree="&lt;In-link source='$p' isImported='$!True'&gt;&lt;/In-link&gt;">
+</ElementType>
+<ElementType name="aversion" printExpression="$t : $i" elementClass="Attribute" isMultiple="true" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req|ReqInput|ReqOutput|ReqParameter$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^aVersion$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="aObjectStatus" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req|ReqInput|ReqOutput|ReqParameter$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^aObjectStatus$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Last Modified On" printExpression="$t : $i" elementClass="Attribute" isMultiple="true" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req|ReqInput|ReqOutput|ReqParameter$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Last Modified On $' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="aASIL" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req|ReqInput|ReqOutput|ReqParameter$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^aASIL$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="aTestAcceptance" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req|ReqInput|ReqOutput|ReqParameter$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^aTestAcceptance$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="aRelease" printExpression="$t : $i" elementClass="Attribute" isMultiple="true" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req|ReqInput|ReqOutput|ReqParameter$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^aRelease$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="aTestAllocation" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req|ReqInput|ReqOutput|ReqParameter$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^aTestAllocation$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="aImplementationAllocation" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req|ReqInput|ReqOutput|ReqParameter$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^aImplementationAllocation$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="aId" printExpression="$t : $i" elementClass="Attribute" isMultiple="true" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req|ReqInput|ReqOutput|ReqParameter$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^aId$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+</DocumentType>
+<DocumentType name="VWS-P2_CDD" image="doors" description="This type captures requirements from DOORS as follows :
+- An object is a requirement if it has an attribute 'ObjectType'=Requirement
+- The ObjectID is the value of an attribute 'ReqID'
+The intermediate file is in XML format" kind="xml" isFileBased="false" convertTool="DoorsXML" editTool="Doors">
+<Variable name="profile" type="dynenum" label="Profile" method="getProfileNames">
+</Variable>
+<Variable name="server" label="Server">
+</Variable>
+<Variable name="baseline" label="Baseline">
+</Variable>
+<Variable name="withDiagrams" type="boolean" label="Capture diagrams">
+</Variable>
+<Variable name="purgeAttributes" type="boolean" label="Extract only defined attributes">
+</Variable>
+<Variable name="regexpMatch" label="Extract objects from">
+</Variable>
+<Variable name="withExtLinks" type="boolean" label="With External links">
+</Variable>
+<ElementType name="Object" elementClass="Section" analysisTree="&lt;Object number='$i'&gt;&lt;Attribute value='$l' name='Object Heading'&gt;&lt;/Attribute&gt;&lt;Picture&gt;$g&lt;/Picture&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Requirement.ReqID" elementClass="Requirement" analysisTree="&lt;Object id='$i'&gt;&lt;Attribute value='^Requirement$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Text show='1'&gt;$t&lt;/Text&gt;&lt;Picture&gt;$g&lt;/Picture&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Refers" elementClass="CoverLink" analysisTree="&lt;Out-link linkModule='satisfies' target='$i'&gt;&lt;/Out-link&gt;">
+</ElementType>
+<ElementType name="IsCoveredBy" elementClass="CoverLink" isInverse="true" analysisTree="&lt;In-link source='$p' isImported='$!True'&gt;&lt;/In-link&gt;">
+</ElementType>
+<ElementType name="Revision" printExpression="$t : $i" elementClass="Attribute" isMultiple="true" analysisTree="&lt;Object&gt;&lt;Attribute value='^Requirement$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Object Revision$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Status" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Requirement$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Status$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Last Modified On" printExpression="$t : $i" elementClass="Attribute" isMultiple="true" analysisTree="&lt;Object&gt;&lt;Attribute value='^Requirement$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Last Modified On Time$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Baseline" printExpression="$t : $i" elementClass="Attribute" isMultiple="true" analysisTree="&lt;Object&gt;&lt;Attribute value='^Requirement$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Object Baseline$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="ASIL" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Requirement$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^ASIL$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="SWC allocation" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Requirement$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^SW component allocation$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Verification" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Requirement$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Verification$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Comments" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Requirement$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Comments$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Review Dev" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Requirement$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Review Status_Dev$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Review Test" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Requirement$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Review Status_Tester$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="App Type" printExpression="$t : $i" elementClass="Attribute" isMultiple="true" analysisTree="&lt;Object&gt;&lt;Attribute value='^Requirement$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Application Type$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+</DocumentType>
+<DocumentType name="VWS-P2_UTD" image="doors" description="This type captures requirements from DOORS as follows :
+- An object is a requirement if it has an attribute 'ObjectType'=Requirement
+- The ObjectID is the value of an attribute 'ReqID'
+The intermediate file is in XML format" kind="xml" isFileBased="false" convertTool="DoorsXML" editTool="Doors">
+<Variable name="profile" type="dynenum" label="Profile" method="getProfileNames">
+</Variable>
+<Variable name="server" label="Server">
+</Variable>
+<Variable name="baseline" label="Baseline">
+</Variable>
+<Variable name="withDiagrams" type="boolean" label="Capture diagrams">
+</Variable>
+<Variable name="purgeAttributes" type="boolean" label="Extract only defined attributes">
+</Variable>
+<Variable name="regexpMatch" label="Extract objects from">
+</Variable>
+<Variable name="withExtLinks" type="boolean" label="With External links">
+</Variable>
+<ElementType name="Object" elementClass="Section" analysisTree="&lt;Object number='$i'&gt;&lt;Attribute value='$l' name='Object Heading'&gt;&lt;/Attribute&gt;&lt;Picture&gt;$g&lt;/Picture&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Requirement.ReqID" elementClass="Requirement" analysisTree="&lt;Object id='$i'&gt;&lt;Attribute value='^Test$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Text&gt;$t&lt;/Text&gt;&lt;Picture&gt;$g&lt;/Picture&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Refers" elementClass="CoverLink" analysisTree="&lt;Out-link linkModule='verifies' target='$i'&gt;&lt;/Out-link&gt;">
+</ElementType>
+<ElementType name="IsCoveredBy" elementClass="CoverLink" isInverse="true" analysisTree="&lt;In-link source='$p' isImported='$!True'&gt;&lt;/In-link&gt;">
+</ElementType>
+<ElementType name="Revision" printExpression="$t : $i" elementClass="Attribute" isMultiple="true" analysisTree="&lt;Object&gt;&lt;Attribute value='^Test$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Object Revision$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Status" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Test$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Status$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Last Modified On" printExpression="$t : $i" elementClass="Attribute" isMultiple="true" analysisTree="&lt;Object&gt;&lt;Attribute value='^Test$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Last Modified On Time$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Baseline" printExpression="$t : $i" elementClass="Attribute" isMultiple="true" analysisTree="&lt;Object&gt;&lt;Attribute value='^Test$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Object Baseline$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="ASIL" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Test$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^ASIL$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Objective" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Test$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Object Text$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Result" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Test$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Test result$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Defect ID" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Test$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Defect ID$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Regression" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Test$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Test regression$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+</DocumentType>
+<DocumentType name="VLS-P2_SRS" image="doors" description="This type captures requirements from DOORS as follows :
+- An object is a requirement if it has an attribute 'ObjectType'=Requirement
+- The ObjectID is the value of an attribute 'ReqID'
+The intermediate file is in XML format" kind="xml" isFileBased="false" convertTool="DoorsXML" editTool="Doors">
+<Variable name="profile" type="dynenum" label="Profile" method="getProfileNames">
+</Variable>
+<Variable name="server" label="Server">
+</Variable>
+<Variable name="baseline" label="Baseline">
+</Variable>
+<Variable name="withDiagrams" type="boolean" label="Capture diagrams">
+</Variable>
+<Variable name="purgeAttributes" type="boolean" label="Extract only defined attributes">
+</Variable>
+<Variable name="regexpMatch" label="Extract objects from">
+</Variable>
+<Variable name="withExtLinks" type="boolean" label="With External links">
+</Variable>
+<ElementType name="Object" elementClass="Section" analysisTree="&lt;Object number='$i'&gt;&lt;Attribute value='$l' name='Object Heading'&gt;&lt;/Attribute&gt;&lt;Picture&gt;$g&lt;/Picture&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Requirement.ReqID" elementClass="Requirement" analysisTree="&lt;Object id='$i'&gt;&lt;Attribute value='^Req$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Text&gt;$t&lt;show&gt;1&lt;/show&gt;&lt;/Text&gt;&lt;Picture&gt;$g&lt;/Picture&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Refers" elementClass="CoverLink" analysisTree="&lt;Out-link linkModule='DOORS Links' target='$i'&gt;&lt;/Out-link&gt;">
+</ElementType>
+<ElementType name="IsCoveredBy" elementClass="CoverLink" isInverse="true" analysisTree="&lt;In-link source='$p' isImported='$!True'&gt;&lt;/In-link&gt;">
+</ElementType>
+<ElementType name="aversion" printExpression="$t : $i" elementClass="Attribute" isMultiple="true" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^aVersion$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="aObjectStatus" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^aObjectStatus$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Last Modified On" printExpression="$t : $i" elementClass="Attribute" isMultiple="true" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Last Modified On $' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="aASIL" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^aASIL$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="aTestAcceptance" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^aTestAcceptance$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="aFullVersion" printExpression="$t : $i" elementClass="Attribute" isMultiple="true" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^aFullVersion$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="aRelease" printExpression="$t : $i" elementClass="Attribute" isMultiple="true" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^aRelease$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="aTestMethod" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^aTestMethod$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+</DocumentType>
+<DocumentType name="VWS-P2_GDD" image="doors" description="This type captures requirements from DOORS as follows :
+- An object is a requirement if it has an attribute 'ObjectType'=Requirement
+- The ObjectID is the value of an attribute 'ReqID'
+The intermediate file is in XML format" kind="xml" isFileBased="false" convertTool="DoorsXML" editTool="Doors">
+<Variable name="profile" type="dynenum" label="Profile" method="getProfileNames">
+</Variable>
+<Variable name="server" label="Server">
+</Variable>
+<Variable name="baseline" label="Baseline">
+</Variable>
+<Variable name="withDiagrams" type="boolean" label="Capture diagrams">
+</Variable>
+<Variable name="purgeAttributes" type="boolean" label="Extract only defined attributes">
+</Variable>
+<Variable name="regexpMatch" label="Extract objects from">
+</Variable>
+<Variable name="withExtLinks" type="boolean" label="With External links">
+</Variable>
+<ElementType name="Object" elementClass="Section" analysisTree="&lt;Object number='$i'&gt;&lt;Attribute value='$l' name='Object Heading'&gt;&lt;/Attribute&gt;&lt;Picture&gt;$g&lt;/Picture&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Requirement.ReqID" elementClass="Requirement" analysisTree="&lt;Object id='$i'&gt;&lt;Attribute value='^Requirement$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Text&gt;$t&lt;/Text&gt;&lt;Picture&gt;$g&lt;/Picture&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Refers" elementClass="CoverLink" analysisTree="&lt;Out-link linkModule='satisfies' target='$i'&gt;&lt;/Out-link&gt;">
+</ElementType>
+<ElementType name="IsCoveredBy" elementClass="CoverLink" isInverse="true" analysisTree="&lt;In-link source='$p' isImported='$!True'&gt;&lt;/In-link&gt;">
+</ElementType>
+<ElementType name="Revision" printExpression="$t : $i" elementClass="Attribute" isMultiple="true" analysisTree="&lt;Object&gt;&lt;Attribute value='^Requirement$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Object Revision$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Status" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Requirement$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Status$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Last Modified On" printExpression="$t : $i" elementClass="Attribute" isMultiple="true" analysisTree="&lt;Object&gt;&lt;Attribute value='^Requirement$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Last Modified On Time$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Baseline" printExpression="$t : $i" elementClass="Attribute" isMultiple="true" analysisTree="&lt;Object&gt;&lt;Attribute value='^Requirement$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Object Baseline$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="ASIL" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Requirement$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^ASIL$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="SWC allocation" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Requirement$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^SW component allocation$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Verification" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Requirement$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Verification$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Comments" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Requirement$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Comments$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Review Dev" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Requirement$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Review Status_Dev$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Review Test" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Requirement$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Review Status_Tester$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="App Type" printExpression="$t : $i" elementClass="Attribute" isMultiple="true" analysisTree="&lt;Object&gt;&lt;Attribute value='^Requirement$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Application Type$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+</DocumentType>
+<DocumentType name="VWS-P2_ITD" image="doors" description="This type captures requirements from DOORS as follows :
+- An object is a requirement if it has an attribute 'ObjectType'=Requirement
+- The ObjectID is the value of an attribute 'ReqID'
+The intermediate file is in XML format" kind="xml" isFileBased="false" convertTool="DoorsXML" editTool="Doors">
+<Variable name="profile" type="dynenum" label="Profile" method="getProfileNames">
+</Variable>
+<Variable name="server" label="Server">
+</Variable>
+<Variable name="baseline" label="Baseline">
+</Variable>
+<Variable name="withDiagrams" type="boolean" label="Capture diagrams">
+</Variable>
+<Variable name="purgeAttributes" type="boolean" label="Extract only defined attributes">
+</Variable>
+<Variable name="regexpMatch" label="Extract objects from">
+</Variable>
+<Variable name="withExtLinks" type="boolean" label="With External links">
+</Variable>
+<ElementType name="Object" elementClass="Section" analysisTree="&lt;Object number='$i'&gt;&lt;Attribute value='$l' name='Object Heading'&gt;&lt;/Attribute&gt;&lt;Picture&gt;$g&lt;/Picture&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Requirement.ReqID" elementClass="Requirement" analysisTree="&lt;Object id='$i'&gt;&lt;Attribute value='^Test$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Text&gt;$t&lt;/Text&gt;&lt;Picture&gt;$g&lt;/Picture&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Refers" elementClass="CoverLink" analysisTree="&lt;Out-link linkModule='verifies' target='$i'&gt;&lt;/Out-link&gt;">
+</ElementType>
+<ElementType name="IsCoveredBy" elementClass="CoverLink" isInverse="true" analysisTree="&lt;In-link source='$p' isImported='$!True'&gt;&lt;/In-link&gt;">
+</ElementType>
+<ElementType name="ReqVersion" printExpression="Revision : $i" elementClass="Attribute" isMultiple="true" analysisTree="&lt;Object&gt;&lt;Attribute value='^Test$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Object Revision$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Status" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Test$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Status$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Last Modified On" printExpression="$t : $i" elementClass="Attribute" isMultiple="true" analysisTree="&lt;Object&gt;&lt;Attribute value='^Test$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Last Modified On Time$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Baseline" printExpression="$t : $i" elementClass="Attribute" isMultiple="true" analysisTree="&lt;Object&gt;&lt;Attribute value='^Test$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Object Baseline$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="ASIL" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Test$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^ASIL$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Objective" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Test$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Object Heading$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Result" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Test$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Test result$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Defect ID" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Test$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Defect ID$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Regression" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Test$' name='Object Type'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Test regression$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+</DocumentType>
+<DocumentType name="VLS-P2_Input_FRS" image="doors" description="This type captures requirements from DOORS as follows :
+- An object is a requirement if it has an attribute 'ObjectType'=Requirement
+- The ObjectID is the value of an attribute 'ReqID'
+The intermediate file is in XML format" kind="xml" isFileBased="false" convertTool="DoorsXML" editTool="Doors">
+<Variable name="profile" type="dynenum" label="Profile" method="getProfileNames">
+</Variable>
+<Variable name="server" label="Server">
+</Variable>
+<Variable name="baseline" label="Baseline">
+</Variable>
+<Variable name="withDiagrams" type="boolean" label="Capture diagrams">
+</Variable>
+<Variable name="purgeAttributes" type="boolean" label="Extract only defined attributes">
+</Variable>
+<Variable name="regexpMatch" label="Extract objects from">
+</Variable>
+<Variable name="withExtLinks" type="boolean" label="With External links">
+</Variable>
+<ElementType name="Object" elementClass="Section" analysisTree="&lt;Object number='$i'&gt;&lt;Attribute value='$l' name='Object Heading'&gt;&lt;/Attribute&gt;&lt;Picture&gt;$g&lt;/Picture&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Requirement.ReqID" elementClass="Requirement" analysisTree="&lt;Object id='$i'&gt;&lt;Attribute value='^Req|ReqInput|ReqOutput|ReqParameter$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Text&gt;$t&lt;/Text&gt;&lt;Picture&gt;$g&lt;/Picture&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Refers" elementClass="CoverLink" analysisTree="&lt;Out-link linkModule='satisfies' target='$i'&gt;&lt;/Out-link&gt;">
+</ElementType>
+<ElementType name="IsCoveredBy" elementClass="CoverLink" isInverse="true" analysisTree="&lt;In-link source='$p' isImported='$!True'&gt;&lt;/In-link&gt;">
+</ElementType>
+<ElementType name="aversion" printExpression="$t : $i" elementClass="Attribute" isMultiple="true" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req|ReqInput|ReqOutput|ReqParameter$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^aVersion$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="aObjectStatus" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req|ReqInput|ReqOutput|ReqParameter$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^aObjectStatus$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Last Modified On" printExpression="$t : $i" elementClass="Attribute" isMultiple="true" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req|ReqInput|ReqOutput|ReqParameter$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Last Modified On $' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="aASIL" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req|ReqInput|ReqOutput|ReqParameter$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^aASIL$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="aTestAcceptance" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req|ReqInput|ReqOutput|ReqParameter$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^aTestAcceptance$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="aRelease" printExpression="$t : $i" elementClass="Attribute" isMultiple="true" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req|ReqInput|ReqOutput|ReqParameter$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^aRelease$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="aTestAllocation" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req|ReqInput|ReqOutput|ReqParameter$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^aTestAllocation$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="aImplementationAllocation" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req|ReqInput|ReqOutput|ReqParameter$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^aImplementationAllocation$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="aId" printExpression="$t : $i" elementClass="Attribute" isMultiple="true" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req|ReqInput|ReqOutput|ReqParameter$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^aId$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+</DocumentType>
+</Types>

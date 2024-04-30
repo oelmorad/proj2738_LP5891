@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="com.valeo.sdk.cdt.managedbuild.config.vls.iar.rl78.exe.release.429643976">
+			<storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.valeo.sdk.cdt.managedbuild.config.vls.iar.rl78.exe.release.429643976" moduleId="org.eclipse.cdt.core.settings" name="Release">
+				<externalSettings/>
+				<extensions>
+					<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="com.valeo.sdk.cdt.vls.managedbuilder.errorparser.vls.iar" point="org.eclipse.cdt.core.ErrorParser"/>
+					<extension id="org.eclipse.cdt.core.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactExtension="d87" artifactName="${ProjName}" buildArtefactType="com.valeo.sdk.toolchains.crosstoolchain.buildArtefactType.exe" buildProperties="org.eclipse.cdt.build.core.buildArtefactType=com.valeo.sdk.toolchains.crosstoolchain.buildArtefactType.exe,org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release" cleanCommand="rm –f" description="" id="com.valeo.sdk.cdt.managedbuild.config.vls.iar.rl78.exe.release.429643976" name="Release" parent="com.valeo.sdk.cdt.managedbuild.config.vls.iar.rl78.exe.release">
+					<folderInfo id="com.valeo.sdk.cdt.managedbuild.config.vls.iar.rl78.exe.release.429643976." name="/" resourcePath="">
+						<toolChain id="com.valeo.sdk.toolchains.vls.exe.release.iar.rl78.toolchain.415206732" name="VLS IAR RL78 Toolchain" superClass="com.valeo.sdk.toolchains.vls.exe.release.iar.rl78.toolchain">
+							<targetPlatform binaryParser="org.eclipse.cdt.core.ELF" id="com.valeo.sdk.toolchains.crosstoolchain.iar.rl78.target.base.1177307603" isAbstract="false" name="VLS IAR RL78 Target platform (ELF)" superClass="com.valeo.sdk.toolchains.crosstoolchain.iar.rl78.target.base"/>
+							<builder id="com.valeo.sdk.toolchains.crosstoolchain.iar.rl78.builder.1106052232" managedBuildOn="true" name="VLS Builder.Release" superClass="com.valeo.sdk.toolchains.crosstoolchain.iar.rl78.builder"/>
+							<tool id="com.valeo.sdk.toolchains.crosstoolchain.iar.rl78.assembler.1047871491" name="IAR RL78 Assembler" superClass="com.valeo.sdk.toolchains.crosstoolchain.iar.rl78.assembler"/>
+							<tool id="com.valeo.sdk.toolchains.crosstoolchain.iar.rl78.compiler.1210599333" name="IAR RL78 Compiler" superClass="com.valeo.sdk.toolchains.crosstoolchain.iar.rl78.compiler"/>
+							<tool id="com.valeo.sdk.toolchains.crosstoolchain.iar.rl78.linker.2022947339" name="IAR RL78 Linker" superClass="com.valeo.sdk.toolchains.crosstoolchain.iar.rl78.linker"/>
+							<tool id="com.valeo.sdk.toolchains.crosstoolchain.iar.rl78.sim.1540931069" name="IAR RL78 SIM" superClass="com.valeo.sdk.toolchains.crosstoolchain.iar.rl78.sim"/>
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project id="SWC_HDRV.com.valeo.sdk.toolchains.iar.rl78.exe.501562734" name="Executable (VLS)" projectType="com.valeo.sdk.toolchains.iar.rl78.exe"/>
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		<scannerConfigBuildInfo instanceId="0.2051682177">
+			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
+		</scannerConfigBuildInfo>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+</cproject>

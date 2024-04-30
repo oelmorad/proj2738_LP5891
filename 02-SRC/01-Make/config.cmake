@@ -1,0 +1,20 @@
+set(PROJECT_TYPE "SWC")
+set(PROJECT_NAME "SWC_LP5891")
+
+set(COMPILER_TYPE "GHS")
+set(COMPILER_VER V1.40.1.861)
+set(COMPILER_PATH "C:/ghs/comp_201355")
+set(ARCHITECTURE "RH850")
+set(MICROCONTROLLER "rh850f1l")
+set(ROM_SIZE 2000000)
+set(BL_SIZE 128000)
+set(RAM_SIZE 128000)
+set(RAM_START_ADDRESS 0xfebd0000)
+set(LNKFILENAME tcuInTouch_No_BL.ld)
+set(EXECLUDE_DIRS )
+
+set(EXECLUDE_FILES  )
+
+set(CUSTOM_C_FLAGS -c -G  -Onone  -no_callt -sda=all -large_sda -Wundef --short_enum -dual_debug -DAUTOSAR_USED -delete -preprocess_assembly_files  --no_wrap_diagnostics -ansi -DRENESAS -DF1K -DR7F701583xAFP --long_long -registermode=32 -keeptempfiles -prepare_dispose -full_debug_info -noobj -Wimplicit-int -Wshadow -Wtrigraphs -inline_prologue -reserve_r2 -DOS_MEMMAP=0 -DOS_MULTICORE=OS_SINGLE -DOS_USE_CLZ_QUEUE_ALGORITHM=1 -DOS_DEVELOPMENT_SANITY_CHECKS=0 -DOS_KERNEL_TYPE=OS_FUNCTION_CALL -DOS_USE_TRACE=0)
+set(CUSTOM_ASM_FLAGS -c -G -relobj -preprocess_assembly_files -list  --assembler_warnings --unknown_pragma_silent -asm=-elf -passsource -MD  -DOS_KERNEL_TYPE=OS_FUNCTION_CALL -DOS_RELEASE_SUFFIX=OS_AS403 -DOS_USE_TRACE=0 -DOS_USE_CLZ_QUEUE_ALGORITHM=1 -DOS_DEVELOPMENT_SANITY_CHECKS=0  -DOS_MEMMAP=0 -DOS_MULTICORE=OS_SINGLE -DDEMTP_coLANGUAGE_ASM -DR7F701583xAFP -DRENESAS -DF1K)
+set(CUSTOM_LINK_FLAGS -Mx -keepmap -strict_overlap_check -Olink -shorten_loads -shorten_moves -Mn -map -delete -gsize -fnone -nofloatio -delete  -shorten_loads -shorten_moves -lsedgnoe -no_codefactor -strict_overlap_check -Manx -g)

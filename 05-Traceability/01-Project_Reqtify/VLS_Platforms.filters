@@ -1,0 +1,155 @@
+[Filters]
+Names=Allocation #SW (Filter to remove HW / System Req),Allocation #SW ( TestAccepted),Allocation #SW (Filter to remove HW / System Req) (VTD),Allocation #SW (Filter to remove HW / System Req) (ITD),Allocation #SW (Filter to remove HW / System Req) (ITD) (TestAccepted),Allocation #SW (Filter to remove HW / System Req) (VTD) (TestAccepted),SubFilter: Sys Filter,SubFilter: Sys Ready,SubFilter: SRS Ready,SubFilter: SRS Applicable,SubFilter: SRS Filter,Golabl Filter,SubFilter: ITD Ready,SubFilter: VTD Ready,SubFilter: ITD Alloc,SubFilter: VTD Alloc,Testing Accepted,Allocation #SW (Filter to remove HW / System Req) PIPP,Allocation #SW (Filter to remove HW / System Req) Safety,Allocation #SW (Filter to remove HW / System Req) APP_Manual,Allocation #SW (Filter to remove HW / System Req) CyberSecurity
+
+[Allocation #SW (Filter to remove HW / System Req)]
+IsAnalysis=1
+Booleans=1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+IsAnd=1
+Cond1=Attribute.VLS-Pltf_Input.aImplementationAllocation,equal,SW,AbstractRequirement
+Cond2=Attribute.VLS-Pltf_Input.aObjectStatus,notEqual,Cancelled,AbstractRequirement
+Cond3=Attribute.VLS-Pltf_Input.aObjectStatus,notEqual,NA,AbstractRequirement
+Cond4=Attribute.VLS-Pltf_SRS.aObjectStatus,notEqual,Cancelled,AbstractRequirement
+Cond5=Attribute.VLS-Pltf_SRS.aObjectStatus,notEqual,NA,AbstractRequirement
+Cond6=Attribute.VLS-Pltf_SRS.Applicability,notEqual,Not Applicable,AbstractRequirement
+
+[Allocation #SW ( TestAccepted)]
+IsAnalysis=1
+Booleans=1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+Cond1=Filter.Allocation #SW (Filter to remove HW / System Req),isTrue,X,AbstractRequirement
+Cond2=Attribute.VLS-Pltf_Input.aTestAllocation,equal,SW,AbstractRequirement
+Cond3=Attribute.VLS-Pltf_SRS.aTestAcceptance,equal,Accepted,AbstractRequirement
+Parameters=New parameter=
+
+[Allocation #SW (Filter to remove HW / System Req) (VTD)]
+IsAnalysis=1
+Booleans=1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+Cond1=Filter.Allocation #SW (Filter to remove HW / System Req),isTrue,X,AbstractRequirement
+Cond2=Attribute.VLS-Pltf_Input.aTestAllocation,equal,SW,AbstractRequirement
+Cond3=Attribute.VLS-Pltf_SRS.aTestMethod,equal,VTD,AbstractRequirement
+
+[Allocation #SW (Filter to remove HW / System Req) (ITD)]
+IsAnalysis=1
+Booleans=1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+Cond1=Filter.Allocation #SW (Filter to remove HW / System Req),isTrue,X,AbstractRequirement
+Cond2=Attribute.VLS-Pltf_Input.aTestAllocation,equal,SW,AbstractRequirement
+Cond3=Attribute.VLS-Pltf_SRS.aTestMethod,equal,ITD,AbstractRequirement
+
+[Allocation #SW (Filter to remove HW / System Req) (ITD) (TestAccepted)]
+IsAnalysis=1
+Booleans=1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+Cond1=Filter.Allocation #SW (Filter to remove HW / System Req),isTrue,X,AbstractRequirement
+Cond2=Attribute.VLS-Pltf_Input.aTestAllocation,equal,SW,AbstractRequirement
+Cond3=Attribute.VLS-Pltf_SRS.aTestMethod,equal,ITD,AbstractRequirement
+Cond4=Attribute.VLS-Pltf_SRS.aTestAcceptance,equal,Accepted,AbstractRequirement
+
+[Allocation #SW (Filter to remove HW / System Req) (VTD) (TestAccepted)]
+IsAnalysis=1
+Booleans=1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+Cond1=Filter.Allocation #SW (Filter to remove HW / System Req),isTrue,X,AbstractRequirement
+Cond2=Attribute.VLS-Pltf_Input.aTestAllocation,equal,SW,AbstractRequirement
+Cond3=Attribute.VLS-Pltf_SRS.aTestMethod,equal,VTD,AbstractRequirement
+Cond4=Attribute.VLS-Pltf_SRS.aTestAcceptance,equal,Accepted,AbstractRequirement
+
+[SubFilter: Sys Filter]
+IsAnalysis=1
+Booleans=1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+IsAnd=1
+Cond1=Attribute.VLS-Pltf_Input.aImplementationAllocation,equal,SW,AbstractRequirement
+Cond2=Filter.SubFilter: Sys Ready,isTrue,X,AbstractRequirement
+
+[SubFilter: Sys Ready]
+IsAnalysis=1
+Booleans=1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+Cond1=Attribute.VLS-Pltf_Input.aObjectStatus,equal,Accepted,AbstractRequirement
+Cond2=Attribute.VLS-Pltf_Input.aObjectStatus,equal,InReview,AbstractRequirement
+Cond3=Attribute.VLS-Pltf_Input.aObjectStatus,equal,ReadyForReview,AbstractRequirement
+
+[SubFilter: SRS Ready]
+IsAnalysis=1
+Booleans=1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+Cond1=Attribute.VLS-Pltf_SRS.aObjectStatus,equal,InReview,AbstractRequirement
+Cond2=Attribute.VLS-Pltf_SRS.aObjectStatus,equal,ReadyForReview,AbstractRequirement
+Cond3=Attribute.VLS-Pltf_SRS.aObjectStatus,equal,Accepted,AbstractRequirement
+
+[SubFilter: SRS Applicable]
+IsAnalysis=1
+Booleans=1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+IsAnd=1
+Cond1=Attribute.VLS-Pltf_SRS.Applicability,notEqual,Not Applicable,AbstractRequirement
+
+[SubFilter: SRS Filter]
+IsAnalysis=1
+Booleans=1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+IsAnd=1
+Cond1=Filter.SubFilter: SRS Ready,isTrue,X,AbstractRequirement
+Cond2=Filter.SubFilter: SRS Applicable,isTrue,X,AbstractRequirement
+
+[Golabl Filter]
+IsAnalysis=1
+Booleans=1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+IsAnd=1
+Cond1=Filter.SubFilter: Sys Filter,isTrue,X,AbstractRequirement
+Cond2=Filter.SubFilter: SRS Filter,isTrue,X,AbstractRequirement
+
+[SubFilter: ITD Ready]
+IsAnalysis=1
+Booleans=1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+IsAnd=1
+Cond1=Attribute.VLS-Pltf_SRS.aTestAcceptance,equal,Accepted,AbstractRequirement
+Cond2=Filter.SubFilter: ITD Alloc,isTrue,X,AbstractRequirement
+
+[SubFilter: VTD Ready]
+IsAnalysis=1
+Booleans=1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+IsAnd=1
+Cond1=Attribute.VLS-Pltf_SRS.aTestAcceptance,equal,Accepted,AbstractRequirement
+Cond2=Filter.SubFilter: VTD Alloc,isTrue,X,AbstractRequirement
+
+[SubFilter: ITD Alloc]
+IsAnalysis=1
+Booleans=1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+IsAnd=1
+Cond1=Attribute.VLS-Pltf_SRS.aTestMethod,equal,ITD,AbstractRequirement
+Cond2=Filter.Golabl Filter,isTrue,X,AbstractRequirement
+
+[SubFilter: VTD Alloc]
+IsAnalysis=1
+Booleans=1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+IsAnd=1
+Cond1=Attribute.VLS-Pltf_SRS.aTestMethod,equal,VTD,AbstractRequirement
+Cond2=Filter.Golabl Filter,isTrue,X,AbstractRequirement
+
+[Testing Accepted]
+IsAnalysis=1
+Booleans=1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+IsAnd=1
+Cond1=Filter.Golabl Filter,isTrue,X,AbstractRequirement
+Cond2=Attribute.VLS-Pltf_SRS.aTestAcceptance,equal,Accepted,AbstractRequirement
+
+[Allocation #SW (Filter to remove HW / System Req) PIPP]
+IsAnalysis=1
+Booleans=1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+IsAnd=1
+Cond1=Attribute.VLS-Pltf_Input.aSWPartAllocation,contains,PIPP,AbstractRequirement
+Cond2=Filter.Allocation #SW (Filter to remove HW / System Req),isTrue,X,AbstractRequirement
+
+[Allocation #SW (Filter to remove HW / System Req) Safety]
+IsAnalysis=1
+Booleans=1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+IsAnd=1
+Cond1=Attribute.VLS-Pltf_SRS.aCategory,contains,Safety,AbstractRequirement
+Cond2=Filter.Allocation #SW (Filter to remove HW / System Req),isTrue,X,AbstractRequirement
+
+[Allocation #SW (Filter to remove HW / System Req) APP_Manual]
+IsAnalysis=1
+Booleans=1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+IsAnd=1
+Cond1=Attribute.VLS-Pltf_Input.aSWPartAllocation,contains,APP_Manual,AbstractRequirement
+Cond2=Filter.Allocation #SW (Filter to remove HW / System Req),isTrue,X,AbstractRequirement
+
+[Allocation #SW (Filter to remove HW / System Req) CyberSecurity]
+IsAnalysis=1
+Booleans=1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+IsAnd=1
+Cond1=Attribute.VLS-Pltf_SRS.aCategory,contains,CyberSecurity,AbstractRequirement
+Cond2=Filter.Allocation #SW (Filter to remove HW / System Req),isTrue,X,AbstractRequirement

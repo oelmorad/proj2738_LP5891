@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generator: reqtify -->
+
+<Types>
+<DocumentType name="CRS_Type" image="word" description="This type manages a Cyrs document with : 
+- Old naming convention for requirement
+- Requirement ID and allocation are not on the same line.
+
+Example :
+Req_LDM_CRS_ALI_136-V130124
+#HW
+#SYS" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="^.*Req_ID\s+(\w+ V\d+\.\d+|\w+ V\d+|\w+__\w+_\d+_\d+|\w+_\d+_\d+)-*\b(?&lt;!Req)">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="Req_Coverage\s+Covers_(.+?)[?:\-|_]V\d+" index1="1" index2="5" index3="3" index4="0">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+\w+ V(\d+\.\d+|\d+)">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="">
+</ElementType>
+<ElementType name="ReqStatus" image="cantata_pass" printExpression="Status: $i" elementClass="Attribute" isMultiple="true" regularExpression="\s(Accepted|Cancelled)" index1="1" index2="1" index3="3" index4="0">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation Imp: $i" elementClass="Attribute" isMultiple="true" regularExpression="Req_Alloc\s*Imp.*\s*#(\w+)\s*">
+</ElementType>
+<ElementType name="ReqTestAlloc" image="obingactor" printExpression="AllocationTest: $i" elementClass="Attribute" isMultiple="true" regularExpression="Req_Alloc.*Test.*\s*#(\w+)\s*">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V(\d+)">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V\d+\(rate=(\d+)%\)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="VLS-P2_SRS_1" image="doors" description="This type captures requirements from DOORS as follows :
+- An object is a requirement if it has an attribute 'ObjectType'=Requirement
+- The ObjectID is the value of an attribute 'ReqID'
+The intermediate file is in XML format" kind="xml" isFileBased="false" convertTool="DoorsXML" editTool="Doors">
+<Variable name="profile" type="dynenum" label="Profile" method="getProfileNames">
+</Variable>
+<Variable name="server" label="Server">
+</Variable>
+<Variable name="baseline" label="Baseline">
+</Variable>
+<Variable name="withDiagrams" type="boolean" label="Capture diagrams">
+</Variable>
+<Variable name="purgeAttributes" type="boolean" label="Extract only defined attributes">
+</Variable>
+<Variable name="regexpMatch" label="Extract objects from">
+</Variable>
+<Variable name="withExtLinks" type="boolean" label="With External links">
+</Variable>
+<ElementType name="Object" elementClass="Section" analysisTree="&lt;Object number='$i'&gt;&lt;Attribute value='$l' name='Object Heading'&gt;&lt;/Attribute&gt;&lt;Picture&gt;$g&lt;/Picture&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Requirement.ReqID" elementClass="Requirement" analysisTree="&lt;Object id='$i'&gt;&lt;Attribute value='^Req|ReqInput|ReqOutput|ReqParameter$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Text&gt;$t&lt;show&gt;1&lt;/show&gt;&lt;/Text&gt;&lt;Picture&gt;$g&lt;/Picture&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Refers" elementClass="CoverLink" analysisTree="&lt;Out-link linkModule='satisfies' target='$i'&gt;&lt;/Out-link&gt;">
+</ElementType>
+<ElementType name="IsCoveredBy" elementClass="CoverLink" isInverse="true" analysisTree="&lt;In-link source='$p' isImported='$!True'&gt;&lt;/In-link&gt;">
+</ElementType>
+<ElementType name="aversion" printExpression="$t : $i" elementClass="Attribute" isMultiple="true" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req|ReqInput|ReqOutput|ReqParameter$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^aVersion$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="aObjectStatus" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req|ReqInput|ReqOutput|ReqParameter$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^aObjectStatus$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="Last Modified On" printExpression="$t : $i" elementClass="Attribute" isMultiple="true" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req|ReqInput|ReqOutput|ReqParameter$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^Last Modified On $' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="aASIL" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req|ReqInput|ReqOutput|ReqParameter$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^aASIL$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="aTestAcceptance" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req|ReqInput|ReqOutput|ReqParameter$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^aTestAcceptance$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="aFullVersion" printExpression="$t : $i" elementClass="Attribute" isMultiple="true" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req|ReqInput|ReqOutput|ReqParameter$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^aFullVersion$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="aRelease" printExpression="$t : $i" elementClass="Attribute" isMultiple="true" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req|ReqInput|ReqOutput|ReqParameter$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^aRelease$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="aTestMethod" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req|ReqInput|ReqOutput|ReqParameter$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^aTestMethod$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+<ElementType name="aId" printExpression="$t : $i" elementClass="Attribute" isMultiple="true" analysisTree="&lt;Object&gt;&lt;Attribute value='^Req|ReqInput|ReqOutput|ReqParameter$' name='aObjectType'&gt;&lt;/Attribute&gt;&lt;Attribute name='^aId$' value='$i'&gt;&lt;/Attribute&gt;&lt;/Object&gt;">
+</ElementType>
+</DocumentType>
+<DocumentType name="SRS_Doors" image="word" convertTool="WordWithStyles" editTool="WordWithStyles">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<Property name="affectSuspiciousLink" value="0" />
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="SRS_Req_Specific" elementClass="Requirement" regularExpression="^.*Req_ID\s+Req_(\w*)-*">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="(?:Req_Coverage\s*Covers_(\w+___\w+_\w+ V\d+|\w+___\w+_\d+ V\d+|\w+_\w+ V\d+\.\d+|\w+ V\d+|\w+_\w+_\w+|\w+__\w+_\w+_\w+|\w+_\w+))">
+</ElementType>
+<ElementType name="Covers_0" elementClass="CoverLink" regularExpression="(?:Req_Coverage\s*Covers_(\w+ \w+ \w+ V\d+))">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="CheckedBy" printExpression="Checked by: $i" elementClass="Attribute" isMultiple="true" regularExpression="Checked by:|2 Normal\s+([I, V]TD)">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w+-V\d+\:(\w+)">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="(?|(?:Req_Coverage\s*Covers_\w*\s+V(\d+))|(?:Req_Coverage\s*Covers_[\S_]+_\d+_(\S+))|(?:Req_Coverage\s*Covers_\w+-V(\d+))|(?:Req_Coverage\s*Covers_\S+_(\d+)))">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+</Types>

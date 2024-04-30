@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generator: reqtify -->
+
+<Types>
+<DocumentType name="UTD_VC" image="testStand_xmlReport" convertTool="Text" editTool="TextEditor">
+<FileExtension value="xml" />
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="(?|(?:Req_P*1st201388_(\w+\-\w+)\-V\d\d)|(?:req_P*1st201388_(\w+\.\d+)\-V\d+)|(?:Req_P*1st201388_(\w+)\-V\d+)|(?:Req_P*1st201388_(\w+\.\d+)\-V\d+)|(?:(COND.+?)(?=&lt;))|(?:[^_]Req_P*1st201388_(.+?(?=&lt;)))|((?:[^_](Req_P*1st201388_.+?(?=&lt;)))))">
+</ElementType>
+<ElementType name="Reference" elementClass="CoverLink" regularExpression="(?i)Covers_P*1ST201388_(\w*)-*">
+</ElementType>
+</DocumentType>
+<DocumentType name="RAM_UTD" convertTool="ExcelWithColNumbers" editTool="Excel" intermediateFileEncoding="UTF8">
+<FileExtension value="xls" />
+<FileExtension value="xlsx" />
+<FileExtension value="xlsm" />
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="(?i)1ST201388_(SRS\w+)">
+</ElementType>
+<ElementType name="Reference" elementClass="CoverLink" regularExpression="Covers_(\w*)-*">
+</ElementType>
+</DocumentType>
+<DocumentType name="CDD_HTML_Specific" image="html" convertTool="HTMLWithStyles" editTool="TextEditor">
+<FileExtension value="htm" />
+<FileExtension value="html" />
+<ElementType name="H" elementClass="Section" regularExpression="^H(\d)(?:\.[^\t]+)?\t(.+)" index1="6" index2="1" index3="3" index4="0">
+</ElementType>
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="Req_(\w*)\s*[:\-]?(.+)" index1="1" index2="3" index3="3" index4="0">
+</ElementType>
+<ElementType name="Reference" elementClass="CoverLink" regularExpression="(?i)Covers_(?:Req_)*P*(?:1ST200844)*_(SRS_\w+)">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w+-V\d+\:(\w+)">
+</ElementType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([^&gt;]+)">
+</TerminalType>
+</DocumentType>
+<DocumentType name="ITD_Coverage_Report" image="html" convertTool="HTMLWithStyles" editTool="TextEditor">
+<FileExtension value="htm" />
+<FileExtension value="html" />
+<ElementType name="H" elementClass="Section" regularExpression="^H(\d)(?:\.[^\t]+)?\t(.+)" index1="6" index2="1" index3="3" index4="0">
+</ElementType>
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="(REQ\d+)\s*[:\-]?(.+)" index1="1" index2="3" index3="3" index4="0">
+</ElementType>
+<ElementType name="Reference" elementClass="CoverLink" regularExpression="Covers_P*1ST201388_(.*?_\w+)">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w+-V\d+\:(\w+)">
+</ElementType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([^&gt;]+)">
+</TerminalType>
+</DocumentType>
+<DocumentType name="SRS_excel" image="excel" description="This type uses Excel converter which presents each cell separated by character | followed by column number" convertTool="ExcelWithColNumbers" editTool="Excel" textFormat="3" intermediateFileEncoding="UTF8">
+<FileExtension value="xls" />
+<FileExtension value="xlsx" />
+<FileExtension value="xlsm" />
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="(?i)P1ST201388_(SRS\w+)">
+</ElementType>
+<ElementType name="Covers Reference" printExpression="[Covers: $i]" elementClass="CoverLink" isMultiple="false" regularExpression="\[Covers[ \t]*:[ \t]*([^\]]*)" subExpression="[ \t]*([^\,\;]+)[ \t]*">
+</ElementType>
+<ElementType name="Priority" printExpression="$t: $i" elementClass="Attribute" regularExpression="REQ\d+.+?\|(?:D\d+|4) ([^\t]+)">
+<EnumValue value="High" />
+<EnumValue value="Medium" />
+<EnumValue value="Low" />
+</ElementType>
+<ElementType name="Allocation" printExpression="Owner: $i" elementClass="Attribute" regularExpression="REQ\d+.+?\|(?:E\d+|5) ([^\t\n]+)">
+</ElementType>
+<ElementType name="Position" isVisible="false" elementClass="Attribute" regularExpression="\|([A-Z]+\d+) REQ\d+">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="\|\w+ REQ\d+\t\|\w+[^|]+\|\w+ ([^\t]+)">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([^&gt;]+)">
+</TerminalType>
+</DocumentType>
+<DocumentType name="UTD_HTML_Specific" image="html" convertTool="HTMLWithStyles" editTool="TextEditor">
+<FileExtension value="htm" />
+<FileExtension value="html" />
+<ElementType name="H" elementClass="Section" regularExpression="^H(\d)(?:\.[^\t]+)?\t(.+)" index1="6" index2="1" index3="3" index4="0">
+</ElementType>
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="Req_P*1ST200844_(\w*)\s*[:\-]?(.+)" index1="1" index2="3" index3="3" index4="0">
+</ElementType>
+<ElementType name="Reference" elementClass="CoverLink" regularExpression="(?i)Covers_P*1ST200844_(CDD_\w+)">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w+-V\d+\:(\w+)">
+</ElementType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([^&gt;]+)">
+</TerminalType>
+</DocumentType>
+</Types>

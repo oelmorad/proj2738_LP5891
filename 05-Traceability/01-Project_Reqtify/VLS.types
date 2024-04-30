@@ -1,0 +1,2243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generator: reqtify -->
+
+<Types>
+<DocumentType name="HSI" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="^.*Req_ID\s+Req_(L011N1640_\w*)-*">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="Asil" elementClass="Attribute" regularExpression="">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="CRS_Type1" image="word" description="This type manages a Cyrs document with : &#10;- Old naming convention for requirement&#10;- Requirement ID and allocation are not on the same line.&#10;&#10;Example :&#10;Req_LDM_CRS_ALI_136-V130124&#10;#HW&#10;#SYS" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="^.*Req_ID\s+(\w+ V\d+|\w*)-*\b(?&lt;!Req)">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="Req_Coverage\s+Covers_(.+?)[?:\-|_]V\d+">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" isMultiple="true" regularExpression="Req_Alloc\s*(.*#\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V(\d+)">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V\d+\(rate=(\d+)%\)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="CRS_Type3" image="word" guid="9E971139-8A76-4E03-88CD-06FC7EA4E046" description="This type manages a Cyrs document with &#10;- New naming convention for requirement&#10;- Requirement ID and allocation on the same line.&#10;&#10;Example :&#10;D009816_Req_LAW_00_STD_140424_QM&#10;#Sys&#10;#SW" convertTool="WordWithStyles" editTool="WordWithStyles" textFormat="3" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<Variable name="withBookmarks" type="boolean" label="With Bookmarks">
+</Variable>
+<Variable name="withAnnotations" type="boolean" label="With Annotations">
+</Variable>
+<Variable name="tabCellsFolding" type="boolean" label="One Cell Per Line">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Heading" guid="E5160843-CF32-4D0D-8D2F-D8C67871816D" elementClass="Section" regularExpression="^[Hh]eading (\d+)\t(?:([\d\.]+)[ \t](.*)|([^\d\n].+))$" index1="6" index2="1" index3="2" index4="1">
+</ElementType>
+<ElementType name="Macro-requirement" guid="D42C5B4C-D773-482A-8C40-FBB1B6166952" elementClass="MacroRequirement" regularExpression="\[MacroReq_([^\]]+)" endExpression="\[End_of_MacroReq\]">
+</ElementType>
+<ElementType name="Requirement" guid="197ECB0A-F31B-4F85-A378-4D6692613235" elementClass="Requirement" regularExpression="Req_ID[ \t]+(\w+_\w+_\w+_\d+_\w+)_\d+_\w+">
+<Property name="taggerIdentStyle" value="Requirement_ID" />
+<Property name="taggerIdentStyleType" value="Paragraph" />
+<Property name="taggerNumber" value="000" />
+<Property name="taggerPrefix" value="REQ_" />
+<Property name="taggerRange" value="3" />
+<Property name="taggerStyleType" value="None" />
+<Property name="taggerTextStyle" value="Requirement_Text" />
+</ElementType>
+<ElementType name="Coverage" guid="93186B1B-3645-42EB-9087-4F4376E53CC9" printExpression="[Covers: $i]" elementClass="CoverLink" regularExpression="\[Covers[ \t]*:[ \t]*([^\]]*)" subExpression="[ \t]*([^\,\;]+)[ \t]*">
+<Property name="taggerReferenceBeginning" value="[Covers:" />
+<Property name="taggerReferenceEnding" value="]" />
+<Property name="taggerReferenceIntermediate" value="," />
+<Property name="taggerReferenceStyle" value="Requirement_Reference" />
+<Property name="taggerReferenceStyleType" value="None" />
+</ElementType>
+<ElementType name="Allocation" guid="3469774E-3529-451A-A474-455A9C8CF624" printExpression="Allocation: $i" elementClass="Attribute" isMultiple="true" regularExpression="Req_Alloc[ \t]+#(\w+)">
+</ElementType>
+<ElementType name="Asil" guid="0397D88C-7EC5-44F4-883A-5EDA8B060F0B" printExpression="$t : $i" elementClass="Attribute" regularExpression="">
+<Property name="guidEnumeration" value="{C41645A2-1C82-4B05-AA6A-7A923A069C36}" />
+<Property name="guidValues" value="{F28E3241-24F7-479F-BC23-993052D6C693}" />
+<Property name="guidValues" value="{97B93DB2-0F48-4B9F-BCBC-94BD87812FDE}" />
+<Property name="guidValues" value="{1930C6F2-0F54-4461-887E-0BC856FC6E6B}" />
+<EnumValue value="QM" />
+<EnumValue value="ASILA" />
+<EnumValue value="ASILB" />
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="Req_ID[ \t]+\w+_\w+_\w+_\d+_\w+_(\d+)_\w+">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="\bReq_Text\t(.+?)(?=\|\d|\n)">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="SRS_SRD" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="^.*Req_ID\s+Req_(\w*)-*">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="Req_Coverage\s+Covers_(\w+)">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="(?|(?:Req_Coverage\s*Covers_\w+-V(\d+))|(?:Req_Coverage\s*Covers_\w+_\w+_\w+_\d+_\w+_(\d+)_\w+))">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V\d+\(rate=(\d+)%\)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="SAD_SRD" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="^.*Req_ID\s+Req_(\w*)-*">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="Req_Coverage\s+Covers_(\w+)">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="(?|(?:Req_Coverage\s*Covers_\w+-V(\d+))|(?:Req_Coverage\s*Covers_\w+_\w+_\w+_\d+_\w+_(\d+)_\w+))">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V\d+\(rate=(\d+)%\)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="DAD_SRD" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="^.*Req_ID\s+Req_(\w*)-*">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="Req_Coverage\s+Covers_(\w+)">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V(\d+)">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V\d+\(rate=(\d+)%\)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="Code C txt (vls)" image="code" convertTool="Text" mergeOrReplaceHomonymousParagraphs="1">
+<Variable name="testDate" type="boolean" label="Test files date">
+</Variable>
+<ElementType name="Directory" image="code_directory" printExpression="$l" elementClass="Section" regularExpression="^BEGIN_DIRECTORY: (.+):(.+)$" endExpression="^END_DIRECTORY: .+$">
+</ElementType>
+<ElementType name="File" printExpression="$l" elementClass="Section" regularExpression="^BEGIN_FILE: (.+):(.+)$" endExpression="^END_FILE: .+$">
+<ParentType name="Directory" />
+</ElementType>
+<ElementType name="functionName" elementClass="Requirement" regularExpression="^(?:BEGIN_FILE.*|\})$\n*(?:.*/\*[\S\s]*?\*/|\n|\s*\#.*|\s*\$.*)*.*\w*\s*\w+\s+(\w+)\s*\([^\)]*\)[^{]*{">
+</ElementType>
+<ElementType name="Coverage" printExpression="/* !Trace_To : Covers_$i" elementClass="CoverLink" regularExpression="^.*Covers_(\w+)-V\d+">
+</ElementType>
+<ElementType name="ReqVersion" printExpression="No version" elementClass="Attribute" regularExpression="^(?:BEGIN_FILE.*|\})$\n*(?:.*/\*[\S\s]*?\*/|\n|\s*\#.*|\s*\$.*)*.*\w*\s*\w+\s+\w+\s*\([^\)]*\)[^{]*{">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="^.*Trace_To.*Covers_.+-V(\d+)">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="^.*Trace_To.*Covers_.+-V\d+\(rate=(\d+)%\)">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="LinkAttribute" regularExpression="^.*Trace_To.*Covers_.+-V\d+\:(\w+)">
+</ElementType>
+</DocumentType>
+<DocumentType name="Code H (vls)" image="code" convertTool="Text" mergeOrReplaceHomonymousParagraphs="1">
+<Variable name="testDate" type="boolean" label="Test files date">
+</Variable>
+<MatchingFileName value="*.h" />
+<ElementType name="Directory" image="code_directory" printExpression="$l" elementClass="Section" regularExpression="^BEGIN_DIRECTORY: (.+):(.+)$" endExpression="^END_DIRECTORY: .+$">
+</ElementType>
+<ElementType name="File" printExpression="$l" elementClass="Section" regularExpression="^BEGIN_FILE: (.+):(.+)$" endExpression="^END_FILE: .+$">
+<ParentType name="Directory" />
+</ElementType>
+<ElementType name="Coverage" printExpression="/* !Trace_To : Covers_$i" elementClass="CoverLink" regularExpression="^.*Trace_To.*Covers_(\w+)-V\d+">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="^.*Trace_To.*Covers_.+-V(\d+)">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="^.*Trace_To.*Covers_.+-V\d+\(rate=(\d+)%\)">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="LinkAttribute" regularExpression="^.*Trace_To.*Covers_.+-V\d+\:(\w+)">
+</ElementType>
+</DocumentType>
+<DocumentType name="VTD_Specific" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^heading 1\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="VTD_Req_Specific" elementClass="Requirement" regularExpression="^.*Req_ID\s+Req_(\w*)-*">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="Req_Coverage\s+Covers_(\w+)">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w+-V\d+\:(\w+)">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V(\d+)">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+[?:\-|_]V\d+\(rate=(\d+)%\)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="STI" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="^.*Req_ID\s+Req_(\w*)-*">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="Req_Coverage\s+Covers_(.+?)[?:\-|_]V\d+">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="Asil" elementClass="Attribute" regularExpression="">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V(\d+)">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V\d+\(rate=(\d+)%\)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="SRS_Generic" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="SRS_Req_Generic" elementClass="Requirement" regularExpression="^.*Req_ID\s+Req_(\w*)-*">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="CheckedBy" printExpression="Checked by: $i" elementClass="Attribute" isMultiple="true" regularExpression="Req_Attribute\s+([I, V]TD)">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w+-V\d+\:(\w+)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="VTD_Generic" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="VTD_Req_Generic" elementClass="Requirement" regularExpression="^.*Req_ID\s+Req_(\w*)-*">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w+-V\d+\:(\w+)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="CDD_Generic" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="CDD_Req_Generic" elementClass="Requirement" regularExpression="^.*Req_ID\s+Req_(\w*)-*">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="Req_Coverage\s+Covers_(\w+)">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w+-V\d+\:(\w+)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="ITD_Generic" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="ITD_Req_Generic" elementClass="Requirement" regularExpression="^.*ReqIDBayoumy\s+Req_(\w*)-*">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="Req_Coverage\s+Covers_(\w+)">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w+-V\d+\:(\w+)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="UTD_Generic" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="UTD_Req_Generic" elementClass="Requirement" regularExpression="^.*Req_ID\s+Req_(\w*)-*">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="Req_Coverage\s+Covers_(.+?)[?:\-|_]V\d+">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="UTD_Specific" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="UTD_Req_Specific" elementClass="Requirement" regularExpression="^.*Req_ID\s+Req_(\w*)-*">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="Req_Coverage\s+Covers_(.+?)[?:\-|_]V\d+">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V(\d+)">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+[?:\-|_]V\d+\(rate=(\d+)%\)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="ITD_Specific" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="ITD_Req_Specific" elementClass="Requirement" regularExpression="^.*Req_ID\s+Req_(\w*)-*">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="Req_Coverage\s+Covers_(\w+)">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w+-V\d+\:(\w+)">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V(\d+)">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+[?:\-|_]V\d+\(rate=(\d+)%\)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="CDD_EA_Generic" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="CDD_Req_Generic" elementClass="Requirement" regularExpression="^.*Req ID\s*:\|2\s*Normal\s*Req_(\w*):*">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="^.*Covers\s*:\|2\s*Normal\s*Req_(\w*)">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Version\s*:\|2\s*Normal\s*(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="^.*Req_ID\s*:|2\s*Normal\s*req_\w*:(\w*)">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="^.*Covers\s*:\|2\s*Normal\s*Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V\d+\(rate=(\d+)%\)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="CRS_Type2" image="word" description="This type manages a Cyrs document with &#10;- Old naming convention for requirement&#10;- Requirement ID and allocation on the same line.&#10;&#10;Example :&#10;Req_LDM_CRS_ALI_136-V130124&#9;#HW&#9;#SYS" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="^.*Req_ID\s+Req_(\w*)-*">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="Req_Coverage\s+Covers_(.+?)[?:\-|_]V\d+">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" isMultiple="true" regularExpression="Req_Alloc\s*([a-zA-Z#\t]*)" subExpression="#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V(\d+)">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V\d+\(rate=(\d+)%\)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="CRS_Type4" image="word" guid="9E971139-8A76-4E03-88CD-06FC7EA4E046" description="This type manages a Cyrs document with &#10;- New naming convention for requirement&#10;- Requirement ID and allocation on the same line.&#10; &#10;Example :&#10;D009816_Req_LAW_00_STD_140424_QM #Sys #SW" convertTool="WordWithStyles" editTool="WordWithStyles" textFormat="3" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<Variable name="withBookmarks" type="boolean" label="With Bookmarks">
+</Variable>
+<Variable name="withAnnotations" type="boolean" label="With Annotations">
+</Variable>
+<Variable name="tabCellsFolding" type="boolean" label="One Cell Per Line">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Heading" guid="E5160843-CF32-4D0D-8D2F-D8C67871816D" elementClass="Section" regularExpression="^[Hh]eading (\d+)\t(?:([\d\.]+)[ \t](.*)|([^\d\n].+))$" index1="6" index2="1" index3="2" index4="1">
+</ElementType>
+<ElementType name="Macro-requirement" guid="D42C5B4C-D773-482A-8C40-FBB1B6166952" elementClass="MacroRequirement" regularExpression="\[MacroReq_([^\]]+)" endExpression="\[End_of_MacroReq\]">
+</ElementType>
+<ElementType name="Requirement" guid="197ECB0A-F31B-4F85-A378-4D6692613235" elementClass="Requirement" regularExpression="Req_ID[ \t]+(\w+_\w+_\w+_\d+)_\w+_\d+_*\w*">
+<Property name="taggerIdentStyle" value="Requirement_ID" />
+<Property name="taggerIdentStyleType" value="Paragraph" />
+<Property name="taggerNumber" value="000" />
+<Property name="taggerPrefix" value="REQ_" />
+<Property name="taggerRange" value="3" />
+<Property name="taggerStyleType" value="None" />
+<Property name="taggerTextStyle" value="Requirement_Text" />
+</ElementType>
+<ElementType name="Coverage" guid="93186B1B-3645-42EB-9087-4F4376E53CC9" printExpression="[Covers: $i]" elementClass="CoverLink" regularExpression="\[Covers[ \t]*:[ \t]*([^\]]*)" subExpression="[ \t]*([^\,\;]+)[ \t]*">
+<Property name="taggerReferenceBeginning" value="[Covers:" />
+<Property name="taggerReferenceEnding" value="]" />
+<Property name="taggerReferenceIntermediate" value="," />
+<Property name="taggerReferenceStyle" value="Requirement_Reference" />
+<Property name="taggerReferenceStyleType" value="None" />
+</ElementType>
+<ElementType name="Allocation" guid="3469774E-3529-451A-A474-455A9C8CF624" printExpression="Allocation: $i" elementClass="Attribute" isMultiple="true" regularExpression="Req_Alloc\s*([a-zA-Z#\t]*)" subExpression="(#\w+)">
+</ElementType>
+<ElementType name="Asil" guid="0397D88C-7EC5-44F4-883A-5EDA8B060F0B" printExpression="$t : $i" elementClass="Attribute" regularExpression="Req_ID[ \t]+\w+_\w+_\w+_\d+_\w+_\d+_(\w+)">
+<Property name="guidEnumeration" value="{C41645A2-1C82-4B05-AA6A-7A923A069C36}" />
+<Property name="guidValues" value="{F28E3241-24F7-479F-BC23-993052D6C693}" />
+<Property name="guidValues" value="{97B93DB2-0F48-4B9F-BCBC-94BD87812FDE}" />
+<Property name="guidValues" value="{1930C6F2-0F54-4461-887E-0BC856FC6E6B}" />
+<EnumValue value="QM" />
+<EnumValue value="ASILA" />
+<EnumValue value="ASILB" />
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="Req_ID[ \t]+\w+_\w+_\w+_\d+_\w+_(\d+)_\w+">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="\bReq_Text\t(.+?)(?=\|\d|\n)">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="CDD_Specific" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="CDD_Req_Specific" elementClass="Requirement" regularExpression="^.*Req_(\w*)-*">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="Req_Coverage\s+Covers_(\w+)">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w+-V\d+\:(\w+)">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V(\d+)">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V\d+\(rate=(\d+)%\)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="RAM_NAREQ" image="excel" convertTool="ExcelWithColNumbers" editTool="Excel" intermediateFileEncoding="UTF8">
+<FileExtension value="xls" />
+<ElementType name="Worksheet" elementClass="Section" regularExpression="^Worksheet :[ \t](.*)$">
+</ElementType>
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="\|2\s*Req_(\w+)-V\d+\s*\|3">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="\s*Covers_(\w+)-V\d+">
+</ElementType>
+<ElementType name="Req Type" printExpression="Req Type = $i" elementClass="Attribute" regularExpression="\|4\s*((Generic|Specific)\s+.*)\s*\|5">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReferenceVersion" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="\s+Covers_.+?[?:\-|_]V(\d+)">
+</ElementType>
+</DocumentType>
+<DocumentType name="UTD_Cunit_Specific" image="excel" convertTool="ExcelWithColNumbers" editTool="Excel" intermediateFileEncoding="UTF8">
+<FileExtension value="xls" />
+<ElementType name="Worksheet" elementClass="Section" regularExpression="^Worksheet :[ \t](.*)$">
+</ElementType>
+<ElementType name="UTD_Req_Specific" elementClass="Requirement" regularExpression="^.*Test ID\s*\|2\s*(Test_\w*)">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="\s*Covers_(\w*)-V\d+">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="">
+</ElementType>
+<ElementType name="ReferenceVersion" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="\s*Covers_\w*-V(\d+)">
+</ElementType>
+</DocumentType>
+<DocumentType name="CDD_EA_Specific" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="CDD_Req_Specific" elementClass="Requirement" regularExpression="^.*Req ID\s*:\|2\s*Normal\s*Req_(\w*):*">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="^.*Covers\s*:\|2\s*Normal\s*Req_(\w*)">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Version\s*:\|2\s*Normal\s*(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="^.*Req ID\s*:\|2\s*Normal\s*Req_\w*:(\w*)">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="^.*Covers\s*:\|2\s*Normal\s*Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V\d+\(rate=(\d+)%\)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="UTD_Cunit_Generic" image="excel" convertTool="ExcelWithColNumbers" editTool="Excel" intermediateFileEncoding="UTF8">
+<FileExtension value="xls" />
+<ElementType name="Worksheet" elementClass="Section" regularExpression="^Worksheet :[ \t](.*)$">
+</ElementType>
+<ElementType name="UTD_Req_Specific" elementClass="Requirement" regularExpression="^.*Test ID\s*\|2\s*(Test_\w*)">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="\s*Covers_(\w*)-V\d+">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="">
+</ElementType>
+<ElementType name="ReferenceVersion" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="\s*Covers_\w*-V(\d+)">
+</ElementType>
+</DocumentType>
+<DocumentType name="SRS_Specific" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="SRS_Req_Specific" elementClass="Requirement" regularExpression="(Req_STD_SRS_DIO(\w*))-*">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="(Req_STD_SRS_DIO(\w+\d+))">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="CheckedBy" printExpression="Checked by: $i" elementClass="Attribute" isMultiple="true" regularExpression="Req_Attribute\s+([I, V]TD)">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w+-V\d+\:(\w+)">
+</ElementType>
+<ElementType name="Assign" printExpression="Assign: $i" elementClass="Attribute" isMultiple="true" regularExpression="Assignation\|2\s*Normal\s*([\w \ ]+)">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="(?|(?:Req_Coverage\s*Covers_\w+-V(\d+))|(?:Req_Coverage\s*Covers_\w+_\w+_\w+_\d+_\w+_(\d+)_\w+))">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V\d+\(rate=(\d+)%\)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="GDD_Specific" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="GDD_Req_Specific" elementClass="Requirement" regularExpression="^.*Req_ID\s+Req_(\w*)-*">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="(?|(?:Req_Coverage\s*Covers_(\w+)-V\d+)|(?:Req_Coverage\s*Covers_(\w+_\w+_\w+_\d+)_\w+_\d+_*\w*)|(?:Req_Coverage\s*Covers_(MEC_[\w-\(\)\ ]+))|(?:Req_Coverage\s*Covers_(\w+)))">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w+-V\d+\:(\w+)">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="(?|(?:Req_Coverage\s*Covers_\w+-V(\d+))|(?:Req_Coverage\s*Covers_\w+_\w+_\w+_\d+_\w+_(\d+)_\w+)|Req_Coverage\s*Covers_MEC_[\w-]+-V(\d+))">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V\d+\(rate=(\d+)%\)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="GDD_Generic" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="GDD_Req_Generic" elementClass="Requirement" regularExpression="^.*Req_ID\s+Req_(\w*)-*">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="Normal\s+Covers_(\w+)">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w+-V\d+\:(\w+)">
+</ElementType>
+<ElementType name="Assign" image="obingactor" printExpression="Assign: $i" elementClass="Attribute" regularExpression="Responsible SWC\|4\s*Normal\s*(.+)$">
+</ElementType>
+<ElementType name="CheckBy" image="obingactor" printExpression="Check By: $i" elementClass="Attribute" regularExpression="Checked By\|4\s*Normal\s*(.+)$">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="GDD_EA_Generic" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="GDD_Req_Generic" elementClass="Requirement" regularExpression="^.*Req ID\s*:\|2\s*Normal\s*REQ_(\w*):*">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="^.*Covers\s*:\|2\s*Normal\s*Req_(\w*)">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Version\s*:\|2\s*Normal\s*(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="^.*Req_ID\s*:|2\s*Normal\s*req_\w*:(\w*)">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="^.*Covers\s*:\|2\s*Normal\s*Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V\d+\(rate=(\d+)%\)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="GDD_EA_Specific" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="GDD_Req_Specific" elementClass="Requirement" regularExpression="^.*Req ID\s*:\|2\s*Normal\s*REQ_(\w*):*">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="^.*Covers\s*:\|2\s*Normal\s*Req_(\w*)">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Version\s*:\|2\s*Normal\s*(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="^.*Req_ID\s*:|2\s*Normal\s*req_\w*:(\w*)">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="^.*Covers\s*:\|2\s*Normal\s*Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V\d+\(rate=(\d+)%\)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="RAM" image="excel" convertTool="ExcelWithColNumbers" editTool="Excel" intermediateFileEncoding="UTF8">
+<FileExtension value="xls" />
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="\|2\s*(?:(\w+_\w+_\w+|\w+__\w+_\w+_\w+|\w+_\w+|\w+ V\d+))\s*\|3">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="(?|(?:\s*Covers_(\w+))|(?:\s*Covers_(\w+_\w+_\w+_\d+_\w+)_\d+_\w+))">
+</ElementType>
+<ElementType name="Req Type" printExpression="Req Type = $i" elementClass="Attribute" regularExpression="\|4\s*((Generic|Specific)\s+.*)\s*\|5">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="">
+</ElementType>
+<ElementType name="ReferenceVersion" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="(?|(?:\s*Covers_\w+-V(\d+))|(?:\s*Covers_\w+_\w+_\w+_\d+_\w+_(\d+)_\w+))">
+</ElementType>
+</DocumentType>
+<DocumentType name="VTD_Specific_Castle" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="VTD_Req_Specific" elementClass="Requirement" regularExpression="\|1\s*Req_ID\s*Req_(\w*)-*">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="\s*Covers_(\w*)-V\d+">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="\s*Covers_\w*-V(\d+)">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+[?:\-|_]V\d+\(rate=(\d+)%\)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="SRS_EA_Specific" image="word" guid="9E971139-8A76-4E03-88CD-06FC7EA4E046" description="This type manages an SRS document generated with Enterprise Architect tool." convertTool="WordWithStyles" editTool="WordWithStyles" textFormat="3" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<Variable name="withBookmarks" type="boolean" label="With Bookmarks">
+</Variable>
+<Variable name="withAnnotations" type="boolean" label="With Annotations">
+</Variable>
+<Variable name="tabCellsFolding" type="boolean" label="One Cell Per Line">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Heading" guid="E5160843-CF32-4D0D-8D2F-D8C67871816D" elementClass="Section" regularExpression="^[Hh]eading (\d+)\t(?:([\d\.]+)[ \t](.*)|([^\d\n].+))$" index1="6" index2="1" index3="2" index4="1">
+</ElementType>
+<ElementType name="Macro-requirement" guid="D42C5B4C-D773-482A-8C40-FBB1B6166952" elementClass="MacroRequirement" regularExpression="\[MacroReq_([^\]]+)" endExpression="\[End_of_MacroReq\]">
+</ElementType>
+<ElementType name="SRS_Req_Specific" guid="197ECB0A-F31B-4F85-A378-4D6692613235" elementClass="Requirement" regularExpression="^.*Req ID\s*:\|2\s*Normal\s*REQ_(\w*):*">
+<Property name="taggerIdentStyle" value="Requirement_ID" />
+<Property name="taggerIdentStyleType" value="Paragraph" />
+<Property name="taggerNumber" value="000" />
+<Property name="taggerPrefix" value="REQ_" />
+<Property name="taggerRange" value="3" />
+<Property name="taggerStyleType" value="None" />
+<Property name="taggerTextStyle" value="Requirement_Text" />
+</ElementType>
+<ElementType name="Covers" guid="93186B1B-3645-42EB-9087-4F4376E53CC9" elementClass="CoverLink" regularExpression="(?|(?:\|2\s*Normal\s*Req_(\w+)-V\d+)|(?:\|2\s*Normal\s*(\w+_\w+_\w+_\d+_\w+)_\d+_\w+))">
+<Property name="taggerReferenceBeginning" value="[Covers:" />
+<Property name="taggerReferenceEnding" value="]" />
+<Property name="taggerReferenceIntermediate" value="," />
+<Property name="taggerReferenceStyle" value="Requirement_Reference" />
+<Property name="taggerReferenceStyleType" value="None" />
+</ElementType>
+<ElementType name="Allocation" guid="3469774E-3529-451A-A474-455A9C8CF624" printExpression="Owner : $i" elementClass="Attribute" regularExpression="Allocated to[ \t]*\:[ \t]*(.+)">
+</ElementType>
+<ElementType name="Priority" guid="0397D88C-7EC5-44F4-883A-5EDA8B060F0B" printExpression="$t : $i" elementClass="Attribute" regularExpression="Priority[ \t]*\:[ \t]*(.+)">
+<Property name="guidEnumeration" value="{C41645A2-1C82-4B05-AA6A-7A923A069C36}" />
+<Property name="guidValues" value="{F28E3241-24F7-479F-BC23-993052D6C693}" />
+<Property name="guidValues" value="{97B93DB2-0F48-4B9F-BCBC-94BD87812FDE}" />
+<Property name="guidValues" value="{1930C6F2-0F54-4461-887E-0BC856FC6E6B}" />
+<EnumValue value="High" />
+<EnumValue value="Medium" />
+<EnumValue value="Low" />
+</ElementType>
+<ElementType name="ReqVersion" image="testStand_info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Version\s*:\|2\s*Normal\s*(\d+\.*\d*)">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="(?|(?:\|2\s*Normal\s*Req_\w+-V(\d+))|(?:\|2\s*Normal\s*\w+_\w+_\w+_\d+_\w+_(\d+)_\w+))">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="\bRequirement_Text\t(.+?)(?=\|\d|\n)">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="RAM_CRS" image="excel" convertTool="ExcelWithColNumbers" editTool="Excel" intermediateFileEncoding="UTF8">
+<FileExtension value="xls" />
+<ElementType name="Requirement" isVisible="false" elementClass="Requirement" regularExpression="(\w+__\w+_\d+_\d+) | (\w+_\d+_\d+)">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="\s*Covers_(\w+)">
+</ElementType>
+<ElementType name="Req Type" printExpression="Req Type = $i" elementClass="Attribute" regularExpression="\|4\s*((Applicable|N/A)\s+.*)\s*\|5">
+</ElementType>
+<ElementType name="ReferenceVersion" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="(?|(?:\s*Covers_\w+-V(\d+))|(?:\s*Covers_\w+_\w+_\w+_\d+_\w+_(\d+)_\w+))">
+</ElementType>
+</DocumentType>
+<DocumentType name="VTD_Mono" image="excel" description="This type uses Excel converter which presents each cell separated by character | followed by column number" convertTool="ExcelWithColNumbers" editTool="Excel" textFormat="3">
+<Variable name="worksheet" label="Worksheet">
+</Variable>
+<FileExtension value="xls" />
+<FileExtension value="xlsx" />
+<ElementType name="Worksheet" elementClass="Section" regularExpression="^Worksheet :[ \t](.*)$">
+</ElementType>
+<ElementType name="VTD_Req_Specific" elementClass="Requirement" regularExpression="Test UID\s*:\s*\|3\s*(Req_\w*)">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="\s*Covers_(\w*)-V\d+">
+</ElementType>
+<ElementType name="ReferenceVersion" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="\s*Covers_\w*-V(\d+)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="\|2\s*Objective\s*:\t*\|3\s*(.+)\|4">
+</TerminalType>
+</DocumentType>
+<DocumentType name="TSC" image="word" guid="9E971139-8A76-4E03-88CD-06FC7EA4E046" description="This default type considers :&#10;- Requirements use the Word style 'Requirement_ID&quot;, names being composed of a unique ID &quot;ABCxx&quot; and a label in natural language. ID and Label must be separated by a colon&#10;- Requirement bodies use the Word style &quot;Requirement_Text&quot;&#10;- Attributes &quot;Allocation&quot; and &quot;Priority&quot; are pre-defined.&#10;- Coverage of requirements is defined by writing &quot;[Covers: &lt;some covers&gt;]&quot;, &lt;some covers&gt; is the list of covered requirements separated by , or ; " convertTool="WordWithStyles" editTool="WordWithStyles" textFormat="3" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<Variable name="withBookmarks" type="boolean" label="With Bookmarks">
+</Variable>
+<Variable name="withAnnotations" type="boolean" label="With Annotations">
+</Variable>
+<Variable name="tabCellsFolding" type="boolean" label="One Cell Per Line">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Heading" guid="E5160843-CF32-4D0D-8D2F-D8C67871816D" elementClass="Section" regularExpression="^[Hh]eading (\d+)\t(?:([\d\.]+)[ \t](.*)|([^\d\n].+))$" index1="6" index2="1" index3="2" index4="1">
+</ElementType>
+<ElementType name="Macro-requirement" guid="D42C5B4C-D773-482A-8C40-FBB1B6166952" elementClass="MacroRequirement" regularExpression="\[MacroReq_([^\]]+)" endExpression="\[End_of_MacroReq\]">
+</ElementType>
+<ElementType name="Requirement" guid="197ECB0A-F31B-4F85-A378-4D6692613235" elementClass="Requirement" regularExpression="(LSM_CHB_SWUE[\w\s]+)">
+<Property name="taggerIdentStyle" value="Requirement_ID" />
+<Property name="taggerIdentStyleType" value="Paragraph" />
+<Property name="taggerNumber" value="000" />
+<Property name="taggerPrefix" value="REQ_" />
+<Property name="taggerRange" value="3" />
+<Property name="taggerStyleType" value="None" />
+<Property name="taggerTextStyle" value="Requirement_Text" />
+</ElementType>
+<ElementType name="Coverage" guid="93186B1B-3645-42EB-9087-4F4376E53CC9" printExpression="[Covers: $i]" elementClass="CoverLink" regularExpression="\[Covers[ \t]*:[ \t]*([^\]]*)" subExpression="[ \t]*([^\,\;]+)[ \t]*">
+<Property name="taggerReferenceBeginning" value="[Covers:" />
+<Property name="taggerReferenceEnding" value="]" />
+<Property name="taggerReferenceIntermediate" value="," />
+<Property name="taggerReferenceStyle" value="Requirement_Reference" />
+<Property name="taggerReferenceStyleType" value="None" />
+</ElementType>
+<ElementType name="Allocation" guid="3469774E-3529-451A-A474-455A9C8CF624" printExpression="Owner : $i" elementClass="Attribute" regularExpression="Allocated to[ \t]*\:[ \t]*(.+)">
+</ElementType>
+<ElementType name="Priority" guid="0397D88C-7EC5-44F4-883A-5EDA8B060F0B" printExpression="$t : $i" elementClass="Attribute" regularExpression="Priority[ \t]*\:[ \t]*(.+)">
+<Property name="guidEnumeration" value="{C41645A2-1C82-4B05-AA6A-7A923A069C36}" />
+<Property name="guidValues" value="{F28E3241-24F7-479F-BC23-993052D6C693}" />
+<Property name="guidValues" value="{97B93DB2-0F48-4B9F-BCBC-94BD87812FDE}" />
+<Property name="guidValues" value="{1930C6F2-0F54-4461-887E-0BC856FC6E6B}" />
+<EnumValue value="High" />
+<EnumValue value="Medium" />
+<EnumValue value="Low" />
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="\bRequirement_Text\t(.+?)(?=\|\d|\n)">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="FTA" image="excel" description="This type uses Excel converter which presents each cell separated by character | followed by column number" convertTool="ExcelWithColNumbers" editTool="Excel" textFormat="3" intermediateFileEncoding="UTF8">
+<Variable name="worksheet" label="Worksheet">
+</Variable>
+<FileExtension value="xls" />
+<FileExtension value="xlsx" />
+<FileExtension value="xlsm" />
+<ElementType name="Worksheet" elementClass="Section" regularExpression="^Worksheet :[ \t](.*)$">
+</ElementType>
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="\|6\s*(MEC_[\w-\(\)\ ]+)\s*\|7">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="\|8\s*(LSM[\w\ ]+)\s*|9">
+</ElementType>
+<ElementType name="Priority" printExpression="$t = $i" elementClass="Attribute" regularExpression="REQ\d+.+?\|4[ ]*([^\t]+)">
+<EnumValue value="High" />
+<EnumValue value="Medium" />
+<EnumValue value="Low" />
+</ElementType>
+<ElementType name="Allocation" printExpression="Owner : $i" elementClass="Attribute" regularExpression="REQ\d+.+?\|5[ ]*([^\t\n]+)">
+</ElementType>
+<ElementType name="ReqVersion" printExpression="Req version: $i" elementClass="Attribute" regularExpression="\|6\s*MEC_[\w-]+-V(\d+)\s*\|7">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="REQ\d+.+?\|3[ ]*([^\t]+)">
+</TerminalType>
+</DocumentType>
+<DocumentType name="EAP_DocGen" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="GDD_Req_Specific" elementClass="Requirement" regularExpression="^.*ReqID\s+Req_(\w*)-*">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="ReqCoverage\s+Covers_(\w+)">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^ReqTitle\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*ReqID\s+Req_\w*-V(.+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^ReqAtt\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^ReqAlloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="ReqCoverage\s+Covers_.+?[?:\-|_]V(\d+)">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="ReqCoverage\s+Covers_.+?[?:\-|_]V\d+\(rate=(\d+)%\)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="ReqText\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="HSILaserSpot" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="Req_(\w+)$">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="Req_Coverage\s+Covers_(.+?)[?:\-|_]V\d+">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="Asil" elementClass="Attribute" regularExpression="">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V(\d+)">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V\d+\(rate=(\d+)%\)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="HSINoVersion" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="^.*Req_ID\s+Req_(\w+)">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="Req_Coverage\s+Covers_(.+?)[?:\-|_]V\d+">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="Asil" elementClass="Attribute" regularExpression="">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V(\d+)">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V\d+\(rate=(\d+)%\)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="CRS_Type4bkp" image="word" guid="9E971139-8A76-4E03-88CD-06FC7EA4E046" description="This type manages a Cyrs document with &#10;- New naming convention for requirement&#10;- Requirement ID and allocation on the same line.&#10; &#10;Example :&#10;D009816_Req_LAW_00_STD_140424_QM #Sys #SW" convertTool="WordWithStyles" editTool="WordWithStyles" textFormat="3" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<Variable name="withBookmarks" type="boolean" label="With Bookmarks">
+</Variable>
+<Variable name="withAnnotations" type="boolean" label="With Annotations">
+</Variable>
+<Variable name="tabCellsFolding" type="boolean" label="One Cell Per Line">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Heading" guid="E5160843-CF32-4D0D-8D2F-D8C67871816D" elementClass="Section" regularExpression="^[Hh]eading (\d+)\t(?:([\d\.]+)[ \t](.*)|([^\d\n].+))$" index1="6" index2="1" index3="2" index4="1">
+</ElementType>
+<ElementType name="Macro-requirement" guid="D42C5B4C-D773-482A-8C40-FBB1B6166952" elementClass="MacroRequirement" regularExpression="\[MacroReq_([^\]]+)" endExpression="\[End_of_MacroReq\]">
+</ElementType>
+<ElementType name="Requirement" guid="197ECB0A-F31B-4F85-A378-4D6692613235" elementClass="Requirement" regularExpression="Req_ID[ \t]+(\w+_\w+_\w+_\d+_\w+)_\d+_\w+">
+<Property name="taggerIdentStyle" value="Requirement_ID" />
+<Property name="taggerIdentStyleType" value="Paragraph" />
+<Property name="taggerNumber" value="000" />
+<Property name="taggerPrefix" value="REQ_" />
+<Property name="taggerRange" value="3" />
+<Property name="taggerStyleType" value="None" />
+<Property name="taggerTextStyle" value="Requirement_Text" />
+</ElementType>
+<ElementType name="Coverage" guid="93186B1B-3645-42EB-9087-4F4376E53CC9" printExpression="[Covers: $i]" elementClass="CoverLink" regularExpression="\[Covers[ \t]*:[ \t]*([^\]]*)" subExpression="[ \t]*([^\,\;]+)[ \t]*">
+<Property name="taggerReferenceBeginning" value="[Covers:" />
+<Property name="taggerReferenceEnding" value="]" />
+<Property name="taggerReferenceIntermediate" value="," />
+<Property name="taggerReferenceStyle" value="Requirement_Reference" />
+<Property name="taggerReferenceStyleType" value="None" />
+</ElementType>
+<ElementType name="Allocation" guid="3469774E-3529-451A-A474-455A9C8CF624" printExpression="Allocation: $i" elementClass="Attribute" isMultiple="true" regularExpression="Req_Alloc\s*([a-zA-Z#\t]*)" subExpression="(#\w+)">
+</ElementType>
+<ElementType name="Asil" guid="0397D88C-7EC5-44F4-883A-5EDA8B060F0B" printExpression="$t : $i" elementClass="Attribute" regularExpression="Req_ID[ \t]+\w+_\w+_\w+_\d+_\w+_\d+_(\w+)">
+<Property name="guidEnumeration" value="{C41645A2-1C82-4B05-AA6A-7A923A069C36}" />
+<Property name="guidValues" value="{F28E3241-24F7-479F-BC23-993052D6C693}" />
+<Property name="guidValues" value="{97B93DB2-0F48-4B9F-BCBC-94BD87812FDE}" />
+<Property name="guidValues" value="{1930C6F2-0F54-4461-887E-0BC856FC6E6B}" />
+<EnumValue value="QM" />
+<EnumValue value="ASILA" />
+<EnumValue value="ASILB" />
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="Req_ID[ \t]+\w+_\w+_\w+_\d+_\w+_(\d+)_\w+">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="\bReq_Text\t(.+?)(?=\|\d|\n)">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="SRS_Specificbkp" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="SRS_Req_Specific" elementClass="Requirement" regularExpression="^.*Req_ID\s+Req_(\w*)-*">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="(?|(?:Req_Coverage\s*Covers_(\w+)-V\d+)|(?:Req_Coverage\s*Covers_(\w+_\w+_\w+_\d+_\w+)_\d+_\w+)|(?:Req_Coverage\s*Covers_(\w+)))">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="CheckedBy" printExpression="Checked by: $i" elementClass="Attribute" isMultiple="true" regularExpression="Req_Attribute\s+([I, V]TD)">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w+-V\d+\:(\w+)">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="(?|(?:Req_Coverage\s*Covers_\w+-V(\d+))|(?:Req_Coverage\s*Covers_\w+_\w+_\w+_\d+_\w+_(\d+)_\w+))">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V\d+\(rate=(\d+)%\)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="RAMbkp" image="excel" convertTool="ExcelWithColNumbers" editTool="Excel" intermediateFileEncoding="UTF8">
+<FileExtension value="xls" />
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="\|2\s*Req_(\w+)-V\d+\s*\|3">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="(?|(?:\s*Covers_(\w+)-V\d+)|(?:\s*Covers_(\w+_\w+_\w+_\d+_\w+)_\d+_\w+))">
+</ElementType>
+<ElementType name="Req Type" printExpression="Req Type = $i" elementClass="Attribute" regularExpression="\|4\s*((Generic|Specific)\s+.*)\s*\|5">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="">
+</ElementType>
+<ElementType name="ReferenceVersion" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="(?|(?:\s*Covers_\w+-V(\d+))|(?:\s*Covers_\w+_\w+_\w+_\d+_\w+_(\d+)_\w+))">
+</ElementType>
+</DocumentType>
+<DocumentType name="XML_UT_Txt" image="text" convertTool="Text" editTool="NotepadPlusPlus">
+<ElementType name="Heading1" elementClass="Section" regularExpression="^(\d+)\.[ \t]+(.*)$">
+</ElementType>
+<ElementType name="Heading2" elementClass="Section" regularExpression="^(\d+\.\d+)\.[ \t]+(.*)$">
+<ParentType name="Heading1" />
+</ElementType>
+<ElementType name="Heading3" elementClass="Section" regularExpression="^(\d+\.\d+\.\d+)\.[ \t]+(.*)$">
+<ParentType name="Heading2" />
+</ElementType>
+<ElementType name="Heading4" elementClass="Section" regularExpression="^(\d+\.\d+\.\d+\.\d+)\.[ \t]+(.*)$">
+<ParentType name="Heading3" />
+</ElementType>
+<ElementType name="Macro-requirement" elementClass="MacroRequirement" regularExpression="\[MacroReq_([^\]]+)" endExpression="\[End_of_MacroReq\]">
+</ElementType>
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="&lt;TestCase_ID&gt;(\w+)&lt;/TestCase_ID&gt;">
+</ElementType>
+<ElementType name="Covers Reference" printExpression="[Covers: $i]" elementClass="CoverLink" regularExpression="&lt;requirement&gt;Covers_(\w+)&lt;/requirement&gt;">
+</ElementType>
+<ElementType name="Priority" printExpression="$t : $i" elementClass="Attribute" regularExpression="^[ \t]*\-*[ \t]*Priority[ \t]*\:[ \t]*(\S+)">
+<EnumValue value="High" />
+<EnumValue value="Medium" />
+<EnumValue value="Low" />
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="\&lt;\&lt;([\s\S]+?)\&gt;\&gt;">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="PictureFile=(.+)">
+</TerminalType>
+</DocumentType>
+<DocumentType name="EAP_DocGen1" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="GDD_Req_Specific" elementClass="Requirement" regularExpression="^.*ReqID\s+Req_(\w*)-*">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^ReqTitle\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*ReqID\s+Req_\w*-V(.+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^ReqAtt\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^ReqAlloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="ReqCoverage\s+Covers_.+?[?:\-|_]V(\d+)">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="ReqCoverage\s+Covers_.+?[?:\-|_]V\d+\(rate=(\d+)%\)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="ReqText\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="RAM FTA" image="excel" convertTool="ExcelWithColNumbers" editTool="Excel" intermediateFileEncoding="UTF8">
+<FileExtension value="xls" />
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="\|2\s*(MEC_[\w-\(\)\ ]+)\s*\|3">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="(?|(?:\s*Covers_(\w+)-V\d+)|(?:\s*Covers_(\w+_\w+_\w+_\d+_\w+)_\d+_\w+))">
+</ElementType>
+<ElementType name="Req Type" printExpression="Req Type = $i" elementClass="Attribute" regularExpression="\|4\s*((Generic|Specific)\s+.*)\s*\|5">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="">
+</ElementType>
+<ElementType name="ReferenceVersion" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="(?|(?:\s*Covers_\w+-V(\d+))|(?:\s*Covers_\w+_\w+_\w+_\d+_\w+_(\d+)_\w+))">
+</ElementType>
+</DocumentType>
+<DocumentType name="XML_UT_Txt1" image="text" convertTool="Text" editTool="NotepadPlusPlus">
+<ElementType name="Heading1" elementClass="Section" regularExpression="^(\d+)\.[ \t]+(.*)$">
+</ElementType>
+<ElementType name="Heading2" elementClass="Section" regularExpression="^(\d+\.\d+)\.[ \t]+(.*)$">
+<ParentType name="Heading1" />
+</ElementType>
+<ElementType name="Heading3" elementClass="Section" regularExpression="^(\d+\.\d+\.\d+)\.[ \t]+(.*)$">
+<ParentType name="Heading2" />
+</ElementType>
+<ElementType name="Heading4" elementClass="Section" regularExpression="^(\d+\.\d+\.\d+\.\d+)\.[ \t]+(.*)$">
+<ParentType name="Heading3" />
+</ElementType>
+<ElementType name="Macro-requirement" elementClass="MacroRequirement" regularExpression="\[MacroReq_([^\]]+)" endExpression="\[End_of_MacroReq\]">
+</ElementType>
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="&lt;ID&gt;(.+)&lt;/ID&gt;">
+</ElementType>
+<ElementType name="Covers Reference" printExpression="[Covers: $i]" elementClass="CoverLink" regularExpression="&lt;REQUIREMENTS&gt;Covers_([\w\.-]+)-V">
+</ElementType>
+<ElementType name="Priority" printExpression="$t : $i" elementClass="Attribute" regularExpression="^[ \t]*\-*[ \t]*Priority[ \t]*\:[ \t]*(\S+)">
+<EnumValue value="High" />
+<EnumValue value="Medium" />
+<EnumValue value="Low" />
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="\&lt;\&lt;([\s\S]+?)\&gt;\&gt;">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="PictureFile=(.+)">
+</TerminalType>
+</DocumentType>
+<DocumentType name="EAP_DocGen2" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="GDD_Req_Specific" elementClass="Requirement" regularExpression="^.*ReqID\s+Req_([\w-]*)-V">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="ReqCoverage\s+Covers_(\w+)">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^ReqTitle\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*ReqID\s+Req_\w*-V(.+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^ReqAtt\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^ReqAlloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="ReqCoverage\s+Covers_.+?[?:\-|_]V(\d+)">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="ReqCoverage\s+Covers_.+?[?:\-|_]V\d+\(rate=(\d+)%\)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="ReqText\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="EAP_DocGen3" image="document" convertTool="Reqtify" editTool="UltraEdit" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="GDD_Req_Specific" elementClass="Requirement" regularExpression="ReqID\s+Req_(.*)-V">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="ReqCoverage\s+Covers_(\w+)">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^ReqTitle\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="ReqID\s+Req_.*-V(.+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^ReqAtt\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^ReqAlloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="ReqCoverage\s+Covers_.+?[?:\-|_]V(\d+)">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="ReqCoverage\s+Covers_.+?[?:\-|_]V\d+\(rate=(\d+)%\)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="ReqText\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="RAM_UTD" image="excel" convertTool="ExcelWithColNumbers" editTool="Excel" intermediateFileEncoding="UTF8">
+<FileExtension value="xls" />
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="Req_(\w*)-*">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="(?|(?:\s*Covers_(\w+)-V\d+))">
+</ElementType>
+<ElementType name="Req Type" printExpression="Req Type = $i" elementClass="Attribute" regularExpression="\|4\s*((Generic|Specific)\s+.*)\s*\|5">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReferenceVersion" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="(?|(?:\s*Covers_\w+-V(\d+)))">
+</ElementType>
+</DocumentType>
+<DocumentType name="XML_UT_Txt FAN" image="text" convertTool="Text" editTool="NotepadPlusPlus">
+<ElementType name="Heading1" elementClass="Section" regularExpression="^(\d+)\.[ \t]+(.*)$">
+</ElementType>
+<ElementType name="Heading2" elementClass="Section" regularExpression="^(\d+\.\d+)\.[ \t]+(.*)$">
+<ParentType name="Heading1" />
+</ElementType>
+<ElementType name="Heading3" elementClass="Section" regularExpression="^(\d+\.\d+\.\d+)\.[ \t]+(.*)$">
+<ParentType name="Heading2" />
+</ElementType>
+<ElementType name="Heading4" elementClass="Section" regularExpression="^(\d+\.\d+\.\d+\.\d+)\.[ \t]+(.*)$">
+<ParentType name="Heading3" />
+</ElementType>
+<ElementType name="Macro-requirement" elementClass="MacroRequirement" regularExpression="\[MacroReq_([^\]]+)" endExpression="\[End_of_MacroReq\]">
+</ElementType>
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="&lt;TEST_FUNCTION_NAME&gt;(.+)&lt;/TEST_FUNCTION_NAME&gt;">
+</ElementType>
+<ElementType name="Covers Reference" printExpression="[Covers: $i]" elementClass="CoverLink" regularExpression="&lt;REQUIREMENTS&gt;Covers_([\w\.-]+)-V">
+</ElementType>
+<ElementType name="Priority" printExpression="$t : $i" elementClass="Attribute" regularExpression="^[ \t]*\-*[ \t]*Priority[ \t]*\:[ \t]*(\S+)">
+<EnumValue value="High" />
+<EnumValue value="Medium" />
+<EnumValue value="Low" />
+</ElementType>
+<ElementType name="ReferenceVersion" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="&lt;REQUIREMENTS&gt;Covers_[\w\.-]+-V(.*)&lt;/REQUIREMENTS&gt;">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="\&lt;\&lt;([\s\S]+?)\&gt;\&gt;">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="PictureFile=(.+)">
+</TerminalType>
+</DocumentType>
+<DocumentType name="CDD_EA_Specific_K8" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="CDD_Req_Specific" elementClass="Requirement" regularExpression="^.*Req ID\s*:\|2\s*Normal\s*Req_(\w*):*">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="Req_Coverage\s+Covers_(\w+)">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Version\s*:\|2\s*Normal\s*(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="^.*Req ID\s*:\|2\s*Normal\s*Req_\w*:(\w*)">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="^.*Covers\s*:\|2\s*Normal\s*Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V\d+\(rate=(\d+)%\)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="RAM_GDD" image="excel" convertTool="ExcelWithColNumbers" editTool="Excel" intermediateFileEncoding="UTF8">
+<FileExtension value="xls" />
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="\|2\s*Req_(.*).*\|3">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="(?|(?:\s*Covers_(\w+))|(?:\s*Covers_(\w+_\w+_\w+_\d+_\w+)_\d+_\w+))">
+</ElementType>
+<ElementType name="Req Type" printExpression="Req Type = $i" elementClass="Attribute" regularExpression="\|4\s*((Generic|Specific)\s+.*)\s*\|5">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="">
+</ElementType>
+<ElementType name="ReferenceVersion" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="(?|(?:\s*Covers_\w+-V(\d+))|(?:\s*Covers_\w+_\w+_\w+_\d+_\w+_(\d+)_\w+))">
+</ElementType>
+</DocumentType>
+<DocumentType name="CRS_Type2 (2)" image="word" description="This type manages a Cyrs document with &#10;- Old naming convention for requirement&#10;- Requirement ID and allocation on the same line.&#10;&#10;Example :&#10;Req_LDM_CRS_ALI_136-V130124&#9;#HW&#9;#SYS" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="^.*Req_ID\s+(Req_\w*-V\w*)">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="Req_Coverage\s+Covers_(.+?)[?:\-|_]V\d+">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" isMultiple="true" regularExpression="Req_Alloc\s*([a-zA-Z#\t]*)" subExpression="#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V(\d+)">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V\d+\(rate=(\d+)%\)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="CDD_EA_CAN" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="CDD_Req_Specific" elementClass="Requirement" regularExpression="^.*ReqID\s*Req_(\w*):*">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="\|2\s*ReqCoverage\s*Covers_(\w*)">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Version\s*:\|2\s*Normal\s*(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="^.*Req ID\s*:\|2\s*Normal\s*Req_\w*:(\w*)">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="^.*Covers\s*:\|2\s*Normal\s*Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V\d+\(rate=(\d+)%\)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="RAM_APPDESC" image="excel" convertTool="ExcelWithColNumbers" editTool="Excel" intermediateFileEncoding="UTF8">
+<FileExtension value="xls" />
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="\|2\s*Req_(\w+)-V\d+\s*">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="(?|(?:\s*Covers_(\w+))|(?:\s*Covers_(\w+_\w+_\w+_\d+_\w+)_\d+_\w+))">
+</ElementType>
+<ElementType name="Req Type" printExpression="Req Type = $i" elementClass="Attribute" regularExpression="\|4\s*((Generic|Specific)\s+.*)\s*\|5">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="">
+</ElementType>
+<ElementType name="ReferenceVersion" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="(?|(?:\s*Covers_\w+-V(\d+))|(?:\s*Covers_\w+_\w+_\w+_\d+_\w+_(\d+)_\w+))">
+</ElementType>
+</DocumentType>
+<DocumentType name="CRS_DIAG_Type" image="word" description="This type manages a Cyrs document with : &#10;- Old naming convention for requirement&#10;- Requirement ID and allocation are not on the same line.&#10;&#10;Example :&#10;Req_LDM_CRS_ALI_136-V130124&#10;#HW&#10;#SYS" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="^.*Req_ID\s+(D0\w*)">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="Req_Coverage\s+Covers_(.+?)[?:\-|_]V\d+">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" isMultiple="true" regularExpression="\sReq_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V(\d+)">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V\d+\(rate=(\d+)%\)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="SRS_Diag" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="SRS_Req_Specific" elementClass="Requirement" regularExpression="^.*Req_ID\s+Req_(\w*)-*">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="(?|(?:Req_Coverage\s*Covers_(\w+)-V\d+)|(?:Req_Coverage\s*Covers_(\w+_\w+_\w+_\d+_\w+_\d+_*\w*))|(?:Req_Coverage\s*Covers_(\w+)))">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="CheckedBy" printExpression="Checked by: $i" elementClass="Attribute" isMultiple="true" regularExpression="Req_Attribute\s+([I, V]TD)">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w+-V\d+\:(\w+)">
+</ElementType>
+<ElementType name="Assign" printExpression="Assign: $i" elementClass="Attribute" isMultiple="true" regularExpression="Assignation\|2\s*Normal\s*([\w \ ]+)">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="(?|(?:Req_Coverage\s*Covers_\w+-V(\d+))|(?:Req_Coverage\s*Covers_\w+_\w+_\w+_\d+_\w+_(\d+)_\w+))">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V\d+\(rate=(\d+)%\)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="RAM_CAN" image="excel" convertTool="ExcelWithColNumbers" editTool="Excel" intermediateFileEncoding="UTF8">
+<FileExtension value="xls" />
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="\|2\s*Req_(\w+)-V\d+\s*\|3">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="(?|(?:\s*Covers_(\w+))|(?:\s*Covers_(\w+_\w+_\w+_\d+_\w+)_\d+_\w+))">
+</ElementType>
+<ElementType name="Req Type" printExpression="Req Type = $i" elementClass="Attribute" regularExpression="\|4\s*((Generic|Specific)\s+.*)\s*\|5">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="">
+</ElementType>
+<ElementType name="ReferenceVersion" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="(?|(?:\s*Covers_\w+-V(\d+))|(?:\s*Covers_\w+_\w+_\w+_\d+_\w+_(\d+)_\w+))">
+</ElementType>
+</DocumentType>
+<DocumentType name="VectorCast_HTML" image="code" convertTool="Text" mergeOrReplaceHomonymousParagraphs="1">
+<Variable name="testDate" type="boolean" label="Test files date">
+</Variable>
+<MatchingFileName value="*.h" />
+<ElementType name="TestCaseID" elementClass="Requirement" regularExpression="Req_(\w*)-*">
+</ElementType>
+<ElementType name="Coverage" printExpression="/* !Trace_To : Covers_$i" elementClass="CoverLink" regularExpression="Covers_(\w+)-V\d+">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="Covers_\w+-V(\d+)">
+</ElementType>
+</DocumentType>
+<DocumentType name="CDD_Specific1" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="CDD_Req_Specific" elementClass="Requirement" regularExpression="^.*ReqID\s+Req_(\w*)-*">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="ReqCoverage\s+Covers_(\w+)">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w+-V\d+\:(\w+)">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V(\d+)">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V\d+\(rate=(\d+)%\)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="SRS_Assign" image="excel" convertTool="ExcelWithColNumbers" editTool="Excel" intermediateFileEncoding="UTF8">
+<FileExtension value="xls" />
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="\|2\s*Req_(\w+)\s*\|3">
+</ElementType>
+<ElementType name="Assign" printExpression="Assign = $i" elementClass="Attribute" regularExpression="\|2\s*Req_.*\|3\s*(\w*)\s*\|4">
+<Property name="affectSuspiciousLink" value="0" />
+</ElementType>
+<ElementType name="Type" printExpression="Assign = $i" elementClass="Attribute" regularExpression="\|2\s*Req_.*\|3\s*\w*\s*\|4\s*(\w*)\s*\|5">
+<Property name="affectSuspiciousLink" value="0" />
+</ElementType>
+</DocumentType>
+<DocumentType name="ITD_Specific1" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="ITD_Req_Specific" elementClass="Requirement" regularExpression="^.*Req_ID\s+Req_(\w*)-*">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="ReqCoverage\s+Covers_(\w+)">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w+-V\d+\:(\w+)">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V(\d+)">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+[?:\-|_]V\d+\(rate=(\d+)%\)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="RAM_CDD" image="excel" convertTool="ExcelWithColNumbers" editTool="Excel" intermediateFileEncoding="UTF8">
+<FileExtension value="xls" />
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="\|2\s*Req_(.*).*\|3">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="(?|(?:\s*Covers_(\w+))|(?:\s*Covers_(\w+_\w+_\w+_\d+_\w+)_\d+_\w+))">
+</ElementType>
+<ElementType name="Req Type" printExpression="Req Type = $i" elementClass="Attribute" regularExpression="\|4\s*((Generic Applicable)\s+.*)\s*\|5">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="">
+</ElementType>
+<ElementType name="ReferenceVersion" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="(?|(?:\s*Covers_\w+-V(\d+))|(?:\s*Covers_\w+_\w+_\w+_\d+_\w+_(\d+)_\w+))">
+</ElementType>
+</DocumentType>
+<DocumentType name="SRS_New" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="^.*Req_(\w*)-*">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="Req_Coverage\s+Covers_(\w+)">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="(?|(?:Req_Coverage\s*Covers_\w+-V(\d+))|(?:Req_Coverage\s*Covers_\w+_\w+_\w+_\d+_\w+_(\d+)_\w+))">
+</ElementType>
+<ElementType name="Rate" image="tdReq" printExpression="Coverage rate: $i" elementClass="LinkAttribute" regularExpression="Req_Coverage\s+Covers_.+?[?:\-|_]V\d+\(rate=(\d+)%\)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+</Types>

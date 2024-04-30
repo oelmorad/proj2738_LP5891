@@ -1,0 +1,616 @@
+
+[Types]
+Names=VLS-Pltf_Input,VLS-Pltf_SRS,VLS Enterprise Architect Fast,VLS-Pltf_FTA,VLS-Pltf_RAM_SRS,VLS-Pltf_RAM_FTA,RAM_SRS,VLS-Pltf_VLS_DoxyCode C/H,VLS-APP-STD_UTD,CANoe,XML_VT_AUTO
+
+[VLS-Pltf_Input]
+;This type captures requirements from DOORS as follows :
+;- An object is a requirement if it has an attribute 'ObjectType'=Requirement
+;- The ObjectID is the value of an attribute 'ReqID'
+;The intermediate file is in XML format
+Tool=DoorsXML
+ToolEdit=Doors
+Image=doors
+Variable1Name=profile
+Variable1Label=Profile
+Variable1Type=dynenum
+Variable1EnumValuesMethod=getProfileNames
+Variable2Name=server
+Variable2Label=Server
+Variable2Type=string
+Variable3Name=baseline
+Variable3Label=Baseline
+Variable3Type=string
+Variable4Name=withDiagrams
+Variable4Label=Capture diagrams
+Variable4Type=boolean
+Variable5Name=purgeAttributes
+Variable5Label=Extract only defined attributes
+Variable5Type=boolean
+Variable6Name=regexpMatch
+Variable6Label=Extract objects from
+Variable6Type=string
+Variable7Name=withExtLinks
+Variable7Label=With External links
+Variable7Type=boolean
+IsFileBased=0
+Section1Name=Object
+Section1Tree=<Object number="$i"><Attribute value="$l" name="Object Heading"></Attribute><Picture>$g</Picture></Object>
+Requirement1Name=Requirement.ReqID
+Requirement1Tree=<Object><Attribute value="^Req|ReqInput|ReqOutput|ReqParameter$" name="aObjectType"></Attribute><Text>$t<show>1</show></Text><Picture>$g</Picture><Attribute value="$i" name="aId"></Attribute></Object>
+Reference1Name=Refers
+Reference1Tree=<Out-link linkModule="instance" target="$i"></Out-link>
+Reference2Name=IsCoveredBy
+Reference2IsInverse=1
+Reference2Tree=<In-link source="$p" isImported="$!True"></In-link>
+Attribute1Name=ReqVersion
+Attribute1Print=$t : $i
+Attribute1IsMultiple=1
+Attribute1Tree=<Object><Attribute value="^Req|ReqInput|ReqOutput|ReqParameter$" name="aObjectType"></Attribute><Attribute name="^aVersion$" value="$i"></Attribute></Object>
+Attribute2Name=aObjectStatus
+Attribute2Print=$t : $i
+Attribute2Tree=<Object><Attribute value="^Req|ReqInput|ReqOutput|ReqParameter$" name="aObjectType"></Attribute><Attribute name="^aObjectStatus$" value="$i"></Attribute></Object>
+Attribute3Name=Last Modified On
+Attribute3Print=$t : $i
+Attribute3IsMultiple=1
+Attribute3Tree=<Object><Attribute value="^Req|ReqInput|ReqOutput|ReqParameter$" name="aObjectType"></Attribute><Attribute name="^Last Modified On $" value="$i"></Attribute></Object>
+Attribute4Name=aASIL
+Attribute4Print=$t : $i
+Attribute4Tree=<Object><Attribute value="^Req|ReqInput|ReqOutput|ReqParameter$" name="aObjectType"></Attribute><Attribute name="^aASIL$" value="$i"></Attribute></Object>
+Attribute5Name=aTestAcceptance
+Attribute5Print=$t : $i
+Attribute5Tree=<Object><Attribute value="^Req|ReqInput|ReqOutput|ReqParameter$" name="aObjectType"></Attribute><Attribute name="^aTestAcceptance$" value="$i"></Attribute></Object>
+Attribute6Name=aRelease
+Attribute6Print=$t : $i
+Attribute6IsMultiple=1
+Attribute6Tree=<Object><Attribute value="^Req|ReqInput|ReqOutput|ReqParameter$" name="aObjectType"></Attribute><Attribute name="^aRelease$" value="$i"></Attribute></Object>
+Attribute7Name=aTestAllocation
+Attribute7Print=$t : $i
+Attribute7Tree=<Object><Attribute value="^Req|ReqInput|ReqOutput|ReqParameter$" name="aObjectType"></Attribute><Attribute name="^aTestAllocation$" value="$i"></Attribute></Object>
+Attribute8Name=aVariant
+Attribute8Print=$t : $i
+Attribute8Tree=<Object><Attribute value="^Req|ReqInput|ReqOutput|ReqParameter$" name="aObjectType"></Attribute><Attribute name="^aVariant$" value="$i"></Attribute></Object>
+Attribute9Name=aImplementationAcceptance
+Attribute9Print=$t : $i
+Attribute9IsMultiple=1
+Attribute9Tree=<Object><Attribute value="^Req|ReqInput|ReqOutput|ReqParameter$" name="aObjectType"></Attribute><Attribute name="^aImplementationAcceptance$" value="$i"></Attribute></Object>
+Attribute10Name=aImplementationAllocation
+Attribute10Print=$t : $i
+Attribute10IsMultiple=1
+Attribute10Tree=<Object><Attribute value="^Req|ReqInput|ReqOutput|ReqParameter$" name="aObjectType"></Attribute><Attribute name="^aImplementationAllocation$" value="$i"></Attribute></Object>
+Type=xml
+
+[VLS-Pltf_SRS]
+;This type captures requirements from DOORS as follows :
+;- An object is a requirement if it has an attribute 'ObjectType'=Requirement
+;- The ObjectID is the value of an attribute 'ReqID'
+;The intermediate file is in XML format
+Tool=DoorsXML
+ToolEdit=Doors
+Image=doors
+Variable1Name=profile
+Variable1Label=Profile
+Variable1Type=dynenum
+Variable1EnumValuesMethod=getProfileNames
+Variable2Name=server
+Variable2Label=Server
+Variable2Type=string
+Variable3Name=baseline
+Variable3Label=Baseline
+Variable3Type=string
+Variable4Name=withDiagrams
+Variable4Label=Capture diagrams
+Variable4Type=boolean
+Variable5Name=purgeAttributes
+Variable5Label=Extract only defined attributes
+Variable5Type=boolean
+Variable6Name=regexpMatch
+Variable6Label=Extract objects from
+Variable6Type=string
+Variable7Name=withExtLinks
+Variable7Label=With External links
+Variable7Type=boolean
+IsFileBased=0
+Section1Name=Object
+Section1Tree=<Object number="$i"><Attribute value="$l" name="Object Heading"></Attribute><Picture>$g</Picture></Object>
+Requirement1Name=Requirement.ReqID
+Requirement1Tree=<Object><Attribute value="^Req|ReqInput|ReqOutput|ReqParameter$" name="aObjectType"></Attribute><Text>$t<show>1</show></Text><Picture>$g</Picture><Attribute name="aId" value="$i"></Attribute></Object>
+Reference1Name=Refers
+Reference1Tree=<Out-link linkModule="satisfies" target="$i"></Out-link>
+Reference2Name=IsCoveredBy
+Reference2IsInverse=1
+Reference2Tree=<In-link source="$p" isImported="$!True"></In-link>
+Attribute1Name=ReqVersion
+Attribute1Print=$t : $i
+Attribute1IsMultiple=1
+Attribute1Tree=<Object><Attribute value="^Req|ReqInput|ReqOutput|ReqParameter$" name="aObjectType"></Attribute><Attribute name="^aVersion$" value="$i"></Attribute></Object>
+Attribute2Name=aObjectStatus
+Attribute2Print=$t : $i
+Attribute2Tree=<Object><Attribute value="^Req|ReqInput|ReqOutput|ReqParameter$" name="aObjectType"></Attribute><Attribute name="^aObjectStatus$" value="$i"></Attribute></Object>
+Attribute3Name=Last Modified On
+Attribute3Print=$t : $i
+Attribute3IsMultiple=1
+Attribute3Tree=<Object><Attribute value="^Req|ReqInput|ReqOutput|ReqParameter$" name="aObjectType"></Attribute><Attribute name="^Last Modified On $" value="$i"></Attribute></Object>
+Attribute4Name=aASIL
+Attribute4Print=$t : $i
+Attribute4Tree=<Object><Attribute value="^Req|ReqInput|ReqOutput|ReqParameter$" name="aObjectType"></Attribute><Attribute name="^aASIL$" value="$i"></Attribute></Object>
+Attribute5Name=aTestAcceptance
+Attribute5Print=$t : $i
+Attribute5Tree=<Object><Attribute value="^Req|ReqInput|ReqOutput|ReqParameter$" name="aObjectType"></Attribute><Attribute name="^aTestAcceptance$" value="$i"></Attribute></Object>
+Attribute6Name=aFullVersion
+Attribute6Print=$t : $i
+Attribute6IsMultiple=1
+Attribute6Tree=<Object><Attribute value="^Req|ReqInput|ReqOutput|ReqParameter$" name="aObjectType"></Attribute><Attribute name="^aFullVersion$" value="$i"></Attribute></Object>
+Attribute7Name=aRelease
+Attribute7Print=$t : $i
+Attribute7IsMultiple=1
+Attribute7Tree=<Object><Attribute value="^Req|ReqInput|ReqOutput|ReqParameter$" name="aObjectType"></Attribute><Attribute name="^aRelease$" value="$i"></Attribute></Object>
+Attribute8Name=aTestMethod
+Attribute8Print=$t : $i
+Attribute8Tree=<Object><Attribute value="^Req|ReqInput|ReqOutput|ReqParameter$" name="aObjectType"></Attribute><Attribute name="^aTestMethod$" value="$i"></Attribute></Object>
+Attribute9Name=aId
+Attribute9Print=$t : $i
+Attribute9IsMultiple=1
+Attribute9Tree=<Object><Attribute value="^Req|ReqInput|ReqOutput|ReqParameter$" name="aObjectType"></Attribute><Attribute name="^aId$" value="$i"></Attribute></Object>
+Attribute10Name=Applicability
+Attribute10Print=$t : $i
+Attribute10Tree=<Object><Attribute value="^Req|ReqInput|ReqOutput|ReqParameter$" name="aObjectType"></Attribute><Attribute name="^Applicability$" value="$i"></Attribute></Object>
+Attribute11Name=aScope
+Attribute11Print=$t : $i
+Attribute11Tree=<Object><Attribute value="^Req|ReqInput|ReqOutput|ReqParameter$" name="aObjectType"></Attribute><Attribute name="^aScope$" value="$i"></Attribute></Object>
+Attribute12Name=OEM
+Attribute12Print=$t : $i
+Attribute12Tree=<Object><Attribute value="^Req|ReqInput|ReqOutput|ReqParameter$" name="aObjectType"></Attribute><Attribute name="^OEM$" value="$i"></Attribute></Object>
+Attribute13Name=aImplementationAcceptance
+Attribute13Print=$t : $i
+Attribute13Tree=<Object><Attribute value="^Req|ReqInput|ReqOutput|ReqParameter$" name="aObjectType"></Attribute><Attribute name="^aImplementationAcceptance$" value="$i"></Attribute></Object>
+Attribute14Name=aComponentAllocation
+Attribute14Print=$t : $i
+Attribute14Tree=<Object><Attribute value="^Req|ReqInput|ReqOutput|ReqParameter$" name="aObjectType"></Attribute><Attribute name="^aComponentAllocation$" value="$i"></Attribute></Object>
+Type=xml
+
+[VLS Enterprise Architect Fast]
+Tool=EnterpriseArchitect
+Image=EA/ea
+Variable1Name=withDiagrams
+Variable1Label=Capture diagrams
+Variable1Type=boolean
+Variable2Name=package
+Variable2Label=Package
+Variable2Type=string
+Variable3Name=ManagedInDatabase
+Variable3Label=Managed in Database
+Variable3Type=boolean
+IsFileBased=0
+Section1Name=Package
+Section1Parents=View,VLS Enterprise Architect Fast
+Section1Print=$l
+Section1Image=EA/package
+Section1Tree=<Package guid="$u" name="$l" notes="$t" type="^Package$"></Package>
+Section2Name=Class
+Section2Parents=Package,View,Use Case,Component
+Section2Image=EA/class
+Section2Tree=<Element guid="$u" name="$l" type="^(Class|Enumeration|DataType)$" notes="$t"></Element>
+Section3Name=Actor
+Section3Parents=Package,View,Use Case,Activity
+Section3Image=EA/actor
+Section3Tree=<Element guid="$u" name="$l" type="^Actor$" notes="$t"></Element>
+Section4Name=Use Case
+Section4Parents=Package,View,Activity
+Section4Image=EA/useCase
+Section4Tree=<Element guid="$u" name="$l" type="^UseCase$" notes="$t"></Element>
+Section5Name=Decision
+Section5Parents=Package,View,Use Case,Activity,Activity Partition,Interruptible Activity Region,State Machine
+Section5Image=EA/decision
+Section5Tree=<Element guid="$u" name="$l" type="^Decision$" notes="$t"></Element>
+Section6Name=StateNode
+Section6Parents=Package,View,Use Case,Activity,State,Activity Partition,State Machine
+Section6Image=EA/stateNode
+Section6Tree=<Element guid="$u" name="$l" type="^StateNode$" notes="$t"></Element>
+Section7Name=Object
+Section7Parents=Package,View,Use Case,Activity,Collaboration,Activity Partition,Screen,Component,Interaction
+Section7Image=EA/object
+Section7Tree=<Element guid="$u" name="$l" type="^Object$" notes="$t"></Element>
+Section8Name=Interface
+Section8Parents=Package,View,Use Case,Activity,Component
+Section8Image=EA/interface
+Section8Tree=<Element guid="$u" name="$l" type="^Interface$" notes="$t"></Element>
+Section9Name=GUIElement
+Section9Parents=Package,View,Screen,Use Case,Activity
+Section9Image=EA/guiElement
+Section9Tree=<Element guid="$u" name="$l" type="^GUIElement$" notes="$t"></Element>
+Section10Name=Screen
+Section10Parents=Package,View,Use Case,Activity
+Section10Image=EA/screen
+Section10Tree=<Element guid="$u" name="$l" type="^Screen$" notes="$t"></Element>
+Section11Name=State
+Section11Parents=Package,View,Use Case,Activity,State Machine
+Section11Image=EA/state
+Section11Tree=<Element guid="$u" name="$l" type="^State$" notes="$t"></Element>
+Section12Name=State Machine
+Section12Parents=Package,Class
+Section12Image=EA\stateMachine
+Section12Tree=<Element guid="$u" name="$l" type="^StateMachine$" notes="$t"></Element>
+Section13Name=Node
+Section13Parents=Package,View,Use Case,Activity
+Section13Image=EA/node
+Section13Tree=<Element guid="$u" name="$l" type="^Node$" notes="$t"></Element>
+Section14Name=Component
+Section14Parents=Package,View,Use Case,Activity
+Section14Image=EA/component
+Section14Tree=<Element guid="$u" name="$l" type="^Component$" notes="$t"></Element>
+Section15Name=Collaboration
+Section15Parents=Package,View,Use Case,Activity
+Section15Image=EA/collaboration
+Section15Tree=<Element guid="$u" name="$l" type="^Collaboration$" notes="$t"></Element>
+Section16Name=Sequence
+Section16Parents=Package,View,Use Case,Activity,Interaction
+Section16Image=EA/sequence
+Section16Tree=<Element guid="$u" name="$l" type="^Sequence$" notes="$t"></Element>
+Section17Name=Feature
+Section17Parents=Package,View,Use Case,Activity,Artifact
+Section17Image=EA/feature
+Section17Tree=<Element guid="$u" name="$l" type="^Feature$" notes="$t"></Element>
+Section18Name=Artifact
+Section18Parents=Package,View,Use Case,Activity,Activity Partition
+Section18Image=EA/artifact
+Section18Tree=<Element guid="$u" name="$l" type="^Artifact$" notes="$t"></Element>
+Section19Name=Interruptible Activity Region
+Section19Parents=Package,View,Use Case,Activity
+Section19Image=EA/interruptibleActivityRegion
+Section19Tree=<Element guid="$u" name="$l" type="^InterruptibleActivityRegion$" notes="$t"></Element>
+Section20Name=Activity Partition
+Section20Parents=Package,View,Use Case,Activity
+Section20Image=EA/activityPartition
+Section20Tree=<Element guid="$u" name="$l" type="^ActivityPartition$" notes="$t"></Element>
+Section21Name=Activity
+Section21Parents=Package,View,Use Case,Activity Partition,Interruptible Activity Region,Class
+Section21Image=EA/activity
+Section21Tree=<Element guid="$u" name="$l" type="^Activity$" notes="$t"></Element>
+Section22Name=Action
+Section22Parents=Package,View,Use Case,Activity,Activity Partition,Interruptible Activity Region
+Section22Image=EA/action
+Section22Tree=<Element guid="$u" name="$l" type="^Action$" notes="$t"></Element>
+Section23Name=ActionPin
+Section23Parents=Package,View,Use Case,Activity,Action
+Section23Image=EA/actionPin
+Section23Tree=<Element guid="$u" name="$l" type="^ActionPin$" notes="$t"></Element>
+Section24Name=ObjectNode
+Section24Parents=Package,View,Use Case,Activity
+Section24Image=EA/objectNode
+Section24Tree=<Element guid="$u" name="$l" type="^ObjectNode$" notes="$t"></Element>
+Section25Name=Part
+Section25Parents=Package,View,Use Case,Activity,Class
+Section25Image=EA/part
+Section25Tree=<Element guid="$u" name="$l" type="^Part$" notes="$t"></Element>
+Section26Name=Interaction
+Section26Parents=Package,Class
+Section26Image=EA/interaction
+Section26Tree=<Element guid="$u" name="$l" type="^Interaction$" notes="$t"></Element>
+Section27Name=Analysis Diagram
+Section27Parents=Package,View,Use Case,Activity,Screen
+Section27Image=EA/analysisDiagram
+Section27Tree=<Diagram guid="$u" name="$l" type="Analysis" notes="$t" image=""></Diagram>
+Section28Name=Activity Diagram
+Section28Parents=Package,View,Use Case,Activity
+Section28Image=EA/activityDiagram
+Section28Tree=<Diagram guid="$u" name="$l" type="Activity" notes="$t" image=""></Diagram>
+Section29Name=Custom Diagram
+Section29Parents=Package,View,Use Case,Activity
+Section29Image=EA/customDiagram
+Section29Tree=<Diagram guid="$u" name="$l" type="Custom" notes="$t" image=""></Diagram>
+Section30Name=Communication Diagram
+Section30Parents=Package,View,Use Case,Activity
+Section30Image=EA/communicationDiagram
+Section30Tree=<Diagram guid="$u" name="$l" type="Collaboration" notes="$t" image=""></Diagram>
+Section31Name=Sequence Diagram
+Section31Parents=Package,View,Use Case,Activity,Class
+Section31Image=EA/sequenceDiagram
+Section31Tree=<Diagram guid="$u" name="$l" type="Sequence" notes="$t" image=""></Diagram>
+Section32Name=Statechart Diagram
+Section32Parents=Package,View,Use Case,Activity
+Section32Image=EA/statechartDiagram
+Section32Tree=<Diagram guid="$u" name="$l" type="Statechart" notes="$t" image=""></Diagram>
+Section33Name=Component Diagram
+Section33Parents=Package,View,Use Case,Activity
+Section33Image=EA/componentDiagram
+Section33Tree=<Diagram guid="$u" name="$l" type="Component" notes="$t" image=""></Diagram>
+Section34Name=Deployment Diagram
+Section34Parents=Package,View,Use Case,Activity
+Section34Image=EA/deploymentDiagram
+Section34Tree=<Diagram guid="$u" name="$l" type="Deployment" notes="$t" image=""></Diagram>
+Section35Name=Use Case Diagram
+Section35Parents=Package,View,Use Case,Activity
+Section35Image=EA/useCaseDiagram
+Section35Tree=<Diagram guid="$u" name="$l" type="Use Case" notes="$t" image=""></Diagram>
+Section36Name=Logical Diagram
+Section36Parents=Package,View,Use Case,Activity
+Section36Image=EA/logicalDiagram
+Section36Tree=<Diagram guid="$u" name="$l" type="Logical" notes="$t" image=""></Diagram>
+Section37Name=Attribute
+Section37Parents=Node,Class,Actor,Use Case,Object,Interface,Activity,Component,Device
+Section37Image=EA/attribute
+Section37Tree=<Attribute guid="$u" name="$l" notes="$t"></Attribute>
+Section38Name=Method
+Section38Parents=Node,Class,Actor,Use Case,Object,Interface,Component,Device,State
+Section38Image=EA/method
+Section38Tree=<Method guid="$u" name="$l" notes="$t"></Method>
+Section39Name=Model
+Section39Print=$l
+Section39Image=EA/model
+Section39Tree=<Package guid="$u" name="$l" notes="$t" type="Model"></Package>
+Section40Name=View
+Section40Parents=Model,VLS Enterprise Architect Fast
+Section40Print=$l
+Section40Image=EA/view
+Section40Tree=<Package guid="$u" name="$l" notes="$t" type="View"></Package>
+Section41Name=Object Diagram
+Section41Parents=Package,View,Use Case,Activity
+Section41Image=EA/objectDiagram
+Section41Tree=<Diagram guid="$u" image="" name="$l" type="Object" notes="$t"></Diagram>
+Section42Name=Composite Diagram Diagram
+Section42Parents=Package,View,Use Case,Activity
+Section42Image=EA/compositeStructureDiagram
+Section42Tree=<Diagram guid="$u" image="" name="$l" type="CompositeStructure" notes="$t"></Diagram>
+Section43Name=Package Diagram
+Section43Parents=Package,View,Use Case,Activity
+Section43Image=EA/packageDiagram
+Section43Tree=<Diagram guid="$u" image="" name="$l" type="Package" notes="$t"></Diagram>
+Section44Name=InteractionOverview Diagram
+Section44Parents=Package,View,Use Case,Activity
+Section44Image=EA/interactionOverview
+Section44Tree=<Diagram guid="$u" image="" name="$l" type="InteractionOverview" notes="$t"></Diagram>
+Section45Name=Timing Diagram
+Section45Parents=Package,View,Use Case,Activity
+Section45Image=EA/timingDiagram
+Section45Tree=<Diagram guid="$u" image="" name="$l" type="Timing" notes="$t"></Diagram>
+Section46Name=Signal
+Section46Parents=Package,View,Use Case,Component
+Section46Image=EA\signal
+Section46Tree=<Element guid="$u" name="$l" type="^Signal$" notes="$t"></Element>
+Section47Name=Device
+Section47Parents=Package,View,Use Case,Activity
+Section47Image=EA/node
+Section47Tree=<Element guid="$u" name="$l" type="^Device$" notes="$t"></Element>
+Section48Name=Issue
+Section48Parents=Package
+Section48Image=testStand_RefError
+Section48Tree=<Element guid="$u" type="Issue" notes="$t" name="$i"></Element>
+Section49Name=Testing
+Section49Parents=Package
+Section49Image=testStand
+Section49Tree=<Element guid="$u" type="Change" notes="$t" stereotype="Testing" name="$i"></Element>
+Requirement1Name=Requirement
+Requirement1Image=EA/requirement
+Requirement1Tree=<Element guid="$u" type="Requirement" notes="$t" stereotype="$!^from" name="$iReq_(.*)-V\d+"></Element>
+Requirement2Name=GEEDS_DesignRule
+Requirement2Image=EA/requirement
+Requirement2Tree=<Element guid="$u" type="Requirement" notes="$t" stereotype="^fromGEEDS" name="$i(.*)"></Element>
+Reference1Name=External Cover
+Reference1Tree=<Connector supplierName="$i" supplierStereotype="^from" stereotype="Covers" guid="$u"></Connector>
+Reference2Name=Internal Cover
+Reference2Image=EA/trace
+Reference2Tree=<Connector stereotype="Covers" supplierStereotype="$!^from" guid="$u" supplierGuid="$i"></Connector>
+Reference3Name=Internal Assigned
+Reference3Image=stm_information_flow
+Reference3Tree=<Connector stereotype="Assign" supplierStereotype="$!^from" guid="$u" supplierGuid="$i"></Connector>
+Reference4Name=External Assigned
+Reference4Image=partiel
+Reference4Value1Key=affectSuspiciousLink
+Reference4Value1Value=0
+Reference4Tree=<Connector supplierName="$i" supplierStereotype="^from" stereotype="Assign" guid="$u"></Connector>
+Attribute1Name=Req version
+Attribute1Parents=Requirement
+Attribute1Print=$t : $i
+Attribute1Image=info
+Attribute1Tree=<Element type="Requirement" stereotype="$!^from" name="$i(.*)"></Element>
+LinkAttribute1Name=ReferenceVersion
+LinkAttribute1Print=Covered version: $i
+LinkAttribute1Image=rhp_associationEnd
+LinkAttribute1Tree=<Connector name="$i" stereotype="Covers"></Connector>
+LinkAttribute2Name=AssignedVersion
+LinkAttribute2Print=Assigned version: $i
+LinkAttribute2Image=rhp_associationEnd
+LinkAttribute2Tree=<Connector stereotype="Assign" name="$i"></Connector>
+FileExtension=eap
+TextFormat=2
+Type=xml
+
+[VLS-Pltf_FTA]
+;This type uses Excel converter which presents each cell separated by character | followed by column number
+Tool=ExcelWithColNumbers
+ToolEdit=Excel
+Image=excel
+Variable1Name=worksheet
+Variable1Label=Worksheet
+Variable1Type=string
+Section1Name=Worksheet
+Section1=^Worksheet :[ \t](.*)$
+Requirement1Name=Requirement
+Requirement1=\|6\s*(MEC_{1,2}[\w\-\(\)]+)\s*\|7
+Reference1Name=Covers
+Reference1=\|13\s*(\w+SWUE\d{1,2})\s*\|14
+Attribute1Name=Priority
+Attribute1Print=$t = $i
+Attribute1=REQ\d+.+?\|4[ ]*([^\t]+)
+Attribute2Name=ASIL
+Attribute2Print=$t = $i
+Attribute2=\|6\s*MEC_{1,2}[\w\-\(\)]+\_(ASIL\_\w)\s*\|7
+FileExtension=xls,xlsx,xlsm
+TextFormat=3
+IntermediateFileEncoding=UTF8
+
+[VLS-Pltf_RAM_SRS]
+Tool=ExcelWithColNumbers
+ToolEdit=Excel
+Image=excel
+Requirement1Name=Requirement
+Requirement1=\|2\s*Req_(\w+)-*V*\d*\s*\|3
+Reference1Name=Covers
+Reference1=(?|(?:\s*Covers_(\w+)-V\d)|(?:\s*Covers_(\w+_\w+_\w+_\d+_\w+)_\d+_\w+)|(?:\s*Covers_([\w\-\.]+)))
+Attribute1Name=Req Type
+Attribute1Print=Req Type = $i
+Attribute1=\|4\s*((Generic|Specific)\s+.*)\s*\|5
+LinkAttribute1Name=ReferenceVersion
+LinkAttribute1Print=Covered version: $i
+LinkAttribute1=Covers_\w+_\w+_\w+_\d+_\w+_(\d+)_\w+
+FileExtension=xls
+IntermediateFileEncoding=UTF8
+
+[VLS-Pltf_RAM_FTA]
+Tool=ExcelWithColNumbers
+ToolEdit=Excel
+Image=excel
+Requirement1Name=Requirement
+Requirement1=\|2\s*Req_(\w+)-*V*\d*\s*\|3
+Reference1Name=Covers
+Reference1=\|3(?|(?:\s*Covers_(.*)))\|4
+Attribute1Name=Req Type
+Attribute1Print=Req Type = $i
+Attribute1=\|4\s*((Generic|Specific)\s+.*)\s*\|5
+LinkAttribute1Name=ReferenceVersion
+LinkAttribute1Print=Covered version: $i
+LinkAttribute1=Covers_\w+_\w+_\w+_\d+_\w+_(\d+)_\w+
+FileExtension=xls
+IntermediateFileEncoding=UTF8
+
+[RAM_SRS]
+Tool=ExcelWithColNumbers
+ToolEdit=Excel
+Image=excel
+Requirement1Name=Requirement
+Requirement1=\|2\s*Req_(\w+)-*V*\d*\s*\|3
+Reference1Name=Covers
+Reference1=(?|(?:\s*Covers_(\w+)-V\d)|(?:\s*Covers_(\w+_\w+_\w+_\d+_\w+)_\d+_\w+)|(?:\s*Covers_([\w\.]+)))
+Reference2Name=COVERS2
+Reference2=Covers_(.+)
+Attribute1Name=Req Type
+Attribute1Print=Req Type = $i
+Attribute1=\|4\s*((Generic|Specific)\s+.*)\s*\|5
+LinkAttribute1Name=ReferenceVersion
+LinkAttribute1Print=Covered version: $i
+LinkAttribute1=Covers_\w+_\w+_\w+_\d+_\w+_(\d+)_\w+
+FileExtension=xls,xlsx
+IntermediateFileEncoding=UTF8
+
+[VLS-Pltf_VLS_DoxyCode C/H]
+Tool=Text
+Image=code
+Variable1Name=testDate
+Variable1Label=Test files date
+Variable1Type=boolean
+MergeOrReplaceHomonymousParagraphs=1
+Section1Name=File
+Section1Parents=Directory
+Section1Print=$l
+Section1=^BEGIN_FILE: (.+):(.+)$
+Section1End=^END_FILE: .+$
+Section2Name=Directory
+Section2Print=$l
+Section2Image=code_directory
+Section2=^BEGIN_DIRECTORY: (.+):(.+)$
+Section2End=^END_DIRECTORY: .+$
+Requirement1Name=Requirement
+Requirement1=Req_(\w*)-*
+Reference1Name=Coverage
+Reference1=Covers_(.+)(?: |-)V
+Reference2Name=Coverage_FTA
+Reference2=Covers_(MEC\w+-\w+)
+Attribute1Name=ReqVersion
+Attribute1Print=$t : $i
+Attribute1Image=info
+Attribute1=Req_\w*-V(\d+)
+Attribute2Name=Asil
+Attribute2Print=$t : $i
+Attribute2=Req_\w*-V\d+:(\w*)
+LinkAttribute1Name=ReferenceVersion
+LinkAttribute1Print=Covered version: $i
+LinkAttribute1Image=rhp_associationEnd
+LinkAttribute1=Covers_.+-V(\d+)
+LinkAttribute2Name=ReferenceAsil
+LinkAttribute2Print=Covered Asil : $i
+LinkAttribute2=Covers_.+-V\d+\:(\w+)
+MatchingFileNames=*.h,*.c
+
+[VLS-APP-STD_UTD]
+Tool=Text
+ToolEdit=Text
+Image=document
+Requirement1Name=Requirement
+Requirement1=Req_(\w*)-V\d+
+Reference1Name=Reference
+Reference1=(?|(?:Covers_(\w+\-\w+\-\d+)\-V\d+\.\d+)|(?:Covers_(\w+\-\w+\-\d+)\-V\d+)|(?:Covers_(\w+)\-V\d+)|(?:Covers_(\w+-\d+)-V\S+))
+Attribute1Name=ReqVersion
+Attribute1Print=Req version: $i
+Attribute1Image=info
+Attribute1=Req_\w*-V(\d+)
+Attribute2Name=Result
+Attribute2Print=TestResult: $i
+Attribute2="#CCFFCC">(\w+)&#160;\d{1}&#160;\/&#160;\d{1}<\/td><td><pre>Covers
+LinkAttribute1Name=LinkAttribute
+LinkAttribute1=^(Att_.+)$
+
+[CANoe]
+Tool=text
+Section1Name=Features
+Section1Tree=<Features ID="$i">$i</Features>
+Section2Name=TestGroups
+Section2Parents=Features
+Section2Tree=<TestGroups ID="$i">$i</TestGroups>
+Section3Name=TestCases
+Section3Parents=TestGroups
+Section3Tree=<TestCases ID="$i">$i</TestCases>
+Requirement1Name=Requirement
+Requirement1Tree=<testcase>$i<comment>$i<text>$t</text></comment><ident>$i</ident></testcase>
+Reference1Name=Covers
+Reference1IsMultiple=0
+Reference1Tree=<testcase>$i<description>$iCovers_([A-Za-z0-9_._]*)</description></testcase>
+Attribute1Name=ReqVersion
+Attribute1Print=Req Version: $i
+Attribute1Tree=<Version>$iReq_\w*-V(\d*)</Version>
+Attribute2Name=Result
+Attribute2Print=TestResult: $i
+Attribute2Tree=<Result>$i(\w*)</Result>
+Attribute3Name=Artifact
+Attribute3Print=ArtifactID: $i
+Attribute3Tree=<MantisId>$i(\w*)</MantisId>
+LinkAttribute1Name=ReferenceVersion
+LinkAttribute1Print=Covered version: $i
+LinkAttribute1Value1Key=affectSuspiciousLink
+LinkAttribute1Value1Value=1
+LinkAttribute1Tree=<Requirement>$i(?|(?:Covers_\w*\s+V(\d*))|(?:Covers_\w+-V(\d+))|(?:Covers_\w+_\w+_\w+_\d+_\w+_\d+_\w+)|(?:Covers_[\D]+_\d*_(\d*))|(?:Covers_[\D]+--\d*_(\d*))|(?:Covers_\w*-V(\d+)))</Requirement>
+Type=xml
+
+[XML_VT_AUTO]
+Tool=text
+Section1Name=Features
+Section1Tree=<Features ID="$i">$i</Features>
+Section2Name=TestGroups
+Section2Parents=Features
+Section2Tree=<TestGroups ID="$i">$i</TestGroups>
+Section3Name=TestCases
+Section3Parents=TestGroups
+Section3Tree=<TestCases ID="$i">$i</TestCases>
+Requirement1Name=Requirement
+Requirement1Tree=<TestDescription>$i<Objective>$t</Objective><Version>$iReq_(\w*)-*</Version></TestDescription>
+Reference1Name=Covers
+Reference1Value1Key=affectSuspiciousLink
+Reference1Value1Value=1
+Reference1Tree=<Requirement>$iCovers_([A-Za-z0-9_._]*)-*</Requirement>
+Reference2Name=Covers
+Reference2Tree=<Requirement>$i(?|(?:\s*Covers_(\w+)-V\d)|(?:\s*Covers_(\w+_\w+_\w+_\d+_\w+)_\d+_\w+)|(?:\s*Covers_([\w\-\.]+)))</Requirement>
+Attribute1Name=ReqVersion
+Attribute1Print=Req Version: $i
+Attribute1Tree=<Version>$iReq_\w*-V(\d*)</Version>
+Attribute2Name=Result
+Attribute2Print=TestResult: $i
+Attribute2Tree=<Result>$i(\w*)</Result>
+Attribute3Name=Artifact
+Attribute3Print=ArtifactID: $i
+Attribute3Tree=<MantisId>$i(\w*)</MantisId>
+LinkAttribute1Name=ReferenceVersion
+LinkAttribute1Print=Covered version: $i
+LinkAttribute1Value1Key=affectSuspiciousLink
+LinkAttribute1Value1Value=1
+LinkAttribute1Tree=<Requirement>$i(?|(?:Covers_\w*\s+V(\d*))|(?:Covers_\w+-V(\d+))|(?:Covers_\w+_\w+_\w+_\d+_\w+_\d+_\w+)|(?:Covers_[\D]+_\d*_(\d*))|(?:Covers_[\D]+--\d*_(\d*))|(?:Covers_\w*-V(\d+)))</Requirement>
+Type=xml
+

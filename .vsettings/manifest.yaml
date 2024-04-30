@@ -1,0 +1,256 @@
+%YAML 1.2 # Reference card
+--- # document start
+name: "swc_lp5891" # Package Name
+version: "1.0.0" # Application or library version (major.minor.patch)
+user: "l012s1439_pltf_std" # Not for your user-name. Consult your tooling team for the value.
+channel: "integration"
+
+programming-languages: ["C"] # e.g., C, C++, ASM, MATLAB, Simulink
+description: "LP5891 management" # Short description about the package.
+
+business-group: "VIS" # e.g., CDA, VIS, THS, PTS, V-Core
+product-group: "VLS" # i.e., DSF, CIX, VLS, VWS. Leave empty if no product-group.
+product-line:  # i.e., DSW, ISC. Leave empty if no product line.
+domain: ["Lighting"] # i.e., ADAS, Lighting, Electrefication, InteriorExperience, Cloud, V-Core, Others
+software-layer: "V-Core" # i.e., End-User, V-Core
+safety-level: "QM" # i.e., QM, ASIL-A, ASIL-B, ASIL-C, ASIL-D
+license-type:  # e.g., MIT, Apache, ... , see list: https://spdx.org/licenses
+project-homepage:  "https://forge.vnet.valeo.com/sf/projects/l012s1439_pltf_std/" # CoreALM project link or CodeBeamer project link
+repository-link: "" # Link to repository
+repository-type: "git" # i.e., git or svn
+
+output-folder: "conan_out" # directory where conan will generate its output
+default-conf: package
+
+configurations:
+
+  package:
+    base-configuration: # Fallback configuration to get default values from for empty and missing fields
+    dependencies:
+    #   - "pkgA/1.2.0" # dependency_name exact version
+    #   - "pkgB/[<2.1.0]" # dependency_name version less than
+    #   - "pkgC/[>=1.0 <2.0]" # dependency_name version in range
+    #   - "pkgD/1.2.0": # dependency_name with specific options (note indentation)
+    #       configuration: configuration-name
+    tools-dependencies:
+    #   - "toolA/1.2.0" # dependency_name exact version
+    #   - "toolB/[<2.1.0]" # dependency_name version less than
+    #   - "toolC/[>=1.0 <2.0]" # dependency_name version in range
+
+    output-type: "source-code" # Output type of this configuation set. i.e., (source-code, static-library, shared-library, executable)
+    compiler: GHS # Used compiler in case output-type is not source-code. i.e., (IAR, GHS, HighTec, GCC)
+    compiler-version: "201355" # Specifies the version of the compiler used if the output type is not source-code. Examples: 8.3.0, 9.3.0, 10.3.0.
+    hw-architecture: rh850  # HW Architecutre in case output-type is not source-code. i.e., (arm (for NXP S32K1xx), rh850, tricore)
+    sw-architecture: # List of SW Architectures.
+    #   - vpa
+    #   - car
+    #   - soa
+    #   - aar
+    #   - ...
+
+    # Paths examples
+    #   - "glob/pattern/to/files"
+    #   - "!pattern/to/excluded/files"
+    #   - "get/these/files":
+    #       exclude:
+    #         - "except/those/files"
+    #         - "and/those/files"
+    #   example patterns:
+    #   - "src/*"    --> all files in src folder only
+    #   - "src/*.c"  --> all files with .c extension in src folder only
+    #   - "src/**/*" --> all files in src folder AND inside all its subfolders recursively
+    #   - "src/**"   --> matches nothing. matches src folder itself and all of its subfolders recursively thus no files files are matched
+    #   - "src/*/*"  --> all files that are exactly in one subfolder below src
+    src-paths:
+        - "02-SRC/*.c"
+        - "02-SRC/02-Stub/*.c"
+        - "02-SRC/03-Cfg/*.c"
+    
+    inc-paths-private:    
+    inc-paths-public:
+        - "02-SRC/*.h"
+        - "02-SRC/02-Stub/*.h"
+        - "02-SRC/03-Cfg/*.h"
+    
+    lib-paths:
+    assembly-paths:
+    artifacts-paths:
+    docs-paths:
+    cfg-src-paths:
+        - "02-SRC/03-Cfg/*.c"
+    cfg-inc-paths-private:     
+    cfg-inc-paths-public:
+        - "02-SRC/03-Cfg/*.h"
+    cfg-artifacts-paths:
+    shared-src-paths:
+    shared-inc-paths-private:
+    shared-inc-paths-public:
+    shared-artifacts-paths:
+
+    compiler-flags:
+    assembler-flags:
+    linker-flags:
+    linker-script:
+
+    toolchain-file: TC-Conan@GHS@rh850@VIS.cmake # Path to the toolchain file relative to the '.vsettings' folder
+    build-type: Debug # Debug, Release, RelWithDebInfo, MinSizeRel
+
+  build:
+    base-configuration: # Fallback configuration to get default values from for empty and missing fields
+    dependencies:
+    #   - "pkgA/1.2.0" # dependency_name exact version
+    #   - "pkgB/[<2.1.0]" # dependency_name version less than
+    #   - "pkgC/[>=1.0 <2.0]" # dependency_name version in range
+    #   - "pkgD/1.2.0": # dependency_name with specific options (note indentation)
+    #       configuration: configuration-name
+    tools-dependencies:
+    #   - "toolA/1.2.0" # dependency_name exact version
+    #   - "toolB/[<2.1.0]" # dependency_name version less than
+    #   - "toolC/[>=1.0 <2.0]" # dependency_name version in range
+
+    output-type: "executable" # Output type of this configuation set. i.e., (source-code, static-library, shared-library, executable)
+    compiler: GHS # Used compiler in case output-type is not source-code. i.e., (IAR, GHS, HighTec, GCC)
+    compiler-version: "201355" # Specifies the version of the compiler used if the output type is not source-code. Examples: 8.3.0, 9.3.0, 10.3.0.
+    hw-architecture: rh850  # HW Architecutre in case output-type is not source-code. i.e., (arm (for NXP S32K1xx), rh850, tricore)
+    sw-architecture: # List of SW Architectures.
+    #   - vpa
+    #   - car
+    #   - soa
+    #   - aar
+    #   - ...
+
+    # Paths examples
+    #   - "glob/pattern/to/files"
+    #   - "!pattern/to/excluded/files"
+    #   - "get/these/files":
+    #       exclude:
+    #         - "except/those/files"
+    #         - "and/those/files"
+    #   example patterns:
+    #   - "src/*"    --> all files in src folder only
+    #   - "src/*.c"  --> all files with .c extension in src folder only
+    #   - "src/**/*" --> all files in src folder AND inside all its subfolders recursively
+    #   - "src/**"   --> matches nothing. matches src folder itself and all of its subfolders recursively thus no files files are matched
+    #   - "src/*/*"  --> all files that are exactly in one subfolder below src
+    src-paths:
+        - "02-SRC/*.c"
+        - "02-SRC/02-Stub/*.c"
+        - "02-SRC/03-Cfg/*.c"
+        - "07-External_Projects/LIB_LDEM/02-SRC/*.c"
+        - "07-External_Projects/LIB_LMATH/02-SRC/*.c"
+        - "07-External_Projects/LIB_STD_TYP/02-SRC/*.c"
+    
+    inc-paths-private:    
+    inc-paths-public:
+        - "02-SRC/*.h"
+        - "02-SRC/02-Stub/*.h"
+        - "02-SRC/03-Cfg/*.h"
+        - "07-External_Projects/LIB_LDEM/02-SRC/*.h"
+        - "07-External_Projects/LIB_LMATH/02-SRC/*.h"
+        - "07-External_Projects/LIB_STD_TYP/02-SRC/*.h"
+    
+    lib-paths:
+    assembly-paths:
+    artifacts-paths:
+    docs-paths:
+    cfg-src-paths:
+        - "02-SRC/03-Cfg/*.c"
+    cfg-inc-paths-private:     
+    cfg-inc-paths-public:
+        - "02-SRC/03-Cfg/*.h"
+    cfg-artifacts-paths:
+    shared-src-paths:
+    shared-inc-paths-private:
+    shared-inc-paths-public:
+    shared-artifacts-paths:
+
+    compiler-flags:
+        - "-c"
+        - "-G"
+        - "-Onone"
+        - "-no_callt"
+        - "-sda=all"
+        - "-large_sda"
+        - "-Wundef"
+        - "--short_enum"
+        - "-dual_debug"
+        - "-DAUTOSAR_USED"
+        - "-delete"
+        - "-preprocess_assembly_files"
+        - "--no_wrap_diagnostics"
+        - "-ansi"
+        - "-DRENESAS"
+        - "-DF1K"
+        - "-DR7F701583xAFP"
+        - "--long_long"
+        - "-registermode=32"
+        - "-keeptempfiles"
+        - "-prepare_dispose"
+        - "-full_debug_info"
+        - "-noobj"
+        - "-Wimplicit-int"
+        - "-Wshadow"
+        - "-Wtrigraphs"
+        - "-inline_prologue"
+        - "-reserve_r2"
+        - "-DOS_MEMMAP=0"
+        - "-DOS_MULTICORE=OS_SINGLE"
+        - "-DOS_USE_CLZ_QUEUE_ALGORITHM=1"
+        - "-DOS_DEVELOPMENT_SANITY_CHECKS=0"
+        - "-DOS_KERNEL_TYPE=OS_FUNCTION_CALL"
+        - "-DOS_USE_TRACE=0"
+    assembler-flags:
+        - "-c"
+        - "-G"
+        - "-relobj"
+        - "-preprocess_assembly_files"
+        - "-list"
+        - "--assembler_warnings"
+        - "--unknown_pragma_silent"
+        - "-asm=-elf"
+        - "-passsource"
+        - "-MD"
+        - "-DOS_KERNEL_TYPE=OS_FUNCTION_CALL"
+        - "-DOS_RELEASE_SUFFIX=OS_AS403"
+        - "-DOS_USE_TRACE=0"
+        - "-DOS_USE_CLZ_QUEUE_ALGORITHM=1"
+        - "-DOS_DEVELOPMENT_SANITY_CHECKS=0"
+        - "-DOS_MEMMAP=0"
+        - "-DOS_MULTICORE=OS_SINGLE"
+        - "-DDEMTP_coLANGUAGE_ASM"
+        - "-DR7F701583xAFP"
+        - "-DRENESAS"
+        - "-DF1K"
+    linker-flags:
+        - "-Mx"
+        - "-keepmap"
+        - "-strict_overlap_check"
+        - "-Olink"
+        - "-shorten_loads"
+        - "-shorten_moves"
+        - "-Mn"
+        - "-map"
+        - "-delete"
+        - "-gsize"
+        - "-fnone"
+        - "-nofloatio"
+        - "-delete"
+        - "-shorten_loads"
+        - "-shorten_moves"
+        - "-lsedgnoe"
+        - "-no_codefactor"
+        - "-strict_overlap_check"
+        - "-Manx"
+        - "-g"
+    linker-script: "02-SRC/01-Make/tcuInTouch_No_BL.ld"
+
+    toolchain-file: TC-Conan@GHS@rh850@VIS.cmake # Path to the toolchain file relative to the '.vsettings' folder
+    build-type:  # Debug, Release, RelWithDebInfo, MinSizeRel
+
+
+custom-attributes:
+#  key1: "Value1"
+#  key2: "Value2"
+
+manifest-template-version: "1.0" # version of mainfest schema
+... # document end

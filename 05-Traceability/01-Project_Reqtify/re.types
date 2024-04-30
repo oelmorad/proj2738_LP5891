@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generator: reqtify -->
+
+<Types>
+<DocumentType name="Additions to TSC" kind="automatic">
+<FileExtension value="xml" />
+<ElementType name="1" elementClass="CoverLink">
+</ElementType>
+<ElementType name="Requirement" elementClass="Requirement">
+</ElementType>
+</DocumentType>
+<DocumentType name="Additions to RAM" kind="automatic">
+<FileExtension value="xml" />
+<ElementType name="1" elementClass="CoverLink">
+</ElementType>
+<ElementType name="Requirement" elementClass="Requirement">
+</ElementType>
+</DocumentType>
+<DocumentType name="Word (2)" image="word" description="This default type considers :
+- Requirements use the Word style 'Requirement_ID&quot;, names being composed of a unique ID &quot;ABCxx&quot; and a label in natural language. ID and Label must be separated by a colon
+- Requirement bodies use the Word style &quot;Requirement_Text&quot;
+- Attributes &quot;Allocation&quot; and &quot;Priority&quot; are pre-defined.
+- Coverage of requirements is defined by writing &quot;[Covers: &lt;some covers&gt;]&quot;, &lt;some covers&gt; is the list of covered requirements separated by , or ; " convertTool="WordWithStyles" editTool="Word" textFormat="3" intermediateFileEncoding="UTF8">
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<FileExtension value="docm" />
+<ElementType name="Heading" guid="_E5160843_CF32_4D0D_8D2F_D8C67871816D" elementClass="Section" regularExpression="^[Hh]eading (\d+)\t(?:([\d\.]+)[ \t](.*)|([^\d\n].+))$" index1="6" index2="1" index3="2" index4="1">
+</ElementType>
+<ElementType name="Macro-requirement" guid="_D42C5B4C_D773_482A_8C40_FBB1B6166952" elementClass="MacroRequirement" regularExpression="\[MacroReq_([^\]]+)" endExpression="\[End_of_MacroReq\]">
+</ElementType>
+<ElementType name="Requirement" guid="_197ECB0A_F31B_4F85_A378_4D6692613235" elementClass="Requirement" regularExpression="TSR_ID&#9;VLS_RL_\w+_0\d">
+</ElementType>
+<ElementType name="Coverage" guid="_93186B1B_3645_42EB_9087_4F4376E53CC9" printExpression="[Covers: $i]" elementClass="CoverLink" regularExpression="\[Covers[ \t]*:[ \t]*([^\]]*)" subExpression="[ \t]*([^\,\;]+)[ \t]*">
+</ElementType>
+<ElementType name="Allocation" guid="_3469774E_3529_451A_A474_455A9C8CF624" printExpression="Owner : $i" elementClass="Attribute" regularExpression="Allocated to[ \t]*\:[ \t]*(.+)">
+<Property name="guid_197ECB0A_F31B_4F85_A378_4D6692613235" value="_97970123_1083_4E9A_B991_D77C4C0413F9" />
+<Property name="guid_D42C5B4C_D773_482A_8C40_FBB1B6166952" value="_F170DB9C_556E_4AE0_B177_DBFADED4E63D_" />
+<Property name="guid_E5160843_CF32_4D0D_8D2F_D8C67871816D" value="_4C5F271A_8F0E_4496_AFA1_3DCDD3C32898_" />
+</ElementType>
+<ElementType name="Priority" guid="_0397D88C_7EC5_44F4_883A_5EDA8B060F0B" printExpression="$t : $i" elementClass="Attribute" regularExpression="Priority[ \t]*\:[ \t]*(.+)">
+<Property name="guid_197ECB0A_F31B_4F85_A378_4D6692613235" value="_A334F030_526E_4187_97B2_9035AF7F2218_" />
+<Property name="guid_D42C5B4C_D773_482A_8C40_FBB1B6166952" value="_6852C887_5E38_41F2_B1DB_3AF58AF9896C_" />
+<Property name="guid_E5160843_CF32_4D0D_8D2F_D8C67871816D" value="_3F02614A_D3D3_4472_B3E6_5C58E75EF0C9_" />
+<Property name="guidEnumeration" value="_5C7DAEC0_73D0_4D26_B292_7DCE1EB8CF37_" />
+<Property name="guidValues" value="_BE97AAF4_BDF9_4E6E_BF64_C1027A299A67_" />
+<Property name="guidValues" value="_462BD05A_C6F1_42A3_BF7C_C0E203140DA9_" />
+<Property name="guidValues" value="_0D4DEDF4_61F1_4EA1_AD43_4EB2A6FEFFE7_" />
+<EnumValue value="High" />
+<EnumValue value="Medium" />
+<EnumValue value="Low" />
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="\bRequirement_Text\t(.+?)(?=\|\d|\n)">
+</TerminalType>
+<TerminalType name="Cell" elementClass="Text" regularExpression="\|(\d+) [^\t]+\t([^|\n]+)" columnIndex="1">
+</TerminalType>
+<TerminalType name="Picture" guid="_672493D3_6A69_4D7D_BB7A_87AD0D2D6352" elementClass="Picture" regularExpression="&lt;Picture&lt;([^&gt;]+)">
+</TerminalType>
+<TerminalType name="Table" elementClass="Table" regularExpression="^#TABLE$" reRow="^#TR">
+</TerminalType>
+</DocumentType>
+<DocumentType name="Excel (2)" image="excel" description="This type uses Excel converter which presents each cell separated by character | followed by column number" convertTool="ExcelWithColNumbers" editTool="Excel" textFormat="3" intermediateFileEncoding="UTF8">
+<FileExtension value="xls" />
+<FileExtension value="xlsx" />
+<FileExtension value="xlsm" />
+<ElementType name="Worksheet" elementClass="Section" regularExpression="^Worksheet :[ \t](.*)$">
+</ElementType>
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="(VLS_RL_TSR_\w+_\d+.)">
+</ElementType>
+<ElementType name="Covers Reference" printExpression="[Covers: $i]" elementClass="CoverLink" isMultiple="false" regularExpression="\[Covers[ \t]*:[ \t]*([^\]]*)" subExpression="[ \t]*([^\,\;]+)[ \t]*">
+</ElementType>
+<ElementType name="Priority" printExpression="$t: $i" elementClass="Attribute" regularExpression="REQ\d+.+?\|(?:D\d+|4) ([^\t]+)">
+<EnumValue value="High" />
+<EnumValue value="Medium" />
+<EnumValue value="Low" />
+</ElementType>
+<ElementType name="Allocation" printExpression="Owner: $i" elementClass="Attribute" regularExpression="\|3 (\w+)|\|3 (\w+-\w+)">
+</ElementType>
+<ElementType name="Version" printExpression="Owner: $i" elementClass="Attribute" regularExpression="\|5\s(\w+/\w+ \w+)|\|5\s(\w+\s\w+)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="\|\w+ REQ\d+\t\|\w+[^|]+\|\w+ ([^\t]+)">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([^&gt;]+)">
+</TerminalType>
+<ElementType name="App" printExpression="Owner: $i" elementClass="Attribute" regularExpression="\|8 (\w+)">
+<EnumValue value="High" />
+<EnumValue value="Medium" />
+<EnumValue value="Low" />
+</ElementType>
+</DocumentType>
+<DocumentType name="Excel (3)" image="excel" description="This type uses Excel converter which presents each cell separated by character | followed by column number" convertTool="ExcelWithColNumbers" editTool="Excel" textFormat="3" intermediateFileEncoding="UTF8">
+<FileExtension value="xls" />
+<FileExtension value="xlsx" />
+<FileExtension value="xlsm" />
+<ElementType name="Worksheet" elementClass="Section" regularExpression="^Worksheet :[ \t](.*)$">
+</ElementType>
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="">
+</ElementType>
+<ElementType name="Covers Reference" printExpression="[Covers_$i]" elementClass="CoverLink" isMultiple="false" regularExpression="(VLS_RL_TSR_\w+_\d+.)">
+</ElementType>
+<ElementType name="Priority" printExpression="$t: $i" elementClass="Attribute" regularExpression="REQ\d+.+?\|(?:D\d+|4) ([^\t]+)">
+<EnumValue value="High" />
+<EnumValue value="Medium" />
+<EnumValue value="Low" />
+</ElementType>
+<ElementType name="Allocation" printExpression="Owner: $i" elementClass="Attribute" regularExpression="REQ\d+.+?\|(?:E\d+|5) ([^\t\n]+)">
+</ElementType>
+<ElementType name="Position" isVisible="false" elementClass="Attribute" regularExpression="\|([A-Z]+\d+) REQ\d+">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="\|\w+ REQ\d+\t\|\w+[^|]+\|\w+ ([^\t]+)">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([^&gt;]+)">
+</TerminalType>
+</DocumentType>
+</Types>

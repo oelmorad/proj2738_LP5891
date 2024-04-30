@@ -1,0 +1,25 @@
+
+[Types]
+Names=SMART-TT_CDD
+
+[SMART-TT_CDD]
+Tool=PdfCvTxt
+ToolEdit=Pdf
+Image=pdf
+Requirement1Name=Requirement
+Requirement1=^.*Req_(\w*)
+Reference1Name=Covers
+Reference1=(?|(?:Covers_.*?(_SRS_.*?_\d*))|(?:Covers_.*?(_ARCHI_\d*)))
+Reference1Indexes=1,2,3,0
+Reference2Name=Covers (2)
+Reference2=(?|(?:Covers_(\w*)\s+V\d+)|(?:Covers_([\S_]+_\d+)_\S+)|(?:Covers_(\w+)-V\d+)|(?:Covers_(\w+)))
+Reference2Indexes=1,2,3,0
+Attribute1Name=ReqVersion
+Attribute1Print=Req version: $i
+Attribute1Image=info
+Attribute1=^.*Req_\w*-*V(\d*)
+Attribute2Name=Asil
+Attribute2Print=$t : $i
+Attribute2=^.*Req_\w*-*V\d*:\[(\w+)\]
+UseGuidsForComparison=0
+

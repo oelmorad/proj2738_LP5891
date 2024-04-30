@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generator: reqtify -->
+
+<Filters>
+<Filter name="APP STD SRS requirements (Subfilter)" isAnalysis="true" isAnd="true">
+<Condition applicationClass="AbstractRequirement" operator="contains" value="Applicable" receiverClass="Attribute" receiverDocumentType="VLS-APP-STD_SrsRAM" receiverElementType="Req Type" />
+</Filter>
+<Filter name="Allocation #SW (Filter to remove HW / System Req)" isAnalysis="true" isAnd="true">
+<Condition applicationClass="AbstractRequirement" operator="contains" value="SW" receiverClass="Attribute" receiverDocumentType="VLS-APP-STD_CRS" receiverElementType="Allocation" />
+</Filter>
+<Filter name="Allocation #SW + STD Applicable (Filter to remove HW / System / Not-Applicable Reqs)" isAnalysis="true" isAnd="true" bool10="false">
+<Condition applicationClass="AbstractRequirement" operator="isTrue" value="X" receiverClass="Filter" receiverFilter="Allocation #SW (Filter to remove HW / System Req)" />
+<Condition applicationClass="AbstractRequirement" operator="isTrue" value="X" receiverClass="Filter" receiverFilter="APP STD SRS requirements (Subfilter)" />
+</Filter>
+<Filter name="GM_L232_Base" isAnalysis="true" isAnd="true" filterChildren="false" bool5="false" bool8="false" bool15="false">
+<Condition applicationClass="AbstractRequirement" operator="equal" value="SW" receiverClass="Attribute" receiverDocumentType="HSI" receiverElementType="ReqAlloc" />
+<Condition applicationClass="AbstractRequirement" operator="equal" value="SW" receiverClass="Attribute" receiverDocumentType="VLS-P2_Input_FRS" receiverElementType="aImplementationAllocation" />
+<Condition applicationClass="AbstractRequirement" operator="notEqual" value="HW" receiverClass="Attribute" receiverDocumentType="VLS-P2_Input_FRS" receiverElementType="aImplementationAllocation" />
+<Condition applicationClass="AbstractRequirement" operator="notEqual" value="SYS" receiverClass="Attribute" receiverDocumentType="VLS-P2_Input_FRS" receiverElementType="aImplementationAllocation" />
+<Condition applicationClass="AbstractRequirement" operator="contains" value="Low" receiverClass="Attribute" receiverDocumentType="Excel (2)" receiverElementType="Version" />
+<Condition applicationClass="AbstractRequirement" operator="contains" value="SW" receiverClass="Attribute" receiverDocumentType="Excel (2)" receiverElementType="Allocation" />
+<Condition applicationClass="AbstractRequirement" operator="isAbsent" value="X" receiverClass="Attribute" receiverDocumentType="Excel (2)" receiverElementType="App" />
+<Condition applicationClass="AbstractRequirement" operator="isNotMarked" value="Cancelled" receiverClass="CoverLink" receiverDocumentType="FTA" receiverElementType="Covers" />
+</Filter>
+</Filters>

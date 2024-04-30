@@ -1,0 +1,454 @@
+//-------------------------------------------------------------------------
+//      Linker file for RL78 microcontroller R5F10PMJ.
+//
+//      v 3.3:  Modified by GLO
+//              Updated for new IAR compiler version
+//
+//      v 3.2:  Modified by GLO
+//              Modified to be bootloader compatible       
+//
+//      V 3.1:  Modified by LJF
+//              Adaptation of V2.4a to F14 PMH microcontroller
+//
+//      V 2.4a: Modified by LJF and GL
+//              EEL zones added to compile with current project
+//              Do not use after EEL suppression
+//
+//      V 2.4:  Created by LJF
+//              Adding of FDL memory section
+//              Correction of offset of FAR_I, FAR_ID (seems not to work on V2.3)
+//
+//      V 2.3:  Created by LJF
+//              Move of user beginning RAM fro $FAF00 to $FB530 to take into
+//              account reserved memory for data flash library and emulator
+//
+//      V 2.2:  Created by LJF
+//              Group of all defines with the same address to a single define
+//
+//      V 2.1:  Created by LJF
+//              Modified to be use with makefiles only
+//
+//      V 1.1:  Created by MSA from renesas linker file example
+//              Creation of defines for all magic numbers 
+//              Use on IAR compiler only
+//
+//-------------------------------------------------------------------------
+
+
+
+
+//-------------------------------------------------------------------------
+//      XLINK command file template for RL78 microcontroller R5F10PMH.
+//
+//      This file can be used to link object files from the RL78
+//      Assembler, ARL78, and the C/C++ compiler ICCRL78.
+//
+//-------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------
+//      The following segments are defined in this template link file:
+//
+//      INTVEC      -- Interrupt vectors.
+//      CLTVEC      -- Calltable vectors.
+//      RCODE       -- Code used by C/C++ startup and run-time library.
+//      CODE        -- Code used by __near_func, __interrupt and __callt functions.
+//      XCODE       -- Code used by __far_func functions.
+//      NEAR_CONST_ -- Constants used by __near const.
+//      FAR_CONST   -- Constants used by __far const.
+//      SADDR_x     -- Variables used by __saddr.
+//      NEAR_x      -- Variables used by __near.
+//      FAR_x       -- Variables used by __far.
+//      NEAR_HEAP   -- The heap used by near data model.
+//      FAR_HEAP    -- The heap used by far data model.
+//      SWITCH      -- Switch tables used by near code model.
+//      FSWITCH     -- Switch tables used by far model.
+//      DIFUNCT     -- Dynamic initialization vector used by C++
+//
+//      Where _x could be one of:
+//
+//      _Z      -- Initialized data (initvalue = 0 or without init value).
+//      _I      -- Initialized data (initvalue != 0).
+//      _ID     -- The initial values of _I.
+//      _N      -- Uninitialized data, used by __no_init.
+//-------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------
+//      Define CPU
+//-------------------------------------------------------------------------
+
+-cRL78
+
+//-------------------------------------------------------------------------
+//      Size of the stack.
+//      Remove comment and modify number if used from command line.
+//-------------------------------------------------------------------------
+
+// stack size 1024 bytes
+-D_CSTACK_SIZE_SPEC=400
+
+
+// Section added for new IAR compiler version
+-Z(CONST)HUGE_ID#10000
+-Z(DATA)HUGE_I=10000-10000
+-Z(DATA)HUGE_Z=10000-10000
+-P(DATA)HUGE_N=10000-10000
+
+//-------------------------------------------------------------------------
+//      Size of the heaps.
+//      Remove comment and modify number if used from command line.
+//-------------------------------------------------------------------------
+
+-D_NEAR_HEAP_SIZE=0
+// Size of far heap is not used because we use near data model
+// Size max is 4096 bytes
+-D_FAR_HEAP_SIZE=0
+
+
+//-------------------------------------------------------------------------
+//      RL78R5PMJ microcontroller mapping.
+//      Modify in case of micro controller changing.
+//-------------------------------------------------------------------------
+
+// RAM defines
+
+-D_RAM_SHORT_ADDRESS_LOCATION_END=FFEDF
+-D_RAM_SHORT_ADDRESS_LOCATION_START=FFE20
+-D_NORMAL_ADDRESSING_RAM_END=FFE1F
+
+//  No need to have reserved area for using of data flah library and 
+//  emulator reserved area on F14 PMH microcontroller
+//  this value is linked to _FAR_DATA_INIT_START (see below) 
+//-D_RAM_AREA_START=FBF00 //Without boot
+-D_RAM_AREA_START=FBF0A
+
+// For bootloader : RAM area shared between APPLI and BOOT
+// 10 bytes marker (FBF00-FBF09) to return to boot from application
+-D_RAM_BOOT_MARKER_START=FBF00
+
+
+// EEPROM defines
+// See EEPROM section below for EEPROM page definitions
+
+-D_EEPROM_LOCATION_START_SPEC=F1000
+-D_EEPROM_LOCATION_END_SPEC=F2FFF
+
+// Flash defines 
+
+//-D_USER_FAR_ROM_END=2FDFF //without boot
+-D_USER_FAR_ROM_END=2FDFE
+-D_NEAR_DATA_INIT_END=0FDFF
+
+//  _FAR_DATA_INIT_START must equal to _RAM_AREA_START-0xF0000
+-D_FAR_DATA_INIT_START=0BF0A
+-D_END_PAGE_ZERO=0FFFF
+//-D_PROGRAM_AREA_START=000D8 // Without boot
+-D_PROGRAM_AREA_START=08010
+
+//--------------------------------------------------------------------------
+// Special VALEO zones
+//--------------------------------------------------------------------------
+//Marker to recognize a valid application in memory
+//First byte and last byte of the application memory area
+//must have a specific value 0xAA
+-D_VALID_APPLI_START=08000
+-D_VALID_APPLI_END=2FDFF
+
+//Software date zone (3 bytes) : YY/MM/DD
+-D_SW_DATE_START=08001
+-D_SW_DATE_END=08003
+
+//Software version zone (6 bytes)
+-D_SW_VERSION_START=08004
+-D_SW_VERSION_END=08009
+
+//-------------------------------------------------------------------------
+//      Near constant location.
+//      0 -> 0xF0000-0xFFFFF mirrored in rom area 0x00000 - 0x0FFFF
+//      1 -> 0xF0000-0xFFFFF mirrored in rom area 0x10000 - 0x1FFFF
+//      2 -> Writeable constants
+//      Remove comments and modify number if used from command line.
+//-------------------------------------------------------------------------
+
+// near const location: mirror ROM0 start address 0xF3000 size 31.75 Kbytes (as in IAR)
+// some hidden memory is used by OCD Trace function or Self Programming library.
+// do not rename D_NEAR_CONST_LOCATION and D_NEAR_CONST_LOCATION they are needed
+// by cstartup.s87
+-D_NEAR_CONST_LOCATION=0
+-D_NEAR_CONST_LOCATION_START=082FF
+-D_NEAR_CONST_LOCATION_END=0AEFF
+
+// VALEO JUMP table = 186 bytes + 2 (0xBC)
+-D_NEAR_CONST_JUMP_TABLE_START=08010
+-D_NEAR_CONST_JUMP_TABLE_END=081BC
+
+//-------------------------------------------------------------------------
+//      Define the format functions used by printf/scanf.
+//      Default is auto formatting.
+//      Remove appropriate comment(s) to get desired formatting
+//      if used from command line.
+//-------------------------------------------------------------------------
+
+//-e_PrintfTiny=_Printf
+//-e_PrintfSmall=_Printf
+//-e_PrintfSmallNoMb=_Printf
+//-e_PrintfLarge=_Printf
+//-e_PrintfLargeNoMb=_Printf
+//-e_PrintfFull=_Printf
+
+//-e_PrintfFullNoMb=_Printf
+
+//-e_ScanfSmall=_Scanf
+//-e_ScanfSmallNoMb=_Scanf
+//-e_ScanfLarge=_Scanf
+//-e_ScanfLargeNoMb=_Scanf
+//-e_ScanfFull=_Scanf
+
+//-e_ScanfFullNoMb=_Scanf
+
+//-------------------------------------------------------------------------
+//      Define replacement of the default library math functions.
+//      Choose either of: 
+//      1) smaller and faster versions
+//      2) more accurate versions 
+//      Remove appropriate comment(s) from either
+//      1) or 2), but not both, if used from command line.
+//-------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------
+// 1) Smaller and faster versions
+//-------------------------------------------------------------------------
+//-e__iar_sin_small=sin
+//-e__iar_cos_small=cos
+//-e__iar_tan_small=tan
+//-e__iar_log_small=log
+//-e__iar_log10_small=log10
+//-e__iar_exp_small=exp
+//-e__iar_pow_small=pow
+//-e__iar_Sin_small=__iar_Sin
+//-e__iar_sin_smallf=sinf
+//-e__iar_cos_smallf=cosf
+//-e__iar_tan_smallf=tanf
+//-e__iar_log_smallf=logf
+//-e__iar_log10_smallf=log10f
+//-e__iar_exp_smallf=expf
+//-e__iar_pow_smallf=powf
+//-e__iar_Sin_smallf=__iar_Sinf
+//-e__iar_sin_smalll=sinl
+//-e__iar_cos_smalll=cosl
+//-e__iar_tan_smalll=tanl
+//-e__iar_log_smalll=logl
+//-e__iar_log10_smalll=log10l
+//-e__iar_exp_smalll=expl
+//-e__iar_pow_smalll=powl
+//-e__iar_Sin_smalll=__iar_Sinl
+
+//-------------------------------------------------------------------------
+// 2) More accurate versions
+//-------------------------------------------------------------------------
+//-e__iar_sin_accurate=sin
+//-e__iar_cos_accurate=cos
+//-e__iar_tan_accurate=tan
+//-e__iar_pow_accurate=pow
+//-e__iar_Sin_accurate=__iar_Sin
+//-e__iar_Pow_accurate=__iar_Pow
+//-e__iar_sin_accuratef=sinf
+//-e__iar_cos_accuratef=cosf
+//-e__iar_tan_accuratef=tanf
+//-e__iar_pow_accuratef=powf
+//-e__iar_Sin_accuratef=__iar_Sinf
+//-e__iar_Pow_accuratef=__iar_Powf
+//-e__iar_sin_accuratel=sinl
+//-e__iar_cos_accuratel=cosl
+//-e__iar_tan_accuratel=tanl
+//-e__iar_pow_accuratel=powl
+//-e__iar_Sin_accuratel=__iar_Sinl
+//-e__iar_Pow_accuratel=__iar_Powl
+
+//-------------------------------------------------------------------------
+//      Define if row buffering should be used by terminal output.
+//      Default is no buffering.
+//      Remove comment to get buffered terminal output if used from command line.
+//-------------------------------------------------------------------------
+
+//-e__write_buffered=__write
+
+//-------------------------------------------------------------------------
+//      Allocate the read only segments that are mapped to ROM.
+//-------------------------------------------------------------------------
+//-------------------------------------------------------------------------
+//      Interrupt vector segment.
+//-------------------------------------------------------------------------
+
+// Pseudo interrupt vector segment (not used)
+//-D_INTVEC_LOCATION_START_SPEC=00000   // without boot
+//-D_INTVEC_LOCATION_END_SPEC=0007F     // without boot
+-D_INTVEC_LOCATION_START_SPEC=081D0
+-D_INTVEC_LOCATION_END_SPEC=08250
+
+-Z(CODE)INTVEC=_INTVEC_LOCATION_START_SPEC-_INTVEC_LOCATION_END_SPEC
+
+// Interrupt vector segment (needed when boot is not present)
+-D_INTVEC0_LOCATION_START_SPEC=00000
+-D_INTVEC0_LOCATION_END_SPEC=0007F
+
+-Z(CODE)INTVEC0=_INTVEC0_LOCATION_START_SPEC-_INTVEC0_LOCATION_END_SPEC
+
+//-------------------------------------------------------------------------
+//      CALLT vector segment.
+//-------------------------------------------------------------------------
+
+//-D_CLTVEC_LOCATION_START_SPEC=00080  //  without boot
+//-D_CLTVEC_LOCATION_END_SPEC=000BF    //  without boot
+-D_CLTVEC_LOCATION_START_SPEC=02080
+-D_CLTVEC_LOCATION_END_SPEC=020BF
+
+//-Z(CODE)CLTVEC=_CLTVEC_LOCATION_START_SPEC-_CLTVEC_LOCATION_END_SPEC
+
+//-------------------------------------------------------------------------
+//      OPTION BYTES segment.
+//-------------------------------------------------------------------------
+
+-D_OPTBYTE_LOCATION_START_SPEC=000C0
+-D_OPTBYTE_LOCATION_END_SPEC=000C3
+-Z(CODE)OPTBYTE=_OPTBYTE_LOCATION_START_SPEC-_OPTBYTE_LOCATION_END_SPEC
+
+//-------------------------------------------------------------------------
+//      SECURITY_ID segment.
+//-------------------------------------------------------------------------
+
+-D_SECUID_LOCATION_START_SPEC=000C4
+-D_SECUID_LOCATION_END_SPEC=000CD
+-Z(CODE)SECUID=_SECUID_LOCATION_START_SPEC-_SECUID_LOCATION_END_SPEC
+
+//-------------------------------------------------------------------------
+//      Reserved ROM areas for OCD Firmware: 000CE-000D7
+//                                           2FE00-2FFFF
+//-------------------------------------------------------------------------
+
+//-------------------------------------------------------------------------
+//      Near constant segments.
+//-------------------------------------------------------------------------
+--segment_mirror @NEAR_CONST=NEAR_CONST_ID
+-Z(CONST)NEAR_CONST_ID=_NEAR_CONST_LOCATION_START-_NEAR_CONST_LOCATION_END
+-Z(DATA)NEAR_CONST=(_NEAR_CONST_LOCATION_START|F0000)-(_NEAR_CONST_LOCATION_END|F0000)
+
+-Z(CONST)NEAR_CONST_JUMP_TABLE=_NEAR_CONST_JUMP_TABLE_START-_NEAR_CONST_JUMP_TABLE_END
+
+-Z(CONST)NEAR_CONST_SW_VERSION=_SW_VERSION_START-_SW_VERSION_END
+-Z(CONST)NEAR_CONST_SW_DATE=_SW_DATE_START-_SW_DATE_END
+
+//-------------------------------------------------------------------------
+//      Startup, Runtime-library, Near, Interrupt 
+//      and CALLT functions code segment and near switch.
+//-------------------------------------------------------------------------
+-Z(CODE)RCODE,CODE=_PROGRAM_AREA_START-_END_PAGE_ZERO
+-Z(CONST)SWITCH=_PROGRAM_AREA_START-_NEAR_DATA_INIT_END
+
+//-------------------------------------------------------------------------
+//  FDL area
+//  Library code and constants must be located completely in the same 64k flash page.
+//-------------------------------------------------------------------------
+-Z(CODE)FDL_CODE=[_PROGRAM_AREA_START-_END_PAGE_ZERO]/10000
+-Z(CONST)FDL_CNST=[_PROGRAM_AREA_START-_END_PAGE_ZERO]/10000
+
+-Z(CODE)EEL_CODE=[_PROGRAM_AREA_START-_END_PAGE_ZERO]/10000
+-Z(CONST)EEL_CNST=[_PROGRAM_AREA_START-_END_PAGE_ZERO]/10000
+
+//-------------------------------------------------------------------------
+//      Near data initializer segments. 
+//-------------------------------------------------------------------------
+-Z(CONST)NEAR_ID=[_PROGRAM_AREA_START-_NEAR_DATA_INIT_END]/10000
+-Z(CONST)SADDR_ID=[_PROGRAM_AREA_START-_NEAR_DATA_INIT_END]/10000
+-Z(CONST)DIFUNCT=[_PROGRAM_AREA_START-_NEAR_DATA_INIT_END]/10000
+
+//-------------------------------------------------------------------------
+//      Far constant segments and far switch.
+//      FAR far data segments.
+//      The FAR_I and FAR_ID segments must start at the same offset
+//      in a 64 Kb page.
+//-------------------------------------------------------------------------
+-Z(CONST)FAR_ID=[_FAR_DATA_INIT_START-_USER_FAR_ROM_END]/10000
+-Z(DATA)FAR_I=[_RAM_AREA_START-_NORMAL_ADDRESSING_RAM_END]/10000
+
+
+-P(CONST)FAR_CONST,FSWITCH=[_PROGRAM_AREA_START-_USER_FAR_ROM_END]/10000
+
+-P(CONST)VALID_APPLI_START=[_VALID_APPLI_START-_VALID_APPLI_START]
+-P(CONST)VALID_APPLI_END=[_VALID_APPLI_END-_VALID_APPLI_END]
+
+
+//-------------------------------------------------------------------------
+//      Far functions code segment.
+//-------------------------------------------------------------------------
+
+-P(CODE)XCODE=[_PROGRAM_AREA_START-_USER_FAR_ROM_END]/10000
+
+//-------------------------------------------------------------------------
+//      EEPROM segment.
+//      Note: This segment will not be automatically created
+//            and it will not be initialised by CSTARTUP!
+//-------------------------------------------------------------------------
+
+-Z(CONST)EEPROM=_EEPROM_LOCATION_START_SPEC-_EEPROM_LOCATION_END_SPEC
+
+
+//-------------------------------------------------------------------------
+//      Data flash block segments.
+//-------------------------------------------------------------------------
+-P(CONST)DATA_FLASH_BLOCK_0=[F1000-F13FF]
+-P(CONST)DATA_FLASH_BLOCK_1=[F1400-F17FF]
+-P(CONST)DATA_FLASH_BLOCK_2=[F1800-F1BFF]
+-P(CONST)DATA_FLASH_BLOCK_3=[F1C00-F1FFF]
+-P(CONST)DATA_FLASH_BLOCK_4=[F2000-F23FF]
+-P(CONST)DATA_FLASH_BLOCK_5=[F2400-F27FF]
+-P(CONST)DATA_FLASH_BLOCK_6=[F2800-F2BFF]
+-P(CONST)DATA_FLASH_BLOCK_7=[F2C00-F2FFF]
+
+
+// -P ou -Z à utiliser?
+
+
+
+//-------------------------------------------------------------------------
+//      Allocate the read/write segments that are mapped to RAM.
+//-------------------------------------------------------------------------
+//-------------------------------------------------------------------------
+//      Short address data and workseg segments.
+//-------------------------------------------------------------------------
+-Z(DATA)WRKSEG=_RAM_SHORT_ADDRESS_LOCATION_START-_RAM_SHORT_ADDRESS_LOCATION_END
+-Z(DATA)SADDR_I,SADDR_Z,SADDR_N=_RAM_SHORT_ADDRESS_LOCATION_START-_RAM_SHORT_ADDRESS_LOCATION_END
+-Z(DATA)FDL_SDAT=_RAM_SHORT_ADDRESS_LOCATION_START-_RAM_SHORT_ADDRESS_LOCATION_END
+-Z(DATA)EEL_SDAT=_RAM_SHORT_ADDRESS_LOCATION_START-_RAM_SHORT_ADDRESS_LOCATION_END
+
+//-------------------------------------------------------------------------
+//      Near data segments.
+//-------------------------------------------------------------------------
+-Z(DATA)NEAR_I,NEAR_Z,NEAR_N=_RAM_AREA_START-_NORMAL_ADDRESSING_RAM_END
+
+
+//-------------------------------------------------------------------------
+//      Far data segments.
+//-------------------------------------------------------------------------
+-Z(DATA)FAR_Z=[_RAM_AREA_START-_NORMAL_ADDRESSING_RAM_END]/10000
+-P(DATA)FAR_N=[_RAM_AREA_START-_NORMAL_ADDRESSING_RAM_END]/10000
+
+//-------------------------------------------------------------------------
+//      Heap segments.
+//-------------------------------------------------------------------------
+-Z(DATA)NEAR_HEAP+_NEAR_HEAP_SIZE=_RAM_AREA_START-_NORMAL_ADDRESSING_RAM_END
+-Z(DATA)FAR_HEAP+_FAR_HEAP_SIZE=[_RAM_AREA_START-_NORMAL_ADDRESSING_RAM_END]/10000
+
+//-------------------------------------------------------------------------
+//      Stack segment.
+//-------------------------------------------------------------------------
+-Z(DATA)CSTACK+_CSTACK_SIZE_SPEC#_RAM_AREA_START-_NORMAL_ADDRESSING_RAM_END
+
+//-------------------------------------------------------------------------
+//      Select the output file format if used from command line.
+//      Remove comment to select the file format if used from command line.
+//-------------------------------------------------------------------------
+//-Fdebug
+
+//-------------------------------------------------------------------------
+//      End of File
+//-------------------------------------------------------------------------

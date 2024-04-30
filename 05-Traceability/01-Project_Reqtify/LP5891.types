@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generator: reqtify -->
+
+<Types>
+<DocumentType name="Enterprise Architect GDD" image="EA/ea" kind="xml" isFileBased="false" convertTool="EnterpriseArchitect" textFormat="2">
+<FileExtension value="eap" />
+<ElementType name="Package" image="EA/package" printExpression="$l" elementClass="Section" analysisTree="&lt;Package guid='$u' name='$l' notes='$t' type='^Package$' stereotype='$!^from'&gt;&lt;/Package&gt;">
+<ParentType name="View" />
+<ParentType name="Enterprise Architect GDD" />
+</ElementType>
+<ElementType name="Attribute" image="EA/attribute" elementClass="Section" analysisTree="&lt;Attribute guid='$u' name='$l' notes='$t'&gt;&lt;/Attribute&gt;">
+<ParentType name="Node" />
+<ParentType name="Class" />
+<ParentType name="Actor" />
+<ParentType name="UseCase" />
+<ParentType name="Object" />
+<ParentType name="Interface" />
+<ParentType name="Activity" />
+<ParentType name="Component" />
+<ParentType name="Signal" />
+<ParentType name="Enumeration" />
+</ElementType>
+<ElementType name="Method" image="EA/method" elementClass="Section" analysisTree="&lt;Method guid='$u' name='$l' notes='$t'&gt;&lt;/Method&gt;">
+<ParentType name="Node" />
+<ParentType name="Class" />
+<ParentType name="Actor" />
+<ParentType name="UseCase" />
+<ParentType name="Object" />
+<ParentType name="Interface" />
+<ParentType name="Component" />
+<ParentType name="State" />
+</ElementType>
+<ElementType name="Model" image="EA/model" printExpression="$l" elementClass="Section" analysisTree="&lt;Package guid='$u' name='$l' notes='$t' type='Model'&gt;&lt;/Package&gt;">
+</ElementType>
+<ElementType name="View" image="EA/view" printExpression="$l" elementClass="Section" analysisTree="&lt;Package guid='$u' name='$l' notes='$t' type='View'&gt;&lt;/Package&gt;">
+<ParentType name="Model" />
+<ParentType name="Enterprise Architect GDD" />
+</ElementType>
+<ElementType name="Action" image="EA/action" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Action$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+<ParentType name="Activity Partition" />
+<ParentType name="Interruptible Activity Region" />
+</ElementType>
+<ElementType name="ActionPin" image="EA/actionPin" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^ActionPin$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+<ParentType name="Action" />
+</ElementType>
+<ElementType name="Activity" image="EA/activity" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Activity$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity Partition" />
+<ParentType name="Interruptible Activity Region" />
+</ElementType>
+<ElementType name="Activity Diagram" image="EA/activityDiagram" elementClass="Section" analysisTree="&lt;Diagram guid='$u' name='$l' type='Activity' notes='$t' image='$g'&gt;&lt;/Diagram&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Activity Partition" image="EA/activityPartition" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^ActivityPartition$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Actor" image="EA/actor" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Actor$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Analysis Diagram" image="EA/analysisDiagram" elementClass="Section" analysisTree="&lt;Diagram guid='$u' name='$l' type='Analysis' notes='$t' image='$g'&gt;&lt;/Diagram&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+<ParentType name="Screen" />
+</ElementType>
+<ElementType name="Artifact" image="EA/artifact" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Artifact$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+<ParentType name="Activity Partition" />
+</ElementType>
+<ElementType name="Association" image="EA\association" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Association$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Component" />
+</ElementType>
+<ElementType name="CentralBuffer" image="EA\class" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='CentralBuffer' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Class" image="EA/class" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Class$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Component" />
+</ElementType>
+<ElementType name="Collaboration" image="EA/collaboration" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Collaboration$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Communication Diagram" image="EA/communicationDiagram" elementClass="Section" analysisTree="&lt;Diagram guid='$u' name='$l' type='Collaboration' notes='$t' image='$g'&gt;&lt;/Diagram&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Component" image="EA/component" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Component$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Component Diagram" image="EA/componentDiagram" elementClass="Section" analysisTree="&lt;Diagram guid='$u' name='$l' type='Component' notes='$t' image='$g'&gt;&lt;/Diagram&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="CompositeStructure Diagram" image="EA/compositeStructureDiagram" elementClass="Section" analysisTree="&lt;Diagram guid='$u' image='$g' name='$l' type='CompositeStructure' notes='$t'&gt;&lt;/Diagram&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+<ParentType name="Class" />
+</ElementType>
+<ElementType name="Custom Diagram" image="EA/customDiagram" elementClass="Section" analysisTree="&lt;Diagram guid='$u' name='$l' type='Custom' notes='$t' image='$g'&gt;&lt;/Diagram&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="DataType" image="EA\datatype" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^DataType$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Component" />
+</ElementType>
+<ElementType name="Decision" image="EA/decision" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Decision$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+<ParentType name="Activity Partition" />
+<ParentType name="Interruptible Activity Region" />
+</ElementType>
+<ElementType name="Deployment Diagram" image="EA/deploymentDiagram" elementClass="Section" analysisTree="&lt;Diagram guid='$u' name='$l' type='Deployment' notes='$t' image='$g'&gt;&lt;/Diagram&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="End Event" image="EA\endEvent" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='Event' notes='$t' stereotype='EndEvent'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="Activity" />
+<ParentType name="Activity Partition" />
+</ElementType>
+<ElementType name="Enumeration" image="EA\enumeration" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Enumeration$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Component" />
+</ElementType>
+<ElementType name="Feature" image="EA/feature" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Feature$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+<ParentType name="Artifact" />
+</ElementType>
+<ElementType name="GUIElement" image="EA/guiElement" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^GUIElement$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Screen" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Interaction" image="EA/interaction" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Interaction$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+</ElementType>
+<ElementType name="InteractionOverview Diagram" image="EA/interactionOverview" elementClass="Section" analysisTree="&lt;Diagram guid='$u' image='$g' name='$l' type='InteractionOverview' notes='$t'&gt;&lt;/Diagram&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Interface" image="EA/interface" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Interface$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+<ParentType name="Component" />
+<ParentType name="Class" />
+</ElementType>
+<ElementType name="Intermediate Event" image="EA\..\EA\intermediateEvent" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='Event' notes='$t' stereotype='IntermediateEvent'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="Activity" />
+<ParentType name="Activity Partition" />
+</ElementType>
+<ElementType name="Interruptible Activity Region" image="EA/interruptibleActivityRegion" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^InterruptibleActivityRegion$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Logical Diagram" image="EA/logicalDiagram" elementClass="Section" analysisTree="&lt;Diagram guid='$u' name='$l' type='Logical' notes='$t' image='$g'&gt;&lt;/Diagram&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Node" image="EA/node" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Node$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Note" image="EA\note" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='Note' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="Activity" />
+<ParentType name="View" />
+</ElementType>
+<ElementType name="Object" image="EA/object" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Object$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+<ParentType name="Collaboration" />
+<ParentType name="Activity Partition" />
+<ParentType name="Screen" />
+</ElementType>
+<ElementType name="Object Diagram" image="EA/objectDiagram" elementClass="Section" analysisTree="&lt;Diagram guid='$u' image='$g' name='$l' type='Object' notes='$t'&gt;&lt;/Diagram&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="ObjectNode" image="EA/objectNode" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^ObjectNode$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Package Diagram" image="EA/packageDiagram" elementClass="Section" analysisTree="&lt;Diagram guid='$u' image='$g' name='$l' type='Package' notes='$t'&gt;&lt;/Diagram&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Part" image="EA/part" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Part$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+<ParentType name="Class" />
+</ElementType>
+<ElementType name="Port" image="EA\port" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='Port' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="Activity" />
+<ParentType name="Part" />
+<ParentType name="Class" />
+</ElementType>
+<ElementType name="Primitive" image="EA\primitive" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^PrimitiveType$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Component" />
+</ElementType>
+<ElementType name="Screen" image="EA/screen" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Screen$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Sequence" image="EA/sequence" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Sequence$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Sequence Diagram" image="EA/sequenceDiagram" elementClass="Section" analysisTree="&lt;Diagram guid='$u' name='$l' type='Sequence' notes='$t' image='$g'&gt;&lt;/Diagram&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Signal" image="EA\signal" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Signal$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Component" />
+</ElementType>
+<ElementType name="Start Event" image="EA\startEvent" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='Event' notes='$t' stereotype='StartEvent'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="Activity" />
+<ParentType name="Activity Partition" />
+</ElementType>
+<ElementType name="State" image="EA/state" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^State$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+<ParentType name="State Machine" />
+</ElementType>
+<ElementType name="State Machine" image="EA\stateMachine" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^StateMachine$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+</ElementType>
+<ElementType name="Statechart Diagram" image="EA/statechartDiagram" elementClass="Section" analysisTree="&lt;Diagram guid='$u' name='$l' type='Statechart' notes='$t' image='$g'&gt;&lt;/Diagram&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="StateNode" image="EA/stateNode" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^StateNode$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+<ParentType name="State" />
+<ParentType name="Activity Partition" />
+<ParentType name="State Machine" />
+</ElementType>
+<ElementType name="Timing Diagram" image="EA/timingDiagram" elementClass="Section" analysisTree="&lt;Diagram guid='$u' image='$g' name='$l' type='Timing' notes='$t'&gt;&lt;/Diagram&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Use Case Diagram" image="EA/useCaseDiagram" elementClass="Section" analysisTree="&lt;Diagram guid='$u' name='$l' type='Use Case' notes='$t' image='$g'&gt;&lt;/Diagram&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="UseCase" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="UseCase" image="EA/useCase" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^UseCase$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Requirement" image="EA/requirement" printExpression="$l" elementClass="Requirement" analysisTree="&lt;Element guid='$u' name='$l' type='Requirement' notes='$t' stereotype='$!^from'&gt;&lt;/Element&gt;">
+</ElementType>
+<ElementType name="Element Requirement" elementClass="Requirement" analysisTree="&lt;Requirement name='$i' notes='$t'&gt;&lt;/Requirement&gt;">
+</ElementType>
+<ElementType name="Implicit Requirement" printExpression="$l" elementClass="Requirement" analysisTree="&lt;TagRef&gt;&lt;/TagRef&gt;">
+</ElementType>
+<ElementType name="External Cover" elementClass="CoverLink" analysisTree="&lt;Connector supplierName='$i' supplierStereotype='^from' guid='$u'&gt;&lt;/Connector&gt;">
+</ElementType>
+<ElementType name="Trace" image="EA/trace" elementClass="CoverLink" analysisTree="&lt;Connector supplierGuid='$i' stereotype='trace' supplierStereotype='$!^from' guid='$u'&gt;&lt;/Connector&gt;">
+</ElementType>
+<ElementType name="Alias" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Element type='Requirement' stereotype='$!^from'&gt;&lt;Attribute alias='$i'&gt;&lt;/Attribute&gt;&lt;/Element&gt;">
+</ElementType>
+<ElementType name="Difficulty" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Element type='Requirement' stereotype='$!^from'&gt;&lt;Attribute difficulty='$i'&gt;&lt;/Attribute&gt;&lt;/Element&gt;">
+</ElementType>
+<ElementType name="Phase" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Element type='Requirement' stereotype='$!^from'&gt;&lt;Attribute phase='$i'&gt;&lt;/Attribute&gt;&lt;/Element&gt;">
+</ElementType>
+<ElementType name="Priority" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Element type='Requirement' stereotype='$!^from'&gt;&lt;Attribute priority='$i'&gt;&lt;/Attribute&gt;&lt;/Element&gt;">
+</ElementType>
+<ElementType name="Status" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Element type='Requirement' stereotype='$!^from'&gt;&lt;Attribute status='$i'&gt;&lt;/Attribute&gt;&lt;/Element&gt;">
+</ElementType>
+<ElementType name="Author" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Element type='Requirement' stereotype='$!^from'&gt;&lt;Attribute author='$i'&gt;&lt;/Attribute&gt;&lt;/Element&gt;">
+</ElementType>
+<ElementType name="Version" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Element type='Requirement' stereotype='$!^from'&gt;&lt;Attribute version='$i'&gt;&lt;/Attribute&gt;&lt;/Element&gt;">
+</ElementType>
+<ElementType name="Stereotype" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Element type='Requirement' stereotype='$!^from' stereotype='$i'&gt;&lt;/Element&gt;">
+</ElementType>
+<ElementType name="TaggedValue" printExpression="$i : $l" elementClass="Attribute" isMultiple="true" analysisTree="&lt;Element stereotype='$!^from'&gt;&lt;TaggedValue guid='$u' name='$i' value='$l'&gt;$r&lt;/TaggedValue&gt;&lt;/Element&gt;">
+</ElementType>
+<ElementType name="Realization" elementClass="Link" analysisTree="&lt;Connector type='Realisation' supplierGuid='$i' guid='$u'&gt;&lt;/Connector&gt;">
+</ElementType>
+<ElementType name="DiagramObject" elementClass="Link" isIgnored="true" analysisTree="&lt;DiagramObject guid='$i'&gt;&lt;/DiagramObject&gt;">
+</ElementType>
+</DocumentType>
+</Types>

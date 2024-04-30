@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generator: reqtify -->
+
+<Project>
+<Folder name="SRS" positionX="1780" positionY="1860" positionW="800" positionH="500">
+<Document name="SRS_HSMART" positionX="1320" positionY="2370" type="VLS-P2_SRS" path="/VLS NG/00 - STD Libraries/SW Design/VCORE SW Team/HSMART7140/STD-2212-001-SRS_HSMART" reloadable="false" useIntermediateFile="true">
+<Property name="baseline" value="" />
+<Property name="profile" value="VLS_DOORS" />
+<Property name="purgeAttributes" value="1" />
+<Property name="server" value="36678@dul9-sv21868" />
+<Property name="textFormat" value="nil" />
+<Property name="uniqueID" value="432699214106267f-00055e81" />
+<DisplayInformation>
+<Column name="aversion" width="80" />
+<Column name="Last Modified On" width="120" />
+<Column name="aASIL" width="69" />
+<Column name="aTestMethod" width="103" />
+<Column name="aFullVersion" width="97" />
+<Column name="aTestAcceptance" width="125" />
+<Column name="aId" width="55" />
+<Column name="aObjectStatus" width="107" />
+<Column name="aRelease" width="191" />
+</DisplayInformation>
+</Document>
+<Document name="SRS_HSMART_Cfg" positionX="1390" positionY="2690" type="VLS-P2_SRS" path="/VLS NG/00 - STD Libraries/SW Design/VCORE SW Team/HSMART7140/STD-2212-003_SRS_HSMART_Config" reloadable="false" useIntermediateFile="true">
+<Property name="baseline" value="" />
+<Property name="profile" value="VLS_DOORS" />
+<Property name="purgeAttributes" value="1" />
+<Property name="server" value="36678@dul9-sv21868" />
+<Property name="textFormat" value="nil" />
+<Property name="uniqueID" value="432699214106267f-00055e84" />
+<DisplayInformation>
+<Column name="aversion" width="80" />
+<Column name="Last Modified On" width="120" />
+<Column name="aASIL" width="69" />
+<Column name="aTestMethod" width="103" />
+<Column name="aFullVersion" width="97" />
+<Column name="aTestAcceptance" width="125" />
+<Column name="aId" width="55" />
+<Column name="aObjectStatus" width="107" />
+<Column name="aRelease" width="191" />
+</DisplayInformation>
+</Document>
+</Folder>
+<Folder name="VTD" positionX="5040" positionY="2050" positionW="800" positionH="500">
+</Folder>
+<Folder name="ITD" positionX="5030" positionY="2750" positionW="800" positionH="500">
+<Document name="HSMART_ITD" positionX="2540" positionY="1500" type="XML_ITD_Txt" accessType="CTF_Documents" path="coverage_report.xml" absolutePath="C:\Users\oelmorad\git\proj2738_hsmart\05-Traceability\01-Project_Reqtify\coverage_report.xml">
+<Property name="documentId" value="doc1275012" />
+<Property name="documentVersion" value="Current" />
+<Property name="profile" value="CoreALM" />
+</Document>
+</Folder>
+<Folder name="UTD" positionX="4110" positionY="3790" positionW="800" positionH="500">
+<Document name="HSMART_UTD" positionX="2200" positionY="3070" type="XML_UTD_Txt" accessType="CTF_Documents" path="HSMART_TCMReport.html" absolutePath="C:\Users\oelmorad\git\proj2738_hsmart\05-Traceability\01-Project_Reqtify\HSMART_TCMReport.html">
+<Property name="documentId" value="doc1030452" />
+<Property name="documentVersion" value="Current" />
+<Property name="profile" value="CoreALM" />
+<Property name="withTableTags" value="0" />
+</Document>
+</Folder>
+<Folder name="CDD" positionX="1760" positionY="3780" positionW="800" positionH="500">
+<Document name="HSMART_CDD" positionX="2930" positionY="3100" type="SMART-TT_CDD" accessType="CTF_Documents" path="STD-2223-001-SWC_HSMART_CDD.pdf" absolutePath="C:\Users\oelmorad\git\proj2738_hsmart\05-Traceability\01-Project_Reqtify\STD-2223-001-SWC_HSMART_CDD.pdf">
+<Property name="documentId" value="doc1030449" />
+<Property name="documentVersion" value="Current" />
+<Property name="profile" value="CoreALM" />
+<DisplayInformation>
+<Column name="ReqVersion" width="95" />
+<Column name="Confidential" width="95" />
+<Column name="ReqAlloc" width="83" />
+<Column name="Title" width="60" />
+<Column name="Asil" width="56" />
+<Column name="ReqAttrib" width="84" />
+</DisplayInformation>
+</Document>
+</Folder>
+<Folder name="ITD_Increments" positionX="4160" positionY="4510" positionW="1050" positionH="500">
+<Document name="CDD_RAM" positionX="2780" positionY="2340" type="RAM_ITDINC_CDD" accessType="CTF_Documents" path="ITDINC_2_CDD_RAM.xlsx" absolutePath="C:\Users\oelmorad\git\proj2738_hsmart\05-Traceability\01-Project_Reqtify\ITDINC_2_CDD_RAM.xlsx">
+<Property name="documentId" value="doc1278581" />
+<Property name="documentVersion" value="Current" />
+<Property name="profile" value="CoreALM" />
+</Document>
+</Folder>
+<Cover outputDocument="CDD" positionX="3210" positionY="3790" annotationX="-32768" annotationY="-32768">
+<InputDocument name="UTD" />
+<InputDocument name="ITD_Increments" />
+</Cover>
+<Cover outputDocument="SRS_HSMART" positionX="3405" positionY="2305" annotationX="-32768" annotationY="-32768">
+<InputDocument name="HSMART_ITD" />
+</Cover>
+<Cover outputDocument="SRS" positionX="1760" positionY="2790" annotationX="-32768" annotationY="-32768">
+<InputDocument name="CDD" />
+</Cover>
+</Project>

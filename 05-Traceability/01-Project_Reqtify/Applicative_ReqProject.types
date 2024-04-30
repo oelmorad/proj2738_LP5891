@@ -1,0 +1,686 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generator: reqtify -->
+
+<Types>
+<DocumentType name="VLS-APP-STD_CRS" image="word" description="Example :
+I1AAFAS_163 V01 Imp: #SW  Test: #SW  SL: DRAFT DO NOT USE FOR DESIGN " convertTool="WordWithStyles" editTool="WordWithStyles" textFormat="3" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<Variable name="withBookmarks" type="boolean" label="With Bookmarks">
+</Variable>
+<Variable name="withAnnotations" type="boolean" label="With Annotations">
+</Variable>
+<Variable name="tabCellsFolding" type="boolean" label="One Cell Per Line">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Heading" guid="E5160843-CF32-4D0D-8D2F-D8C67871816D" elementClass="Section" regularExpression="^[Hh]eading (\d+)\t(?:([\d\.]+)[ \t](.*)|([^\d\n].+))$" index1="6" index2="1" index3="2" index4="1">
+</ElementType>
+<ElementType name="Macro-requirement" guid="D42C5B4C-D773-482A-8C40-FBB1B6166952" elementClass="MacroRequirement" regularExpression="\[MacroReq_([^\]]+)" endExpression="\[End_of_MacroReq\]">
+</ElementType>
+<ElementType name="Requirement" guid="197ECB0A-F31B-4F85-A378-4D6692613235" elementClass="Requirement" regularExpression="Req_ID\s+(\w*)\s+V\d*">
+<Property name="taggerIdentStyle" value="Requirement_ID" />
+<Property name="taggerIdentStyleType" value="Paragraph" />
+<Property name="taggerNumber" value="000" />
+<Property name="taggerPrefix" value="REQ_" />
+<Property name="taggerRange" value="3" />
+<Property name="taggerStyleType" value="None" />
+<Property name="taggerTextStyle" value="Requirement_Text" />
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="Req_ID\s+\w*\s+V(\d*)">
+</ElementType>
+<ElementType name="Allocation" guid="3469774E-3529-451A-A474-455A9C8CF624" printExpression="Allocation: $i" elementClass="Attribute" isMultiple="true" regularExpression="Req_Alloc\s*Imp:\s*#(\w*)">
+</ElementType>
+<ElementType name="Test" printExpression="Test: $i" elementClass="Attribute" regularExpression="Req_Alloc.*Test:\s*#(\w*)">
+</ElementType>
+<ElementType name="SafetyLevel" printExpression="Safety Level: $i" elementClass="Attribute" regularExpression="Req_Alloc.*SL:\s*(QM|ASIL\w{1})">
+</ElementType>
+<ElementType name="Status" printExpression="Status: $i" elementClass="Attribute" regularExpression="Req_Alloc.*Status:\s*(\S.*)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="\bReq_Text\t(.+?)(?=\|\d|\n)">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="VLS-APP-STD_SRS" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^[H|h]eading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^[H|h]eading 2\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+<Property name="affectSuspiciousLink" value="0" />
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^[H|h]eading 3\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^[H|h]eading 4\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="SRS_Req_Specific" elementClass="Requirement" regularExpression="^.*Req_ID\s+Req_(\w*)-V\d+">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="(?|(?:Req_Coverage\s*Covers_(\w*)\s+V\d+)|(?:Req_Coverage\s*Covers_([\S_]+_\d+)_\S+)|(?:Req_Coverage\s*Covers_(\w+)-V\d+)|(?:Req_Coverage\s*Covers_(\S+)_\d+))" index1="1" index2="5" index3="3" index4="0">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^ReqTitle\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="CheckedBy" printExpression="Checked by: $i" elementClass="Attribute" isMultiple="true" regularExpression="Req_Attribute\s+([I, V]TD)">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w+-V\d+\:(\w+)">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="(?|(?:Req_Coverage\s*Covers_\w*\s+V(\d+))|(?:Req_Coverage\s*Covers_[\S_]+_\d+_(\S+))|(?:Req_Coverage\s*Covers_\w+-V(\d+))|(?:Req_Coverage\s*Covers_\S+_(\d+)))">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="(?:ReqText\s*(.*?)\s*\|)">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="VLS-APP-STD_SrsCfg" image="excel" convertTool="ExcelWithColNumbers" editTool="Excel" intermediateFileEncoding="UTF8">
+<FileExtension value="xls" />
+<FileExtension value="xlsx" />
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="\|1\s*Req_([\s\S]+?CFG_\d+)-V\d+\s*\|2">
+</ElementType>
+<ElementType name="Covers" printExpression="Covers: $i" elementClass="CoverLink" regularExpression="\|10\s*(?|(?:Covers_(\w*)\s+V\d+)|(?:Covers_([\S_]+_\d+)_\S+)|(?:Covers_(\w+)-V\d+)|(?:Covers_(\S+)_\d+))\s*\|11" index1="1" index2="5" index3="3" index4="0">
+</ElementType>
+<ElementType name="ReqVersion" printExpression="Req version: $i" elementClass="Attribute" regularExpression="\|1\s*Req_[\s\S]+?CFG_\d+-V(\d+)\s*\|2">
+</ElementType>
+<ElementType name="Configuration Parameter Name" printExpression="Cfg Parameter: $i" elementClass="Attribute" regularExpression="\|1\s*Req_[\s\S]+?\|2\s*(Config_.*?)\s*\|3">
+</ElementType>
+<ElementType name="Default Value" printExpression="Default: $i" elementClass="Attribute" regularExpression="\|1\s*Req_[\s\S]+?\|4\s*(.*?)\s*\|5">
+</ElementType>
+<ElementType name="Minimum Value" printExpression="Min: $i" elementClass="Attribute" regularExpression="\|1\s*Req_[\s\S]+?\|6\s*(.*?)\s*\|7">
+</ElementType>
+<ElementType name="Maximum Value" printExpression="Max: $i" elementClass="Attribute" regularExpression="\|1\s*Req_[\s\S]+?\|5\s*(.*?)\s*\|6">
+</ElementType>
+<ElementType name="Resolution" printExpression="Res: $i" elementClass="Attribute" regularExpression="\|1\s*Req_[\s\S]+?\|7\s*(.*?)\s*\|8">
+</ElementType>
+<ElementType name="Type" printExpression="Type: $i" elementClass="Attribute" regularExpression="\|1\s*Req_[\s\S]+?\|8\s*(.*?)\s*\|9">
+</ElementType>
+<ElementType name="Unit" printExpression="Unit: $i" elementClass="Attribute" regularExpression="\|1\s*Req_[\s\S]+?\|9\s*(.*?)\s*\|10">
+</ElementType>
+<ElementType name="ReferenceVersion" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="\|10\s*(?|(?:Covers_\w*\s+V(\d+))|(?:Covers_[\S_]+_\d+_(\S+))|(?:Covers_\w+-V(\d+))|(?:Covers_\S+_(\d+)))\s*\|11">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="\|1\s*Req_[\s\S]+?\|3\s*(.*?)\s*\|4">
+</TerminalType>
+</DocumentType>
+<DocumentType name="VLS-APP-STD_SrsRAM" image="excel" convertTool="ExcelWithColNumbers" editTool="Excel" intermediateFileEncoding="UTF8">
+<FileExtension value="xls" />
+<FileExtension value="xlsx" />
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="\|2\s*Req_(\w+)-V\d+\s*\|3">
+</ElementType>
+<ElementType name="CoversSTD" printExpression="CoversSTD" elementClass="CoverLink" regularExpression="\|3([\s\S]+?)\|4" subExpression="(?|(?:Covers_(\w*)\s+V\d+)|(?:Covers_([\S_]+_\d+)_\S+)|(?:Covers_(\w+)-V\d+)|(?:Covers_(\S+)_\d+))" index1="1" index2="5" index3="3" index4="0">
+</ElementType>
+<ElementType name="CoversProject" printExpression="CoversProject" elementClass="CoverLink" regularExpression="\|4([\s\S]+?)\|5" subExpression="(?|(?:Covers_(\w*)\s+V\d+)|(?:Covers_([\S_]+_\d+)_\S+)|(?:Covers_(\w+)-V\d+)|(?:Covers_(\S+)_\d+))" index1="1" index2="5" index3="3" index4="0">
+</ElementType>
+<ElementType name="Req Type" printExpression="Req Type = $i" elementClass="Attribute" regularExpression="\|5\s*((Generic|Specific)\s+.*)\s*\|6">
+</ElementType>
+<ElementType name="ReferenceStdVersion" printExpression="Covered STD Version: $i" elementClass="LinkAttribute" regularExpression="\|3([\s\S]+?)\|4" subExpression="(?|(?:Covers_\w*\s+V(\d+))|(?:Covers_[\S_]+_\d+_(\S+))|(?:Covers_\w+-V(\d+))|(?:Covers_\S+_(\d+)))">
+</ElementType>
+<ElementType name="ReferenceProjectVersion" printExpression="Covered Project Version: $i" elementClass="LinkAttribute" regularExpression="\|4([\s\S]+?)\|5" subExpression="(?|(?:Covers_\w*\s+V(\d+))|(?:Covers_[\S_]+_\d+_(\S+))|(?:Covers_\w+-V(\d+))|(?:Covers_\S+_(\d+)))">
+</ElementType>
+</DocumentType>
+<DocumentType name="VLS-APP-STD_CddStatic" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="CDD_Req_Generic" elementClass="Requirement" regularExpression="^.*Req_ID\s+Req_(\w*)-*">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w+-V\d+\:(\w+)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="VLS-APP-STD_CddDynamic" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^Heading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^Heading 2\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^Heading 3\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^Heading 4\t(?:([\d\.]+)\s(.+)|(\D.+))$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="CDD_Req_Generic" elementClass="Requirement" regularExpression="^.*ReqID\s+Req_(\w*)-*">
+</ElementType>
+<ElementType name="Title" image="tdExecStatusNoRun" elementClass="Attribute" regularExpression="^Req_Title\s+(.*)$">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="ReqAttrib" image="obingactor" printExpression="Attribute: $i" elementClass="Attribute" regularExpression="^Req_Att\s+#(\w+)">
+</ElementType>
+<ElementType name="ReqAlloc" image="obingactor" printExpression="Allocation: $i" elementClass="Attribute" regularExpression="^Req_Alloc\s+#(\w+)">
+</ElementType>
+<ElementType name="Confidential" image="rhp_dodaf_contains" elementClass="Attribute" regularExpression="Req_Conf\s+(.*)$">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w+-V\d+\:(\w+)">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="^Req_Text\t(.+)$">
+</TerminalType>
+<TerminalType name="Picture" elementClass="Picture" regularExpression="&lt;Picture&lt;([\S\s]+?)&gt;Picture&gt;">
+</TerminalType>
+</DocumentType>
+<DocumentType name="VLS-APP-STD_UtdVcastXml" kind="xml" convertTool="text">
+<ElementType name="Requirement" elementClass="EntityStrict" analysisTree="&lt;para&gt;$iReq_(\w*)-*&lt;/para&gt;">
+</ElementType>
+<ElementType name="covers" elementClass="CoverLink" analysisTree="&lt;para&gt;$iCovers_(\w*)-*&lt;/para&gt;">
+</ElementType>
+</DocumentType>
+<DocumentType name="EA-CDD" kind="xml" convertTool="text" mergeOrReplaceHomonymousRequirements="1">
+<ElementType name="Requirement" elementClass="Requirement" analysisTree="&lt;UML:Dependency&gt;$i&lt;UML:ModelElement.taggedValue&gt;$i&lt;UML:TaggedValue tag='$iea_sourceName' value='$iReq_(\w*)-V\d+'&gt;$i&lt;/UML:TaggedValue&gt;&lt;/UML:ModelElement.taggedValue&gt;&lt;/UML:Dependency&gt;">
+</ElementType>
+<ElementType name="Requirement (2)" elementClass="Requirement" analysisTree="&lt;UML:ClassifierRole name='$iReq_(\w*)-V\d+'&gt;$i&lt;/UML:ClassifierRole&gt;">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" isMultiple="false" analysisTree="&lt;UML:Dependency&gt;$i&lt;UML:ModelElement.taggedValue&gt;$i&lt;UML:TaggedValue tag='$iea_targetName' value='$iCovers_(\w*)-V\d+'&gt;$i&lt;/UML:TaggedValue&gt;&lt;/UML:ModelElement.taggedValue&gt;&lt;/UML:Dependency&gt;">
+</ElementType>
+<ElementType name="Requirement Version" printExpression="Req Version: $i" elementClass="Attribute" analysisTree="&lt;UML:Dependency&gt;$i&lt;UML:ModelElement.taggedValue&gt;$i&lt;UML:TaggedValue tag='$iea_sourceName' value='$iReq_\w*-V(\d+)'&gt;$i&lt;/UML:TaggedValue&gt;&lt;/UML:ModelElement.taggedValue&gt;&lt;/UML:Dependency&gt;">
+</ElementType>
+<ElementType name="ReferenceVersion" printExpression="Covered version: $i" elementClass="LinkAttribute" analysisTree="&lt;UML:Dependency&gt;$i&lt;UML:ModelElement.taggedValue&gt;$i&lt;UML:TaggedValue tag='$iea_targetName' value='$iCovers_\w*-V(\d+)'&gt;$i&lt;/UML:TaggedValue&gt;&lt;/UML:ModelElement.taggedValue&gt;&lt;/UML:Dependency&gt;">
+</ElementType>
+</DocumentType>
+<DocumentType name="VLS-APP-STD_CddRAM" image="excel" convertTool="ExcelWithColNumbers" editTool="Excel" intermediateFileEncoding="UTF8">
+<FileExtension value="xls" />
+<FileExtension value="xlsx" />
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="\|2\s*Req_(\S+)-V\d+\s*\|3">
+</ElementType>
+<ElementType name="CoversSTD" printExpression="CoversSTD" elementClass="CoverLink" regularExpression="\|3([\s\S]+?)\|4" subExpression="(?|(?:Covers_(\S*)\s+V\d+)|(?:Covers_([\S_]+_\d+)_\S+)|(?:Covers_(\S+)-V\d+)|(?:Covers_(\S+)_\d+))">
+</ElementType>
+<ElementType name="CoversProject" printExpression="CoversProject" elementClass="CoverLink" regularExpression="\|4([\s\S]+?)\|5" subExpression="(?|(?:Covers_(\S*)\s+V\d+)|(?:Covers_([\S_]+_\d+)_\S+)|(?:Covers_(\S+)-V\d+)|(?:Covers_(\S+)_\d+))">
+</ElementType>
+<ElementType name="Req Type" printExpression="Req Type = $i" elementClass="Attribute" regularExpression="\|4\s*((Generic|Specific)\s+.*)\s*\|5">
+</ElementType>
+<ElementType name="ReferenceStdVersion" printExpression="Covered STD Version: $i" elementClass="LinkAttribute" regularExpression="\|3([\s\S]+?)\|4" subExpression="(?|(?:Covers_\w*\s+V(\d+))|(?:Covers_[\S_]+_\d+_(\S+))|(?:Covers_\w+-V(\d+))|(?:Covers_\S+_(\d+)))">
+</ElementType>
+<ElementType name="ReferenceProjectVersion" printExpression="Covered Project Version: $i" elementClass="LinkAttribute" regularExpression="\|4([\s\S]+?)\|5" subExpression="(?|(?:Covers_\w*\s+V(\d+))|(?:Covers_[\S_]+_\d+_(\S+))|(?:Covers_\w+-V(\d+))|(?:Covers_\S+_(\d+)))">
+</ElementType>
+</DocumentType>
+<DocumentType name="VLS-APP-STD_GDD" image="word" convertTool="WordWithStyles" editTool="WordWithStyles" intermediateFileEncoding="UTF8">
+<Variable name="withImages" type="boolean" label="With images">
+</Variable>
+<Variable name="withCharacterStyles" type="boolean" label="With Character styles">
+</Variable>
+<FileExtension value="doc" />
+<FileExtension value="docx" />
+<ElementType name="Title 1" elementClass="Section" regularExpression="^[H|h]eading 1\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+</ElementType>
+<ElementType name="Title 2" elementClass="Section" regularExpression="^[H|h]eading 2\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+<Property name="affectSuspiciousLink" value="0" />
+<ParentType name="Title 1" />
+</ElementType>
+<ElementType name="Title 3" elementClass="Section" regularExpression="^[H|h]eading 3\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 2" />
+</ElementType>
+<ElementType name="Title 4" elementClass="Section" regularExpression="^[H|h]eading 4\t([\d\.]+)\s(.+)$" index1="1" index2="2" index3="1" index4="0">
+<ParentType name="Title 3" />
+</ElementType>
+<ElementType name="GDD_Req_Specific" elementClass="Requirement" regularExpression="^.*Req_ID\s+Req_(\w*)-V\d+">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" regularExpression="(?|(?:Req_Coverage\s*Covers_(\w*)\s+V\d+)|(?:Req_Coverage\s*Covers_([\S_]+_\d+)_\S+)|(?:Req_Coverage\s*Covers_(\w+)-V\d+)|(?:Req_Coverage\s*Covers_(\S+)_\d+))" index1="1" index2="5" index3="3" index4="0">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="^.*Req_ID\s+Req_\w+-V\d+\:(\w+)">
+</ElementType>
+<ElementType name="ResponsibleSWC" image="info" printExpression="Responsible SWC: $i" elementClass="Attribute" regularExpression="^.*Responsible SWC\|4\s+Normal\s+(\w+)">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="(?|(?:Req_Coverage\s*Covers_\w*\s+V(\d+))|(?:Req_Coverage\s*Covers_[\S_]+_\d+_(\S+))|(?:Req_Coverage\s*Covers_\w+-V(\d+))|(?:Req_Coverage\s*Covers_\S+_(\d+)))">
+</ElementType>
+<TerminalType name="Text" elementClass="Text" regularExpression="(?:Description:\|2 Normal\s*(.*?)\s*\|)">
+</TerminalType>
+</DocumentType>
+<DocumentType name="XML_VT_AUTO" kind="xml" convertTool="text">
+<ElementType name="Features" elementClass="Section" analysisTree="&lt;Features ID='$i'&gt;$i&lt;/Features&gt;">
+</ElementType>
+<ElementType name="TestGroups" elementClass="Section" analysisTree="&lt;TestGroups ID='$i'&gt;$i&lt;/TestGroups&gt;">
+<ParentType name="Features" />
+</ElementType>
+<ElementType name="TestCases" elementClass="Section" analysisTree="&lt;TestCases ID='$i'&gt;$i&lt;/TestCases&gt;">
+<ParentType name="TestGroups" />
+</ElementType>
+<ElementType name="Requirement" elementClass="Requirement" analysisTree="&lt;TestDescription&gt;$i&lt;Objective&gt;$t&lt;/Objective&gt;&lt;Version&gt;$iReq_(\w*)-*&lt;/Version&gt;&lt;/TestDescription&gt;">
+</ElementType>
+<ElementType name="Covers" elementClass="CoverLink" analysisTree="&lt;Requirement&gt;$iCovers_P*(\w*) V\d+&lt;/Requirement&gt;">
+<Property name="affectSuspiciousLink" value="1" />
+</ElementType>
+<ElementType name="ReqVersion" printExpression="Req Version: $i" elementClass="Attribute" analysisTree="&lt;Version&gt;$iReq_\w*-V(\d*)&lt;/Version&gt;">
+</ElementType>
+<ElementType name="Result" printExpression="TestResult: $i" elementClass="Attribute" analysisTree="&lt;Result&gt;$i(\w*)&lt;/Result&gt;">
+</ElementType>
+<ElementType name="Artifact" printExpression="ArtifactID: $i" elementClass="Attribute" analysisTree="&lt;MantisId&gt;$i(\w*)&lt;/MantisId&gt;">
+</ElementType>
+<ElementType name="ReferenceVersion" printExpression="Covered version: $i" elementClass="LinkAttribute" analysisTree="&lt;Requirement&gt;$i(?|(?:Covers_\w*\s+V(\d*))|(?:Covers_\w+-V(\d+))|(?:Covers_\w+_\w+_\w+_\d+_\w+_\d+_\w+)|(?:Covers_[\D]+_\d*_(\d*))|(?:Covers_[\D]+--\d*_(\d*))|(?:Covers_\w*-V(\d+)))&lt;/Requirement&gt;">
+<Property name="affectSuspiciousLink" value="1" />
+</ElementType>
+<ElementType name="Covers (2)" elementClass="CoverLink" analysisTree="&lt;Requirement&gt;$iCovers(_\w*)&lt;/Requirement&gt;">
+<Property name="affectSuspiciousLink" value="1" />
+</ElementType>
+</DocumentType>
+<DocumentType name="VLS_DoxyCode_C_H" image="code" convertTool="Text" mergeOrReplaceHomonymousParagraphs="1">
+<Variable name="testDate" type="boolean" label="Test files date">
+</Variable>
+<MatchingFileName value="*.c" />
+<MatchingFileName value="*.h" />
+<ElementType name="File" printExpression="$l" elementClass="Section" regularExpression="^BEGIN_FILE: (.+):(.+)$" endExpression="^END_FILE: .+$">
+<ParentType name="VLS_DoxyCode_C_H" />
+</ElementType>
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="Req_(\w*)-V\d+">
+</ElementType>
+<ElementType name="Coverage" elementClass="CoverLink" regularExpression="Covers_(.+)-V">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="$t : $i" elementClass="Attribute" regularExpression="Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="Asil" printExpression="$t : $i" elementClass="Attribute" regularExpression="Req_\w*-V\d+:(\w*)">
+</ElementType>
+<ElementType name="Function Name" printExpression="$t : $i" elementClass="Attribute" regularExpression="\w+\s+(\w+_\w+)\s*\([^\)]*\)\s*{">
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" regularExpression="Covers_.+-V(\d+)">
+</ElementType>
+<ElementType name="ReferenceAsil" printExpression="Covered Asil : $i" elementClass="LinkAttribute" regularExpression="Covers_.+-V\d+\:(\w+)">
+</ElementType>
+</DocumentType>
+<DocumentType name="VLS Enterprise Architect" image="EA/ea" kind="xml" isFileBased="false" convertTool="EnterpriseArchitect" textFormat="2">
+<Variable name="withDiagrams" type="boolean" label="Capture diagrams">
+</Variable>
+<Variable name="package" label="Package">
+</Variable>
+<Variable name="ManagedInDatabase" type="boolean" label="Managed in Database">
+</Variable>
+<FileExtension value="eap" />
+<ElementType name="Package" image="EA/package" printExpression="$l" elementClass="Section" analysisTree="&lt;Package guid='$u' name='$l' notes='$t' type='^Package$'&gt;&lt;/Package&gt;">
+<ParentType name="View" />
+<ParentType name="VLS Enterprise Architect" />
+</ElementType>
+<ElementType name="Class" image="EA/class" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^(Class|Enumeration|DataType)$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Component" />
+</ElementType>
+<ElementType name="Actor" image="EA/actor" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Actor$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Use Case" image="EA/useCase" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^UseCase$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Decision" image="EA/decision" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Decision$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+<ParentType name="Activity Partition" />
+<ParentType name="Interruptible Activity Region" />
+<ParentType name="State Machine" />
+</ElementType>
+<ElementType name="StateNode" image="EA/stateNode" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^StateNode$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+<ParentType name="State" />
+<ParentType name="Activity Partition" />
+<ParentType name="State Machine" />
+</ElementType>
+<ElementType name="Object" image="EA/object" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Object$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+<ParentType name="Collaboration" />
+<ParentType name="Activity Partition" />
+<ParentType name="Screen" />
+<ParentType name="Component" />
+<ParentType name="Interaction" />
+</ElementType>
+<ElementType name="Interface" image="EA/interface" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Interface$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+<ParentType name="Component" />
+</ElementType>
+<ElementType name="GUIElement" image="EA/guiElement" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^GUIElement$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Screen" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Screen" image="EA/screen" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Screen$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="State" image="EA/state" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^State$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+<ParentType name="State Machine" />
+</ElementType>
+<ElementType name="State Machine" image="EA\stateMachine" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^StateMachine$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="Class" />
+</ElementType>
+<ElementType name="Node" image="EA/node" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Node$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Component" image="EA/component" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Component$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Collaboration" image="EA/collaboration" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Collaboration$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Sequence" image="EA/sequence" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Sequence$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+<ParentType name="Interaction" />
+</ElementType>
+<ElementType name="Feature" image="EA/feature" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Feature$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+<ParentType name="Artifact" />
+</ElementType>
+<ElementType name="Artifact" image="EA/artifact" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Artifact$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+<ParentType name="Activity Partition" />
+</ElementType>
+<ElementType name="Interruptible Activity Region" image="EA/interruptibleActivityRegion" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^InterruptibleActivityRegion$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Activity Partition" image="EA/activityPartition" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^ActivityPartition$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Activity" image="EA/activity" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Activity$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity Partition" />
+<ParentType name="Interruptible Activity Region" />
+<ParentType name="Class" />
+</ElementType>
+<ElementType name="Action" image="EA/action" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Action$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+<ParentType name="Activity Partition" />
+<ParentType name="Interruptible Activity Region" />
+</ElementType>
+<ElementType name="ActionPin" image="EA/actionPin" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^ActionPin$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+<ParentType name="Action" />
+</ElementType>
+<ElementType name="ObjectNode" image="EA/objectNode" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^ObjectNode$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Part" image="EA/part" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Part$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+<ParentType name="Class" />
+</ElementType>
+<ElementType name="Interaction" image="EA/interaction" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Interaction$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="Class" />
+</ElementType>
+<ElementType name="Analysis Diagram" image="EA/analysisDiagram" elementClass="Section" analysisTree="&lt;Diagram guid='$u' name='$l' type='Analysis' notes='$t' image='$g'&gt;&lt;/Diagram&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+<ParentType name="Screen" />
+</ElementType>
+<ElementType name="Activity Diagram" image="EA/activityDiagram" elementClass="Section" analysisTree="&lt;Diagram guid='$u' name='$l' type='Activity' notes='$t' image='$g'&gt;&lt;/Diagram&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Custom Diagram" image="EA/customDiagram" elementClass="Section" analysisTree="&lt;Diagram guid='$u' name='$l' type='Custom' notes='$t' image='$g'&gt;&lt;/Diagram&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Communication Diagram" image="EA/communicationDiagram" elementClass="Section" analysisTree="&lt;Diagram guid='$u' name='$l' type='Collaboration' notes='$t' image='$g'&gt;&lt;/Diagram&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Sequence Diagram" image="EA/sequenceDiagram" elementClass="Section" analysisTree="&lt;Diagram guid='$u' name='$l' type='Sequence' notes='$t' image='$g'&gt;&lt;/Diagram&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+<ParentType name="Class" />
+</ElementType>
+<ElementType name="Statechart Diagram" image="EA/statechartDiagram" elementClass="Section" analysisTree="&lt;Diagram guid='$u' name='$l' type='Statechart' notes='$t' image='$g'&gt;&lt;/Diagram&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Component Diagram" image="EA/componentDiagram" elementClass="Section" analysisTree="&lt;Diagram guid='$u' name='$l' type='Component' notes='$t' image='$g'&gt;&lt;/Diagram&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Deployment Diagram" image="EA/deploymentDiagram" elementClass="Section" analysisTree="&lt;Diagram guid='$u' name='$l' type='Deployment' notes='$t' image='$g'&gt;&lt;/Diagram&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Use Case Diagram" image="EA/useCaseDiagram" elementClass="Section" analysisTree="&lt;Diagram guid='$u' name='$l' type='Use Case' notes='$t' image='$g'&gt;&lt;/Diagram&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Logical Diagram" image="EA/logicalDiagram" elementClass="Section" analysisTree="&lt;Diagram guid='$u' name='$l' type='Logical' notes='$t' image='$g'&gt;&lt;/Diagram&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Attribute" image="EA/attribute" elementClass="Section" analysisTree="&lt;Attribute guid='$u' name='$l' notes='$t'&gt;&lt;/Attribute&gt;">
+<ParentType name="Node" />
+<ParentType name="Class" />
+<ParentType name="Actor" />
+<ParentType name="Use Case" />
+<ParentType name="Object" />
+<ParentType name="Interface" />
+<ParentType name="Activity" />
+<ParentType name="Component" />
+<ParentType name="Device" />
+</ElementType>
+<ElementType name="Method" image="EA/method" elementClass="Section" analysisTree="&lt;Method guid='$u' name='$l' notes='$t'&gt;&lt;/Method&gt;">
+<ParentType name="Node" />
+<ParentType name="Class" />
+<ParentType name="Actor" />
+<ParentType name="Use Case" />
+<ParentType name="Object" />
+<ParentType name="Interface" />
+<ParentType name="Component" />
+<ParentType name="Device" />
+<ParentType name="State" />
+</ElementType>
+<ElementType name="Model" image="EA/model" printExpression="$l" elementClass="Section" analysisTree="&lt;Package guid='$u' name='$l' notes='$t' type='Model'&gt;&lt;/Package&gt;">
+</ElementType>
+<ElementType name="View" image="EA/view" printExpression="$l" elementClass="Section" analysisTree="&lt;Package guid='$u' name='$l' notes='$t' type='View'&gt;&lt;/Package&gt;">
+<ParentType name="Model" />
+<ParentType name="VLS Enterprise Architect" />
+</ElementType>
+<ElementType name="Object Diagram" image="EA/objectDiagram" elementClass="Section" analysisTree="&lt;Diagram guid='$u' image='$g' name='$l' type='Object' notes='$t'&gt;&lt;/Diagram&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Composite Diagram Diagram" image="EA/compositeStructureDiagram" elementClass="Section" analysisTree="&lt;Diagram guid='$u' image='$g' name='$l' type='CompositeStructure' notes='$t'&gt;&lt;/Diagram&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Package Diagram" image="EA/packageDiagram" elementClass="Section" analysisTree="&lt;Diagram guid='$u' image='$g' name='$l' type='Package' notes='$t'&gt;&lt;/Diagram&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="InteractionOverview Diagram" image="EA/interactionOverview" elementClass="Section" analysisTree="&lt;Diagram guid='$u' image='$g' name='$l' type='InteractionOverview' notes='$t'&gt;&lt;/Diagram&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Timing Diagram" image="EA/timingDiagram" elementClass="Section" analysisTree="&lt;Diagram guid='$u' image='$g' name='$l' type='Timing' notes='$t'&gt;&lt;/Diagram&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Signal" image="EA\signal" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Signal$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Component" />
+</ElementType>
+<ElementType name="Device" image="EA/node" elementClass="Section" analysisTree="&lt;Element guid='$u' name='$l' type='^Device$' notes='$t'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+<ParentType name="View" />
+<ParentType name="Use Case" />
+<ParentType name="Activity" />
+</ElementType>
+<ElementType name="Issue" image="testStand_RefError" elementClass="Section" analysisTree="&lt;Element guid='$u' type='Issue' notes='$t' name='$i'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+</ElementType>
+<ElementType name="Testing" image="testStand" elementClass="Section" analysisTree="&lt;Element guid='$u' type='Change' notes='$t' stereotype='Testing' name='$i'&gt;&lt;/Element&gt;">
+<ParentType name="Package" />
+</ElementType>
+<ElementType name="Requirement" image="EA/requirement" elementClass="Requirement" analysisTree="&lt;Element guid='$u' type='Requirement' notes='$t' stereotype='$!^from' name='$i(.*)'&gt;&lt;/Element&gt;">
+</ElementType>
+<ElementType name="GEEDS_DesignRule" image="EA/requirement" elementClass="Requirement" analysisTree="&lt;Element guid='$u' type='Requirement' notes='$t' stereotype='^fromGEEDS' name='$i(.*)'&gt;&lt;/Element&gt;">
+</ElementType>
+<ElementType name="External Cover" elementClass="CoverLink" analysisTree="&lt;Connector supplierName='$i' supplierStereotype='^from' stereotype='Covers' guid='$u'&gt;&lt;/Connector&gt;">
+</ElementType>
+<ElementType name="Internal Cover" image="EA/trace" elementClass="CoverLink" analysisTree="&lt;Connector stereotype='Covers' supplierStereotype='$!^from' guid='$u' supplierGuid='$i'&gt;&lt;/Connector&gt;">
+</ElementType>
+<ElementType name="Internal Assigned" image="stm_information_flow" elementClass="CoverLink" analysisTree="&lt;Connector stereotype='Assign' supplierStereotype='$!^from' guid='$u' supplierGuid='$i'&gt;&lt;/Connector&gt;">
+</ElementType>
+<ElementType name="External Assigned" image="partiel" elementClass="CoverLink" analysisTree="&lt;Connector supplierName='$i' supplierStereotype='^from' stereotype='Assign' guid='$u'&gt;&lt;/Connector&gt;">
+<Property name="affectSuspiciousLink" value="0" />
+</ElementType>
+<ElementType name="Req version" image="info" printExpression="$t : $i" elementClass="Attribute" analysisTree="&lt;Element type='Requirement' stereotype='$!^from' name='$i(.*)'&gt;&lt;/Element&gt;">
+<ParentType name="Requirement" />
+</ElementType>
+<ElementType name="ReferenceVersion" image="rhp_associationEnd" printExpression="Covered version: $i" elementClass="LinkAttribute" analysisTree="&lt;Connector name='$i' stereotype='Covers'&gt;&lt;/Connector&gt;">
+</ElementType>
+<ElementType name="AssignedVersion" image="rhp_associationEnd" printExpression="Assigned version: $i" elementClass="LinkAttribute" analysisTree="&lt;Connector stereotype='Assign' name='$i'&gt;&lt;/Connector&gt;">
+</ElementType>
+</DocumentType>
+<DocumentType name="VLS-APP-STD_UTD" image="document" convertTool="Text" editTool="Text">
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="tenu(\w*).(\w*)">
+</ElementType>
+<ElementType name="Reference" elementClass="CoverLink" regularExpression="Covers_Req_(VLS_RL_CDD_\w*)-V\d+">
+</ElementType>
+<ElementType name="ReqVersion" image="info" printExpression="Req version: $i" elementClass="Attribute" regularExpression="Req_\w*-V(\d+)">
+</ElementType>
+<ElementType name="Result" printExpression="TestResult: $i" elementClass="Attribute" regularExpression="&quot;#CCFFCC&quot;&gt;(\w+)&amp;#160;\d{1}&amp;#160;\/&amp;#160;\d{1}&lt;\/td&gt;&lt;td&gt;&lt;pre&gt;Covers">
+<ParentType name="Requirement" />
+<ParentType name="Requirement (2)" />
+<ParentType name="Requirement (3)" />
+<ParentType name="Requirement (4)" />
+</ElementType>
+<ElementType name="LinkAttribute" elementClass="LinkAttribute" regularExpression="^(Att_.+)$">
+</ElementType>
+<ElementType name="Requirement (2)" elementClass="Requirement" regularExpression="vid(\w*).(\w*)">
+</ElementType>
+<ElementType name="Requirement (3)" elementClass="Requirement" regularExpression="ASME(\w*).(\w*)">
+</ElementType>
+<ElementType name="Requirement (4)" elementClass="Requirement" regularExpression="enu(\w*).(\w*)">
+</ElementType>
+<ElementType name="Reference (2)" elementClass="CoverLink" regularExpression="Req_(VLS_RL_CDD_\w*)-V\d*">
+</ElementType>
+<ElementType name="Reference (4)" elementClass="CoverLink" regularExpression="Req_(1ST201350_\w*)-V\d+">
+</ElementType>
+<ElementType name="Reference (3)" elementClass="CoverLink" regularExpression="Covers_(1ST201350_\w*)-V\d+">
+</ElementType>
+</DocumentType>
+</Types>

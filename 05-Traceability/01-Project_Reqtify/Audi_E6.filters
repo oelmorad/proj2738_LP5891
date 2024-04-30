@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generator: reqtify -->
+
+<Filters>
+<Filter name="Allocation #SW" isAnalysis="true" isAnd="true" bool3="false">
+<Condition applicationClass="AbstractRequirement" operator="contains" value="#SW" receiverClass="Attribute" receiverDocumentType="CRS_Type4" receiverElementType="Allocation" />
+<Condition applicationClass="AbstractRequirement" operator="equal" value="Generic Applicable" receiverClass="Attribute" receiverElementType="Req Type" />
+</Filter>
+<Filter name="Allocation #SW EFV" isAnalysis="true" isAnd="true" bool3="false">
+<Condition applicationClass="AbstractRequirement" operator="contains" value="SW" receiverClass="Attribute" receiverDocumentType="CRS_Type4" receiverElementType="Allocation" />
+<Condition applicationClass="AbstractRequirement" operator="contains" value="SW" receiverClass="Attribute" receiverDocumentType="STI" receiverElementType="ReqAlloc" />
+<Condition applicationClass="AbstractRequirement" operator="contains" value="SW" receiverClass="Attribute" receiverDocumentType="HSI" receiverElementType="ReqAlloc" />
+<Condition applicationClass="AbstractRequirement" operator="notContains" value="N/A Out of Scope" receiverClass="Attribute" receiverDocumentType="RAM_GDD" receiverElementType="Req Type" />
+<Condition applicationClass="AbstractRequirement" operator="notContains" value="N/A Out of Scope" receiverClass="Attribute" receiverDocumentType="RAM_CDD" receiverElementType="Req Type" />
+<Condition applicationClass="AbstractRequirement" operator="notContains" value="N/A Out of Scope" receiverClass="Attribute" receiverDocumentType="RAM_HSI" receiverElementType="Req Type" />
+<Condition applicationClass="AbstractRequirement" operator="notContains" value="N/A Out of Scope" receiverClass="Attribute" receiverDocumentType="RAM_CRS" receiverElementType="Req Type" />
+<Condition applicationClass="AbstractRequirement" operator="notContains" value="N/A Out of Scope" receiverClass="Attribute" receiverDocumentType="RAM_SRS" receiverElementType="Req Type" />
+</Filter>
+<Filter name="Allocation #SW SRS EFV (ITD)" isAnalysis="true" isAnd="true" isWorkspace="true" bool3="false">
+<Condition applicationClass="AbstractRequirement" operator="equal" value="ITD" receiverClass="Attribute" receiverDocumentType="SRS_Specific" receiverElementType="CheckedBy" />
+<Condition applicationClass="AbstractRequirement" operator="isNotOfThisType" value="XReq_1ST200596" receiverClass="Requirement" receiverDocumentType="VLS Enterprise Architect" receiverElementType="GEEDS_DesignRule" />
+<Condition applicationClass="AbstractRequirement" operator="nameContains" value="Req_1ST200596" receiverClass="Requirement" receiverDocumentType="VLS Enterprise Architect" receiverElementType="Requirement" />
+</Filter>
+<Filter name="Allocation #SW SRS EFV (VTD)" isAnalysis="true" isAnd="true">
+<Condition applicationClass="AbstractRequirement" operator="contains" value="Applicable" receiverClass="Attribute" receiverDocumentType="RAM" receiverElementType="Req Type" />
+<Condition applicationClass="AbstractRequirement" operator="contains" value="VTD" receiverClass="Attribute" receiverDocumentType="SRS_Specific" receiverElementType="CheckedBy" />
+<Condition applicationClass="AbstractRequirement" operator="isTrue" value="X" receiverClass="Filter" receiverFilter="Allocation #SW EFV" />
+</Filter>
+<Filter name="New filter">
+<Condition applicationClass="AbstractRequirement" operator="equal" value="Generic Applicable" receiverClass="Attribute" receiverElementType="Req Type" />
+</Filter>
+<Filter name="Allocation #SW FFV" isAnalysis="true" isAnd="true" bool3="false">
+<Condition applicationClass="AbstractRequirement" operator="contains" value="#SW" receiverClass="Attribute" receiverDocumentType="CRS_Type4" receiverElementType="Allocation" />
+<Condition applicationClass="AbstractRequirement" operator="equal" value="Generic Applicable" receiverClass="Attribute" receiverElementType="Req Type" />
+<Condition applicationClass="AbstractRequirement" operator="contains" value="FFV" receiverClass="Attribute" receiverDocumentType="SRS_Specific" receiverElementType="Release" />
+<Condition applicationClass="AbstractRequirement" operator="nameContains" value="Req_1ST" receiverClass="Requirement" receiverDocumentType="VLS Enterprise Architect" receiverElementType="Requirement" />
+<Condition applicationClass="AbstractRequirement" operator="isNotOfThisType" value="X" receiverClass="Requirement" receiverDocumentType="VLS Enterprise Architect" receiverElementType="GEEDS_DesignRule" />
+</Filter>
+<Filter name="Release_Scope" isAnalysis="true" isAnd="true">
+<Condition applicationClass="AbstractRequirement" operator="equal" value="SW" receiverClass="Attribute" receiverDocumentType="VLS-P2_Input" receiverElementType="aImplementationAllocation" />
+<Condition applicationClass="AbstractRequirement" operator="notEqual" value="Cancelled" receiverClass="Attribute" receiverDocumentType="VLS-P2_Input" receiverElementType="aObjectStatus" />
+<Condition applicationClass="AbstractRequirement" operator="notEqual" value="B1-Samples_3" receiverClass="Attribute" receiverDocumentType="VLS-P2_Input" receiverElementType="aRelease" />
+<Condition applicationClass="AbstractRequirement" operator="notEqual" value="To define" receiverClass="Attribute" receiverDocumentType="VLS-P2_Input" receiverElementType="aRelease" />
+<Condition applicationClass="AbstractRequirement" operator="notEqual" value="B2-samples" receiverClass="Attribute" receiverDocumentType="VLS-P2_SRS_1" receiverElementType="aRelease" />
+<Condition applicationClass="AbstractRequirement" operator="notEqual" value="B1-Sample" receiverClass="Attribute" receiverDocumentType="VLS-P2_SRS_1" receiverElementType="aRelease" />
+<Condition applicationClass="AbstractRequirement" operator="notEqual" value="Cancelled" receiverClass="Attribute" receiverDocumentType="VLS-P2_SRS_1" receiverElementType="aRelease" />
+<Condition applicationClass="AbstractRequirement" operator="notEqual" value="B2-samples" receiverClass="Attribute" receiverDocumentType="VLS-P2_Input" receiverElementType="aRelease" />
+<Condition applicationClass="AbstractRequirement" operator="notEqual" value="B1-Samples" receiverClass="Attribute" receiverDocumentType="VLS-P2_Input" receiverElementType="aRelease" />
+<Condition applicationClass="AbstractRequirement" operator="isNotEmpty" value="X" receiverClass="Attribute" receiverDocumentType="VLS-P2_Input" receiverElementType="aRelease" />
+<Condition applicationClass="AbstractRequirement" operator="notEqual" value="B-Sample" receiverClass="Attribute" receiverDocumentType="VLS-P2_SRS_1" receiverElementType="aRelease" />
+<Condition applicationClass="AbstractRequirement" operator="isNotEmpty" value="X" receiverClass="Attribute" receiverDocumentType="VLS-P2_SRS_1" receiverElementType="aRelease" />
+<Condition applicationClass="AbstractRequirement" operator="notEqual" value="B1-Samples" receiverClass="Attribute" receiverDocumentType="VLS-P2_SRS_1" receiverElementType="aRelease" />
+<Condition applicationClass="AbstractRequirement" operator="notEqual" value="B1-Samples_X" receiverClass="Attribute" receiverDocumentType="VLS-P2_SRS_1" receiverElementType="aRelease" />
+<Condition applicationClass="AbstractRequirement" operator="equal" value="ITD" receiverClass="Attribute" receiverDocumentType="VLS-P2_SRS_1" receiverElementType="aTestMethod" />
+<Condition applicationClass="AbstractRequirement" operator="notEqual" value="B1-Samples_3" receiverClass="Attribute" receiverDocumentType="VLS-P2_SRS_1" receiverElementType="aRelease" />
+</Filter>
+</Filters>

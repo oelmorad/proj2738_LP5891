@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generator: reqtify -->
+
+<Types>
+<DocumentType name="UTD_XML" kind="xml" convertTool="text">
+<ElementType name="Requirement" elementClass="EntityStrict" analysisTree="&lt;para&gt;$iReq_(\w*)-*&lt;/para&gt;">
+</ElementType>
+<ElementType name="covers" elementClass="CoverLink" analysisTree="&lt;para&gt;$iCovers_(\w*)-*&lt;/para&gt;">
+</ElementType>
+</DocumentType>
+<DocumentType name="UTD_Cunit" kind="xml" convertTool="text">
+<ElementType name="Requirement" elementClass="EntityStrict" analysisTree="&lt;ID&gt;$i(\w*)&lt;/ID&gt;">
+</ElementType>
+<ElementType name="covers" elementClass="CoverLink" analysisTree="&lt;REQUIREMENTS&gt;$iCovers_(\w*)-*&lt;/REQUIREMENTS&gt;">
+</ElementType>
+</DocumentType>
+<DocumentType name="UTD_VCast_XML" kind="xml" convertTool="text">
+<ElementType name="Requirement" elementClass="Requirement" analysisTree="&lt;td&gt;$iReq_(\w*)-*&lt;/td&gt;">
+</ElementType>
+<ElementType name="covers" elementClass="CoverLink" analysisTree="&lt;pre&gt;$iCovers_(.*)-V\d+&lt;/pre&gt;">
+</ElementType>
+<ElementType name="Version" printExpression="Test version: $i" elementClass="Attribute" analysisTree="&lt;entry&gt;$i&lt;informaltable&gt;$i&lt;tgroup&gt;$i&lt;tbody&gt;$i&lt;row&gt;$i&lt;entry&gt;$i&lt;para&gt;$i&amp;quot;Req_\w*-V(\d+)&lt;/para&gt;&lt;/entry&gt;&lt;/row&gt;&lt;/tbody&gt;&lt;/tgroup&gt;&lt;/informaltable&gt;&lt;/entry&gt;">
+</ElementType>
+<ElementType name="ReferenceVersion" printExpression="Covered version: $i" elementClass="LinkAttribute" analysisTree="&lt;para&gt;$iCovers_.*-V(\d+)&lt;/para&gt;">
+</ElementType>
+</DocumentType>
+<DocumentType name="UTD_VCast_HTML" convertTool="HTMLWithStyles" editTool="WordWithStyles">
+<FileExtension value="htm" />
+<FileExtension value="html" />
+<ElementType name="H" elementClass="Section" regularExpression="^H(\d)(?:\[^\t]+)?\t(.+)">
+</ElementType>
+<ElementType name="Requirement" elementClass="Requirement" regularExpression="Req_(\W*)-*">
+</ElementType>
+<ElementType name="Covers" printExpression="Coverage : $i" elementClass="CoverLink" regularExpression="Covers_(.+?)-V\d+">
+</ElementType>
+<ElementType name="Reference Version" printExpression="Covered Version :$i" elementClass="LinkAttribute" regularExpression="Covers_.+?-V(\d+)">
+</ElementType>
+<ElementType name="Version" printExpression="Test version :$i" elementClass="Attribute" regularExpression="Req_\w*-V(\d+)">
+</ElementType>
+</DocumentType>
+</Types>
