@@ -29,7 +29,7 @@
 #include "LP5891_priv.h"
 #include "LP5891_cfg.h"
 
-//#include "Rte_HDRV.h"
+//#include "Rte_LP5891.h"
 //#include "HFIC.h"  
 //#include "HFIC_IoHwAb.h"
 

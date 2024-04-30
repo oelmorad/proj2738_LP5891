@@ -75,7 +75,7 @@
  *   @startuml
  *   title Function main sequence
  *      boundary SMIC
- *      SMIC -> HDRV : LP5891_vidInit
+ *      SMIC -> LP5891 : LP5891_vidInit
  *   @enduml
  */
 void LP5891_vidInit(void)

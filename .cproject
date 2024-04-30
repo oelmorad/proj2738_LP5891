@@ -31,7 +31,7 @@
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
-		<project id="SWC_HDRV.com.valeo.sdk.toolchains.iar.rl78.exe.501562734" name="Executable (VLS)" projectType="com.valeo.sdk.toolchains.iar.rl78.exe"/>
+		<project id="SWC_LP5891.com.valeo.sdk.toolchains.iar.rl78.exe.501562734" name="Executable (VLS)" projectType="com.valeo.sdk.toolchains.iar.rl78.exe"/>
 	</storageModule>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
