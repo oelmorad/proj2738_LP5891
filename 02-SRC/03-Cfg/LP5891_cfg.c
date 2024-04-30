@@ -25,13 +25,14 @@
 /* ************************************************************************** */
 /* ************************ HEADER FILES INCLUDES **************************  */ 
 /* ************************************************************************** */
-#include "LBTY_int.h"
+#include "BSW_cfg.h"
+
+#include "LFIC_LP5891_cfg.h"
+#include "MFIC_LP5891_cfg.h"
+#include "HFIC_LP5891_cfg.h"
+
 #include "LP5891_priv.h"
 #include "LP5891_cfg.h"
-
-//#include "Rte_LP5891.h"
-//#include "HFIC.h"  
-//#include "HFIC_IoHwAb.h"
 
 /* ************************************************************************** */
 /* ********************** TYPE_DEF/STRUCT/ENUM SECTION ********************** */

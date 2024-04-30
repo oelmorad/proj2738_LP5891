@@ -59,7 +59,10 @@
 void LP5891_vidInit(void);
 
 
+void LP5891_vidRunMgmt(void);
 
+
+void LP5891_vidConfJobEndNotif(u16 u8SgntrCpy, LBTY_tenuErrorStatus enuErrStat);
 
 #endif /* LP5891_INT_H */
 /* *********************** E N D (LP5891_int.h) *************************** */

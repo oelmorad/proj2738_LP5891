@@ -57,7 +57,7 @@
 
 /** \brief \DESIGNER_START DET module guard \DESIGNER_END
  *   \details \DESIGNER_START Type u8 / Range [LDEM_u8DET_USED, LDEM_u8DET_NOT_USED] / Resolution NA / Unit [NA] \DESIGNER_END */
-// #define LDEM_u8DET_ENABLE   0x55
+#define LDEM_u8DET_ENABLE   0x55
 
 /* ************************************************************************** */
 /* ***************************** CONST SECTION ****************************** */

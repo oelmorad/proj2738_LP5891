@@ -18,11 +18,15 @@
 /* all rights reserved                                                       */
 /*                                                                           */
 /*****************************************************************************/
+#include "BSW_cfg.h"
+
 #include "LBTY_int.h"
-
-
 #include "SDET_int.h"
 
+
+#include "HDIO_int.h"
+#include "HPWM_int.h"
+#include "HSPM_int.h"
 
 void  SDET_vidReportError
 (u16 ModuleID, u8 PltfID, u8 ApiId, u8 ErrorId)
@@ -32,9 +36,42 @@ void  SDET_vidReportError
 
 
 
+LBTY_tenuErrorStatus HDIO_enuSetOutputState(u8 u8OutputIdCpy, u8 u8SigStateCpy)
+{
+
+    return 0 ;
+}
+
+
+
+LBTY_tenuErrorStatus HPWM_enuSetOutDutyCycle (u8 u8ChannelCpy, u16 u16DutyCycleCpy)
+{
+
+    return 0 ;
+}
 
 
 
 
+LBTY_tenuErrorStatus
+HSPM_enuSpiJobRqst(
+    /* !Comment : Channel ID                                                  */
+    u8 u8ChannelIdCpy             ,
+    /* !Comment : User TX Buffer                                              */
+    u16* pu16UsrTxBuffCpy         ,
+    /* !Comment : User RX Buffer                                              */
+    u16* pu16UsrRecvBuffCpy       ,
+    /* !Comment : Job Length (No of Frames)                                   */
+    u8 u8JobLengthCpy             ,
+    /* !Comment : User Job Start Call Back Notification Function                */
+    tpfvidHspmUsrJobCallBck pfUsrJobStartNotfCpy,
+    /* !Comment : User Job End Call Back Notification Function                */
+    tpfvidHspmUsrJobCallBck pfUsrJobEndNotfCpy,
+    /* !Comment : User Call Back Signature                                    */
+    u16 u16UsrSgntrCpy
+)
+{
 
+    return 0 ;
+}
 

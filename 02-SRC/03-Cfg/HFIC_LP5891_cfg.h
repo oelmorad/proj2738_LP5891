@@ -36,7 +36,6 @@
 /* ************************************************************************** */
 /* ************************ HEADER FILES INCLUDES **************************  */
 /* ************************************************************************** */
-#include "BSW_cfg.h"
 
 /* ************************************************************************** */
 /* ************************* TYPE_DEF/STRUCT SECTION ************************ */
@@ -46,10 +45,13 @@
 /* ************************** MACRO/DEFINE SECTION ************************** */
 /* ************************************************************************** */
 
-
+#include "BSW_cfg.h"
 
 
 #ifdef BSW_HDIO
+
+#include "HDIO_int.h"
+
 /** \brief \DESIGNER_START  HDIO On Value used for Set high value on the output pin    \DESIGNER_END
  *   \details \DESIGNER_START Type u8 / Range [0-1] / Resolution 1 / Unit :NA \DESIGNER_END*/
 #define LP5891_u8HDIO_DIGITAL_ON           ((u8)1)
@@ -60,7 +62,7 @@
 
 /* ***************************** HFIC Interfaces ******************************/
 /** \brief \DESIGNER_START Macro used  for calling  SetOutDigitalState function from HDIO components   \DESIGNER_END*/
-#define  LP5891_enuHDIOSetOutDigitalState          stb_enuSetOutputState
+#define  LP5891_enuHDIOSetOutDigitalState          HDIO_enuSetOutputState
 
 /* ************************** End HFIC Interfaces *****************************/
 #endif
@@ -69,12 +71,33 @@
 
 #ifdef BSW_HPWM
 
+#include "HPWM_int.h"
+
 /* ***************************** HFIC Interfaces ******************************/
 /** \brief \DESIGNER_START Macro used  for calling  HPWM_enuSetOutDutyCycle function from HPWM components   \DESIGNER_END*/
-#define  LP5891_enuHPWMSetOutDUTY          stb_enuSetOutDutyCycle
+#define  LP5891_enuHPWMSetOutDUTY          HPWM_enuSetOutDutyCycle
 
 /* ************************** End HFIC Interfaces *****************************/
 #endif
+
+
+
+#ifdef BSW_HSPM
+
+#include "HSPM_int.h"
+
+/* ***************************** HFIC Interfaces ******************************/
+/** \brief \DESIGNER_START Macro used  for calling  HSPM_enuSpiJobRqst function from HPWM components   \DESIGNER_END*/
+#define  LP5891_enuHspmSpiWrReq          HSPM_enuSpiJobRqst
+
+/* ************************** End HFIC Interfaces *****************************/
+#endif
+
+
+
+
+
+
 
 
 /* ************************************************************************** */

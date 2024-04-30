@@ -1,7 +1,7 @@
 /******************************************************************************/
 /* !Layer           : Hardware abstraction layer (HAL)                        */
 /*                                                                            */
-/* !Component       : HSPM_priv.h                                              */
+/* !Component       : HSPM_int.h                                              */
 /* !Description     : SPI Manager                                             */
 /* !Module          : HSPM                                                    */
 /* !Revision        : 1.0                                                     */
@@ -19,19 +19,23 @@
 /* !Vendor          :                                                         */
 /*                                                                            */
 /* !Coding language : C                                                       */
-/* !Project         : STD		                                              */
-/* !Target          : STD							                          */
+/* !Project         : STD                                                     */
+/* !Target          : STD                                                     */
 /*                                                                            */
 /* !COPYRIGHT 2015 VALEO LIGHTING SYSTEM                                      */
 /*  all rights reserved                                                       */
 /*                                                                            */
-/******************************************************************************/
 /* MODIFICATION LOG :                                                         */
-/*                      Ahmed abdelmageed  6/11/2018   Added job start user   */
-/*                                                     notification callback  */
-/* Soha Wagdy  --  13/ 1 /2019 -- Update code after applying MISRA            */
-/*             --              -- issues remarks                              */
-/* Soha Wagdy  --  02/06/2020  -- Add safety runnable calls                   */
+/*    Author   --     Date    --          Modification                        */
+/* Ahmed abdelmageed                                                          */
+/*                 06/11/2018     Added job start user notification callback  */
+/* Soha Wagdy      13/ 1 /2019    Update code after applying MISRA            */
+/*             --                 issues remarks                              */
+/* Ahmed Abdelmageed                                                          */
+/*                 03/03/2019     Update argument name of type                */
+/*                                'tpfvidHspmMcalVlsCallBck' to match the     */
+/*                                function HSPM_vidMgrJobEndNotf [artf399069] */
+/* Soha Wagdy       |  10/12/2019   | Fix Mandatory KL issues                 */
 /******************************************************************************/
 /*                                                                            */
 /* !Designed by     : Mohamed MAGDY                    !Date : 14/06/2015     */
@@ -43,60 +47,40 @@
  ******************************************************************************/
 
 
-#ifndef HSPM_PRIV_H
-#define HSPM_PRIV_H
+#ifndef HSPM_INT_H
+#define HSPM_INT_H
 
 /******************************************************************************/
 /************************** Header Files Inclusion ****************************/
-/******************************************************************************/
-#include "HSPM_cfg.h"
+// #include "HSPM_cfg.h"
 
 /******************************************************************************/
 /******************************** Zone Typedef ********************************/
 /******************************************************************************/
 
+
 /******************************************************************************/
-/*!Comment  : HSPM Job Queue Type                                             */
+/*!Comment  : MCAL Job End Call Back Function Type                            */
 /*!Trace_To : Covers_                                                         */
 /******************************************************************************/
-typedef struct
-{
-  /* !Comment : Channel ID                                                    */
-  u8 u8ChannelId;
-  /* !Comment : User TX Buffer                                                */
-  u16* pu16UsrTxBuff;
-  /* !Comment : User RX Buffer                                                */
-  u16* pu16UsrRecvBuff;
-  /* !Comment : Job Length (No of Frames)                                     */
-  u8 u8JobLength;
-  /* !Comment : User Job Start Call Back Notification Function                */
-  tpfvidHspmUsrJobCallBck pfUsrJobStartNotf;
-  /* !Comment : User Job End Call Back Notification Function                  */
-  tpfvidHspmUsrJobCallBck pfUsrJobEndNotf;
-  /* !Comment : User Call Back Argument (User Signature)                      */
-  u16 u16UsrSgntr;
+#ifdef AUTOSAR_USED
 
-}
-tstrHspmJobQueue;
+typedef void (*tpfvidHspmMcalAutsrCallBck ) (void);
 
+#else
+
+typedef void (*tpfvidHspmMcalVlsCallBck ) (LBTY_tenuErrorStatus enuJobStatusCpy);
+
+#endif
 
 /******************************************************************************/
-/*!Comment  : HSPM Manager Data Type                                          */
+/*!Comment  : User Job End Call Back Function Type                            */
 /*!Trace_To : Covers_                                                         */
 /******************************************************************************/
-typedef struct
-{
-  /* !Comment : Number of Job in requested in the Queue                       */
-  u8 u8JobQueueCtr;
-  /* !Comment : Current Job Handled in the Queue                              */
-  u8 u8JobQueueIndx;
-  /* !Comment : Send Tries counter represents the number of tries to re-send a
-   *            failed job.                                                   */
-  u8 u8TxRetryCtr;
-  /* !Comment : HSPM Manager Working Status                                   */
-  LBTY_tenuWorkingStatus enuStatus;
-}
-tstrHspmManagerData;
+typedef
+    void (*tpfvidHspmUsrJobCallBck )
+          (u16 u16UsrSgntrCpy , LBTY_tenuErrorStatus enuErrStat);
+
 
 /******************************************************************************/
 /********************************* Zone Macro *********************************/
@@ -106,30 +90,6 @@ tstrHspmManagerData;
 /********************************* Zone Define ********************************/
 /******************************************************************************/
 
-/******************************************************************************/
-/*!Comment  : ENTER Critical Section Macro                                    */
-/*!Trace_To : Covers_                                                         */
-/******************************************************************************/
-#ifdef AUTOSAR_USED
-#define HSPM_ENTER_CRITICAL_SEC()  SchM_Enter_HSPM_HSPM_CRITICAL_SEC()
-#else
-#define HSPM_ENTER_CRITICAL_SEC()  SFIC_vidEnterCriticalZone()
-#endif /* AUTOSAR_USED */
-/******************************************************************************/
-/*!Comment  : LEAVE Critical Section Macro                                    */
-/*!Trace_To : Covers_                                                         */
-/******************************************************************************/
-#ifdef AUTOSAR_USED
-#define HSPM_LEAVE_CRITICAL_SEC()  SchM_Exit_HSPM_HSPM_CRITICAL_SEC()
-#else
-#define HSPM_LEAVE_CRITICAL_SEC()  SFIC_vidLeaveCriticalZone()
-#endif /* AUTOSAR_USED */
-
-/******************************************************************************/
-/* !Description : Enable/Disable Check Point                                  */
-/******************************************************************************/
-#define HSPM_CP_ENABLED       1U
-#define HSPM_CP_DISABLED      0U
 
 /******************************************************************************/
 /******************************** Zone Constant *******************************/
@@ -143,23 +103,10 @@ tstrHspmManagerData;
 /******************************** Zone Variable *******************************/
 /******************************************************************************/
 
-
-
 /******************************************************************************/
 /******************************** Zone Function *******************************/
 /******************************************************************************/
 
-/******************************************************************************/
-/*!Description:                                                               */
-/*                                                                            */
-/*!Parameters : None                                                          */
-/*                                                                            */
-/*!Return     : None                                                          */
-/*                                                                            */
-/*!Trace_To   : Covers_STD                                                    */
-/*                                                                            */
-/******************************************************************************/
-static void vidStateBusy(void);
 
 /******************************************************************************/
 /*!Description:                                                               */
@@ -171,7 +118,8 @@ static void vidStateBusy(void);
 /*!Trace_To   : Covers_STD                                                    */
 /*                                                                            */
 /******************************************************************************/
-static void vidStateIdle(void);
+void HSPM_vidInit(void);
+
 
 /******************************************************************************/
 /*!Description:                                                               */
@@ -183,7 +131,24 @@ static void vidStateIdle(void);
 /*!Trace_To   : Covers_STD                                                    */
 /*                                                                            */
 /******************************************************************************/
-static void vidJobScheduler (void);
+LBTY_tenuErrorStatus
+HSPM_enuSpiJobRqst(
+    /* !Comment : Channel ID                                                  */
+    u8 u8ChannelIdCpy             ,
+    /* !Comment : User TX Buffer                                              */
+    u16* pu16UsrTxBuffCpy         ,
+    /* !Comment : User RX Buffer                                              */
+    u16* pu16UsrRecvBuffCpy       ,
+    /* !Comment : Job Length (No of Frames)                                   */
+    u8 u8JobLengthCpy             ,
+    /* !Comment : User Job Start Call Back Notification Function                */
+    tpfvidHspmUsrJobCallBck pfUsrJobStartNotfCpy,
+    /* !Comment : User Job End Call Back Notification Function                */
+    tpfvidHspmUsrJobCallBck pfUsrJobEndNotfCpy,
+    /* !Comment : User Call Back Signature                                    */
+    u16 u16UsrSgntrCpy
+);
+
 
 /******************************************************************************/
 /*!Description:                                                               */
@@ -195,8 +160,31 @@ static void vidJobScheduler (void);
 /*!Trace_To   : Covers_STD                                                    */
 /*                                                                            */
 /******************************************************************************/
-static void vidClrJobQueue (void);
+void HSPM_vidRunMgr(void);
 
-#endif /* HSPM_PRIV_H */
 
-/***************************** E N D (HSPM_priv.h) ****************************/
+/******************************************************************************/
+/*!Description:                                                               */
+/*                                                                            */
+/*!Parameters : None                                                          */
+/*                                                                            */
+/*!Return     : None                                                          */
+/*                                                                            */
+/*!Trace_To   : Covers_STD                                                    */
+/*                                                                            */
+/******************************************************************************/
+void HSPM_vidMgrJobEndNotf(
+#ifdef AUTOSAR_USED
+   void
+#else
+   /* !Comment : Job Status from Invoker                                     */
+   LBTY_tenuErrorStatus enuJobStatusCpy
+#endif
+    );
+
+
+
+
+#endif /* HSPM_INT_H */
+
+/***************************** E N D (HSPM_int.h) *****************************/
