@@ -50,9 +50,19 @@
 /* ************************************************************************** */
 /* ***************************** VARIABLE SECTION *************************** */
 /* ************************************************************************** */
-static u16 au16StatTxBuffer[85];
-static u16 au16StatRxBuffer[85];
+/** \brief \DESIGNER_START Component state machine array \DESIGNER_END
+ *   \details \DESIGNER_START Type HBCK_tenuWorkingStatus / Range [enum] / Resolution enum / Unit enum \DESIGNER_END
+ */
+static LP5891_tenuWorkingStatus LP5891_aenuDrvCurrentState[LP5891_u8MAXNo_COMPONENT];
 
+static u16 LP5891_au16NoSpiFrames[LP5891_u8MAXNo_COMPONENT] = {0} ;
+static u16 LP5891_au16StatTxBuffer[LP5891_u8MAXNo_COMPONENT][85] = {0};
+static u16 LP5891_au16StatRxBuffer[LP5891_u8MAXNo_COMPONENT][85] = {0};
+
+
+
+static const u16 * LP5891_au16ImageLocation[LP5891_u8MAXNo_COMPONENT] = {0} ;
+static u16 LP5891_au16PixelsBuffer[LP5891_u8MAXNo_COMPONENT][85] = {0} ;
 
 
 /* ************************************************************************** */
@@ -94,15 +104,27 @@ void LP5891_vidInit(void)
     * title Function activity diagram
     * start */
 
+      /**: Initialize Local Variables ;*/
+   u8 LOC_u8DrvIdx = LP5891_u8MIN;
 
+   /*************************  Update All Chips Configurations ***********************/
 
+   /**: Loop on all Chips indices ;*/
+   /**  repeat*/
+   for (LOC_u8DrvIdx = LP5891_u8LoopStartIdx;
+      LOC_u8DrvIdx < LP5891_u8MAXNo_COMPONENT; LOC_u8DrvIdx++)
+   {
+      /**: Set state to uninitialized ;*/
+      LP5891_aenuDrvCurrentState[LOC_u8DrvIdx] = LP5891_UNINITIALIZED ;
 
+      LP5891_au16ImageLocation[LOC_u8DrvIdx] = LP5891_NULL ;
 
+      /**: Call init driver function   ; */
+      vidDrvInitFrame(LOC_u8DrvIdx);
 
-
-
-
-
+   }
+   /**repeat while (Driver ID (LOC_u8TempDrvIdx) < Numbers of Drivers (HSMART_u8SMART_DRV_NB) ) is (yes)
+    ->no;*/
 
    /** stop*/
    /** @enduml*/
@@ -157,16 +179,16 @@ void LP5891_vidRunMgmt(void)
     * title Function activity diagram
     * start */
 
-      u8 u8NbOfStatCmds = 0;
+   LP5891_au16NoSpiFrames[0] = 1 ;
 
    (void) LP5891_enuHDIOSetOutDigitalState( 0,  LP5891_u8HDIO_DIGITAL_OFF);
 
    (void) LP5891_enuHPWMSetOutDUTY(0,0);
 
 
-     (void) LP5891_enuHspmSpiWrReq(0,au16StatTxBuffer,
-         au16StatRxBuffer,
-         u8NbOfStatCmds,
+     (void) LP5891_enuHspmSpiWrReq(0,LP5891_au16StatTxBuffer,
+         LP5891_au16StatRxBuffer[0],
+         LP5891_au16NoSpiFrames[0],
          0,
          (tpfvidHspmUsrJobCallBck)&LP5891_vidConfJobEndNotif,
          0);
@@ -223,10 +245,240 @@ void LP5891_vidConfJobEndNotif(u16 u8SgntrCpy, LBTY_tenuErrorStatus enuErrStat)
    /** @enduml*/
 }
 
+
+
+LBTY_tenuErrorStatus LP5891_vidAnimateImage(u8 Driver, const u16 * pu16image, u16 u16image_no, u16 u16pixels_no, u16 u16animationspeed)
+{
+   /**
+    * \DESIGNER_START Define Function activity diagram \DESIGNER_END
+    * @startuml
+    * title Function activity diagram
+    * start */
+
+   /**: initialize error status to be not okay;*/
+   LBTY_tenuErrorStatus LOC_enuRetErrorStatus = LBTY_NOK;
+
+   /**: Validate Image, Check start & exit keys ;*/
+   // pu16image[u16image_no][u16pixels_no];
+
+   /** if( driver ID is valid) then(true) */
+   if (Driver < LP5891_u8MAXNo_COMPONENT)
+   {
+      /** if( Image is valid) then(true) */
+      if ((pu16image != LP5891_NULL) && ( pu16image[0] == LP5891_u16STARTKEY_PATTERN ))
+      {
+         /**: Valid Image, Set status to OK ;*/
+         LOC_enuRetErrorStatus = LBTY_OK ;
+      }/** else */
+      else 
+      {
+         /**: No Image, Set status to NULL_POINTER ;*/
+         LOC_enuRetErrorStatus = LBTY_NULL_POINTER ;
+      }/** endif */
+
+   }/** else */
+   else 
+   {
+      /**: Do nothing ;*/
+   }
+   /** endif */
+
+   /** if( Image  is valid) then(true) */
+   if ( LBTY_OK == LOC_enuRetErrorStatus )
+   {
+      /** if( Driver is IDLE ) then(true) */
+      if ( LP5891_aenuDrvCurrentState[Driver] == LP5891_IDLE)
+      {
+         /**: Load Images in local buffer to start animation  ;*/
+         LP5891_au16ImageLocation[Driver] = pu16image;
+
+      }/** else */
+      else 
+      {
+         /**: Driver busy, Set status to BUSY ;*/
+         LOC_enuRetErrorStatus = LBTY_BUSY ;
+      }/** endif */
+   }
+   /** endif */
+
+   /**: Return status ;*/
+   return LOC_enuRetErrorStatus;
+   /** stop*/
+   /** @enduml*/
+}
+
+
+
+LBTY_tenuErrorStatus LP5891_vidStopAnimation(u8 Driver) 
+{
+      /**
+    * \DESIGNER_START Define Function activity diagram \DESIGNER_END
+    * @startuml
+    * title Function activity diagram
+    * start */
+
+   /**: initialize error status to be not okay;*/
+   LBTY_tenuErrorStatus LOC_enuRetErrorStatus = LBTY_NOK;
+
+
+
+
+   /**: Return status ;*/
+     return LOC_enuRetErrorStatus;
+   /** stop*/
+   /** @enduml*/ 
+}
+
 /* ************************************************************************** */
 /* ************************* PRIVATE FUNCTION SECTION *********************** */
 /* ************************************************************************** */
+LBTY_tenuErrorStatus vidDrvInitFrame(u8 Driver)
+{
+   /**
+    * \DESIGNER_START Define Function activity diagram \DESIGNER_END
+    * @startuml
+    * title Function activity diagram
+    * start */
 
+      /**: initialize error status to be not okay;*/
+   LBTY_tenuErrorStatus LOC_enuRetErrorStatus = LBTY_NOK;
+
+   /**: Set initialization no of frames to send ;*/
+   LP5891_au16NoSpiFrames[Driver] = 1 ;
+
+
+
+
+
+
+   /**: Set state to uninitialized ;*/
+   LP5891_aenuDrvCurrentState[Driver] = LP5891_INITIALIZED ;
+
+   /**: Return status ;*/
+   return LOC_enuRetErrorStatus;
+   /** stop*/
+   /** @enduml*/
+}
+
+
+
+LBTY_tenuErrorStatus vidSendSyncFrame(u8 Driver)
+{
+   /**
+    * \DESIGNER_START Define Function activity diagram \DESIGNER_END
+    * @startuml
+    * title Function activity diagram
+    * start */
+
+   /**: initialize error status to be not okay;*/
+   LBTY_tenuErrorStatus LOC_enuRetErrorStatus = LBTY_NOK;
+   u8 loc_u8Buffer [6] ;
+
+   /**: Prepare Frame to send ;*/
+   loc_u8Buffer [0] = LP5891_u8FrameIDLEBytes ;    /**: IDLE byte ;*/
+   loc_u8Buffer [1] = LP5891_u8FrameIDLEBytes ;    /**: IDLE byte ;*/
+   loc_u8Buffer [2] = LP5891_u8FrameSTARTByte ;    /**: Start 1 bit ;*/
+   loc_u8Buffer [3] = 0xAA ;                       /**: Set highest byte address ;*/
+   loc_u8Buffer [4] = 0xF0 ;                       /**: Set lowest byte address ;*/
+   loc_u8Buffer [5] = LP5891_u8FrameENDByte ;      /**: End 18 bit ;*/
+
+      /**: Return status ;*/
+   return LOC_enuRetErrorStatus;
+   /** stop*/
+   /** @enduml*/
+}
+
+
+
+
+LBTY_tenuErrorStatus vidSendSWResetFrame(u8 Driver)
+{
+   /**
+    * \DESIGNER_START Define Function activity diagram \DESIGNER_END
+    * @startuml
+    * title Function activity diagram
+    * start */
+
+      /**: initialize error status to be not okay;*/
+   LBTY_tenuErrorStatus LOC_enuRetErrorStatus = LBTY_NOK;
+   u8 loc_u8Buffer [7] ;
+
+   /**: Prepare Frame to send ;*/
+   loc_u8Buffer [0] = LP5891_u8FrameIDLEBytes ;    /**: IDLE byte ;*/
+   loc_u8Buffer [1] = LP5891_u8FrameSTARTByte ;    /**: Start bit ;*/
+   loc_u8Buffer [2] = 0xAA ;                       /**: Set highest byte address ;*/
+   loc_u8Buffer [3] = 0x80 ;                       /**: Set lowest byte address ;*/
+   loc_u8Buffer [4] = 0xFF;                        /**: Reset command value at 0xAA80 ;*/
+   loc_u8Buffer [5] = LP5891_u8FrameENDByte ;      /**: End 18 bit ;*/
+   loc_u8Buffer [6] = LP5891_u8FrameENDByte ;      /**: End 18 bit ;*/
+
+      /**: Return status ;*/
+   return LOC_enuRetErrorStatus;
+   /** stop*/
+   /** @enduml*/
+}
+
+
+
+LBTY_tenuErrorStatus vidSendPixelFrame(u8 Driver, u32 u32pixelNo)
+{
+   /**
+    * \DESIGNER_START Define Function activity diagram \DESIGNER_END
+    * @startuml
+    * title Function activity diagram
+    * start */
+
+   /**: initialize error status to be not okay;*/
+   LBTY_tenuErrorStatus LOC_enuRetErrorStatus = LBTY_NOK;
+
+   RGB_tstrPixelData loc_enupixel = vidGetPixel(Driver, u32pixelNo) ;
+
+   /**: (3 RGB * 17 bit) + start bit + header frame ;*/
+   u8 loc_u8Buffer[10] ;
+
+   /**: Prepare Frame to send ;*/
+   loc_u8Buffer [0] = LP5891_u8FrameENDByte ;      /**: End 18 bit ;*/
+   loc_u8Buffer [1] = LP5891_u8FrameENDByte ;      /**: End 18 bit ;*/
+   loc_u8Buffer [2] = LP5891_u8FrameSTARTByte ;    /**: Start bit ;*/
+   loc_u8Buffer [3] = 0xAA ;                       /**: Set highest byte address ;*/
+   loc_u8Buffer [4] = 0x30 ;                       /**: Set lowest byte address ;*/
+   loc_u8Buffer [5] = loc_enupixel.LED_REDx.u16UniColorData ;  /**: Apply Red ;*/
+   loc_u8Buffer [6] = (!loc_enupixel.LED_REDx.u16UniColorData <<15 ) |(loc_enupixel.LED_GREENx.u16UniColorData >> 1 ) ;  /**: Apply Green ;*/
+   loc_u8Buffer [7] = ((loc_enupixel.LED_GREENx.u16UniColorData&0x1)<<15) |(!loc_enupixel.LED_GREENx.u16UniColorData <<14 ) |(loc_enupixel.LED_BLUEx.u16UniColorData >> 2 ) ;  /**: Apply Blue ;*/
+   loc_u8Buffer [8] = ((loc_enupixel.LED_BLUEx.u16UniColorData&0x3)<<14) |(!loc_enupixel.LED_BLUEx.u16UniColorData <<13 ) |( 0x1F  ) ;  /**: Apply Blue ;*/
+   loc_u8Buffer [9] = LP5891_u8FrameENDByte ;      /**: End bit ;*/
+
+   /**: Return status ;*/
+   return LOC_enuRetErrorStatus;
+   /** stop*/
+   /** @enduml*/
+}
+
+
+
+
+RGB_tstrPixelData vidGetPixel(u8 Driver, u32 u32pixelNo)
+{
+   /**
+    * \DESIGNER_START Define Function activity diagram \DESIGNER_END
+    * @startuml
+    * title Function activity diagram
+    * start */
+
+   /**: Initialize RGB Pixel colors ;*/
+   RGB_tstrPixelData loc_enupixel = {0,0,0} ;
+   u32 loc_pixelindex = (LP5891_u32STARTKEY_INDEX +(u32)1 ) + (u32)3 * u32pixelNo  ;
+
+   /**: Get RGB Pixel colors ;*/
+   loc_enupixel.LED_REDx.u16UniColorData = LP5891_au16ImageLocation[Driver][loc_pixelindex] ;
+   loc_enupixel.LED_GREENx.u16UniColorData = LP5891_au16ImageLocation[Driver][loc_pixelindex+1] ;
+   loc_enupixel.LED_BLUEx.u16UniColorData = LP5891_au16ImageLocation[Driver][loc_pixelindex+2] ; 
+   
+   /**: Return status ;*/
+   return loc_enupixel ;
+   /** stop*/
+   /** @enduml*/
+}
 
 
 

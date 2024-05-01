@@ -54,6 +54,42 @@
 /* ************************************************************************** */
 /* ************************** MACRO/DEFINE SECTION ************************** */
 /* ************************************************************************** */
+/** \brief \DESIGNER_START Number of buck components \DESIGNER_END
+ *   \details \DESIGNER_START Type: NA / Range :[0, 6] / Resolution: index \DESIGNER_END
+ */
+#define LP5891_u8MAXNo_COMPONENT   1U
+
+/** \brief \DESIGNER_START Number of buck components \DESIGNER_END
+ *   \details \DESIGNER_START Type: NA / Range :[0, 6] / Resolution: index \DESIGNER_END
+ */
+#define LP5891_u8MAX_DEVICES 1U
+
+/** \brief \DESIGNER_START Number of buck components \DESIGNER_END
+ *   \details \DESIGNER_START Type: NA / Range :[0, 6] / Resolution: index \DESIGNER_END
+ */
+#define LP5891_u8MAX_PIXELS 1U
+
+/** \brief \DESIGNER_START Max Number of frames   \DESIGNER_END
+ *   \details \DESIGNER_START Type u8 / Range [0x55] / Resolution NA / Unit NA \DESIGNER_END*/
+#define LP5891_U16IMAGE_MAX     ((u16)1)
+
+/* ************************************************************************** */
+
+
+
+/** \brief \DESIGNER_START Initial configuration  \DESIGNER_END
+ *   \details \DESIGNER_START Type: NA / Range :[0, 6] / Resolution: index \DESIGNER_END
+ */
+#define LP5891_u8SYSCFG1_INIT_VALUE         ((u8)0x90)
+#define LP5891_u8SYSCFG2_INIT_VALUE         ((u8)0x00)
+#define LP5891_u8CMWTAP_INIT_VALUE          ((u8)0x08)
+#define LP5891_u8PWMDIV_INIT_VALUE          ((u8)0x06)
+#define LP5891_u8TWLMT_INIT_VALUE           ((u8)0x9A)
+#define LP5891_u8CH1TON_INIT_VALUE          ((u8)0x07)
+#define LP5891_u8CH2TON_INIT_VALUE          ((u8)0x07)
+
+
+
 
 /* ************************************************************************** */
 /* ***************************** CONST SECTION ****************************** */

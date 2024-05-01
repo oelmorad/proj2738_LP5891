@@ -56,13 +56,18 @@
 /* ************************************************************************** */
 /* **************************** FUNCTION SECTION **************************** */
 /* ************************************************************************** */
-void LP5891_vidInit(void);
+extern void LP5891_vidInit(void);
 
 
-void LP5891_vidRunMgmt(void);
+extern void LP5891_vidRunMgmt(void);
 
 
-void LP5891_vidConfJobEndNotif(u16 u8SgntrCpy, LBTY_tenuErrorStatus enuErrStat);
+extern void LP5891_vidConfJobEndNotif(u16 u8SgntrCpy, LBTY_tenuErrorStatus enuErrStat);
+
+
+extern LBTY_tenuErrorStatus LP5891_vidAnimateImage(u8 Driver, const u16 * pu16image, u16 u16image_no, u16 u16pixels_no,u16 u16animationspeed) ;
+extern LBTY_tenuErrorStatus LP5891_vidStopAnimation(u8 Driver) ;
+
 
 #endif /* LP5891_INT_H */
 /* *********************** E N D (LP5891_int.h) *************************** */
