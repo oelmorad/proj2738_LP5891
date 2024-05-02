@@ -46,7 +46,11 @@
 /* ************************************************************************** */
 /* ***************************** CONST SECTION ****************************** */
 /* ************************************************************************** */
+static const u8 LP5891_ResetFrameValues[LP5891_u8RESET_FRAMES_NO] =
+{0xff,0xfe,0xaa,0x80,0xff,0xff,0xff} ;
 
+static const u8 LP5891_SyncFrameValues[LP5891_u8VSYNC_FRAMES_NO]=
+{0xff,0xff,0xfe,0xaa,0xf0,0xff};
 /* ************************************************************************** */
 /* ***************************** VARIABLE SECTION *************************** */
 /* ************************************************************************** */
@@ -56,13 +60,13 @@
 static LP5891_tenuWorkingStatus LP5891_aenuDrvCurrentState[LP5891_u8MAXNo_COMPONENT];
 
 static u16 LP5891_au16NoSpiFrames[LP5891_u8MAXNo_COMPONENT] = {0} ;
-static u16 LP5891_au16StatTxBuffer[LP5891_u8MAXNo_COMPONENT][85] = {0};
-static u16 LP5891_au16StatRxBuffer[LP5891_u8MAXNo_COMPONENT][85] = {0};
+static u16 LP5891_pau16StatTxBuffer[LP5891_u8MAXNo_COMPONENT][LP5891_U16TXBUFFER_MAX] = {0};
+static u16 LP5891_pau16StatRxBuffer[LP5891_u8MAXNo_COMPONENT][LP5891_U16TXBUFFER_MAX] = {0};
 
 
-
+static LBTY_tenuErrorStatus LP5891_au16NewImageRequest[LP5891_u8MAXNo_COMPONENT] = {0} ;
 static const u16 * LP5891_au16ImageLocation[LP5891_u8MAXNo_COMPONENT] = {0} ;
-static u16 LP5891_au16PixelsBuffer[LP5891_u8MAXNo_COMPONENT][85] = {0} ;
+static u16 LP5891_au16PixelsBuffer[LP5891_u8MAXNo_COMPONENT][LP5891_U16TXBUFFER_MAX] = {0} ;
 
 
 /* ************************************************************************** */
@@ -117,7 +121,14 @@ void LP5891_vidInit(void)
       /**: Set state to uninitialized ;*/
       LP5891_aenuDrvCurrentState[LOC_u8DrvIdx] = LP5891_UNINITIALIZED ;
 
+      /**: Set image request to no image requested ;*/
+      LP5891_au16NewImageRequest[LOC_u8DrvIdx] = LBTY_NOK ;
+
+      /**: Free the image buffer ; */
       LP5891_au16ImageLocation[LOC_u8DrvIdx] = LP5891_NULL ;
+
+      /**: Set SPI data byte to MIN 0 ; */
+      LP5891_au16NoSpiFrames[LOC_u8DrvIdx] = LP5891_u16MIN ;
 
       /**: Call init driver function   ; */
       vidDrvInitFrame(LOC_u8DrvIdx);
@@ -179,21 +190,110 @@ void LP5891_vidRunMgmt(void)
     * title Function activity diagram
     * start */
 
-   LP5891_au16NoSpiFrames[0] = 1 ;
+   /**: Initialize Local Variables ;*/
+   u8 LOC_u8DrvIdx = LP5891_u8MIN;
+   u8 LOC_u8ICIdx = LP5891_u8MIN;
 
-   (void) LP5891_enuHDIOSetOutDigitalState( 0,  LP5891_u8HDIO_DIGITAL_OFF);
+   /*************************  Run Comonent state machine ***********************/
+   /**: Loop on all Chips indices ;*/
+   /**  repeat*/
+   for (LOC_u8DrvIdx = LP5891_u8LoopStartIdx;
+      LOC_u8DrvIdx < LP5891_u8MAXNo_COMPONENT; LOC_u8ICIdx++)
+   {
+      /**: Prepare pixels for all devices ;*/
+      switch(LP5891_aenuDrvCurrentState[LOC_u8DrvIdx])
+      {
+         /**if (LP5891_UNINITIALIZED state) then (yes)*/
+         case LP5891_UNINITIALIZED:
 
-   (void) LP5891_enuHPWMSetOutDUTY(0,0);
+            /*************************  Send All init frames ***********************/
+
+            /**: Set off the chip select ;*/
+            (void) LP5891_enuHDIOSetOutDigitalState(LP5891_astrSPIConfig[LOC_u8DrvIdx].u8SpiCsPin,  LP5891_u8HDIO_DIGITAL_OFF);
+            /**: Start SPI communication ;*/
+            (void) LP5891_enuHspmSpiWrReq(LP5891_astrSPIConfig[LOC_u8DrvIdx].u8SpiSlot,LP5891_pau16StatTxBuffer[LOC_u8DrvIdx],  LP5891_pau16StatRxBuffer[LOC_u8DrvIdx],
+            LP5891_au16NoSpiFrames[LOC_u8DrvIdx],  0,   (tpfvidHspmUsrJobCallBck)&LP5891_vidConfJobEndNotif,   0);
+
+            /**: Set current mode to initialize mode, start the transmission job ;*/
+            LP5891_aenuDrvCurrentState[LOC_u8DrvIdx] = LP5891_INITIALIZED ;
+
+            break;
+         /**else if (LP5891_INITIALIZED state) then (yes)*/
+         case LP5891_INITIALIZED:
+
+            /**: Waiting cycle untill sent a new image ;*/
+
+            /**: Set current mode to Idle mode, waiting for a new image ;*/
+            LP5891_aenuDrvCurrentState[LOC_u8DrvIdx] = LP5891_IDLE ;
+
+            break;
+         /**else if (LP5891_IDLE state) then (yes)*/
+         case LP5891_IDLE:
+
+            /*************************  Send All Chips frames ***********************/
+
+            /** if( new image is requested) then(true) */
+            if ( LP5891_au16NewImageRequest[LOC_u8DrvIdx] == LBTY_OK )
+            {
+               /**: Set off the chip select ;*/
+               (void) LP5891_enuHDIOSetOutDigitalState(LP5891_astrSPIConfig[LOC_u8DrvIdx].u8SpiCsPin,  LP5891_u8HDIO_DIGITAL_OFF);
+
+               /**: Start SPI communication ;*/
+               (void) LP5891_enuHspmSpiWrReq(LP5891_astrSPIConfig[LOC_u8DrvIdx].u8SpiSlot,LP5891_pau16StatTxBuffer[LOC_u8DrvIdx],  LP5891_pau16StatRxBuffer[LOC_u8DrvIdx],
+               LP5891_au16NoSpiFrames[LOC_u8DrvIdx],  0,   (tpfvidHspmUsrJobCallBck)&LP5891_vidConfJobEndNotif,   0);
+
+            }/** endif */
+
+            /**: Set current mode to operation mode, start the transmission job ;*/
+            LP5891_aenuDrvCurrentState[LOC_u8DrvIdx] = LP5891_OPERATION_MODE ;
+
+            break;
+         /**elseif (LP5891_OPERATION_MODE state) then (yes)*/
+         case LP5891_OPERATION_MODE:
+
+            /**: Wait for the job being done, till all frames sent and update the driver working mode ;*/
+
+            break;
+         /**elseif (LP5891_OPERATION_MODE state) then (yes)*/
+         case LP5891_SLEEP:
+
+            /**: To be done ;*/
+
+            break;
+         /**elseif (LP5891_OPERATION_MODE state) then (yes)*/
+         case LP5891_DEFECT:
+
+            /**: To be done ;*/
+
+            break;
+
+         /** else */
+         default:
+         break;
+      }/**endif*/
+    }
+   /**repeat while (driver ID (LOC_u8DrvIdx) < Numbers of Drivers (LP5891_u8MAXNo_COMPONENT) ) is (yes)
+    ->no;*/
 
 
-     (void) LP5891_enuHspmSpiWrReq(0,LP5891_au16StatTxBuffer,
-         LP5891_au16StatRxBuffer[0],
-         LP5891_au16NoSpiFrames[0],
-         0,
-         (tpfvidHspmUsrJobCallBck)&LP5891_vidConfJobEndNotif,
-         0);
 
-      /** stop*/
+   // /*************************  Prepare Devices frames ***********************/
+   // /**: Loop on all Chips indices ;*/
+   // /**  repeat*/
+   // for (LOC_u8ICIdx = LP5891_u8LoopStartIdx;
+   //    LOC_u8ICIdx < LP5891_u8MAX_DEVICES; LOC_u8ICIdx++)
+   // {
+   //    /**: Prepare pixels for all devices ;*/
+
+
+
+
+   //  }
+   // /**repeat while (IC ID (LOC_u8ICIdx) < Numbers of Drivers (LP5891_u8MAX_DEVICES) ) is (yes)
+   //  ->no;*/
+
+
+   /** stop*/
    /** @enduml*/
 }
 
@@ -238,8 +338,21 @@ void LP5891_vidConfJobEndNotif(u16 u8SgntrCpy, LBTY_tenuErrorStatus enuErrStat)
     * title Function activity diagram
     * start */
 
+   /** if( driver ID is valid) then(true) */
+   if (LP5891_aenuDrvCurrentState[0] == LP5891_UNINITIALIZED)
+   {
+      /**: Set state to uninitialized ;*/
+      LP5891_aenuDrvCurrentState[0] = LP5891_INITIALIZED ;
 
+   }/**else if( driver ID is valid) then(true) */
+   else if (LP5891_aenuDrvCurrentState[0] == LP5891_OPERATION_MODE)
+   {
+      /**: Set state to IDLE ;*/
+      LP5891_aenuDrvCurrentState[0] = LP5891_IDLE ;
+   }   /** endif */
 
+   /**: Set off the chip select ;*/
+   (void) LP5891_enuHDIOSetOutDigitalState( LP5891_astrSPIConfig[0].u8SpiCsPin ,  LP5891_u8HDIO_DIGITAL_ON);
 
    /** stop*/
    /** @enduml*/
@@ -292,6 +405,9 @@ LBTY_tenuErrorStatus LP5891_vidAnimateImage(u8 Driver, const u16 * pu16image, u1
          /**: Load Images in local buffer to start animation  ;*/
          LP5891_au16ImageLocation[Driver] = pu16image;
 
+         /**: Set new animation request flag  ;*/
+         LP5891_au16NewImageRequest[Driver] = LBTY_OK ;
+
       }/** else */
       else 
       {
@@ -320,7 +436,11 @@ LBTY_tenuErrorStatus LP5891_vidStopAnimation(u8 Driver)
    /**: initialize error status to be not okay;*/
    LBTY_tenuErrorStatus LOC_enuRetErrorStatus = LBTY_NOK;
 
+      /**: Set state to uninitialized ;*/
+      LP5891_aenuDrvCurrentState[Driver] = LP5891_IDLE ;
 
+      /**: Reset new animation request flag  ;*/
+      LP5891_au16NewImageRequest[Driver] = LBTY_NOK ;
 
 
    /**: Return status ;*/
@@ -341,18 +461,22 @@ LBTY_tenuErrorStatus vidDrvInitFrame(u8 Driver)
     * start */
 
       /**: initialize error status to be not okay;*/
-   LBTY_tenuErrorStatus LOC_enuRetErrorStatus = LBTY_NOK;
+   LBTY_tenuErrorStatus LOC_enuRetErrorStatus = LBTY_OK;
+    u8 LOC_u8ByteIdx = LP5891_u8MIN;
 
-   /**: Set initialization no of frames to send ;*/
-   LP5891_au16NoSpiFrames[Driver] = 1 ;
+   /**: Loop on all Configuration bytes  ;*/
+   /**  repeat*/
+   for (LOC_u8ByteIdx = LP5891_u8LoopStartIdx;
+      LOC_u8ByteIdx < LP5891_u8INIT_FRAMES_NO; LOC_u8ByteIdx++)
+   {
+      /**: Sent the configuration data to TX buffer ;*/
+      LP5891_pau16StatTxBuffer[Driver][LP5891_au16NoSpiFrames[Driver]] = LP5891_InitFrameValues[LOC_u8ByteIdx] ;
 
-
-
-
-
-
-   /**: Set state to uninitialized ;*/
-   LP5891_aenuDrvCurrentState[Driver] = LP5891_INITIALIZED ;
+      /**: Add SPI Byte ;*/
+      LP5891_au16NoSpiFrames[Driver]+=1; 
+    }
+   /**repeat while (Byte ID (LOC_u8ByteIdx) < Numbers of Drivers (LP5891_u8INIT_FRAMES_NO) ) is (yes)
+    ->no;*/
 
    /**: Return status ;*/
    return LOC_enuRetErrorStatus;
@@ -371,16 +495,19 @@ LBTY_tenuErrorStatus vidSendSyncFrame(u8 Driver)
     * start */
 
    /**: initialize error status to be not okay;*/
-   LBTY_tenuErrorStatus LOC_enuRetErrorStatus = LBTY_NOK;
-   u8 loc_u8Buffer [6] ;
+   LBTY_tenuErrorStatus LOC_enuRetErrorStatus = LBTY_OK;
+    u8 LOC_u8ByteIdx = LP5891_u8MIN;
 
-   /**: Prepare Frame to send ;*/
-   loc_u8Buffer [0] = LP5891_u8FrameIDLEBytes ;    /**: IDLE byte ;*/
-   loc_u8Buffer [1] = LP5891_u8FrameIDLEBytes ;    /**: IDLE byte ;*/
-   loc_u8Buffer [2] = LP5891_u8FrameSTARTByte ;    /**: Start 1 bit ;*/
-   loc_u8Buffer [3] = 0xAA ;                       /**: Set highest byte address ;*/
-   loc_u8Buffer [4] = 0xF0 ;                       /**: Set lowest byte address ;*/
-   loc_u8Buffer [5] = LP5891_u8FrameENDByte ;      /**: End 18 bit ;*/
+   /**: Loop on all Configuration bytes  ;*/
+   /**  repeat*/
+   for (LOC_u8ByteIdx = LP5891_u8LoopStartIdx;
+      LOC_u8ByteIdx < LP5891_u8VSYNC_FRAMES_NO; LOC_u8ByteIdx++)
+   {
+      /**: Sent the configuration data to TX buffer ;*/
+      LP5891_pau16StatTxBuffer[Driver][LOC_u8ByteIdx] = LP5891_SyncFrameValues[LOC_u8ByteIdx] ;
+    }
+   /**repeat while (Byte ID (LOC_u8ByteIdx) < Numbers of Drivers (LP5891_u8INIT_FRAMES_NO) ) is (yes)
+    ->no;*/
 
       /**: Return status ;*/
    return LOC_enuRetErrorStatus;
@@ -400,17 +527,19 @@ LBTY_tenuErrorStatus vidSendSWResetFrame(u8 Driver)
     * start */
 
       /**: initialize error status to be not okay;*/
-   LBTY_tenuErrorStatus LOC_enuRetErrorStatus = LBTY_NOK;
-   u8 loc_u8Buffer [7] ;
+   LBTY_tenuErrorStatus LOC_enuRetErrorStatus = LBTY_OK;
+    u8 LOC_u8ByteIdx = LP5891_u8MIN;
 
-   /**: Prepare Frame to send ;*/
-   loc_u8Buffer [0] = LP5891_u8FrameIDLEBytes ;    /**: IDLE byte ;*/
-   loc_u8Buffer [1] = LP5891_u8FrameSTARTByte ;    /**: Start bit ;*/
-   loc_u8Buffer [2] = 0xAA ;                       /**: Set highest byte address ;*/
-   loc_u8Buffer [3] = 0x80 ;                       /**: Set lowest byte address ;*/
-   loc_u8Buffer [4] = 0xFF;                        /**: Reset command value at 0xAA80 ;*/
-   loc_u8Buffer [5] = LP5891_u8FrameENDByte ;      /**: End 18 bit ;*/
-   loc_u8Buffer [6] = LP5891_u8FrameENDByte ;      /**: End 18 bit ;*/
+   /**: Loop on all Configuration bytes  ;*/
+   /**  repeat*/
+   for (LOC_u8ByteIdx = LP5891_u8LoopStartIdx;
+      LOC_u8ByteIdx < LP5891_u8RESET_FRAMES_NO; LOC_u8ByteIdx++)
+   {
+      /**: Sent the configuration data to TX buffer ;*/
+      LP5891_pau16StatTxBuffer[Driver][LOC_u8ByteIdx] = LP5891_ResetFrameValues[LOC_u8ByteIdx] ;
+    }
+   /**repeat while (Byte ID (LOC_u8ByteIdx) < Numbers of Drivers (LP5891_u8INIT_FRAMES_NO) ) is (yes)
+    ->no;*/
 
       /**: Return status ;*/
    return LOC_enuRetErrorStatus;
@@ -437,11 +566,12 @@ LBTY_tenuErrorStatus vidSendPixelFrame(u8 Driver, u32 u32pixelNo)
    u8 loc_u8Buffer[10] ;
 
    /**: Prepare Frame to send ;*/
-   loc_u8Buffer [0] = LP5891_u8FrameENDByte ;      /**: End 18 bit ;*/
-   loc_u8Buffer [1] = LP5891_u8FrameENDByte ;      /**: End 18 bit ;*/
+   loc_u8Buffer [0] = LP5891_u8FrameIDLEBytes ;      /**: End 18 bit ;*/
+   loc_u8Buffer [1] = LP5891_u8FrameIDLEBytes ;      /**: End 18 bit ;*/
    loc_u8Buffer [2] = LP5891_u8FrameSTARTByte ;    /**: Start bit ;*/
    loc_u8Buffer [3] = 0xAA ;                       /**: Set highest byte address ;*/
    loc_u8Buffer [4] = 0x30 ;                       /**: Set lowest byte address ;*/
+
    loc_u8Buffer [5] = loc_enupixel.LED_REDx.u16UniColorData ;  /**: Apply Red ;*/
    loc_u8Buffer [6] = (!loc_enupixel.LED_REDx.u16UniColorData <<15 ) |(loc_enupixel.LED_GREENx.u16UniColorData >> 1 ) ;  /**: Apply Green ;*/
    loc_u8Buffer [7] = ((loc_enupixel.LED_GREENx.u16UniColorData&0x1)<<15) |(!loc_enupixel.LED_GREENx.u16UniColorData <<14 ) |(loc_enupixel.LED_BLUEx.u16UniColorData >> 2 ) ;  /**: Apply Blue ;*/
@@ -467,7 +597,7 @@ RGB_tstrPixelData vidGetPixel(u8 Driver, u32 u32pixelNo)
 
    /**: Initialize RGB Pixel colors ;*/
    RGB_tstrPixelData loc_enupixel = {0,0,0} ;
-   u32 loc_pixelindex = (LP5891_u32STARTKEY_INDEX +(u32)1 ) + (u32)3 * u32pixelNo  ;
+   u32 loc_pixelindex = (LP5891_u32STARTKEY_INDEX ) + (u32)3 * u32pixelNo  ;
 
    /**: Get RGB Pixel colors ;*/
    loc_enupixel.LED_REDx.u16UniColorData = LP5891_au16ImageLocation[Driver][loc_pixelindex] ;
@@ -479,6 +609,7 @@ RGB_tstrPixelData vidGetPixel(u8 Driver, u32 u32pixelNo)
    /** stop*/
    /** @enduml*/
 }
+
 
 
 

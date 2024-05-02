@@ -80,7 +80,7 @@
 /** \brief \DESIGNER_START IMAGE Start Key index  \DESIGNER_END
  *   \details \DESIGNER_START Type: NA / Range :[0, 6] / Resolution: index \DESIGNER_END
  */
-#define LP5891_u32STARTKEY_INDEX         ((u32)0)
+#define LP5891_u32STARTKEY_INDEX         ((u32)1)
 
 
 
@@ -179,6 +179,19 @@ typedef union {
         unsigned int Bit15 : 1;
     };
 } RGB_tstrUniColor;
+
+
+
+
+/** \brief \DESIGNER_START Buck component parameters \DESIGNER_END
+*/
+typedef struct
+{
+   u8 u8SpiSlot;        /**< \DESIGNER_START Spi slot / Type: u8 / Range: in HSPM slot range / Resolution: NA \DESIGNER_END*/
+   u8 u8SpiCsPin;         /**< \DESIGNER_START FLT pin / Type: u8 / Range: in DDIO pin range / Resolution: NA \DESIGNER_END*/
+   u32 u8SpiSpeed;  /**< \DESIGNER_START Boost supply converter ID / Type: u8 / Range: <HBST_u8APP_NB_CONV_MAX / Resolution: NA \DESIGNER_END*/
+
+} LP5891_tstrComponentConfig;
 
 
 
