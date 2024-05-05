@@ -60,6 +60,11 @@
 #define LP5891_u8HDIO_DIGITAL_OFF          ((u8)0)
 
 
+/** \brief \DESIGNER_START  HDIO Pin used for LP5891    \DESIGNER_END */
+#define LP5891_DRV1_DIO_CS             ((u8)0)
+/** \brief \DESIGNER_START  HDIO Pin used for LP5891    \DESIGNER_END */
+#define LP5891_DRV2_DIO_CS             ((u8)1)
+
 /* ***************************** HFIC Interfaces ******************************/
 /** \brief \DESIGNER_START Macro used  for calling  SetOutDigitalState function from HDIO components   \DESIGNER_END*/
 #define  LP5891_enuHDIOSetOutDigitalState          HDIO_enuSetOutputState
@@ -86,9 +91,16 @@
 
 #include "HSPM_int.h"
 
+
+/** \brief \DESIGNER_START  HDIO Pin used for LP5891    \DESIGNER_END */
+#define LP5891_DRV1_SPI_SLOT             ((u8)0)
+
+/** \brief \DESIGNER_START  HDIO Pin used for LP5891    \DESIGNER_END */
+#define LP5891_DRV2_SPI_SLOT             ((u8)1)
+
 /* ***************************** HFIC Interfaces ******************************/
 /** \brief \DESIGNER_START Macro used  for calling  HSPM_enuSpiJobRqst function from HPWM components   \DESIGNER_END*/
-#define  LP5891_enuHspmSpiWrReq          HSPM_enuSpiJobRqst
+#define  LP5891_enuSpiWrReq          HSPM_enuSpiJobRqst
 
 /* ************************** End HFIC Interfaces *****************************/
 #endif

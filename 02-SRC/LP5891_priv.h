@@ -80,12 +80,16 @@
 /** \brief \DESIGNER_START IMAGE Start Key index  \DESIGNER_END
  *   \details \DESIGNER_START Type: NA / Range :[0, 6] / Resolution: index \DESIGNER_END
  */
-#define LP5891_u32STARTKEY_INDEX         ((u32)1)
+#define LP5891_u32STARTKEY_INDEX         ((u32)0)
 
 
 
-//#define send_frame(frame) LPSPI_DRV_MasterTransfer(LPSPICOM1,frame,NULL,sizeof(frame))
+
+/******************************************************************************/
+/* !Description : This is the chip initial configuration 48 bit/Register      */
+/******************************************************************************/
 #define SB 0xFFFe
+
 #define _FC0_2 ((LSD_RM_EN_0 | GRP_DLY_B_0 | GRP_DLY_G_0 | GRP_DLY_R_0 | FREQ_MUL__1) >> 32) & 0xFFFF
 #define _FC0_1 ((FREQ_MUL__1 | FREQ_MOD__LF | SUBP_NUM__128 | SCAN_NUM__33) >> 16) & 0xFFFF
 #define _FC0_0 ((LODRM_EN_0 | PSP_MOD_0 | PS_EN_0 | PDC_EN_0 | CHIP_NUM__12)) & 0xFFFF
@@ -114,16 +118,6 @@
 /* ************************************************************************** */
 /* ************************* TYPE_DEF/STRUCT SECTION ************************ */
 /* ************************************************************************** */
-/******************************************************************************/
-/* !Description : This type enumerates commands                               */
-/******************************************************************************/
-typedef enum
-{
-  LBTI_CMD_RD           = (u8)0x00,     /* Read command                       */
-  LBTI_CMD_WR           = (u8)0x01      /* Write command                      */
-} LBTI_tenuCmd;
-
-
 enum WRITE_COMMAND_ID{
     W_FC0 = 0xAA00,
     W_FC1,
@@ -137,7 +131,6 @@ enum WRITE_COMMAND_ID{
     W_SOFT_RESET = 0XAA80,
     W_SRAM = 0xAA30
 };
-
 
 enum READ_COMMAND_ID{
     R_FC0 = 0xAA60,
@@ -158,54 +151,9 @@ enum READ_COMMAND_ID{
 
 
 
-typedef union {
-    u16 u16UniColorData;
-    struct {
-        unsigned int Bit0 : 1;
-        unsigned int Bit1 : 1;
-        unsigned int Bit2 : 1;
-        unsigned int Bit3 : 1;
-        unsigned int Bit4 : 1;
-        unsigned int Bit5 : 1;
-        unsigned int Bit6 : 1;
-        unsigned int Bit7 : 1;
-        unsigned int Bit8 : 1;
-        unsigned int Bit9 : 1;
-        unsigned int Bit10 : 1;
-        unsigned int Bit11 : 1;
-        unsigned int Bit12 : 1;
-        unsigned int Bit13 : 1;
-        unsigned int Bit14 : 1;
-        unsigned int Bit15 : 1;
-    };
-} RGB_tstrUniColor;
-
-
-
-
-/** \brief \DESIGNER_START Buck component parameters \DESIGNER_END
-*/
-typedef struct
-{
-   u8 u8SpiSlot;        /**< \DESIGNER_START Spi slot / Type: u8 / Range: in HSPM slot range / Resolution: NA \DESIGNER_END*/
-   u8 u8SpiCsPin;         /**< \DESIGNER_START FLT pin / Type: u8 / Range: in DDIO pin range / Resolution: NA \DESIGNER_END*/
-   u32 u8SpiSpeed;  /**< \DESIGNER_START Boost supply converter ID / Type: u8 / Range: <HBST_u8APP_NB_CONV_MAX / Resolution: NA \DESIGNER_END*/
-
-} LP5891_tstrComponentConfig;
-
-
-
-/** \brief \DESIGNER_START RGB Pixel Data   \DESIGNER_END
- *   \details \DESIGNER_START Type u8 / Range [0xFFFF] / Resolution NA / Unit NA \DESIGNER_END*/
-typedef struct  {
-    RGB_tstrUniColor LED_REDx;
-    RGB_tstrUniColor LED_GREENx;
-    RGB_tstrUniColor LED_BLUEx;
-} RGB_tstrPixelData;
-
-
-
-
+/******************************************************************************/
+/* !Description : This type enumerates commands                               */
+/******************************************************************************/
 /** \brief \DESIGNER_START Component software state machine \DESIGNER_END */
 
 typedef enum
@@ -217,6 +165,66 @@ typedef enum
    LP5891_SLEEP = 0x50, /**< \DESIGNER_START state  \DESIGNER_END*/
    LP5891_DEFECT = 0x60/**< \DESIGNER_START state  \DESIGNER_END*/
 } LP5891_tenuWorkingStatus;
+
+
+
+
+
+/* !Comment  : Type definition for short, byte and bit access                 */
+/*  !Trace_To: Covers_L012N0901_GDD_BTY_495-V01                               */
+typedef union
+{
+  struct
+  {
+    u8 u8b0 :1; /* !comment : lsb (least significant bit)*/
+    u8 u8b1 :1; /* !comment : BIT 1*/
+    u8 u8b2 :1; /* !comment : BIT 2*/
+    u8 u8b3 :1; /* !comment : BIT 3*/
+    u8 u8b4 :1; /* !comment : BIT 4*/
+    u8 u8b5 :1; /* !comment : BIT 5*/
+    u8 u8b6 :1; /* !comment : BIT 6*/
+    u8 u8b7 :1; /* !comment : BIT 7*/
+    u8 u8b8 :1; /* !comment : BIT 8*/
+    u8 u8b9 :1; /* !comment : BIT 9*/
+    u8 u8b10 :1; /* !comment : BIT 10*/
+    u8 u8b11 :1; /* !comment : BIT 11*/
+    u8 u8b12 :1; /* !comment : BIT 12*/
+    u8 u8b13 :1; /* !comment : BIT 13*/
+    u8 u8b14 :1; /* !comment : BIT 14*/
+    u8 u8b15 :1; /* !comment : msb (most significant bit)*/
+  } strBit; /* !comment : for bit  access*/
+  struct
+  {
+    u8 u8low; /* !comment : Least significant byte*/
+    u8 u8high; /* !comment : Most significant byte*/
+  } strByte; /* !comment : for byte access*/
+  u16 u16Word; /* !comment : for word access*/
+} LBTY_tuniData16;
+
+
+
+typedef union {
+    LBTY_tuniData16 u16UniColorData[3];
+    struct {
+        LBTY_tuniData16 LED_REDx;
+        LBTY_tuniData16 LED_GREENx;
+        LBTY_tuniData16 LED_BLUEx;
+    };
+} RGB_tstrPixelData;
+
+
+
+
+
+/** \brief \DESIGNER_START Buck component parameters \DESIGNER_END
+*/
+typedef struct
+{
+   u8 u8SpiSlot;        /**< \DESIGNER_START Spi slot / Type: u8 / Range: in HSPM slot range / Resolution: NA \DESIGNER_END*/
+   u8 u8SpiCsPin;         /**< \DESIGNER_START FLT pin / Type: u8 / Range: in DDIO pin range / Resolution: NA \DESIGNER_END*/
+   u32 u8SpiSpeed;  /**< \DESIGNER_START Boost supply converter ID / Type: u8 / Range: <HBST_u8APP_NB_CONV_MAX / Resolution: NA \DESIGNER_END*/
+} LP5891_tstrComponentConfig;
+
 
 
 /* ************************************************************************** */

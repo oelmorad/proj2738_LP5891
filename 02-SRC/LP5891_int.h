@@ -65,7 +65,7 @@ extern void LP5891_vidRunMgmt(void);
 extern void LP5891_vidConfJobEndNotif(u16 u8SgntrCpy, LBTY_tenuErrorStatus enuErrStat);
 
 
-extern LBTY_tenuErrorStatus LP5891_vidAnimateImage(u8 Driver, const u16 * pu16image, u16 u16image_no, u16 u16pixels_no,u16 u16animationspeed) ;
+extern LBTY_tenuErrorStatus LP5891_vidAnimateImage(u8 Driver, const u16 * const pu16image, u16 u16ImagepixelNo, u16 u16imageNo ,u8 u16animationspeed) ;
 extern LBTY_tenuErrorStatus LP5891_vidStopAnimation(u8 Driver) ;
 
 
