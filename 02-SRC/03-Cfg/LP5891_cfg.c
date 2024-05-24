@@ -53,7 +53,7 @@
 /* ************************************************************************** */
 LP5891_tstrComponentConfig LP5891_astrSPIConfig[LP5891_u8MAXNo_COMPONENT]= 
 {
-    {LP5891_DRV1_SPI_SLOT , LP5891_DRV1_DIO_CS , 4000}
+    {LP5891_DRV1_SPI_SLOT , LP5891_DRV1_DIO_CS , 10}
 }
 
  ;

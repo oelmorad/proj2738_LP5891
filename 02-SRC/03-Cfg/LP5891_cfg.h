@@ -61,6 +61,13 @@
 #define LP5891_FEATURE_ON           (0x55U)
 #define LP5891_FEATURE_OFF          (0x5AU)
 
+/** \brief \DESIGNER_START Image Queuing Functionality   \DESIGNER_END
+*   \details \DESIGNER_START Type u8 / Range [LP5891_FEATURE_OFF,LP5891_FEATURE_ON] / Resolution 1 / Unit :NA \DESIGNER_END*/
+#define LP5891_BLOCK_TRANSFER            (0x55U)
+#define LP5891_HALFIMAGE_TRANSFER            (0x5AU)
+#define LP5891_FULLIMAGE_TRANSFER            (0x5FU)
+
+
 /**********************************************************************************************************************/
 /*!Description: Image Keys protection Functionality Enable/Disable                                                             */
 /*!Range: [LP5891_FEATURE_ON - LP5891_FEATURE_OFF]                                                                            */
@@ -97,6 +104,15 @@
 #define LP5891_IMAGEQUEUE_FEATURE            LP5891_FEATURE_OFF
 
 
+/**********************************************************************************************************************/
+/*!Description: Image Queuing Functionality Enable/Disable                                                             */
+/*!Range: [LP5891_FEATURE_ON - LP5891_FEATURE_OFF]                                                                            */
+/**********************************************************************************************************************/
+/** \brief \DESIGNER_START Image Queuing Functionality   \DESIGNER_END
+*   \details \DESIGNER_START Type u8 / Range [LP5891_FULLIMAGE_TRANSFER,LP5891_HALFIMAGE_TRANSFER,LP5891_BLOCK_TRANSFER] / Resolution 1 / Unit :NA \DESIGNER_END*/
+#define LP5891_IMAGE_TRANSFER            LP5891_HALFIMAGE_TRANSFER
+
+
 /* ************************************************************************** */
 /* ************************** MACRO/DEFINE SECTION ************************** */
 /* ************************************************************************** */
@@ -126,7 +142,7 @@
 
 /** \brief \DESIGNER_START Max Number of frames   \DESIGNER_END
  *   \details \DESIGNER_START Type u8 / Range [0x55] / Resolution NA / Unit NA \DESIGNER_END*/
-#define LP5891_U16TXRXBUFFER_MAX     10000U
+#define LP5891_U16TXRXBUFFER_MAX     65000U
 
 
 /** \brief \DESIGNER_START Number of INIT_FRAMES \DESIGNER_END

@@ -63,6 +63,31 @@ static const u8 LP5891_u8InitFrameValues[LP5891_u8INIT_FRAMES_NO] =
     0xFF,0xFF,0x55,0x01,0x48,0xE0,0x20,0x00,0x10,0x00,0x0F,0xFF,0xFF,0xFF,0xF5,0x50,0x18,0x00,0x15,0xFD,0xFE,0xFF,0x00,0xFF,0xFF,0xFF,0xFF,0x55,0x02,0x45,0xE0,0x22,
     0xAF,0x10,0x00,0x2F,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF
 };
+
+
+static const u16 DMA_LookupDelay[20] = 
+{
+   0,
+   800,
+   500,
+   375,
+   280,
+   210,
+   145 ,
+   100 ,
+   60 ,
+   30 ,
+   8 ,
+   5 ,
+   3,
+   2 ,
+   1 ,
+   1 ,
+   0 ,
+   0 ,
+   0 ,
+   0,
+} ;
 /* ************************************************************************** */
 /* ***************************** VARIABLE SECTION *************************** */
 /* ************************************************************************** */
@@ -112,6 +137,13 @@ static u32 LP5891_au32CrntPixelLoc[LP5891_u8MAXNo_COMPONENT] = {0} ;
  *   \details \DESIGNER_START Type  pointer to u8 / Range [NA] / Resolution 1 / Unit NA \DESIGNER_END
  */
 static const u8 * LP5891_u8CrntPixelBlock[LP5891_u8MAXNo_COMPONENT] = {0} ;
+
+
+
+/** \brief \DESIGNER_START Block data container address \DESIGNER_END
+ *   \details \DESIGNER_START Type  pointer to u8 / Range [NA] / Resolution 1 / Unit NA \DESIGNER_END
+ */
+static u16 DMA_NotifDelay[LP5891_u8MAXNo_COMPONENT] = {0} ;
 
 /* ************************************************************************** */
 /* ************************* PUBLIC FUNCTION SECTION ************************ */
@@ -188,6 +220,7 @@ void LP5891_vidInit(void)
       /**: Disable Chip select ;*/
       LP5891_enuDIOSetOutState(LP5891_astrSPIConfig[LOC_u8DrvIdx].u8SpiCsPin,LP5891_u8DIO_DIGITAL_ON) ;
 
+      DMA_NotifDelay[LOC_u8DrvIdx] = DMA_LookupDelay[LP5891_astrSPIConfig[LOC_u8DrvIdx].u16SpiSpeed]  ;
    }
    /**repeat while (Driver ID (LOC_u8TempDrvIdx) < Numbers of Drivers (HSMART_u8SMART_DRV_NB) ) is (yes)
     ->no;*/
@@ -313,11 +346,18 @@ void LP5891_vidRunMgmt(void)
             /**: Wait for the job being done, till all frames sent and update the driver working mode ;*/
 
             /**: Move Block indexer to the required block ;*/
-            LP5891_u8CrntPixelBlock[LOC_u8DrvIdx] = &LP5891_au8ImageLocation[LOC_u8DrvIdx][LP5891_au32CrntPixelLoc[LOC_u8DrvIdx]] ;
+            LP5891_u8CrntPixelBlock[LOC_u8DrvIdx] = &LP5891_au8ImageLocation[LOC_u8DrvIdx][LP5891_au32CrntPixelLoc[LOC_u8DrvIdx]] ;            
 
+#if LP5891_IMAGE_TRANSFER   ==     LP5891_BLOCK_TRANSFER
             /**: Calculate pixles numbers per block ;*/
             LOC_u32Pixels = LP5891_u32PIXELPerRUN  * LP5891_u32BLOCKPerRun_No ; 
-            
+#elif LP5891_IMAGE_TRANSFER   ==     LP5891_HALFIMAGE_TRANSFER
+            /**: Calculate pixles numbers per block ;*/
+            LOC_u32Pixels = LP5891_u32MaxImagePixels[LOC_u8DrvIdx]/2 ; 
+#elif LP5891_IMAGE_TRANSFER   ==     LP5891_FULLIMAGE_TRANSFER
+            /**: Calculate pixles numbers per block ;*/
+            LOC_u32Pixels = LP5891_u32MaxImagePixels[LOC_u8DrvIdx] ; 
+#endif
             /**: Prepare Block to Send ;*/
             vidPrepareBlockFrame(LOC_u8DrvIdx, LP5891_u8CrntPixelBlock[LOC_u8DrvIdx], LOC_u32Pixels) ;
 
@@ -327,6 +367,23 @@ void LP5891_vidRunMgmt(void)
             /**: checkout the next block indexer ;*/
             LP5891_au32CrntPixelLoc[LOC_u8DrvIdx]+=  LOC_u32Pixels ;
 
+#if   (LP5891_IMAGE_TRANSFER   ==     LP5891_FULLIMAGE_TRANSFER)
+               /**: Prepare Sync Frame ;*/
+               vidPrepareSyncFrame(LOC_u8DrvIdx) ;
+
+               /**: Set Image To finished ;*/
+               LP5891_u8ImageFinished[LOC_u8DrvIdx] = LBTY_OK ;
+#elif   (LP5891_IMAGE_TRANSFER   ==     LP5891_HALFIMAGE_TRANSFER)  
+               /**: Prepare Sync Frame ;*/
+               vidPrepareSyncFrame(LOC_u8DrvIdx) ;
+
+            /** if( indexer is out of range , Image has been completely parsed) then(true) */
+            if (LP5891_au32CrntPixelLoc[LOC_u8DrvIdx] >=  LP5891_u32MaxImagePixels[LOC_u8DrvIdx] )
+            {
+               /**: Set Image To finished ;*/
+               LP5891_u8ImageFinished[LOC_u8DrvIdx] = LBTY_OK ;
+            }/** endif*/
+#elif     (LP5891_IMAGE_TRANSFER   ==     LP5891_BLOCK_TRANSFER)
             /** if( indexer is out of range , Image has been completely parsed) then(true) */
             if (LP5891_au32CrntPixelLoc[LOC_u8DrvIdx] >=  LP5891_u32MaxImagePixels[LOC_u8DrvIdx] )
             {
@@ -336,6 +393,7 @@ void LP5891_vidRunMgmt(void)
                /**: Set Image To finished ;*/
                LP5891_u8ImageFinished[LOC_u8DrvIdx] = LBTY_OK ;
             }/** endif*/
+#endif  
 
             break;
          /**elseif (LP5891_OPERATION_MODE state) then (yes)*/
@@ -459,10 +517,33 @@ extern void LP5891_vidPixelRequestsMgmt(void)
          }/** else if( current state is operation state) then(true) */
          else if ( LP5891_aenuDrvCurrentState[LOC_u8DrvIdx] == LP5891_OPERATION_MODE )
          {
+
+#if LP5891_IMAGE_TRANSFER   ==     LP5891_FULLIMAGE_TRANSFER
             /*************************  Send All Data frames ***********************/
-            if (LP5891_au32NoSpiFrames[LOC_u8DrvIdx] >= LP5891_u32PIXELPerRUN)
+               LOC_u32FrameTosend = LP5891_au32NoSpiFrames[LOC_u8DrvIdx];
+
+            /**: Start SPI Job ;*/
+            /**: Start SPI Job ;*/
+            LOC_enuRetErrorStatus = LP5891_enuSpiWrReq( LP5891_astrSPIConfig[LOC_u8DrvIdx].u8SpiSlot,
+                           &LP5891_pau8StatTxBuffer[LOC_u8DrvIdx][LP5891_au32SpiRequestId[LOC_u8DrvIdx]],  &LP5891_pau8StatRxBuffer[LOC_u8DrvIdx][LP5891_au32SpiRequestId[LOC_u8DrvIdx]] ,
+                            LP5891_au32NoSpiFrames[LOC_u8DrvIdx]  , &LP5891_vidConfJobStartNotif , &LP5891_vidConfJobEndNotif,LOC_u8DrvIdx);
+
+
+            /** if( DMA write request is OK) then (true) */
+            if (LOC_enuRetErrorStatus == LBTY_OK)
             {
-               LOC_u32FrameTosend = LP5891_u32PIXELPerRUN;
+               /**: Enable the chip select to start communication ;*/
+               LP5891_enuDIOSetOutState(LP5891_astrSPIConfig[LOC_u8DrvIdx].u8SpiCsPin,LP5891_u8DIO_DIGITAL_OFF) ;
+
+               /**: Set current mode to IDLE state ;*/
+               LP5891_aenuDrvCurrentState[LOC_u8DrvIdx] = LP5891_IDLE ;
+
+            }/** endif*/
+#elif LP5891_IMAGE_TRANSFER   ==     LP5891_HALFIMAGE_TRANSFER
+            /*************************  Send All Data frames ***********************/
+            if (LP5891_au32NoSpiFrames[LOC_u8DrvIdx] >= ((LP5891_u32MaxImagePixels[LOC_u8DrvIdx]/2 + LP5891_u8VSYNC_FRAMES_NO * LP5891_u8VSYNC_FRAMES_TRIALS)) )
+            {
+               LOC_u32FrameTosend = ((LP5891_u32MaxImagePixels[LOC_u8DrvIdx]/2 + LP5891_u8VSYNC_FRAMES_NO * LP5891_u8VSYNC_FRAMES_TRIALS));
             }
             else
             {
@@ -470,9 +551,11 @@ extern void LP5891_vidPixelRequestsMgmt(void)
             }
 
             /**: Start SPI Job ;*/
-            LOC_enuRetErrorStatus = LP5891_enuSpiWrReq( LP5891_astrSPIConfig[LOC_u8DrvIdx].u8SpiSlot ,
-                        &LP5891_pau8StatTxBuffer[LOC_u8DrvIdx][LP5891_au32SpiRequestId[LOC_u8DrvIdx]],  &LP5891_pau8StatRxBuffer[LOC_u8DrvIdx][LP5891_au32SpiRequestId[LOC_u8DrvIdx]] ,
-                        LOC_u32FrameTosend  , &LP5891_vidConfJobStartNotif , &LP5891_vidConfJobEndNotif,LOC_u8DrvIdx);
+            /**: Start SPI Job ;*/
+            LOC_enuRetErrorStatus = LP5891_enuSpiWrReq( LP5891_astrSPIConfig[LOC_u8DrvIdx].u8SpiSlot,
+                           &LP5891_pau8StatTxBuffer[LOC_u8DrvIdx][LP5891_au32SpiRequestId[LOC_u8DrvIdx]],  &LP5891_pau8StatRxBuffer[LOC_u8DrvIdx][LP5891_au32SpiRequestId[LOC_u8DrvIdx]] ,
+                            LP5891_au32NoSpiFrames[LOC_u8DrvIdx]  , &LP5891_vidConfJobStartNotif , &LP5891_vidConfJobEndNotif,LOC_u8DrvIdx);
+
 
             /** if( DMA write request is OK) then (true) */
             if (LOC_enuRetErrorStatus == LBTY_OK)
@@ -498,6 +581,48 @@ extern void LP5891_vidPixelRequestsMgmt(void)
 
             }/** endif*/
 
+#elif LP5891_IMAGE_TRANSFER   ==     LP5891_BLOCK_TRANSFER
+            /*************************  Send All Data frames ***********************/
+            if (LP5891_au32NoSpiFrames[LOC_u8DrvIdx] >= LP5891_u32PIXELPerRUN)
+            {
+               LOC_u32FrameTosend = LP5891_u32PIXELPerRUN;
+            }
+            else
+            {
+               LOC_u32FrameTosend = LP5891_au32NoSpiFrames[LOC_u8DrvIdx];
+            }
+
+            /**: Start SPI Job ;*/
+            /**: Start SPI Job ;*/
+            LOC_enuRetErrorStatus = LP5891_enuSpiWrReq( LP5891_astrSPIConfig[LOC_u8DrvIdx].u8SpiSlot,
+                           &LP5891_pau8StatTxBuffer[LOC_u8DrvIdx][LP5891_au32SpiRequestId[LOC_u8DrvIdx]],  &LP5891_pau8StatRxBuffer[LOC_u8DrvIdx][LP5891_au32SpiRequestId[LOC_u8DrvIdx]] ,
+                            LP5891_au32NoSpiFrames[LOC_u8DrvIdx]  , &LP5891_vidConfJobStartNotif , &LP5891_vidConfJobEndNotif,LOC_u8DrvIdx);
+
+
+            /** if( DMA write request is OK) then (true) */
+            if (LOC_enuRetErrorStatus == LBTY_OK)
+            {
+               /**: Update no of remaining spi requests ;*/
+               LP5891_au32NoSpiFrames[LOC_u8DrvIdx] -= LOC_u32FrameTosend ;
+
+               /**: Update SPI request indexer ;*/
+               LP5891_au32SpiRequestId[LOC_u8DrvIdx] += LOC_u32FrameTosend; 
+
+               /**: Enable the chip select to start communication ;*/
+               LP5891_enuDIOSetOutState(LP5891_astrSPIConfig[LOC_u8DrvIdx].u8SpiCsPin,LP5891_u8DIO_DIGITAL_OFF) ;
+
+               /** if( Image pixels have been processed successfully, and no remaining requests) then (true) */
+               if ((LP5891_u8ImageFinished[LOC_u8DrvIdx] == LBTY_OK) && (LP5891_au32NoSpiFrames[LOC_u8DrvIdx] == LP5891_u32MIN) )
+               {
+                  /**: Reset SPI requests ;*/
+                  LP5891_au32SpiRequestId[LOC_u8DrvIdx] = LP5891_u32MIN; 
+
+                  /**: Set current mode to IDLE state ;*/
+                  LP5891_aenuDrvCurrentState[LOC_u8DrvIdx] = LP5891_IDLE ;
+               }/** endif*/
+
+            }/** endif*/
+#endif
          }/** endif*/
 
    }
@@ -1151,7 +1276,7 @@ void LP5891_vidConfJobEndNotif(u16 u16UsrSgntrCpy, LBTY_tenuErrorStatus enuErrSt
    u16 count = 0 ;
 
    /**: Wait a delay till DMA finish the last 2 bytes ;*/
-   for (count=0;count<250;count++) {;}
+   for (count=0;count<DMA_NotifDelay[0];count++) {}
 
    /**: Disable CCSI Chip select pin ;*/
    LP5891_enuDIOSetOutState(LP5891_astrSPIConfig[0].u8SpiCsPin,LP5891_u8DIO_DIGITAL_ON) ;
