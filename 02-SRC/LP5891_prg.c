@@ -182,14 +182,16 @@ void LP5891_vidInit(void)
       /**: Set SPI data byte to MIN 0 ; */
       LP5891_au32SpiRequestId[LOC_u8DrvIdx] = LP5891_u32MIN ;
 
-      // /**: Call init driver function   ; */
+      /**: Call init driver function   ; */
        vidPrepareInitFrame(LOC_u8DrvIdx);
+
+      /**: Disable Chip select ;*/
+      LP5891_enuDIOSetOutState(LP5891_astrSPIConfig[LOC_u8DrvIdx].u8SpiCsPin,LP5891_u8DIO_DIGITAL_ON) ;
+
    }
    /**repeat while (Driver ID (LOC_u8TempDrvIdx) < Numbers of Drivers (HSMART_u8SMART_DRV_NB) ) is (yes)
     ->no;*/
 
-      /**: Disable Chip select ;*/
-      LP5891_enuDIOSetOutState(LP5891_astrSPIConfig[LOC_u8DrvIdx].u8SpiCsPin,LP5891_u8DIO_DIGITAL_ON) ;
 
    /** stop*/
    /** @enduml*/
@@ -1152,7 +1154,7 @@ void LP5891_vidConfJobEndNotif(u16 u16UsrSgntrCpy, LBTY_tenuErrorStatus enuErrSt
    for (count=0;count<250;count++) {;}
 
    /**: Disable CCSI Chip select pin ;*/
-   LP5891_enuDIOSetOutState(LP5891_astrSPIConfig[u16UsrSgntrCpy].u8SpiCsPin,LP5891_u8DIO_DIGITAL_ON) ;
+   LP5891_enuDIOSetOutState(LP5891_astrSPIConfig[0].u8SpiCsPin,LP5891_u8DIO_DIGITAL_ON) ;
 
    /** stop*/
    /** @enduml*/
