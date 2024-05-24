@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="31">
+  <config>
+    <config>
+      <key>COVERAGE_TYPE</key>
+      <value>statement+branch</value>
+      <key>TEST_CASE_TIMEOUT</key>
+      <value>1800</value>
+      <key>VCDB_FILENAME</key>
+      <value>C:\Users\oelmorad\git\proj2738_LP5891\04-Unit_Test\01-VectorCast\01-VCAST_Manage\vcshell.db</value>
+    </config>
+    <saved-logs>5</saved-logs>
+    <build-directory-naming-strategy>COMPRESSED</build-directory-naming-strategy>
+  </config>
+  <project-id>1716547608</project-id>
+  <factor-config-options>0</factor-config-options>
+  <environment name="IMAGE" type="UNIT">
+    <language>2</language>
+    <imported-from-env-script>../vc_ut_scripts/IMAGE.env</imported-from-env-script>
+    <is-monitored>0</is-monitored>
+    <config>
+      <original-environment-directory>../vc_ut_scripts</original-environment-directory>
+    </config>
+  </environment>
+  <environment name="LP5891_CFG" type="UNIT">
+    <language>2</language>
+    <imported-from-env-script>../vc_ut_scripts/LP5891_CFG.env</imported-from-env-script>
+    <is-monitored>0</is-monitored>
+    <config>
+      <original-environment-directory>../vc_ut_scripts</original-environment-directory>
+    </config>
+  </environment>
+  <environment name="LP5891_PRG" type="UNIT">
+    <language>2</language>
+    <imported-from-env-script>../vc_ut_scripts/LP5891_PRG.env</imported-from-env-script>
+    <is-monitored>0</is-monitored>
+    <config>
+      <original-environment-directory>../vc_ut_scripts</original-environment-directory>
+    </config>
+  </environment>
+  <environment name="MAIN" type="UNIT">
+    <language>2</language>
+    <imported-from-env-script>../vc_ut_scripts/MAIN.env</imported-from-env-script>
+    <is-monitored>0</is-monitored>
+    <config>
+      <original-environment-directory>../vc_ut_scripts</original-environment-directory>
+    </config>
+  </environment>
+  <environment name="STUB" type="UNIT">
+    <language>2</language>
+    <imported-from-env-script>../vc_ut_scripts/STUB.env</imported-from-env-script>
+    <is-monitored>0</is-monitored>
+    <config>
+      <original-environment-directory>../vc_ut_scripts</original-environment-directory>
+    </config>
+  </environment>
+  <group name="Group"/>
+  <group name="ST-Group"/>
+  <group name="UT-Group-Green_Hills_NEC_v850_Simulator_C">
+    <environment name="IMAGE"/>
+    <environment name="LP5891_CFG"/>
+    <environment name="LP5891_PRG"/>
+    <environment name="MAIN"/>
+    <environment name="STUB"/>
+  </group>
+  <compiler>
+    <compiler>
+      <name>Green_Hills_NEC_v850_Simulator_C</name>
+      <config>
+        <config>
+          <key>COVERAGE_TYPE</key>
+          <value>Statement+Branch</value>
+          <key>C_COMPILER_CFG_SOURCE</key>
+          <value>CONFIG_FILE_63</value>
+          <key>C_EXECUTE_CMD</key>
+          <value>sim850</value>
+          <key>C_COMPILER_TAG</key>
+          <value>V850_GH_SIM</value>
+          <key>C_DEFINE_LIST</key>
+          <value>OS_USE_TRACE=0 OS_RELEASE_SUFFIX=OS_AS403 OS_MEMMAP=0 OS_MULTICORE=OS_SINGLE OS_USE_CLZ_QUEUE_ALGORITHM=1 OS_DEVELOPMENT_SANITY_CHECKS=0 OS_KERNEL_TYPE=OS_FUNCTION_CALL TS_ARCH_FAMILY=TS_RH850 TS_ARCH_DERIVATE=TS_RH850F1L RH850F1L=1 OS_CPU=OS_RH850F1L OS_TOOL=OS_ghs OS_ARCH=OS_RH850 __noinline= VCAST_USE_GH_SYSCALL</value>
+          <key>C_PREPROCESS_CMD</key>
+          <value>ccrh850 -E -C</value>
+          <key>C_COMPILE_CMD</key>
+          <value>ccrh850 -c -G -w -Onone  -no_callt -sda=all -large_sda -reserve_r2 -Wundef --short_enum -dual_debug -delete -preprocess_assembly_files --no_wrap_diagnostics -registermode=32 -keeptempfiles -prepare_dispose -ansi  -full_debug_info -noobj -Wimplicit-int -Wshadow -Wtrigraphs -inline_prologue</value>
+          <key>C_DEBUG_CMD</key>
+          <value>multi</value>
+          <key>C_LINK_CMD</key>
+          <value>ccrh850 -G -map=vcast.map</value>
+          <key>VCAST_PRQAC_COMPILER_SETTINGS_FILE</key>
+          <value>$(PATH_QAC)/personalities/start.p_c</value>
+          <key>VCAST_PRQAC_ANALYSER_BASE</key>
+          <value>$(PATH_QAC)</value>
+          <key>VCAST_PRQAC_MESSAGE_PERSONALITY_FILE</key>
+          <value>$(PATH_QAC)\personalities\critical.p_s</value>
+          <key>VCAST_ASSEMBLY_FILE_EXTENSIONS</key>
+          <value>asm s</value>
+          <key>VCAST_DISABLE_ASM_FUNC_TESTING</key>
+          <value>TRUE</value>
+          <key>VCAST_DISPLAY_FUNCTION_COVERAGE</key>
+          <value>TRUE</value>
+          <key>VCAST_TI_IGNORE_QUALIFIERS</key>
+          <value>TRUE</value>
+          <key>VCAST_ENABLE_FUNCTION_CALL_COVERAGE</key>
+          <value>TRUE</value>
+          <key>VCAST_DISABLE_STD_WSTRING_DETECTION</key>
+          <value>TRUE</value>
+          <key>VCAST_NO_STDIN</key>
+          <value>FALSE</value>
+          <key>VCAST_STDIO</key>
+          <value>FALSE</value>
+          <key>VCAST_USE_STD_STRING</key>
+          <value>FALSE</value>
+        </config>
+      </config>
+    </compiler>
+    <testsuite name="UnitTesting">
+      <group name="UT-Group-Green_Hills_NEC_v850_Simulator_C"/>
+    </testsuite>
+  </compiler>
+  <compiler>
+    <compiler>
+      <name>SystemTestingCompilerNode</name>
+    </compiler>
+    <testsuite name="SystemTesting">
+      <group name="ST-Group"/>
+    </testsuite>
+  </compiler>
+</project>

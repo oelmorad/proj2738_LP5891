@@ -18,9 +18,10 @@
 *     | File             | Version      | Status              | Description |
 *     | :-------------:  | :----------: | :-----------------: | :----------
 *     |  Refer to SCM tool history log for older versions details and comments ||||
-*     | LP5891_priv.h      | 1.0          | Proposed            | \verbatim $Rev::             $: Revision of last commit \endverbatim |
-*     | ^                | ^            | ^                   | \verbatim $Date::           #$: Date of last commit     \endverbatim |
-*     | ^                | ^            | ^                   | \verbatim $Author::          $: Author of last commit   \endverbatim |
+*     | LP5891_priv.h      | 1.0          | Proposed            | Initial creation         
+*     |                  |              |                     | \verbatim $Rev::  1.0           $: Revision of last commit \endverbatim |
+*     | ^                | ^            | ^                   | \verbatim $Date:: 24 May 2024          #$: Date of last commit     \endverbatim |
+*     | ^                | ^            | ^                   | \verbatim $Author:: oelmorad          $: Author of last commit   \endverbatim |
 */
 /* ************************************************************************** */
 /* ************************* HEADER PROTECTION ****************************** */
@@ -48,6 +49,10 @@
 /** \brief \DESIGNER_START zero value casted with u16  \DESIGNER_END
 *   \details \DESIGNER_START Type u16 / Range [0-0xFFFF] / Resolution 1 / Unit NA \DESIGNER_END*/
 #define LP5891_u16MIN  (u16)0
+
+/** \brief \DESIGNER_START zero value casted with u16  \DESIGNER_END
+*   \details \DESIGNER_START Type u32 / Range [0-0xFFFFFFFF] / Resolution 1 / Unit NA \DESIGNER_END*/
+#define LP5891_u32MIN  (u32)0
 
 /** \brief \DESIGNER_START Start element in loop \DESIGNER_END
 *   \details \DESIGNER_START Type u8 / Range [0-255] / Resolution 1 / Unit NA \DESIGNER_END*/
@@ -88,66 +93,66 @@
 /******************************************************************************/
 /* !Description : This is the chip initial configuration 48 bit/Register      */
 /******************************************************************************/
-#define SB 0xFFFe
+// #define STARTBIT 0xFFFe
 
-#define _FC0_2 ((LSD_RM_EN_0 | GRP_DLY_B_0 | GRP_DLY_G_0 | GRP_DLY_R_0 | FREQ_MUL__1) >> 32) & 0xFFFF
-#define _FC0_1 ((FREQ_MUL__1 | FREQ_MOD__LF | SUBP_NUM__128 | SCAN_NUM__33) >> 16) & 0xFFFF
-#define _FC0_0 ((LODRM_EN_0 | PSP_MOD_0 | PS_EN_0 | PDC_EN_0 | CHIP_NUM__12)) & 0xFFFF
-
-
-#define _FC1_2 ((BLK_ADJ_0 | LINE_SWT__480 | LG_ENH_B_2 | LG_ENH_G_15) >> 32) & 0xFFFF
-#define _FC1_1 ((LG_ENH_G_15 | LG_ENH_R_1 | LG_STEP_B__6 | LG_STEP_G__6) >> 16) & 0xFFFF
-#define _FC1_0 ((LG_STEP_G__6 | LG_STEP_R__6 | SEG_LENGTH__128)) & 0xFFFF
+// #define _FC0_2 ((LSD_RM_EN_0 | GRP_DLY_B_0 | GRP_DLY_G_0 | GRP_DLY_R_0 | FREQ_MUL__1) >> 32) & 0xFFFF
+// #define _FC0_1 ((FREQ_MUL__1 | FREQ_MOD__LF | SUBP_NUM__128 | SCAN_NUM__33) >> 16) & 0xFFFF
+// #define _FC0_0 ((LODRM_EN_0 | PSP_MOD_0 | PS_EN_0 | PDC_EN_0 | CHIP_NUM__12)) & 0xFFFF
 
 
-#define _FC2_2 ((MPSM_EN_0 | MOD_SIZE_4 | SUBP_MAX_256_0 | CH_B_IMMUNITY_0 | CH_G_IMMUNITY_0 | CH_R_IMMUNITY_0 | LG_COLOR_B__14) >> 32) & 0xFFFF
-#define _FC2_1 ((LG_COLOR_G__14 | LG_COLOR_R__1 | DE_COUPLE1_B__4 | DE_COUPLE1_G__4) >> 16) & 0xFFFF
-#define _FC2_0 ((DE_COUPLE1_R__1 | V_PDC_B__0V1 | V_PDC_G__0V1 | V_PDC_R__0V1)) & 0xFFFF
+// #define _FC1_2 ((BLK_ADJ_0 | LINE_SWT__480 | LG_ENH_B_2 | LG_ENH_G_15) >> 32) & 0xFFFF
+// #define _FC1_1 ((LG_ENH_G_15 | LG_ENH_R_1 | LG_STEP_B__6 | LG_STEP_G__6) >> 16) & 0xFFFF
+// #define _FC1_0 ((LG_STEP_G__6 | LG_STEP_R__6 | SEG_LENGTH__128)) & 0xFFFF
 
 
-#define _FC3_2 ((LSDVTH_B__0V2 | LSDVTH_G__0V2 | LSDVTH_R__0V2 | LSD_RM__16 | BC_7) >> 32) & 0xFFFF
-#define _FC3_1 ((CC_B_64 | CC_G_85) >> 16) & 0xFFFF
-#define _FC3_0 ((CC_R_143 | LOD_LSD_RB_1 | LODVTH_B__0V2 | LODVTH_G__0V2 | LODVTH_R__0V2)) & 0xFFFF
+// #define _FC2_2 ((MPSM_EN_0 | MOD_SIZE_4 | SUBP_MAX_256_0 | CH_B_IMMUNITY_0 | CH_G_IMMUNITY_0 | CH_R_IMMUNITY_0 | LG_COLOR_B__14) >> 32) & 0xFFFF
+// #define _FC2_1 ((LG_COLOR_G__14 | LG_COLOR_R__1 | DE_COUPLE1_B__4 | DE_COUPLE1_G__4) >> 16) & 0xFFFF
+// #define _FC2_0 ((DE_COUPLE1_R__1 | V_PDC_B__0V1 | V_PDC_G__0V1 | V_PDC_R__0V1)) & 0xFFFF
 
 
-#define _FC4_2 ((DE_COUPLE3_EN_0 | DE_COUPLE3__1 | DE_COUPLE2_0 | FIRST_LINE_DIM__1 | CAURSE_B_1 | CAURSE_G_1 | CAURSE_R_1) >> 32) & 0xFFFF
-#define _FC4_1 ((SR_ON_B_0 | SR_ON_G_0 | SR_ON_R_0 | SR_OFF_B_1 | SR_OFF_G_1 | SR_OFF_R_1 | FINE_B_1 | FINE_G_1 | FINE_R_1) >> 16) & 0xFFFF
-#define _FC4_0 ((IMAX_1)) & 0xFFFF
+// #define _FC3_2 ((LSDVTH_B__0V2 | LSDVTH_G__0V2 | LSDVTH_R__0V2 | LSD_RM__16 | BC_7) >> 32) & 0xFFFF
+// #define _FC3_1 ((CC_B_64 | CC_G_85) >> 16) & 0xFFFF
+// #define _FC3_0 ((CC_R_143 | LOD_LSD_RB_1 | LODVTH_B__0V2 | LODVTH_G__0V2 | LODVTH_R__0V2)) & 0xFFFF
+
+
+// #define _FC4_2 ((DE_COUPLE3_EN_0 | DE_COUPLE3__1 | DE_COUPLE2_0 | FIRST_LINE_DIM__1 | CAURSE_B_1 | CAURSE_G_1 | CAURSE_R_1) >> 32) & 0xFFFF
+// #define _FC4_1 ((SR_ON_B_0 | SR_ON_G_0 | SR_ON_R_0 | SR_OFF_B_1 | SR_OFF_G_1 | SR_OFF_R_1 | FINE_B_1 | FINE_G_1 | FINE_R_1) >> 16) & 0xFFFF
+// #define _FC4_0 ((IMAX_1)) & 0xFFFF
 
 
 /* ************************************************************************** */
 /* ************************* TYPE_DEF/STRUCT SECTION ************************ */
 /* ************************************************************************** */
-enum WRITE_COMMAND_ID{
-    W_FC0 = 0xAA00,
-    W_FC1,
-    W_FC2,
-    W_FC3,
-    W_FC4,
-    W_FC14 = 0xAA0E,
-    W_FC15,
-    W_CHIP_INDEX = 0xAA10,
-    W_VSYNC = 0XAAF0,
-    W_SOFT_RESET = 0XAA80,
-    W_SRAM = 0xAA30
-};
+// enum WRITE_COMMAND_ID{
+//     W_FC0 = 0xAA00,
+//     W_FC1,
+//     W_FC2,
+//     W_FC3,
+//     W_FC4,
+//     W_FC14 = 0xAA0E,
+//     W_FC15,
+//     W_CHIP_INDEX = 0xAA10,
+//     W_VSYNC = 0XAAF0,
+//     W_SOFT_RESET = 0XAA80,
+//     W_SRAM = 0xAA30
+// };
 
-enum READ_COMMAND_ID{
-    R_FC0 = 0xAA60,
-    R_FC1,
-    R_FC2,
-    R_FC3,
-    R_FC4,
-    R_FC14 = 0xAA6E,
-    R_FC15,
-    R_FC16 = 0xAAA0,
-    R_FC17,
-    R_FC18,
-    R_FC19,
-    R_FC20,
-    R_FC21,
-    R_CHIP_INDEX = 0xAA70
-};
+// enum READ_COMMAND_ID{
+//     R_FC0 = 0xAA60,
+//     R_FC1,
+//     R_FC2,
+//     R_FC3,
+//     R_FC4,
+//     R_FC14 = 0xAA6E,
+//     R_FC15,
+//     R_FC16 = 0xAAA0,
+//     R_FC17,
+//     R_FC18,
+//     R_FC19,
+//     R_FC20,
+//     R_FC21,
+//     R_CHIP_INDEX = 0xAA70
+// };
 
 
 
@@ -221,8 +226,8 @@ typedef union {
 typedef struct
 {
    u8 u8SpiSlot;        /**< \DESIGNER_START Spi slot / Type: u8 / Range: in HSPM slot range / Resolution: NA \DESIGNER_END*/
-   u8 u8SpiCsPin;         /**< \DESIGNER_START FLT pin / Type: u8 / Range: in DDIO pin range / Resolution: NA \DESIGNER_END*/
-   u32 u8SpiSpeed;  /**< \DESIGNER_START Boost supply converter ID / Type: u8 / Range: <HBST_u8APP_NB_CONV_MAX / Resolution: NA \DESIGNER_END*/
+   u8 u8SpiCsPin;         /**< \DESIGNER_START chip select pin / Type: u8 / Range: in DDIO pin range / Resolution: NA \DESIGNER_END*/
+   u16 u16SpiSpeed;  /**< \DESIGNER_START SPI clock speed / Type: u16 / Unit: KHz  / Range: [100..25000]   / Resolution: 100 \DESIGNER_END*/
 } LP5891_tstrComponentConfig;
 
 
@@ -234,15 +239,19 @@ typedef struct
 /* ************************************************************************** */
 /* ***************************** VARIABLE SECTION *************************** */
 /* ************************************************************************** */
-
+extern LP5891_tstrComponentConfig LP5891_astrSPIConfig[] ;
 /* ************************************************************************** */
 /* **************************** FUNCTION SECTION **************************** */
 /* ************************************************************************** */
-static LBTY_tenuErrorStatus vidDrvInitFrame(u8 Driver) ;
-static LBTY_tenuErrorStatus vidSendSyncFrame(u8 Driver) ;
-static LBTY_tenuErrorStatus vidSendSWResetFrame(u8 Driver);
-static LBTY_tenuErrorStatus vidSendPixelFrame(u8 Driver, u32 u32pixelNo) ;
-static RGB_tstrPixelData vidGetPixel(u8 Driver, u32 u32pixelNo) ;
+static void vidPrepareInitFrame(u8 Driver) ;
+static void vidPrepareSyncFrame(u8 Driver) ;
+static void vidPrepareSWResetFrame(u8 Driver);
+static void vidPrepareSinglePixelFrame(u8 Driver,const RGB_tstrPixelData * const u32pixelData) ;
+static void vidPrepareBlockFrame(u8 Driver, const u8 * const u8BlockLoc, u32 u32BlockSize) ;
+static void vidGetPixel(u8 Driver,const u8 * const u8pixelLoc ,RGB_tstrPixelData * Pixel ) ;
+
+static void LP5891_vidConfJobEndNotif(u16 u16UsrSgntrCpy, LBTY_tenuErrorStatus enuErrStat);
+static void LP5891_vidConfJobStartNotif (u16 u16UsrSgntrCpy, LBTY_tenuErrorStatus enuErrStat);
 
 #endif /* LP5891_PRIV_H */
 /* *********************** E N D (LP5891_priv.h) ************************** */

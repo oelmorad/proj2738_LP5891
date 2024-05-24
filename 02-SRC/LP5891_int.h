@@ -6,7 +6,7 @@
 /* ********************** FILE DEFINITION SECTION *************************** */
 /* ************************************************************************** */
 /** \file LP5891_int.h
-*  Component: \LP5891
+*  Component: LP5891
 *  \brief     \DESIGNER_START Brief description of the file \DESIGNER_END
 *  \details   \DESIGNER_START Much more details can be added \DESIGNER_END
 *  \n\n
@@ -24,9 +24,9 @@
 *     | :-------------:  | :----------: | :-----------------: | :----------
 *     |  Refer to SCM tool history log for older versions details and comments ||||
 *     | LP5891_int.h       | V1.0         | Proposed            | Initial creation
-*     |                  |              |                     | \verbatim $Rev::             $: Revision of last commit \endverbatim |
-*     | ^                | ^            | ^                   | \verbatim $Date::           #$: Date of last commit     \endverbatim |
-*     | ^                | ^            | ^                   | \verbatim $Author::          $: Author of last commit   \endverbatim |
+*     |                  |              |                     | \verbatim $Rev::  1.0           $: Revision of last commit \endverbatim |
+*     | ^                | ^            | ^                   | \verbatim $Date:: 24 May 2024          #$: Date of last commit     \endverbatim |
+*     | ^                | ^            | ^                   | \verbatim $Author:: oelmorad          $: Author of last commit   \endverbatim |
 */
 /* ************************************************************************** */
 /* ************************* HEADER PROTECTION ****************************** */
@@ -36,7 +36,7 @@
 /* ************************************************************************** */
 /* ************************ HEADER FILES INCLUDES **************************  */
 /* ************************************************************************** */
-
+#include "LP5891_cfg.h"
 /* ************************************************************************** */
 /* ************************* TYPE_DEF/STRUCT SECTION ************************ */
 /* ************************************************************************** */
@@ -59,14 +59,17 @@
 extern void LP5891_vidInit(void);
 
 
-extern void LP5891_vidRunMgmt(void);
+extern void LP5891_vidRunMgmt(void);                /** Mode Managemnet Runnable  */
+extern void LP5891_vidPixelRequestsMgmt(void);      /** Requests Runnable  */
 
 
-extern void LP5891_vidConfJobEndNotif(u16 u8SgntrCpy, LBTY_tenuErrorStatus enuErrStat);
 
-
-extern LBTY_tenuErrorStatus LP5891_vidAnimateImage(u8 Driver, const u16 * const pu16image, u16 u16ImagepixelNo, u16 u16imageNo ,u8 u16animationspeed) ;
+extern LBTY_tenuErrorStatus LP5891_vidAnimateImage(u8 Driver, const u8 * const pu8image, u32 u32ImagepixelNo) ;
 extern LBTY_tenuErrorStatus LP5891_vidStopAnimation(u8 Driver) ;
+
+
+
+
 
 
 #endif /* LP5891_INT_H */

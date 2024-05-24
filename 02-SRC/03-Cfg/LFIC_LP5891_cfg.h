@@ -2,7 +2,7 @@
 /* ********************** FILE DEFINITION SECTION *************************** */
 /* ************************************************************************** */
 /** \file LFIC_LP5891_cfg.h
- *  Component: \LP58917140
+ *  Component: \LP5891
  *  \brief     \DESIGNER_START This config file is used as rubber layer for libraries  \DESIGNER_END
  *  \details   \DESIGNER_START   \DESIGNER_END
  *   \Scope: Public
@@ -26,10 +26,11 @@
  *     | File             | Version      | Status              | Description |
  *     | :-------------:  | :----------: | :-----------------: | :----------
  *     |  Refer to SCM tool history log for older versions details and comments ||||
- *     | MFIC_LP5891_cfg.h       | \CoreVersion | \CoreVersion_Status | \verbatim $Rev:: 4469         $: Revision of last commit \endverbatim |
- *     | ^                | ^            | ^                   | \verbatim $Date:: 26 Sep,2023  #$: Date of last commit     \endverbatim |
- *     | ^                | ^            | ^                   | \verbatim $Author:: Oelmorad  $: Author of last commit   \endverbatim |
- */
+ *     | MFIC_LP5891_cfg.h               | 1.0          | Proposed            | Initial creation         
+ *     |                  |              |                     | \verbatim $Rev::  1.0           $: Revision of last commit \endverbatim |
+ *     | ^                | ^            | ^                   | \verbatim $Date:: 24 May 2024          #$: Date of last commit     \endverbatim |
+ *     | ^                | ^            | ^                   | \verbatim $Author:: oelmorad          $: Author of last commit   \endverbatim |
+*/
 #ifndef LFIC_LP5891_CFG_H_
 #define LFIC_LP5891_CFG_H_
 

@@ -34,9 +34,10 @@
 *     | File             | Version      | Status              | Description |
 *     | :-------------:  | :----------: | :-----------------: | :----------
 *     |  Refer to SCM tool history log for older versions details and comments ||||
-*     | LP5891_cfg.h       | 1.0          | Proposed            | \verbatim $Rev::             $: Revision of last commit \endverbatim |
-*     | ^                | ^            | ^                   | \verbatim $Date::           #$: Date of last commit     \endverbatim |
-*     | ^                | ^            | ^                   | \verbatim $Author::          $: Author of last commit   \endverbatim |
+ *     |  LP5891_cfg.h                   | 1.0                 | Proposed            | Initial creation         
+ *     |                  |              |                     | \verbatim $Rev::  1.0           $: Revision of last commit \endverbatim |
+ *     | ^                | ^            | ^                   | \verbatim $Date:: 24 May 2024          #$: Date of last commit     \endverbatim |
+ *     | ^                | ^            | ^                   | \verbatim $Author:: oelmorad          $: Author of last commit   \endverbatim |
 */
 /* ************************************************************************** */
 /* ************************* HEADER PROTECTION ****************************** */
@@ -112,7 +113,12 @@
 /** \brief \DESIGNER_START Number of buck components \DESIGNER_END
  *   \details \DESIGNER_START Type: NA / Range :[0, 6] / Resolution: index \DESIGNER_END
  */
-#define LP5891_u32MAX_PIXELS 100000U
+#define LP5891_u32BLOCKPerRun_No 12U
+
+/** \brief \DESIGNER_START Number of buck components \DESIGNER_END
+ *   \details \DESIGNER_START Type: NA / Range :[0, 6] / Resolution: index \DESIGNER_END
+ */
+#define LP5891_u32PIXELPerRUN 661U
 
 /** \brief \DESIGNER_START Max Number of frames   \DESIGNER_END
  *   \details \DESIGNER_START Type u8 / Range [0x55] / Resolution NA / Unit NA \DESIGNER_END*/
@@ -120,13 +126,14 @@
 
 /** \brief \DESIGNER_START Max Number of frames   \DESIGNER_END
  *   \details \DESIGNER_START Type u8 / Range [0x55] / Resolution NA / Unit NA \DESIGNER_END*/
-#define LP5891_U16TXBUFFER_MAX     1000U
+#define LP5891_U16TXRXBUFFER_MAX     10000U
 
 
 /** \brief \DESIGNER_START Number of INIT_FRAMES \DESIGNER_END
  *   \details \DESIGNER_START Type: NA / Range :[0, 6] / Resolution: index \DESIGNER_END
  */
 #define LP5891_u8INIT_FRAMES_NO 77U
+
 
 /** \brief \DESIGNER_START Number of RESET_FRAMES \DESIGNER_END
  *   \details \DESIGNER_START Type: NA / Range :[0, 6] / Resolution: index \DESIGNER_END
@@ -137,11 +144,9 @@
  *   \details \DESIGNER_START Type: NA / Range :[0, 6] / Resolution: index \DESIGNER_END
  */
 #define LP5891_u8VSYNC_FRAMES_NO 6U
-
+#define LP5891_u8VSYNC_FRAMES_TRIALS 3U
 
 /* ************************************************************************** */
-
-
 
 
 
@@ -152,12 +157,11 @@
 /* ************************************************************************** */
 /* ***************************** VARIABLE SECTION *************************** */
 /* ************************************************************************** */
-extern u8 LP5891_u8InitFrameValues[LP5891_u8INIT_FRAMES_NO] ;
 
-extern LP5891_tstrComponentConfig LP5891_astrSPIConfig[LP5891_u8MAXNo_COMPONENT] ;
 /* ************************************************************************** */
 /* **************************** FUNCTION SECTION **************************** */
 /* ************************************************************************** */
+
 
 #endif /* LP5891_CFG_H */
 /* *********************** E N D (LP5891_cfg.h) *************************** */

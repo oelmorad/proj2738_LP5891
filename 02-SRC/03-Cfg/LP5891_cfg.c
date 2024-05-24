@@ -18,9 +18,10 @@
 *     | File             | Version      | Status              | Description |
 *     | :-------------:  | :----------: | :-----------------: | :----------
 *     |  Refer to SCM tool history log for older versions details and comments ||||
-*     | LP5891_cfg.c       | 1.0          | Proposed            | \verbatim $Rev::             $: Revision of last commit \endverbatim |
-*     | ^                | ^            | ^                   | \verbatim $Date::           #$: Date of last commit     \endverbatim |
-*     | ^                | ^            | ^                   | \verbatim $Author::          $: Author of last commit   \endverbatim |
+ *     | LP5891_cfg.c                    | 1.0                 | Proposed            | Initial creation         
+ *     |                  |              |                     | \verbatim $Rev::  1.0           $: Revision of last commit \endverbatim |
+ *     | ^                | ^            | ^                   | \verbatim $Date:: 24 May 2024          #$: Date of last commit     \endverbatim |
+ *     | ^                | ^            | ^                   | \verbatim $Author:: oelmorad          $: Author of last commit   \endverbatim |
 */
 /* ************************************************************************** */
 /* ************************ HEADER FILES INCLUDES **************************  */ 
@@ -45,13 +46,6 @@
 /* ************************************************************************** */
 /* ***************************** CONST SECTION ****************************** */
 /* ************************************************************************** */
-u8 LP5891_u8InitFrameValues[LP5891_u8INIT_FRAMES_NO] =
-{
-    0xFF,0xFF,0xFE,0xAA,0x10,0xFF,0xFF,0xFF,0xFF,0x55,0x00,0x48,0x00,0x36,0x3D,0xE0,0x10,0xB7,0xFF,0xFF,0xFF,0xF5,0x50,0x08,0x00,0x02,0x00,0x01,0x01,0xFF,0x7F,0xFF,
-    0xFF,0xFF,0x55,0x01,0x48,0xE0,0x20,0x00,0x10,0x00,0x0F,0xFF,0xFF,0xFF,0xF5,0x50,0x18,0x00,0x15,0xFD,0xFE,0xFF,0x00,0xFF,0xFF,0xFF,0xFF,0x55,0x02,0x45,0xE0,0x22,
-    0xAF,0x10,0x00,0x2F,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF
-};
-
 
 
 /* ************************************************************************** */
@@ -59,7 +53,7 @@ u8 LP5891_u8InitFrameValues[LP5891_u8INIT_FRAMES_NO] =
 /* ************************************************************************** */
 LP5891_tstrComponentConfig LP5891_astrSPIConfig[LP5891_u8MAXNo_COMPONENT]= 
 {
-    {LP5891_DRV1_SPI_SLOT , LP5891_DRV1_DIO_CS , 0}
+    {LP5891_DRV1_SPI_SLOT , LP5891_DRV1_DIO_CS , 4000}
 }
 
  ;
@@ -73,8 +67,6 @@ LP5891_tstrComponentConfig LP5891_astrSPIConfig[LP5891_u8MAXNo_COMPONENT]=
 /* ************************************************************************** */
 /* ************************* PRIVATE FUNCTION SECTION *********************** */
 /* ************************************************************************** */
-
-
 
 
 /* *********************** E N D (LP5891_cfg.c) *************************** */
