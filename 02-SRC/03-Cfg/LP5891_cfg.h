@@ -106,11 +106,11 @@
 
 /**********************************************************************************************************************/
 /*!Description: Image Queuing Functionality Enable/Disable                                                             */
-/*!Range: [LP5891_FEATURE_ON - LP5891_FEATURE_OFF]                                                                            */
+/*!Range: [LP5891_FULLIMAGE_TRANSFER,LP5891_HALFIMAGE_TRANSFER,LP5891_BLOCK_TRANSFER]                                                                            */
 /**********************************************************************************************************************/
 /** \brief \DESIGNER_START Image Queuing Functionality   \DESIGNER_END
 *   \details \DESIGNER_START Type u8 / Range [LP5891_FULLIMAGE_TRANSFER,LP5891_HALFIMAGE_TRANSFER,LP5891_BLOCK_TRANSFER] / Resolution 1 / Unit :NA \DESIGNER_END*/
-#define LP5891_IMAGE_TRANSFER            LP5891_HALFIMAGE_TRANSFER
+#define LP5891_IMAGE_TRANSFER            LP5891_BLOCK_TRANSFER
 
 
 /* ************************************************************************** */
@@ -126,6 +126,8 @@
  */
 #define LP5891_u8MAX_DEVICES 12U
 
+
+#if LP5891_IMAGE_TRANSFER == LP5891_BLOCK_TRANSFER
 /** \brief \DESIGNER_START Number of buck components \DESIGNER_END
  *   \details \DESIGNER_START Type: NA / Range :[0, 6] / Resolution: index \DESIGNER_END
  */
@@ -135,6 +137,8 @@
  *   \details \DESIGNER_START Type: NA / Range :[0, 6] / Resolution: index \DESIGNER_END
  */
 #define LP5891_u32PIXELPerRUN 661U
+#endif
+
 
 /** \brief \DESIGNER_START Max Number of frames   \DESIGNER_END
  *   \details \DESIGNER_START Type u8 / Range [0x55] / Resolution NA / Unit NA \DESIGNER_END*/

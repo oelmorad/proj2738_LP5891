@@ -46,7 +46,7 @@
 /* ************************************************************************** */
 /* ************************** MACRO/DEFINE SECTION ************************** */
 /* ************************************************************************** */
-
+#define SPI_INC_GUARD(count)  if (count<LP5891_U16TXRXBUFFER_MAX) count++ ;
 
 /* ************************************************************************** */
 /* ***************************** CONST SECTION ****************************** */
@@ -65,7 +65,7 @@ static const u8 LP5891_u8InitFrameValues[LP5891_u8INIT_FRAMES_NO] =
 };
 
 
-static const u16 DMA_LookupDelay[20] = 
+static const u16 DMA_LookupDelay[26] = 
 {
    0,
    800,
@@ -83,10 +83,16 @@ static const u16 DMA_LookupDelay[20] =
    2 ,
    1 ,
    1 ,
-   0 ,
-   0 ,
+   1 ,
+   1 ,
+   1 ,
+   1 ,
+   1 ,
+   1 ,
    0 ,
    0,
+   0,
+   0
 } ;
 /* ************************************************************************** */
 /* ***************************** VARIABLE SECTION *************************** */
@@ -367,16 +373,13 @@ void LP5891_vidRunMgmt(void)
             /**: checkout the next block indexer ;*/
             LP5891_au32CrntPixelLoc[LOC_u8DrvIdx]+=  LOC_u32Pixels ;
 
-#if   (LP5891_IMAGE_TRANSFER   ==     LP5891_FULLIMAGE_TRANSFER)
-               /**: Prepare Sync Frame ;*/
-               vidPrepareSyncFrame(LOC_u8DrvIdx) ;
+            /**: Prepare Sync Frame ;*/
+            vidPrepareSyncFrame(LOC_u8DrvIdx) ;
 
+#if   (LP5891_IMAGE_TRANSFER   ==     LP5891_FULLIMAGE_TRANSFER)
                /**: Set Image To finished ;*/
                LP5891_u8ImageFinished[LOC_u8DrvIdx] = LBTY_OK ;
 #elif   (LP5891_IMAGE_TRANSFER   ==     LP5891_HALFIMAGE_TRANSFER)  
-               /**: Prepare Sync Frame ;*/
-               vidPrepareSyncFrame(LOC_u8DrvIdx) ;
-
             /** if( indexer is out of range , Image has been completely parsed) then(true) */
             if (LP5891_au32CrntPixelLoc[LOC_u8DrvIdx] >=  LP5891_u32MaxImagePixels[LOC_u8DrvIdx] )
             {
@@ -387,9 +390,6 @@ void LP5891_vidRunMgmt(void)
             /** if( indexer is out of range , Image has been completely parsed) then(true) */
             if (LP5891_au32CrntPixelLoc[LOC_u8DrvIdx] >=  LP5891_u32MaxImagePixels[LOC_u8DrvIdx] )
             {
-               /**: Prepare Sync Frame ;*/
-               vidPrepareSyncFrame(LOC_u8DrvIdx) ;
-
                /**: Set Image To finished ;*/
                LP5891_u8ImageFinished[LOC_u8DrvIdx] = LBTY_OK ;
             }/** endif*/
@@ -520,9 +520,9 @@ extern void LP5891_vidPixelRequestsMgmt(void)
 
 #if LP5891_IMAGE_TRANSFER   ==     LP5891_FULLIMAGE_TRANSFER
             /*************************  Send All Data frames ***********************/
-               LOC_u32FrameTosend = LP5891_au32NoSpiFrames[LOC_u8DrvIdx];
+            /**: Get number of frames to send ;*/
+            LOC_u32FrameTosend = LP5891_au32NoSpiFrames[LOC_u8DrvIdx];
 
-            /**: Start SPI Job ;*/
             /**: Start SPI Job ;*/
             LOC_enuRetErrorStatus = LP5891_enuSpiWrReq( LP5891_astrSPIConfig[LOC_u8DrvIdx].u8SpiSlot,
                            &LP5891_pau8StatTxBuffer[LOC_u8DrvIdx][LP5891_au32SpiRequestId[LOC_u8DrvIdx]],  &LP5891_pau8StatRxBuffer[LOC_u8DrvIdx][LP5891_au32SpiRequestId[LOC_u8DrvIdx]] ,
@@ -541,16 +541,18 @@ extern void LP5891_vidPixelRequestsMgmt(void)
             }/** endif*/
 #elif LP5891_IMAGE_TRANSFER   ==     LP5891_HALFIMAGE_TRANSFER
             /*************************  Send All Data frames ***********************/
-            if (LP5891_au32NoSpiFrames[LOC_u8DrvIdx] >= ((LP5891_u32MaxImagePixels[LOC_u8DrvIdx]/2 + LP5891_u8VSYNC_FRAMES_NO * LP5891_u8VSYNC_FRAMES_TRIALS)) )
+             /** if( Number of frames is more than block size) then (true) */
+            if (LP5891_au32NoSpiFrames[LOC_u8DrvIdx] >= ((LP5891_u32MaxImagePixels[LOC_u8DrvIdx]/2 + (u32)(LP5891_u8VSYNC_FRAMES_NO * LP5891_u8VSYNC_FRAMES_TRIALS))) )
             {
-               LOC_u32FrameTosend = ((LP5891_u32MaxImagePixels[LOC_u8DrvIdx]/2 + LP5891_u8VSYNC_FRAMES_NO * LP5891_u8VSYNC_FRAMES_TRIALS));
-            }
+               /**: Get number of frames to send ;*/
+               LOC_u32FrameTosend = (LP5891_u32MaxImagePixels[LOC_u8DrvIdx]/2 + (u32)(LP5891_u8VSYNC_FRAMES_NO * LP5891_u8VSYNC_FRAMES_TRIALS) );
+            }/** else */
             else
             {
+               /**: Get the remaining number of frames to send ;*/
                LOC_u32FrameTosend = LP5891_au32NoSpiFrames[LOC_u8DrvIdx];
-            }
+            }/** endif */
 
-            /**: Start SPI Job ;*/
             /**: Start SPI Job ;*/
             LOC_enuRetErrorStatus = LP5891_enuSpiWrReq( LP5891_astrSPIConfig[LOC_u8DrvIdx].u8SpiSlot,
                            &LP5891_pau8StatTxBuffer[LOC_u8DrvIdx][LP5891_au32SpiRequestId[LOC_u8DrvIdx]],  &LP5891_pau8StatRxBuffer[LOC_u8DrvIdx][LP5891_au32SpiRequestId[LOC_u8DrvIdx]] ,
@@ -583,16 +585,18 @@ extern void LP5891_vidPixelRequestsMgmt(void)
 
 #elif LP5891_IMAGE_TRANSFER   ==     LP5891_BLOCK_TRANSFER
             /*************************  Send All Data frames ***********************/
-            if (LP5891_au32NoSpiFrames[LOC_u8DrvIdx] >= LP5891_u32PIXELPerRUN)
+            /** if( Number of frames is more than block size) then (true) */
+            if (LP5891_au32NoSpiFrames[LOC_u8DrvIdx] >= (LP5891_u32PIXELPerRUN + (u32)(LP5891_u8VSYNC_FRAMES_NO * LP5891_u8VSYNC_FRAMES_TRIALS) ))
             {
-               LOC_u32FrameTosend = LP5891_u32PIXELPerRUN;
-            }
+               /**: Get number of frames to send ;*/
+               LOC_u32FrameTosend = LP5891_u32PIXELPerRUN + (u32)(LP5891_u8VSYNC_FRAMES_NO * LP5891_u8VSYNC_FRAMES_TRIALS) ;
+            }/** else */
             else
             {
+               /**: Get the number of frames reminder to send ;*/
                LOC_u32FrameTosend = LP5891_au32NoSpiFrames[LOC_u8DrvIdx];
-            }
+            }/** endif */
 
-            /**: Start SPI Job ;*/
             /**: Start SPI Job ;*/
             LOC_enuRetErrorStatus = LP5891_enuSpiWrReq( LP5891_astrSPIConfig[LOC_u8DrvIdx].u8SpiSlot,
                            &LP5891_pau8StatTxBuffer[LOC_u8DrvIdx][LP5891_au32SpiRequestId[LOC_u8DrvIdx]],  &LP5891_pau8StatRxBuffer[LOC_u8DrvIdx][LP5891_au32SpiRequestId[LOC_u8DrvIdx]] ,
@@ -876,7 +880,7 @@ void vidPrepareInitFrame(u8 Driver)
       LP5891_pau8StatTxBuffer[Driver][LP5891_au32NoSpiFrames[Driver]] = LP5891_u8InitFrameValues[LOC_u8ByteIdx] ;
 
       /**: Add SPI Byte ;*/
-      LP5891_au32NoSpiFrames[Driver]+=1; 
+      SPI_INC_GUARD(LP5891_au32NoSpiFrames[Driver]) ;
     }
    /**repeat while (Byte ID (LOC_u8ByteIdx) < Numbers of Drivers (LP5891_u8INIT_FRAMES_NO) ) is (yes)
     ->no;*/
@@ -947,7 +951,7 @@ void vidPrepareSyncFrame(u8 Driver)
             LP5891_pau8StatTxBuffer[Driver][LP5891_au32NoSpiFrames[Driver]] = LP5891_u8SyncFrameValues[LOC_u8ByteIdx] ;
 
             /**: Add SPI Byte ;*/
-            LP5891_au32NoSpiFrames[Driver]+=1; 
+            SPI_INC_GUARD(LP5891_au32NoSpiFrames[Driver]) ;
           }
          /**repeat while (Byte ID (LOC_u8ByteIdx) < Numbers of Drivers (LP5891_u8INIT_FRAMES_NO) ) is (yes)
           ->no;*/
@@ -1014,7 +1018,7 @@ void vidPrepareSWResetFrame(u8 Driver)
       LP5891_pau8StatTxBuffer[Driver][LP5891_au32NoSpiFrames[Driver]] = LP5891_u8ResetFrameValues[LOC_u8ByteIdx] ;
 
       /**: Add SPI Byte ;*/
-      LP5891_au32NoSpiFrames[Driver]+=1; 
+      SPI_INC_GUARD(LP5891_au32NoSpiFrames[Driver]) ;
     }
    /**repeat while (Byte ID (LOC_u8ByteIdx) < Numbers of Drivers (LP5891_u8INIT_FRAMES_NO) ) is (yes)
     ->no;*/
@@ -1102,7 +1106,7 @@ void vidPrepareSinglePixelFrame (u8 Driver,const RGB_tstrPixelData * const u32pi
       LP5891_pau8StatTxBuffer[Driver][LP5891_au32NoSpiFrames[Driver]] = loc_u8Buffer[LOC_u8ByteIdx] ;
 
       /**: Add SPI Byte ;*/
-      LP5891_au32NoSpiFrames[Driver]+=1; 
+      SPI_INC_GUARD(LP5891_au32NoSpiFrames[Driver]) ;
     }
    /**repeat while (Byte ID (LOC_u8ByteIdx) < Numbers of Drivers (LP5891_u8INIT_FRAMES_NO) ) is (yes)
     ->no;*/
@@ -1165,7 +1169,7 @@ void vidPrepareBlockFrame(u8 Driver, const u8 * const u8BlockLoc, u32 u32BlockSi
       LP5891_pau8StatTxBuffer[Driver][LP5891_au32NoSpiFrames[Driver]] = u8BlockLoc[LOC_u32ByteIdx] ;  
 
       /**: Add SPI Byte ;*/
-      LP5891_au32NoSpiFrames[Driver]+=1; 
+      SPI_INC_GUARD(LP5891_au32NoSpiFrames[Driver]) ;
     }
    /**repeat while (Byte ID (LOC_u32ByteIdx) < Numbers of Drivers (LP5891_u8INIT_FRAMES_NO) ) is (yes)
     ->no;*/     
