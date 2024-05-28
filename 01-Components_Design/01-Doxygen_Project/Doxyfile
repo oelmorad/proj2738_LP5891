@@ -42,7 +42,7 @@ DOXYFILE_ENCODING      = UTF-8
 # title of most generated pages and in a few other places.
 # The default value is: My Project.
 
-PROJECT_NAME           = SWC_LP5891
+PROJECT_NAME           = SWC_HLP5891
 
 # The PROJECT_NUMBER tag can be used to enter a project or revision number. This
 # could be handy for archiving the generated documentation or if some version
@@ -950,13 +950,13 @@ WARN_LOGFILE           =
 # spaces. See also FILE_PATTERNS and EXTENSION_MAPPING
 # Note: If this tag is empty the current directory is searched.
 
-INPUT                  = ../../02-SRC/LP5891_int.h \
-                         ../../02-SRC/LP5891_prg.c \
-                         ../../02-SRC/LP5891_priv.h \
-                         ../../02-SRC/03-Cfg/LP5891_cfg.c \
-                         ../../02-SRC/03-Cfg/LP5891_cfg.h \
-                         ../../02-SRC/03-Cfg/MFIC_LP5891_cfg.h \
-                         ../../02-SRC/03-Cfg/HFIC_LP5891_cfg.h
+INPUT                  = ../../02-SRC/HLP5891_int.h \
+                         ../../02-SRC/HLP5891_prg.c \
+                         ../../02-SRC/HLP5891_priv.h \
+                         ../../02-SRC/03-Cfg/HLP5891_cfg.c \
+                         ../../02-SRC/03-Cfg/HLP5891_cfg.h \
+                         ../../02-SRC/03-Cfg/MFIC_HLP5891_cfg.h \
+                         ../../02-SRC/03-Cfg/HFIC_HLP5891_cfg.h
 
 # This tag can be used to specify the character encoding of the source files
 # that doxygen parses. Internally doxygen uses the UTF-8 encoding. Doxygen uses

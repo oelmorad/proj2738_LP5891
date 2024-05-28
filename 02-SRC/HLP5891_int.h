@@ -5,8 +5,8 @@
 /* ************************************************************************** */
 /* ********************** FILE DEFINITION SECTION *************************** */
 /* ************************************************************************** */
-/** \file LP5891_int.h
-*  Component: LP5891
+/** \file HLP5891_int.h
+*  Component: HLP5891
 *  \brief     \DESIGNER_START Brief description of the file \DESIGNER_END
 *  \details   \DESIGNER_START Much more details can be added \DESIGNER_END
 *  \n\n
@@ -19,11 +19,11 @@
 /* ************************************************************************** */
 /* ********************** MODIFICATION LOG SECTION ************************** */
 /* ************************************************************************** */
-/** \page _inth LP5891_int.h History
+/** \page _inth HLP5891_int.h History
 *     | File             | Version      | Status              | Description |
 *     | :-------------:  | :----------: | :-----------------: | :----------
 *     |  Refer to SCM tool history log for older versions details and comments ||||
-*     | LP5891_int.h       | V1.0         | Proposed            | Initial creation
+*     | HLP5891_int.h       | V1.0         | Proposed            | Initial creation
 *     |                  |              |                     | \verbatim $Rev::  1.0           $: Revision of last commit \endverbatim |
 *     | ^                | ^            | ^                   | \verbatim $Date:: 24 May 2024          #$: Date of last commit     \endverbatim |
 *     | ^                | ^            | ^                   | \verbatim $Author:: oelmorad          $: Author of last commit   \endverbatim |
@@ -31,12 +31,12 @@
 /* ************************************************************************** */
 /* ************************* HEADER PROTECTION ****************************** */
 /* ************************************************************************** */
-#ifndef LP5891_INT_H
-#define LP5891_INT_H
+#ifndef HLP5891_INT_H
+#define HLP5891_INT_H
 /* ************************************************************************** */
 /* ************************ HEADER FILES INCLUDES **************************  */
 /* ************************************************************************** */
-#include "LP5891_cfg.h"
+#include "HLP5891_cfg.h"
 /* ************************************************************************** */
 /* ************************* TYPE_DEF/STRUCT SECTION ************************ */
 /* ************************************************************************** */
@@ -56,24 +56,23 @@
 /* ************************************************************************** */
 /* **************************** FUNCTION SECTION **************************** */
 /* ************************************************************************** */
-extern void LP5891_vidInit(void);
+extern void HLP5891_vidInit(void);
 
 
-extern void LP5891_vidRunMgmt(void);                /** Mode Managemnet Runnable  */
-extern void LP5891_vidPixelRequestsMgmt(void);      /** Requests Runnable  */
+extern void HLP5891_vidRunMgmt(void);                /** Mode Managemnet Runnable  */
 
 
 
-extern LBTY_tenuErrorStatus LP5891_vidAnimateImage(u8 Driver, const u8 * const pu8image, u32 u32ImagepixelNo) ;
-extern LBTY_tenuErrorStatus LP5891_vidStopAnimation(u8 Driver) ;
-
-
+extern LBTY_tenuErrorStatus HLP5891_vidAnimateImage(u8 Driver, const u8 * const pu8image, u32 u32ImagepixelNo) ;
+extern LBTY_tenuErrorStatus HLP5891_vidStopAnimation(u8 Driver) ;
 
 
 
 
-#endif /* LP5891_INT_H */
-/* *********************** E N D (LP5891_int.h) *************************** */
+
+
+#endif /* HLP5891_INT_H */
+/* *********************** E N D (HLP5891_int.h) *************************** */
 /* **************** TEMPLATE HISTORY - DO NOT MODIFY ************************ */
 /**
 * \page COPYRIGHT COPYRIGHT

@@ -1,8 +1,8 @@
 /* ************************************************************************** */
 /* ********************** FILE DEFINITION SECTION *************************** */
 /* ************************************************************************** */
-/** \file LP5891_priv.h
-*  Component: \SWC_LP5891
+/** \file HLP5891_priv.h
+*  Component: \SWC_HLP5891
 *  \brief     \DESIGNER_START Abstraction layer between APP. and LED Matrix Driver \DESIGNER_END
 *  \n\n
 *  Scope: Private
@@ -14,11 +14,11 @@
 /* ************************************************************************** */
 /* ********************** MODIFICATION LOG SECTION ************************** */
 /* ************************************************************************** */
-/** \page _privh LP5891_priv.h History
+/** \page _privh HLP5891_priv.h History
 *     | File             | Version      | Status              | Description |
 *     | :-------------:  | :----------: | :-----------------: | :----------
 *     |  Refer to SCM tool history log for older versions details and comments ||||
-*     | LP5891_priv.h      | 1.0          | Proposed            | Initial creation         
+*     | HLP5891_priv.h      | 1.0          | Proposed            | Initial creation         
 *     |                  |              |                     | \verbatim $Rev::  1.0           $: Revision of last commit \endverbatim |
 *     | ^                | ^            | ^                   | \verbatim $Date:: 24 May 2024          #$: Date of last commit     \endverbatim |
 *     | ^                | ^            | ^                   | \verbatim $Author:: oelmorad          $: Author of last commit   \endverbatim |
@@ -26,8 +26,8 @@
 /* ************************************************************************** */
 /* ************************* HEADER PROTECTION ****************************** */
 /* ************************************************************************** */
-#ifndef LP5891_PRIV_H
-#define LP5891_PRIV_H
+#ifndef HLP5891_PRIV_H
+#define HLP5891_PRIV_H
 /* ************************************************************************** */
 /* ************************ HEADER FILES INCLUDES **************************  */
 /* ************************************************************************** */
@@ -39,55 +39,58 @@
 /******************************************************************************/
 /* !Comment  : Definition of the value of Null pointer                        */
 /******************************************************************************/
-#define LP5891_NULL               ((void*)0)
+#define HLP5891_NULL               ((void*)0)
 
 
 /** \brief \DESIGNER_START zero value casted with u8  \DESIGNER_END
 *   \details \DESIGNER_START Type u8 / Range [0-0xFF] / Resolution 1 / Unit NA \DESIGNER_END*/
-#define LP5891_u8MIN  (u8)0
+#define HLP5891_u8MIN  (u8)0
 
 /** \brief \DESIGNER_START zero value casted with u16  \DESIGNER_END
 *   \details \DESIGNER_START Type u16 / Range [0-0xFFFF] / Resolution 1 / Unit NA \DESIGNER_END*/
-#define LP5891_u16MIN  (u16)0
+#define HLP5891_u16MIN  (u16)0
 
 /** \brief \DESIGNER_START zero value casted with u16  \DESIGNER_END
 *   \details \DESIGNER_START Type u32 / Range [0-0xFFFFFFFF] / Resolution 1 / Unit NA \DESIGNER_END*/
-#define LP5891_u32MIN  (u32)0
+#define HLP5891_u32MIN  (u32)0
 
 /** \brief \DESIGNER_START Start element in loop \DESIGNER_END
 *   \details \DESIGNER_START Type u8 / Range [0-255] / Resolution 1 / Unit NA \DESIGNER_END*/
-#define LP5891_u8LoopStartIdx  (u8)0
+#define HLP5891_u8LoopStartIdx  (u8)0
 
 
 /** \brief \DESIGNER_START Start element in loop \DESIGNER_END
 *   \details \DESIGNER_START Type u8 / Range [0-255] / Resolution 1 / Unit NA \DESIGNER_END*/
-#define LP5891_u8FrameIDLEBytes  (u8)0xFF
+#define HLP5891_u8FrameIDLEBytes  (u8)0xFF
 
 /** \brief \DESIGNER_START Start element in loop \DESIGNER_END
 *   \details \DESIGNER_START Type u8 / Range [0-255] / Resolution 1 / Unit NA \DESIGNER_END*/
-#define LP5891_u8FrameSTARTByte  (u8)0xFE
+#define HLP5891_u8FrameSTARTByte  (u8)0xFE
 
 /** \brief \DESIGNER_START Start element in loop \DESIGNER_END
 *   \details \DESIGNER_START Type u8 / Range [0-255] / Resolution 1 / Unit NA \DESIGNER_END*/
-#define LP5891_u8FrameENDByte  (u8)0xFF
+#define HLP5891_u8FrameENDByte  (u8)0xFF
 
 
 /** \brief \DESIGNER_START IMAGE Start Key  \DESIGNER_END
  *   \details \DESIGNER_START Type: NA / Range :[0, 6] / Resolution: index \DESIGNER_END
  */
-#define LP5891_u16STARTKEY_PATTERN         ((u16)0xA5A5)
+#define HLP5891_u16STARTKEY_PATTERN         ((u16)0xA5A5)
 
 /** \brief \DESIGNER_START IMAGE Start Key  \DESIGNER_END
  *   \details \DESIGNER_START Type: NA / Range :[0, 6] / Resolution: index \DESIGNER_END
  */
-#define LP5891_u16ENDKEY_PATTERN         ((u16)0xA5A5)
+#define HLP5891_u16ENDKEY_PATTERN         ((u16)0xA5A5)
 
 /** \brief \DESIGNER_START IMAGE Start Key index  \DESIGNER_END
  *   \details \DESIGNER_START Type: NA / Range :[0, 6] / Resolution: index \DESIGNER_END
  */
-#define LP5891_u32STARTKEY_INDEX         ((u32)0)
+#define HLP5891_u32STARTKEY_INDEX         ((u32)0)
 
-
+/** \brief \DESIGNER_START IMAGE Start Key index  \DESIGNER_END
+ *   \details \DESIGNER_START Type: NA / Range :[0, 6] / Resolution: index \DESIGNER_END
+ */
+#define HLP5891_u8MAX_FREQ         ((u8)30)
 
 
 /******************************************************************************/
@@ -163,13 +166,13 @@
 
 typedef enum
 {
-   LP5891_UNINITIALIZED = 0x10, /**< \DESIGNER_START state  \DESIGNER_END*/
-   LP5891_INITIALIZED = 0x20, /**< \DESIGNER_START state  \DESIGNER_END*/
-   LP5891_IDLE = 0x30, /**< \DESIGNER_START state  \DESIGNER_END*/
-   LP5891_OPERATION_MODE = 0x40, /**< \DESIGNER_START state  \DESIGNER_END*/
-   LP5891_SLEEP = 0x50, /**< \DESIGNER_START state  \DESIGNER_END*/
-   LP5891_DEFECT = 0x60/**< \DESIGNER_START state  \DESIGNER_END*/
-} LP5891_tenuWorkingStatus;
+   HLP5891_UNINITIALIZED = 0x10, /**< \DESIGNER_START state  \DESIGNER_END*/
+   HLP5891_INITIALIZED = 0x20, /**< \DESIGNER_START state  \DESIGNER_END*/
+   HLP5891_IDLE = 0x30, /**< \DESIGNER_START state  \DESIGNER_END*/
+   HLP5891_OPERATION_MODE = 0x40, /**< \DESIGNER_START state  \DESIGNER_END*/
+   HLP5891_SLEEP = 0x50, /**< \DESIGNER_START state  \DESIGNER_END*/
+   HLP5891_DEFECT = 0x60/**< \DESIGNER_START state  \DESIGNER_END*/
+} HLP5891_tenuWorkingStatus;
 
 
 
@@ -228,7 +231,7 @@ typedef struct
    u8 u8SpiSlot;        /**< \DESIGNER_START Spi slot / Type: u8 / Range: in HSPM slot range / Resolution: NA \DESIGNER_END*/
    u8 u8SpiCsPin;         /**< \DESIGNER_START chip select pin / Type: u8 / Range: in DDIO pin range / Resolution: NA \DESIGNER_END*/
    u16 u16SpiSpeed;  /**< \DESIGNER_START SPI clock speed / Type: u16 / Unit: KHz  / Range: [100..25000]   / Resolution: 100 \DESIGNER_END*/
-} LP5891_tstrComponentConfig;
+} HLP5891_tstrComponentConfig;
 
 
 
@@ -239,10 +242,11 @@ typedef struct
 /* ************************************************************************** */
 /* ***************************** VARIABLE SECTION *************************** */
 /* ************************************************************************** */
-extern LP5891_tstrComponentConfig LP5891_astrSPIConfig[] ;
+extern HLP5891_tstrComponentConfig HLP5891_astrSPIConfig[] ;
 /* ************************************************************************** */
 /* **************************** FUNCTION SECTION **************************** */
 /* ************************************************************************** */
+static void HLP5891_vidPixelRequestsMgmt(void);   
 static void vidPrepareInitFrame(u8 Driver) ;
 static void vidPrepareSyncFrame(u8 Driver) ;
 static void vidPrepareSWResetFrame(u8 Driver);
@@ -250,8 +254,8 @@ static void vidPrepareSinglePixelFrame(u8 Driver,const RGB_tstrPixelData * const
 static void vidPrepareBlockFrame(u8 Driver, const u8 * const u8BlockLoc, u32 u32BlockSize) ;
 static void vidGetPixel(u8 Driver,const u8 * const u8pixelLoc ,RGB_tstrPixelData * Pixel ) ;
 
-static void LP5891_vidConfJobEndNotif(u16 u16UsrSgntrCpy, LBTY_tenuErrorStatus enuErrStat);
-static void LP5891_vidConfJobStartNotif (u16 u16UsrSgntrCpy, LBTY_tenuErrorStatus enuErrStat);
+static void HLP5891_vidConfJobEndNotif(u16 u16UsrSgntrCpy, LBTY_tenuErrorStatus enuErrStat);
+static void HLP5891_vidConfJobStartNotif (u16 u16UsrSgntrCpy, LBTY_tenuErrorStatus enuErrStat);
 
-#endif /* LP5891_PRIV_H */
-/* *********************** E N D (LP5891_priv.h) ************************** */
+#endif /* HLP5891_PRIV_H */
+/* *********************** E N D (HLP5891_priv.h) ************************** */

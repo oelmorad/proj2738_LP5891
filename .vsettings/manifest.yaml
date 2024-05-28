@@ -1,12 +1,12 @@
 %YAML 1.2 # Reference card
 --- # document start
-name: "swc_lp5891" # Package Name
+name: "swc_HLP5891" # Package Name
 version: "1.0.0" # Application or library version (major.minor.patch)
 user: "l012s1439_pltf_std" # Not for your user-name. Consult your tooling team for the value.
 channel: "integration"
 
 programming-languages: ["C"] # e.g., C, C++, ASM, MATLAB, Simulink
-description: "LP5891 management" # Short description about the package.
+description: "HLP5891 management" # Short description about the package.
 
 business-group: "VIS" # e.g., CDA, VIS, THS, PTS, V-Core
 product-group: "VLS" # i.e., DSF, CIX, VLS, VWS. Leave empty if no product-group.

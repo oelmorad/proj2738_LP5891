@@ -1,8 +1,8 @@
 -- VectorCAST 21.sp8 (03/29/22)
 -- Test Case Script
 --
--- Environment    : LP5891_PRG
--- Unit(s) Under Test: LP5891_cfg LP5891_prg
+-- Environment    : HLP5891_PRG
+-- Unit(s) Under Test: HLP5891_cfg HLP5891_prg
 --
 -- Script Features
 TEST.SCRIPT_FEATURE:C_DIRECT_ARRAY_INDEXING
@@ -14,13 +14,13 @@ TEST.SCRIPT_FEATURE:STATIC_HEADER_FUNCS_IN_UUTS
 TEST.SCRIPT_FEATURE:VCAST_MAIN_NOT_RENAMED
 --
 
--- Unit: LP5891_prg
+-- Unit: HLP5891_prg
 
--- Subprogram: LP5891_vidInit
+-- Subprogram: HLP5891_vidInit
 
--- Test Case: LP5891_vidInit.001
-TEST.UNIT:LP5891_prg
-TEST.SUBPROGRAM:LP5891_vidInit
+-- Test Case: HLP5891_vidInit.001
+TEST.UNIT:HLP5891_prg
+TEST.SUBPROGRAM:HLP5891_vidInit
 TEST.NEW
-TEST.NAME:LP5891_vidInit.001
+TEST.NAME:HLP5891_vidInit.001
 TEST.END

@@ -7,7 +7,7 @@
       <key>TEST_CASE_TIMEOUT</key>
       <value>1800</value>
       <key>VCDB_FILENAME</key>
-      <value>C:\Users\oelmorad\git\proj2738_LP5891\04-Unit_Test\01-VectorCast\01-VCAST_Manage\vcshell.db</value>
+      <value>..\..\vcshell.db</value>
     </config>
     <saved-logs>5</saved-logs>
     <build-directory-naming-strategy>COMPRESSED</build-directory-naming-strategy>
@@ -22,17 +22,17 @@
       <original-environment-directory>../vc_ut_scripts</original-environment-directory>
     </config>
   </environment>
-  <environment name="LP5891_CFG" type="UNIT">
+  <environment name="HLP5891_CFG" type="UNIT">
     <language>2</language>
-    <imported-from-env-script>../vc_ut_scripts/LP5891_CFG.env</imported-from-env-script>
+    <imported-from-env-script>../vc_ut_scripts/HLP5891_CFG.env</imported-from-env-script>
     <is-monitored>0</is-monitored>
     <config>
       <original-environment-directory>../vc_ut_scripts</original-environment-directory>
     </config>
   </environment>
-  <environment name="LP5891_PRG" type="UNIT">
+  <environment name="HLP5891_PRG" type="UNIT">
     <language>2</language>
-    <imported-from-env-script>../vc_ut_scripts/LP5891_PRG.env</imported-from-env-script>
+    <imported-from-env-script>../vc_ut_scripts/HLP5891_PRG.env</imported-from-env-script>
     <is-monitored>0</is-monitored>
     <config>
       <original-environment-directory>../vc_ut_scripts</original-environment-directory>
@@ -58,8 +58,8 @@
   <group name="ST-Group"/>
   <group name="UT-Group-Green_Hills_NEC_v850_Simulator_C">
     <environment name="IMAGE"/>
-    <environment name="LP5891_CFG"/>
-    <environment name="LP5891_PRG"/>
+    <environment name="HLP5891_CFG"/>
+    <environment name="HLP5891_PRG"/>
     <environment name="MAIN"/>
     <environment name="STUB"/>
   </group>

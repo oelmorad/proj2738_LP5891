@@ -1,8 +1,8 @@
 /* ************************************************************************** */
 /* ********************** FILE DEFINITION SECTION *************************** */
 /* ************************************************************************** */
-/** \file LP5891_cfg.c
-*  Component: \SWC_LP5891
+/** \file HLP5891_cfg.c
+*  Component: \SWC_HLP5891
 *  \brief     \DESIGNER_START Abstraction layer between APP. and LED Matrix Drivers \DESIGNER_END
 *  \n\n
 *  Scope: Private
@@ -14,11 +14,11 @@
 /* ************************************************************************** */
 /* ********************** MODIFICATION LOG SECTION ************************** */
 /* ************************************************************************** */ 
-/** \page _cfgc LP5891_cfg.c History
+/** \page _cfgc HLP5891_cfg.c History
 *     | File             | Version      | Status              | Description |
 *     | :-------------:  | :----------: | :-----------------: | :----------
 *     |  Refer to SCM tool history log for older versions details and comments ||||
- *     | LP5891_cfg.c                    | 1.0                 | Proposed            | Initial creation         
+ *     | HLP5891_cfg.c                    | 1.0                 | Proposed            | Initial creation         
  *     |                  |              |                     | \verbatim $Rev::  1.0           $: Revision of last commit \endverbatim |
  *     | ^                | ^            | ^                   | \verbatim $Date:: 24 May 2024          #$: Date of last commit     \endverbatim |
  *     | ^                | ^            | ^                   | \verbatim $Author:: oelmorad          $: Author of last commit   \endverbatim |
@@ -28,12 +28,12 @@
 /* ************************************************************************** */
 #include "BSW_cfg.h"
 
-#include "LFIC_LP5891_cfg.h"
-#include "MFIC_LP5891_cfg.h"
-#include "HFIC_LP5891_cfg.h"
+#include "LFIC_HLP5891_cfg.h"
+#include "MFIC_HLP5891_cfg.h"
+#include "HFIC_HLP5891_cfg.h"
 
-#include "LP5891_priv.h"
-#include "LP5891_cfg.h"
+#include "HLP5891_priv.h"
+#include "HLP5891_cfg.h"
 
 /* ************************************************************************** */
 /* ********************** TYPE_DEF/STRUCT/ENUM SECTION ********************** */
@@ -51,9 +51,9 @@
 /* ************************************************************************** */
 /* ***************************** VARIABLE SECTION *************************** */
 /* ************************************************************************** */
-LP5891_tstrComponentConfig LP5891_astrSPIConfig[LP5891_u8MAXNo_COMPONENT]= 
+HLP5891_tstrComponentConfig HLP5891_astrSPIConfig[HLP5891_u8MAXNo_COMPONENT]= 
 {
-    {LP5891_DRV1_SPI_SLOT , LP5891_DRV1_DIO_CS , 10}
+    {HLP5891_DRV1_SPI_SLOT , HLP5891_DRV1_DIO_CS , 16}
 }
 
  ;
@@ -69,4 +69,4 @@ LP5891_tstrComponentConfig LP5891_astrSPIConfig[LP5891_u8MAXNo_COMPONENT]=
 /* ************************************************************************** */
 
 
-/* *********************** E N D (LP5891_cfg.c) *************************** */
+/* *********************** E N D (HLP5891_cfg.c) *************************** */

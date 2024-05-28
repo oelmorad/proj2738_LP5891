@@ -31,7 +31,7 @@
 
 /** \brief \DESIGNER_START Define that activate the Double inverse storage Manager Module \DESIGNER_END
  *   \details \DESIGNER_START NA / Range [BSW_SSAF] / Resolution NA / Unit NA \DESIGNER_END */
-#define BSW_LP5891
+#define BSW_HLP5891
 
 
 /** \brief \DESIGNER_START Enable LDEM Defect management \DESIGNER_END

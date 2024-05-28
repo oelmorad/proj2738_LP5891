@@ -18,12 +18,12 @@
 /** \brief \DESIGNER_START Number of buck components \DESIGNER_END
  *   \details \DESIGNER_START Type: NA / Range :[0, 6] / Resolution: index \DESIGNER_END
  */
-#define LP5891_u32MAX_PIXELS 63456U
+#define HLP5891_u32MAX_PIXELS 63456U
 
-#define LP5891_u32MAX_IMAGES 30U
+#define HLP5891_u32MAX_IMAGES 30U
 
 
-extern const  uint8 animation[LP5891_u32MAX_IMAGES][LP5891_u32MAX_PIXELS] ;
+extern const  uint8 animation[HLP5891_u32MAX_IMAGES][HLP5891_u32MAX_PIXELS] ;
 
 
 

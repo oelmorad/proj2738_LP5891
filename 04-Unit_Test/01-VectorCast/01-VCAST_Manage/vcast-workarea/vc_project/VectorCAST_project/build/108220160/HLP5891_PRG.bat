@@ -45,12 +45,12 @@ echo options VCAST_TI_IGNORE_QUALIFIERS TRUE >> commands.tmp
 echo options VCAST_USE_STD_STRING FALSE >> commands.tmp
 echo options VCAST_VCDB_FLAG_STRING  >> commands.tmp
 echo options VCDB_CMD_VERB ccrh850 >> commands.tmp
-echo options VCDB_FILENAME C:\\Users\\oelmorad\\git\\proj2738_LP5891\\04-Unit_Test\\01-VectorCast\\01-VCAST_Manage\\vcshell.db >> commands.tmp
+echo options VCDB_FILENAME C:\\Users\\oelmorad\\git\\proj2738_HLP5891\\04-Unit_Test\\01-VectorCast\\01-VCAST_Manage\\vcshell.db >> commands.tmp
 echo options WHITEBOX YES >> commands.tmp
-echo environment build LP5891_PRG.env >> commands.tmp
-echo /E:LP5891_PRG tools script run LP5891_PRG.tst >> commands.tmp
-echo /E:LP5891_PRG execute batch >> commands.tmp
-echo /E:LP5891_PRG reports custom management LP5891_PRG_management_report.html >> commands.tmp
+echo environment build HLP5891_PRG.env >> commands.tmp
+echo /E:HLP5891_PRG tools script run HLP5891_PRG.tst >> commands.tmp
+echo /E:HLP5891_PRG execute batch >> commands.tmp
+echo /E:HLP5891_PRG reports custom management HLP5891_PRG_management_report.html >> commands.tmp
 setlocal
 set PATH=%PATH%;%VECTORCAST_DIR%
 WHERE clicast

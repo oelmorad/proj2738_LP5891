@@ -1,18 +1,18 @@
 /*
- * LP5891.h
+ * HLP5891.h
  *
  * Copyright (C) 2023 Texas Instruments Incorporated - http://www.ti.com/
  * ALL RIGHTS RESERVED
  *
  */
 
-#ifndef LP5891_H_
-#define LP5891_H_
+#ifndef HLP5891_H_
+#define HLP5891_H_
 
 #define RGB_CHANNEL_CNT 16
 #define CHANNEL_CNT 48
 #define LP589X 1
-#define LP5891 1
+#define HLP5891 1
 
 /* FC0  Bits */
 #define LSD_RM_EN_1                        (0x800000000000)        /* enable */
@@ -3558,4 +3558,4 @@
 #define IMAX__20                           (0x000000000002)        /* 20 mA maximum */
 #define IMAX__10                           (0x000000000000)        /* 10 mA maximum */
 
-#endif /* LP5891_H_ */
+#endif /* HLP5891_H_ */
