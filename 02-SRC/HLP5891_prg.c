@@ -33,9 +33,9 @@
 #include "HFIC_HLP5891_cfg.h"
 
 #include "HLP5891.h"
-#include "HLP5891_priv.h"
-#include "HLP5891_int.h"
 
+#include "HLP5891_int.h"
+#include "HLP5891_priv.h"
 
 
 
@@ -247,9 +247,9 @@ void HLP5891_vidInit(void)
        vidPrepareInitFrame(LOC_u8DrvIdx);
 
       /**: Disable Chip select ;*/
-      HLP5891_enuDIOSetOutState(HLP5891_astrSPIConfig[LOC_u8DrvIdx].u8SpiCsPin,HLP5891_u8DIO_DIGITAL_ON) ;
+      HLP5891_enuDIOSetOutState(HLP5891_astrSPIConfig[LOC_u8DrvIdx].tstrDrvSpicfg->u8SpiCsPin,HLP5891_u8DIO_DIGITAL_ON) ;
 
-      DMA_NotifDelay[LOC_u8DrvIdx] = DMA_LookupDelay[HLP5891_astrSPIConfig[LOC_u8DrvIdx].u16SpiSpeed-(u8)1]  ;
+      DMA_NotifDelay[LOC_u8DrvIdx] = DMA_LookupDelay[HLP5891_astrSPIConfig[LOC_u8DrvIdx].tstrDrvSpicfg->u16SpiSpeed-(u8)1]  ;
    }
    /**repeat while (Driver ID (LOC_u8TempDrvIdx) < Numbers of Drivers (HSMART_u8SMART_DRV_NB) ) is (yes)
     ->no;*/
@@ -326,7 +326,7 @@ void HLP5891_vidRunMgmt(void)
          case HLP5891_UNINITIALIZED:
 
             /**: Set off the chip select ;*/
-            HLP5891_enuDIOSetOutState(HLP5891_astrSPIConfig[LOC_u8DrvIdx].u8SpiCsPin,HLP5891_u8DIO_DIGITAL_ON) ;
+            HLP5891_enuDIOSetOutState(HLP5891_astrSPIConfig[LOC_u8DrvIdx].tstrDrvSpicfg->u8SpiCsPin,HLP5891_u8DIO_DIGITAL_ON) ;
 
             /**: Prepare Init Frame, Done at init function ;*/
             vidPrepareInitFrame(LOC_u8DrvIdx) ;
@@ -526,7 +526,7 @@ extern void HLP5891_vidPixelRequestsMgmt(void)
             /*************************  Send All init frames ***********************/
 
             /**: Start SPI Job ;*/
-            LOC_enuRetErrorStatus = HLP5891_enuSpiWrReq( HLP5891_astrSPIConfig[LOC_u8DrvIdx].u8SpiSlot,
+            LOC_enuRetErrorStatus = HLP5891_enuSpiWrReq( HLP5891_astrSPIConfig[LOC_u8DrvIdx].tstrDrvSpicfg->u8SpiSlot,
                            &HLP5891_pau8StatTxBuffer[LOC_u8DrvIdx][HLP5891_au32SpiRequestId[LOC_u8DrvIdx]],  &HLP5891_pau8StatRxBuffer[LOC_u8DrvIdx][HLP5891_au32SpiRequestId[LOC_u8DrvIdx]] ,
                             HLP5891_au32NoSpiFrames[LOC_u8DrvIdx]  , &HLP5891_vidConfJobStartNotif , &HLP5891_vidConfJobEndNotif,LOC_u8DrvIdx);
 
@@ -534,7 +534,7 @@ extern void HLP5891_vidPixelRequestsMgmt(void)
             if (LOC_enuRetErrorStatus == LBTY_OK)
             {
                /**: Enable the chip select to start communication ;*/
-               HLP5891_enuDIOSetOutState(HLP5891_astrSPIConfig[LOC_u8DrvIdx].u8SpiCsPin,HLP5891_u8DIO_DIGITAL_OFF) ;
+               HLP5891_enuDIOSetOutState(HLP5891_astrSPIConfig[LOC_u8DrvIdx].tstrDrvSpicfg->u8SpiCsPin,HLP5891_u8DIO_DIGITAL_OFF) ;
 
                /**: subtract the init frames numbers ;*/
                HLP5891_au32NoSpiFrames[LOC_u8DrvIdx] -= HLP5891_u8INIT_FRAMES_NO ; 
@@ -560,15 +560,15 @@ extern void HLP5891_vidPixelRequestsMgmt(void)
             LOC_u32FrameTosend = HLP5891_au32NoSpiFrames[LOC_u8DrvIdx];
 
             /**: Start SPI Job ;*/
-            LOC_enuRetErrorStatus = HLP5891_enuSpiWrReq(HLP5891_astrSPIConfig[LOC_u8DrvIdx].u8SpiSlot,&HLP5891_pau8StatTxBuffer[LOC_u8DrvIdx][HLP5891_au32SpiRequestId[LOC_u8DrvIdx]],  &HLP5891_pau8StatRxBuffer[LOC_u8DrvIdx][HLP5891_au32SpiRequestId[LOC_u8DrvIdx]] , LOC_u32FrameTosend  , &HLP5891_vidConfJobStartNotif , &HLP5891_vidConfJobEndNotif,LOC_u8DrvIdx);
-            // LOC_enuRetErrorStatus = LP5891_enuSpiWrReq(LP5891_astrSPIConfig[LOC_u8DrvIdx].u8SpiSlot,LP5891_pau8StatTxBuffer[LOC_u8DrvIdx],  LP5891_pau8StatRxBuffer[LOC_u8DrvIdx] ,
+            LOC_enuRetErrorStatus = HLP5891_enuSpiWrReq(HLP5891_astrSPIConfig[LOC_u8DrvIdx].tstrDrvSpicfg->u8SpiSlot,&HLP5891_pau8StatTxBuffer[LOC_u8DrvIdx][HLP5891_au32SpiRequestId[LOC_u8DrvIdx]],  &HLP5891_pau8StatRxBuffer[LOC_u8DrvIdx][HLP5891_au32SpiRequestId[LOC_u8DrvIdx]] , LOC_u32FrameTosend  , &HLP5891_vidConfJobStartNotif , &HLP5891_vidConfJobEndNotif,LOC_u8DrvIdx);
+            // LOC_enuRetErrorStatus = LP5891_enuSpiWrReq(LP5891_astrSPIConfig[LOC_u8DrvIdx].tstrDrvSpicfg->u8SpiSlot,LP5891_pau8StatTxBuffer[LOC_u8DrvIdx],  LP5891_pau8StatRxBuffer[LOC_u8DrvIdx] ,
             // LP5891_au32NoSpiFrames[LOC_u8DrvIdx] ,  0,   (tpfvidHspmUsrJobCallBck)&LP5891_vidConfJobEndNotif,   0);
 
             /** if( DMA write request is OK) then (true) */
             if (LOC_enuRetErrorStatus == LBTY_OK)
             {
                /**: Enable the chip select to start communication ;*/
-               HLP5891_enuDIOSetOutState(LP5891_astrSPIConfig[LOC_u8DrvIdx].u8SpiCsPin,LP5891_u8DIO_DIGITAL_OFF) ;
+               HLP5891_enuDIOSetOutState(LP5891_astrSPIConfig[LOC_u8DrvIdx].tstrDrvSpicfg->u8SpiCsPin,LP5891_u8DIO_DIGITAL_OFF) ;
 
                /**: Reset all Pixels Blocks and indexers ;*/
                HLP5891_u8CrntPixelBlock[LOC_u8DrvIdx] = HLP5891_u8MIN ;  
@@ -604,8 +604,8 @@ extern void HLP5891_vidPixelRequestsMgmt(void)
             LOC_u32FrameTosend = HLP5891_au32NoSpiFrames[LOC_u8DrvIdx];
 
             /**: Start SPI Job ;*/
-            LOC_enuRetErrorStatus = HLP5891_enuSpiWrReq(HLP5891_astrSPIConfig[LOC_u8DrvIdx].u8SpiSlot,&HLP5891_pau8StatTxBuffer[LOC_u8DrvIdx][HLP5891_au32SpiRequestId[LOC_u8DrvIdx]],  &HLP5891_pau8StatRxBuffer[LOC_u8DrvIdx][HLP5891_au32SpiRequestId[LOC_u8DrvIdx]] , LOC_u32FrameTosend  , &HLP5891_vidConfJobStartNotif , &HLP5891_vidConfJobEndNotif,LOC_u8DrvIdx);
-            // LOC_enuRetErrorStatus = LP5891_enuSpiWrReq(LP5891_astrSPIConfig[LOC_u8DrvIdx].u8SpiSlot,LP5891_pau8StatTxBuffer[LOC_u8DrvIdx],  LP5891_pau8StatRxBuffer[LOC_u8DrvIdx] ,
+            LOC_enuRetErrorStatus = HLP5891_enuSpiWrReq(HLP5891_astrSPIConfig[LOC_u8DrvIdx].tstrDrvSpicfg->u8SpiSlot,&HLP5891_pau8StatTxBuffer[LOC_u8DrvIdx][HLP5891_au32SpiRequestId[LOC_u8DrvIdx]],  &HLP5891_pau8StatRxBuffer[LOC_u8DrvIdx][HLP5891_au32SpiRequestId[LOC_u8DrvIdx]] , LOC_u32FrameTosend  , &HLP5891_vidConfJobStartNotif , &HLP5891_vidConfJobEndNotif,LOC_u8DrvIdx);
+            // LOC_enuRetErrorStatus = LP5891_enuSpiWrReq(LP5891_astrSPIConfig[LOC_u8DrvIdx].tstrDrvSpicfg->u8SpiSlot,LP5891_pau8StatTxBuffer[LOC_u8DrvIdx],  LP5891_pau8StatRxBuffer[LOC_u8DrvIdx] ,
             // LP5891_au32NoSpiFrames[LOC_u8DrvIdx] ,  0,   (tpfvidHspmUsrJobCallBck)&LP5891_vidConfJobEndNotif,   0);
 
             /** if( DMA write request is OK) then (true) */
@@ -613,7 +613,7 @@ extern void HLP5891_vidPixelRequestsMgmt(void)
             {
 
                /**: Enable the chip select to start communication ;*/
-               HLP5891_enuDIOSetOutState(HLP5891_astrSPIConfig[LOC_u8DrvIdx].u8SpiCsPin,HLP5891_u8DIO_DIGITAL_OFF) ;
+               HLP5891_enuDIOSetOutState(HLP5891_astrSPIConfig[LOC_u8DrvIdx].tstrDrvSpicfg->u8SpiCsPin,HLP5891_u8DIO_DIGITAL_OFF) ;
 
                /**: Update no of remaining spi requests ;*/
                HLP5891_au32NoSpiFrames[LOC_u8DrvIdx] -= LOC_u32FrameTosend ;
@@ -1298,7 +1298,7 @@ void HLP5891_vidConfJobEndNotif(u16 u16UsrSgntrCpy, LBTY_tenuErrorStatus enuErrS
    for (count=0;count<DMA_NotifDelay[0];count++) {}
 
    /**: Disable CCSI Chip select pin ;*/
-   HLP5891_enuDIOSetOutState(HLP5891_astrSPIConfig[0].u8SpiCsPin,HLP5891_u8DIO_DIGITAL_ON) ;
+   HLP5891_enuDIOSetOutState(HLP5891_astrSPIConfig[0].tstrDrvSpicfg->u8SpiCsPin,HLP5891_u8DIO_DIGITAL_ON) ;
 
    /** stop*/
    /** @enduml*/

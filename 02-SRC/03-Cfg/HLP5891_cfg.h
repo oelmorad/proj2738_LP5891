@@ -119,7 +119,11 @@
 /** \brief \DESIGNER_START Number of buck components \DESIGNER_END
  *   \details \DESIGNER_START Type: NA / Range :[0, 6] / Resolution: index \DESIGNER_END
  */
-#define HLP5891_u8MAXNo_COMPONENT   1U
+#define HLP5891_u8CHIP_LP1   0U
+/** \brief \DESIGNER_START Number of buck components \DESIGNER_END
+ *   \details \DESIGNER_START Type: NA / Range :[0, 6] / Resolution: index \DESIGNER_END
+ */
+#define HLP5891_u8MAXNo_COMPONENT   (HLP5891_u8CHIP_LP1 + 1U)
 
 /** \brief \DESIGNER_START Number of buck components \DESIGNER_END
  *   \details \DESIGNER_START Type: NA / Range :[0, 6] / Resolution: index \DESIGNER_END

@@ -230,7 +230,19 @@ typedef struct
 {
    u8 u8SpiSlot;        /**< \DESIGNER_START Spi slot / Type: u8 / Range: in HSPM slot range / Resolution: NA \DESIGNER_END*/
    u8 u8SpiCsPin;         /**< \DESIGNER_START chip select pin / Type: u8 / Range: in DDIO pin range / Resolution: NA \DESIGNER_END*/
-   u16 u16SpiSpeed;  /**< \DESIGNER_START SPI clock speed / Type: u16 / Unit: KHz  / Range: [100..25000]   / Resolution: 100 \DESIGNER_END*/
+   u8 u16SpiSpeed;  /**< \DESIGNER_START SPI clock speed / Type: u16 / Unit: KHz  / Range: [100..25000]   / Resolution: 100 \DESIGNER_END*/
+} HLP5891_tstrDrvSpiConfig;
+
+
+/** \brief \DESIGNER_START Buck component parameters \DESIGNER_END
+*/
+typedef struct
+{ 
+  u8 u8ChipId ;
+  u8 u8RowsNum ;
+  u8 u8ColumnsNum ;
+  u8 u8DevicesNum ;
+  HLP5891_tstrDrvSpiConfig * tstrDrvSpicfg ;
 } HLP5891_tstrComponentConfig;
 
 
